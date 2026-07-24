@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whispers Lab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav-wrap">
+  <div class="container nav">
+    <a href="#home" class="logo">
+      <img src="assets/logo-trim.png" alt="Whispers Lab">
+    </a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="audit.html">AI Audit</a>
+      <a href="core-build.html">Core Build</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="mailto:hello@whisperslab.com" class="btn btn-cta">Book Free Discovery Call
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="audit.html">AI Audit</a>
+    <a href="core-build.html">Core Build</a>
+    <a href="contact.html">Contact</a>
+    <a href="mailto:hello@whisperslab.com" class="btn btn-cta">Book Free Discovery Call</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"><img src="assets/hero-bg.png" alt=""></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-main">
+        <h1>We <span class="grad-word underline-word">delete</span> busywork.</h1>
+        <p class="hero-sub">We help small business owners eliminate the manual tasks slowing their businesses down.</p>
+        <a href="#services" class="link-underline">See How We Do It →</a>
+      </div>
+
+      <div class="toolkit">
+        <span class="toolkit-label">TRUSTED TOOLKIT</span>
+        <div class="toolkit-icons">
+          <img src="assets/zapier_icon_146029.webp" alt="Zapier" class="tool-icon">
+          <img src="assets/hubspot-logo.png" alt="HubSpot" class="tool-icon">
+          <img src="assets/openai.webp" alt="OpenAI" class="tool-icon">
+          <img src="assets/slack-outline-logo-minimal-line-art-editable-and-transparent-free-png.webp" alt="Slack" class="tool-icon">
+          <img src="assets/n8n.png" alt="n8n" class="tool-icon">
+          <img src="assets/Claude-ai-logo.png" alt="Claude" class="tool-icon">
+          <img src="assets/google-gemini-icon.webp" alt="Gemini" class="tool-icon">
+          <img src="assets/airtable.png" alt="Airtable" class="tool-icon">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTE FROM THE LAB -->
+  <section class="section note-section">
+    <div class="container">
+      <div class="attribution">
+        <img src="assets/haris-ali.png" alt="Haris Ali" class="attr-avatar">
+        <span class="attr-text">
+          <span class="attr-name">Haris Ali</span>
+          <span class="attr-role">Co-Founder, Whispers Lab</span>
+        </span>
+      </div>
+      <span class="eyebrow">A NOTE FROM THE LAB</span>
+      <h2>Stop running your business like it's <span class="grad-word">2010.</span></h2>
+      <p class="section-copy">We saw brilliant small business owners drowning in data entry, endless reporting, and chaotic scheduling. AI isn't about replacing your team; it's about eliminating the robotic work humans were never meant to do in the first place.</p>
+    </div>
+  </section>
+
+  <!-- BOTTLENECK -->
+  <section class="section bottleneck-section" id="process">
+    <div class="hero-bg"><img src="assets/bottleneck-bg.jpg" alt=""></div>
+    <div class="hero-overlay dark"></div>
+    <div class="container bottleneck-grid">
+      <div class="bottleneck-left">
+        <span class="eyebrow eyebrow-light">THE BOTTLENECK</span>
+        <h2 class="light-heading">You are bottlenecking your own growth.</h2>
+        <p class="section-copy light-copy">Most small businesses are trapped in manual pipelines. The problem isn't your work ethic—it's disconnected execution and outdated systems quietly draining your team every single day.</p>
+      </div>
+      <div class="bottleneck-right">
+        <div class="bottleneck-card">
+          <span class="bottleneck-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h4M8 11h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 20h9a2 2 0 0 0 2-2V9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h4>Copy-pasting data</h4>
+            <p>Hours lost moving information between disconnected tools by hand.</p>
+          </div>
+        </div>
+        <div class="bottleneck-card">
+          <span class="bottleneck-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/></svg>
+          </span>
+          <div>
+            <h4>Chasing status updates</h4>
+            <p>Endless follow-ups just to find out where things actually stand.</p>
+          </div>
+        </div>
+        <div class="bottleneck-card">
+          <span class="bottleneck-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10.3 4.3 3.1 17a2 2 0 0 0 1.7 3h14.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h4>Fixing routing errors</h4>
+            <p>Human handoffs that misfire, stall, and cost you real revenue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST OF INACTION -->
+  <section class="section cost-section">
+    <div class="container">
+      <span class="eyebrow">THE COST OF INACTION</span>
+      <h2>What is manual work actually costing you?</h2>
+      <p class="section-copy">Every hour spent on administrative busywork is an hour stolen from scaling your business. This repetitive work is bleeding your money, burning out your team, and giving your competitors the edge.</p>
+      <div class="stats-grid">
+        <div class="stat"><span class="stat-num">12+ hrs</span><span class="stat-label">lost to admin weekly</span></div>
+        <div class="stat"><span class="stat-num">24%</span><span class="stat-label">of leads need faster follow-up</span></div>
+        <div class="stat"><span class="stat-num">3×</span><span class="stat-label">more rework from handoffs</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">hours a week to reclaim</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER -->
+  <section class="section beforeafter-section">
+    <div class="container">
+      <span class="eyebrow">BEFORE &amp; AFTER</span>
+      <h2>The Whispers Lab Difference.</h2>
+
+      <div class="ba-grid">
+        <div class="ba-col ba-before">
+          <div class="ba-head">
+            <span class="ba-tag ba-tag-before">WITHOUT AI · THE OLD WAY</span>
+          </div>
+          <ul class="ba-list">
+            <li>
+              <span class="ba-icon ba-x"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              Drowning in the manual work every business runs on—copy-pasting data, status updates, and daily reporting.
+            </li>
+            <li>
+              <span class="ba-icon ba-x"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              Systems are disconnected, meaning your team has to act as the "bridge" between different software tools.
+            </li>
+            <li>
+              <span class="ba-icon ba-x"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              Constant human errors, missed follow-ups, and delayed responses.
+            </li>
+            <li>
+              <span class="ba-icon ba-x"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              The owner works 60+ hour weeks just to manage the operational chaos and maintain the status quo.
+            </li>
+          </ul>
+        </div>
+
+        <div class="ba-col ba-after">
+          <div class="ba-head">
+            <span class="ba-tag ba-tag-after">WITH WHISPERS LAB · THE NEW WAY</span>
+          </div>
+          <ul class="ba-list">
+            <li>
+              <span class="ba-icon ba-check"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Entire categories of repetitive, robotic work are eliminated from your team's plate.
+            </li>
+            <li>
+              <span class="ba-icon ba-check"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              One centralized, automated system where your tools talk to each other seamlessly.
+            </li>
+            <li>
+              <span class="ba-icon ba-check"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Workflows trigger instantly behind the scenes with zero human error.
+            </li>
+            <li>
+              <span class="ba-icon ba-check"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              The founder gets 10+ hours back every week to step away from busywork and focus purely on scaling the business.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTPUT -->
+  <section class="section output-section">
+    <div class="container">
+      <span class="eyebrow">THE OUTPUT</span>
+      <h2>Boring AI that <span class="grad-word">actually works.</span></h2>
+      <p class="section-copy">No flashy tech demos. No six-month pilots. We build and deploy custom AI automations that handle the busywork entirely behind the scenes.</p>
+
+      <div class="output-card">
+        <div class="output-left">
+          <span class="output-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="12" rx="3" stroke="#7c9bff" stroke-width="1.6"/><path d="M12 4v3M8.5 12h.01M15.5 12h.01" stroke="#7c9bff" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 15.5h5" stroke="#7c9bff" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <h3>A quieter operating system for your business.</h3>
+          <p>Each workflow is documented, monitored, and designed around the tools your team already trusts.</p>
+          <span class="output-tag">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6b8cff" stroke-width="1.6"/><path d="M8.5 12.5l2.2 2.2 4.5-4.8" stroke="#6b8cff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Documented, human-ready handoff
+          </span>
+        </div>
+        <div class="output-right">
+          <div class="output-step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h4>Capture &amp; route</h4>
+              <p>Every enquiry arrives with the right context.</p>
+            </div>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4l-4 3v-3H6a2 2 0 0 1-2-2V6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="output-step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h4>Coordinate your tools</h4>
+              <p>Your CRM, inbox, and operations stay in sync.</p>
+            </div>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 3a4 4 0 0 1 4 4v2M7 21a4 4 0 0 1-4-4v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m15 1 2 2-2 2M9 23l-2-2 2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9a4 4 0 0 1 4-4h10M21 15a4 4 0 0 1-4 4H7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="output-step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h4>Compound the savings</h4>
+              <p>The next workflow gets easier—and more valuable.</p>
+            </div>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V6M4 14l4-4 4 3 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-plain">
+    <div class="container">
+      <div class="guarantee-inner">
+        <span class="guarantee-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 1.8 3-.2 1 2.9 2.4 1.8-1 2.9 1 2.9-2.4 1.8-1 2.9-3-.2L12 21l-2.5-1.7-3 .2-1-2.9L3.1 15l1-2.9-1-2.9L5.5 7.4l1-2.9 3 .2L12 3z" stroke="url(#gg)" stroke-width="1.4"/><path d="M8.5 12l2.2 2.2 4.8-5" stroke="url(#gg)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3691ff"/><stop offset="1" stop-color="#8041ff"/></linearGradient></defs></svg>
+        </span>
+        <div class="guarantee-text">
+          <span class="eyebrow guarantee-eyebrow">OUR GUARANTEE</span>
+          <h2>Working MVP in under 30 days.</h2>
+          <p>We map your operations and target a minimum of 10 hours saved every week.</p>
+        </div>
+        <span class="guarantee-pill">10+ HRS / WEEK</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section features-section textured-section">
+    <div class="texture-overlay"></div>
+    <div class="container">
+      <h2>What we <span class="grad-word">automate</span> for you.</h2>
+      <p class="section-copy">Common, repetitive workflows we take off your team's plate—so the busywork runs itself.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+          <h3>Lead capture &amp; routing</h3>
+          <p>New enquiries are captured, qualified, and sent to the right person automatically—no copy-paste trail.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 4-3 6.5-7 8-4-1.5-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Client onboarding</h3>
+          <p>Smart intake, automated welcome sequences, and follow-ups that never miss a handoff.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Invoicing &amp; reminders</h3>
+          <p>Invoices, payment reminders, and receipts go out on schedule—so revenue never slips through.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Scheduling &amp; follow-ups</h3>
+          <p>Bookings, confirmations, and reminders sync across calendars with zero back-and-forth.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 4a8 8 0 1 0 8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 4v8l5 3M12 4a8 8 0 0 1 8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <h3>CRM &amp; data sync</h3>
+          <p>Records, statuses, and notes stay updated across every tool—no manual data entry.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 15l5-4 4 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 7v4h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Reporting &amp; alerts</h3>
+          <p>Daily summaries and status alerts are generated and delivered automatically—no more manual reports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-section" id="services">
+    <div class="container">
+      <h2>How we work.</h2>
+      <div class="cards-grid pricing-grid">
+        <div class="card pricing-card featured">
+          <div class="pricing-top">
+            <span class="pricing-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 11h5M11 8.5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <div class="price">$250</div>
+          </div>
+          <h3>The Automation Audit</h3>
+          <p>We map your daily operations and deliver a prioritized roadmap showing exactly where AI will save you time.</p>
+          <ul class="card-list">
+            <li>Full operations & workflow mapping</li>
+            <li>Prioritized automation roadmap</li>
+            <li>Time-savings estimate per workflow</li>
+            <li>Delivered in under a week</li>
+          </ul>
+          <a href="audit.html" class="card-cta">Learn more about Automation Audit →</a>
+        </div>
+        <div class="card pricing-card">
+          <div class="pricing-top">
+            <span class="pricing-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M14.5 4.5a4 4 0 0 0-5.3 5.3l-5 5a1.5 1.5 0 0 0 0 2.1l.9.9a1.5 1.5 0 0 0 2.1 0l5-5a4 4 0 0 0 5.3-5.3l-2.3 2.3-2-2 2.3-2.3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="price">Starts at $1,500</div>
+          </div>
+          <h3>The Core Build</h3>
+          <p>We build and deploy the 2–3 automations that pay for themselves the fastest. Production-ready in 30 days.</p>
+          <ul class="card-list">
+            <li>2–3 fully built & deployed automations</li>
+            <li>Connected to the tools you already use</li>
+            <li>Production-ready in 30 days</li>
+            <li>Documented, human-ready handoff</li>
+          </ul>
+          <a href="core-build.html" class="card-cta">Learn more about Core Build →</a>
+        </div>
+        <div class="card pricing-card">
+          <div class="pricing-top">
+            <span class="pricing-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 15l5-5 4 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 9V5h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="price">$500/mo</div>
+          </div>
+          <h3>AI Growth Partner</h3>
+          <p>Your ongoing technical partner. We maintain your systems and add new workflows monthly to ensure continuous scale.</p>
+          <ul class="card-list">
+            <li>Ongoing monitoring & maintenance</li>
+            <li>New workflow added every month</li>
+            <li>Priority technical support</li>
+            <li>Continuous optimization for scale</li>
+          </ul>
+          <a href="mailto:hello@whisperslab.com" class="card-cta">Learn more about AI Growth Partner →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="section case-section">
+    <div class="container">
+      <span class="eyebrow">REAL RESULTS · CASE STUDIES</span>
+      <h2>What happens when the work stops piling up.</h2>
+      <p class="section-copy">Real systems we've built for real businesses—rebuilt from manual chaos into quiet automation.</p>
+
+      <div class="cases-list">
+        <!-- CASE 1 -->
+        <article class="case-study">
+          <div class="case-study-head">
+            <span class="case-industry">FINANCIAL SERVICES · SAAS</span>
+            <h3>The AI-Powered Financial Document Reader</h3>
+            <p class="case-goal"><strong>The goal:</strong> Stop the manual data entry of bank statements and invoices.</p>
+          </div>
+          <div class="case-study-body">
+            <div class="case-block case-before">
+              <span class="case-label case-label-before">BEFORE · THE PAIN</span>
+              <p>The client relied on slow, manual data entry and outdated, restrictive scanners to process sensitive accounting and compliance documents. This bottleneck slowed daily operations and made it incredibly hard to scale.</p>
+            </div>
+            <div class="case-block case-after">
+              <span class="case-label case-label-after">AFTER · THE OUTPUT</span>
+              <p>We built a custom AI system that acts like a digital data-entry clerk. It instantly reads uploaded bank statements, pulls the exact transaction data needed, and securely organizes it into their database—without a single human touch.</p>
+            </div>
+          </div>
+          <div class="case-numbers">
+            <div class="case-metric"><span class="case-metric-num">100%</span><span class="case-metric-label">elimination of manual data entry</span></div>
+            <div class="case-metric"><span class="case-metric-num">~15 hrs</span><span class="case-metric-label">saved weekly (≈40 docs/day × 4 min)</span></div>
+            <div class="case-metric"><span class="case-metric-num">0</span><span class="case-metric-label">hours wasted copying &amp; pasting</span></div>
+            <div class="case-metric"><span class="case-metric-num">1</span><span class="case-metric-label">fully automated, secure AI pipeline</span></div>
+          </div>
+        </article>
+
+        <!-- CASE 2 -->
+        <article class="case-study">
+          <div class="case-study-head">
+            <span class="case-industry">E-COMMERCE · RETAIL</span>
+            <h3>The AI Catalog &amp; Content Engine</h3>
+            <p class="case-goal"><strong>The goal:</strong> Automate the cleanup and translation of massive supplier product catalogs.</p>
+          </div>
+          <div class="case-study-body">
+            <div class="case-block case-before">
+              <span class="case-label case-label-before">BEFORE · THE PAIN</span>
+              <p>The store owner was losing sales to high cart abandonment. Supplier catalogs were messy and in raw foreign languages, so the team spent countless hours manually rewriting titles, fixing pricing errors, and translating descriptions just to look trustworthy to buyers.</p>
+            </div>
+            <div class="case-block case-after">
+              <span class="case-label case-label-after">AFTER · THE OUTPUT</span>
+              <p>We built a one-click AI system. It fetches the raw supplier data, then instantly cleans the text, translates it perfectly into the local language, formats descriptions beautifully, and pushes everything live to the store automatically.</p>
+            </div>
+          </div>
+          <div class="case-numbers">
+            <div class="case-metric"><span class="case-metric-num">100%</span><span class="case-metric-label">automated translation &amp; formatting</span></div>
+            <div class="case-metric"><span class="case-metric-num">~22 hrs</span><span class="case-metric-label">saved weekly (≈500 products × 2.5 min)</span></div>
+            <div class="case-metric"><span class="case-metric-num">0</span><span class="case-metric-label">hours writing product descriptions</span></div>
+            <div class="case-metric"><span class="case-metric-num">0</span><span class="case-metric-label">duplicate entries or catalog errors</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN THE LAB -->
+  <section class="section join-section" id="contact">
+    <div class="container join-inner">
+      <h2>Not ready to automate yet?</h2>
+      <p class="section-copy">Get our free "Busywork Elimination Framework" and join our Tuesday newsletter. Every week, we send you one manual task to eliminate and the exact AI tool to replace it.</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" class="newsletter-input" placeholder="Enter your email" aria-label="Email address" required>
+        <button type="submit" class="newsletter-btn">Send Me The Framework</button>
+      </form>
+      <span class="newsletter-note">No spam. Zero tech jargon. Just hours bought back.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-mandate">THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME.</p>
+    <div class="footer-row">
+      <p class="footer-links">HOME&nbsp;&nbsp;·&nbsp;&nbsp;ABOUT US&nbsp;&nbsp;·&nbsp;&nbsp;SERVICES&nbsp;&nbsp;·&nbsp;&nbsp;CASE STUDIES&nbsp;&nbsp;·&nbsp;&nbsp;CONTACT</p>
+      <div class="footer-social">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.6a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.45 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.68V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.21-1.77 3.43 0 4.06 2.26 4.06 5.2V20Z" fill="currentColor"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14.5 21v-7.3h2.5l.4-2.9h-2.9V9c0-.85.24-1.43 1.46-1.43H17.5V5.02C17.2 4.98 16.2 4.9 15 4.9c-2.44 0-4.11 1.49-4.11 4.22v2.35H8.4v2.9h2.49V21h3.6Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
