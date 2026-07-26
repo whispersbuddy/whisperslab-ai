@@ -1049,7 +1049,8 @@ h3 { font-size: 26px; letter-spacing: -1px; }
   .output-card { grid-template-columns: 1fr; }
   .output-left { padding: 32px; }
   .output-right { margin: 0 16px 16px; }
-  .guarantee-card { flex-direction: column; align-items: flex-start; }
+  .guarantee-inner { flex-direction: column; align-items: flex-start; }
+  .guarantee-pill { margin-top: 4px; }
   .container { padding-left: 20px; padding-right: 20px; }
 }
 
