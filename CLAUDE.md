@@ -33,16 +33,15 @@ Section order, design system (colors, typography, `.grad-word`, `.textured-secti
 
 ## Forms — now wired to Resend
 
-1. **Newsletter / lead-magnet form** (`.newsletter-form`, all 4 pages) → `POST /api/newsletter` ([`app/api/newsletter/route.ts`](app/api/newsletter/route.ts)) → adds the email to a Resend Audience.
+1. **Newsletter / lead-magnet form** (`.newsletter-form`, all 4 pages) → `POST /api/newsletter` ([`app/api/newsletter/route.ts`](app/api/newsletter/route.ts)) → sends a notification email via Resend (same pattern as the contact form below, no Resend Audience involved).
 2. **Contact page smart form** (`.contact-form`, `/contact` only) → `POST /api/contact` ([`app/api/contact/route.ts`](app/api/contact/route.ts)) → sends a notification email via Resend with `replyTo` set to the submitter.
 
 Both routes read config from environment variables (see `.env.local.example`, copy to `.env.local`):
 - `RESEND_API_KEY` — required for both.
-- `RESEND_AUDIENCE_ID` — which Resend audience newsletter signups join. **Not yet created/confirmed with the user.**
-- `CONTACT_NOTIFY_EMAIL` — who receives contact-form notifications. **Not yet confirmed with the user** (defaulted to `hello@whisperslab.com` as a placeholder in the example file).
-- `CONTACT_FROM_EMAIL` — the Resend-verified sender address for outgoing contact notifications (defaults to Resend's shared `onboarding@resend.dev` sandbox sender until a domain is verified).
+- `CONTACT_NOTIFY_EMAIL` — recipient for both newsletter-signup and contact-form notifications (defaults to `hello@whisperslab.com`).
+- `CONTACT_FROM_EMAIL` — the Resend-verified sender address, must be on a domain verified at resend.com/domains (`whisperslab.com` was verified 2026-07-30; `CONTACT_FROM_EMAIL` should be `Whispers Lab <hello@whisperslab.com>` or similar, not the `onboarding@resend.dev` sandbox sender — sandbox mode only delivers to the Resend account owner's own email).
 
-If these env vars are missing, both routes return a 500 with a clear error rather than failing silently — check server logs.
+If `RESEND_API_KEY`/`CONTACT_NOTIFY_EMAIL` are missing, both routes return a 500 with a clear error rather than failing silently — check server logs. **Note:** a `200` from these routes only confirms Resend accepted the email for delivery, not that `CONTACT_NOTIFY_EMAIL`'s inbox actually received it — that also depends on the domain's MX records / mailbox hosting being set up (e.g. Zoho Mail Lite) separately from Resend's sending-side domain verification.
 
 ## Known content/business facts to preserve
 

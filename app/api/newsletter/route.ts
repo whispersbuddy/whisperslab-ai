@@ -10,17 +10,19 @@ export async function POST(req: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const audienceId = process.env.RESEND_AUDIENCE_ID;
-  if (!apiKey || !audienceId) {
-    console.error("Resend is not configured: missing RESEND_API_KEY or RESEND_AUDIENCE_ID");
+  const toEmail = process.env.CONTACT_NOTIFY_EMAIL;
+  if (!apiKey || !toEmail) {
+    console.error("Resend is not configured: missing RESEND_API_KEY or CONTACT_NOTIFY_EMAIL");
     return NextResponse.json({ error: "Newsletter signup is not configured yet" }, { status: 500 });
   }
 
   const resend = new Resend(apiKey);
-  const { error } = await resend.contacts.create({
-    email,
-    audienceId,
-    unsubscribed: false,
+  const { error } = await resend.emails.send({
+    from: process.env.CONTACT_FROM_EMAIL ?? "Whispers Lab <onboarding@resend.dev>",
+    to: toEmail,
+    replyTo: email,
+    subject: `New newsletter signup: ${email}`,
+    text: `New newsletter signup.\n\nEmail: ${email}`,
   });
 
   if (error) {
