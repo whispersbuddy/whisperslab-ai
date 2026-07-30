@@ -14,7 +14,7 @@ export default function BookPage() {
         <span className="eyebrow">BOOK A CALL</span>
         <h1>
           Let&rsquo;s find your next{" "}
-          <span className="grad-word">10 hours.</span>
+          <span className="grad-word">10–20+ hours.</span>
         </h1>
         <p className="section-copy">
           Pick a slot below. No forms, no back-and-forth, just a real

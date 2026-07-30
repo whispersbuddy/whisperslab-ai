@@ -612,6 +612,7 @@ h3 { font-size: 26px; letter-spacing: -1px; }
 .feature-icon svg { width: 22px; height: 22px; }
 .feature-card h3 { font-size: 19px; letter-spacing: -0.4px; margin-top: 20px; color: #fff; }
 .feature-card p { color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 10px; line-height: 1.6; }
+.feature-benefit { display: block; color: #a9c2ff; font-size: 13px; font-weight: 700; margin-top: 12px; }
 
 /* TEXTURED DARK SECTION (shared) */
 .textured-section {
@@ -744,6 +745,19 @@ h3 { font-size: 26px; letter-spacing: -1px; }
   padding: 6px 12px;
   border-radius: 999px;
 }
+
+/* Case study build-type badge — AI vs pure automation */
+.case-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.case-build {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.case-build-ai { background: linear-gradient(90deg, #3691ff, #8041ff); color: #fff; }
+.case-build-auto { background: rgba(15,23,42,0.06); color: #64748b; }
 .case-study-head h3 { font-size: 28px; letter-spacing: -0.8px; margin-top: 18px; }
 .case-goal { color: #475569; font-size: 15px; margin-top: 12px; line-height: 1.55; }
 .case-goal strong { color: var(--navy); font-weight: 700; }
