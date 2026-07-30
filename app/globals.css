@@ -83,7 +83,7 @@ h1, h2, h3, h4 {
   padding-top: 26px;
   padding-bottom: 26px;
 }
-.logo img { height: 28px; display: block; }
+.logo img { height: 28px; width: auto; display: block; }
 .nav-links { display: flex; gap: 8px; align-items: center; }
 .nav-links a {
   color: rgb(201,212,229);
@@ -1440,7 +1440,7 @@ h3 { font-size: 26px; letter-spacing: -1px; }
 }
 .booking-page-inner { width: 100%; max-width: 1180px; margin: 0 auto; text-align: center; }
 .booking-page-inner .logo { display: block; width: fit-content; margin: 0 auto 26px; }
-.booking-page-inner .logo img { height: 26px; display: block; }
+.booking-page-inner .logo img { height: 26px; width: auto; display: block; }
 .booking-page-inner .eyebrow { display: block; }
 .booking-page-inner h1 {
   font-size: 44px;

@@ -7,7 +7,7 @@ export const CASE_STUDIES_HTML = `
 <header class="nav-wrap nav-solid">
   <div class="container nav">
     <a href="/" class="logo">
-      <img src="/assets/logo-trim.png" alt="Whispers Lab">
+      <img src="/assets/logo-trim.png" alt="Whispers Lab" width="348" height="45">
     </a>
     <nav class="nav-links">
       <a href="/">Home</a>

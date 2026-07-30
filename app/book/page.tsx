@@ -9,7 +9,12 @@ export default function BookPage() {
     <div className="booking-page">
       <div className="container booking-page-inner">
         <a href="/" className="logo">
-          <img src="/assets/logo-trim.png" alt="Whispers Lab" />
+          <img
+            src="/assets/logo-trim.png"
+            alt="Whispers Lab"
+            width={348}
+            height={45}
+          />
         </a>
         <span className="eyebrow">BOOK A CALL</span>
         <h1>
