@@ -3,9 +3,52 @@ import Script from "next/script";
 import "./globals.css";
 import ClientEffects from "@/components/ClientEffects";
 
+const SITE_URL = "https://www.whisperslab.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Whispers Lab",
   description: "We delete busywork.",
+  openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    title: "Whispers Lab",
+    description: "We delete busywork.",
+    url: SITE_URL,
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Whispers Lab — We delete busywork.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Whispers Lab",
+    description: "We delete busywork.",
+    images: ["/og-image.png"],
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Whispers Lab",
+  url: SITE_URL,
+  logo: `${SITE_URL}/assets/logo-trim.png`,
+  description:
+    "AI automation agency helping small business owners eliminate manual busywork through custom-built automation and AI systems.",
+  founder: {
+    "@type": "Person",
+    name: "Haris Ali",
+  },
+  sameAs: [
+    "https://www.instagram.com/whispers__lab/",
+    "https://www.linkedin.com/company/whispers-lab/",
+  ],
 };
 
 export default function RootLayout({
@@ -26,6 +69,10 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {children}
         <ClientEffects />
         <Script

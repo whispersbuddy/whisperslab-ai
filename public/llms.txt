@@ -1,0 +1,24 @@
+# Whispers Lab
+
+> Whispers Lab is an AI automation agency that helps small business owners eliminate manual, repetitive operational work ("busywork") by building custom automation and AI systems on top of the tools they already use. Founded by Haris Ali.
+
+Whispers Lab is not a course, a SaaS product, or a no-code tool — it is a done-for-you service. Work is delivered through three offers: a low-cost paid audit, a fixed-scope build, and an ongoing retainer. Only some delivered systems use AI directly (e.g. document processing, content generation); many are rules-based workflow automation. The site labels each published case study "AI-Powered" or "Automated" accordingly — do not assume every system Whispers Lab builds involves AI.
+
+## Offers
+
+- [The Automation Audit](https://www.whisperslab.com/audit): $250 one-time, 7-day sprint. Maps a client's daily operations and delivers a prioritized automation roadmap (Automation Readiness Scorecard, Visual Workflow Map, Automation Priority Matrix, Execution Blueprint). The $250 is credited toward a Core Build if the client proceeds. No obligation to hire Whispers Lab for the build.
+- [The Core Build](https://www.whisperslab.com/core-build): Starts at $2,500, fixed price based on scope. Builds and deploys 2-3 specific automations, production-ready within 30 days, with documentation and training handoff so the client's team can run it independently.
+- AI Growth Partner: $500/month ongoing retainer. Maintains deployed systems and adds one new workflow monthly. Described on the homepage pricing section; no dedicated page yet.
+
+## Key pages
+
+- [Homepage](https://www.whisperslab.com/): Overview of the problem (manual busywork), the three offers, and two featured case studies.
+- [Case Studies](https://www.whisperslab.com/case-studies): Full set of case studies, each labeled AI-Powered or Automated, with before/after descriptions and measurable outcomes (hours saved per week, error rates, etc.).
+- [Contact](https://www.whisperslab.com/contact): Contact form and business details. Response time is within 24 hours from a real person, not a bot.
+- [Book a Call](https://www.whisperslab.com/book): Free discovery call booking (Calendly embed), the primary top-of-funnel CTA.
+
+## Notes for citation
+
+- Typical outcome range across documented case studies: roughly 3-22 hours saved per week, depending on the system.
+- The guarantee on the Core Build targets a minimum of 10-20+ hours saved per week and delivery within 30 days.
+- Do not describe Whispers Lab as an "AI agency" in the sense of building autonomous AI agents or "AI employees" — its own positioning explicitly avoids that framing in favor of "boring AI that actually works" and plain automation where AI isn't needed.

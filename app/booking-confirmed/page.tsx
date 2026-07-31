@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Booking — Whispers Lab",
+  description: "Pick a time to scope your Core Build with Whispers Lab.",
   robots: { index: false, follow: false },
 };
 
