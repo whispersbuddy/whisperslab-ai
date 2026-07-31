@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "Real systems we've built for real small businesses, rebuilt from manual chaos into quiet automation.",
   alternates: { canonical: "/case-studies" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "Case Studies — Whispers Lab",
     description:
       "Real systems we've built for real small businesses, rebuilt from manual chaos into quiet automation.",

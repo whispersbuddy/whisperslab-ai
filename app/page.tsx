@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "We help small business owners eliminate manual busywork with custom AI automation. Start with a $250 Automation Audit — production-ready builds in 30 days.",
   alternates: { canonical: "/" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "Whispers Lab — AI Automation for Small Business Owners",
     description:
       "We help small business owners eliminate manual busywork with custom AI automation. Start with a $250 Automation Audit — production-ready builds in 30 days.",

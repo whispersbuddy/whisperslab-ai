@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "Tell us your biggest operational bottleneck. A real person replies within 24 hours — no cold-calling lists, no chatbots.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "Contact — Whispers Lab",
     description:
       "Tell us your biggest operational bottleneck. A real person replies within 24 hours — no cold-calling lists, no chatbots.",

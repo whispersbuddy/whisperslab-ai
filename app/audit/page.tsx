@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",
   alternates: { canonical: "/audit" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "The Automation Audit — Whispers Lab",
     description:
       "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",

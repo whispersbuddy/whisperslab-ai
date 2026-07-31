@@ -40,10 +40,14 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo-trim.png`,
   description:
-    "AI automation agency helping small business owners eliminate manual busywork through custom-built automation and AI systems.",
+    "AI automation agency helping small business owners — primarily in the United States — eliminate manual busywork through custom-built automation and AI systems. Works with clients remotely worldwide.",
   founder: {
     "@type": "Person",
     name: "Haris Ali",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
   },
   sameAs: [
     "https://www.instagram.com/whispers__lab/",
@@ -57,8 +61,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <head>
+        <meta name="geo.region" content="US" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"

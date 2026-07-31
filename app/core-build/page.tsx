@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",
   alternates: { canonical: "/core-build" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "The Core Build — Whispers Lab",
     description:
       "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",

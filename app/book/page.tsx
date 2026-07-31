@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     "Pick a slot and get on a call with Whispers Lab. No forms, no back-and-forth — just a real conversation about where AI can save you the most time.",
   alternates: { canonical: "/book" },
   openGraph: {
+    type: "website",
+    siteName: "Whispers Lab",
+    locale: "en_US",
     title: "Book a Call — Whispers Lab",
     description:
       "Pick a slot and get on a call with Whispers Lab. No forms, no back-and-forth — just a real conversation about where AI can save you the most time.",
