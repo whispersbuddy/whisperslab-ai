@@ -13,7 +13,15 @@ Whispers Lab is not a course, a SaaS product, or a no-code tool — it is a done
 ## Key pages
 
 - [Homepage](https://www.whisperslab.com/): Overview of the problem (manual busywork), the three offers, and two featured case studies.
-- [Case Studies](https://www.whisperslab.com/case-studies): Full set of case studies, each labeled AI-Powered or Automated, with before/after descriptions and measurable outcomes (hours saved per week, error rates, etc.).
+- [Case Studies](https://www.whisperslab.com/case-studies): Full set of case studies, each labeled AI-Powered or Automated, with before/after descriptions and measurable outcomes (hours saved per week, error rates, etc.). Individual case studies:
+  - [The AI-Powered Financial Document Reader](https://www.whisperslab.com/case-studies/financial-document-reader): Financial services SaaS company. Replaced manual bank-statement data entry and a black-box legacy scanner with a custom AI reader.
+  - [The AI Catalog & Content Engine](https://www.whisperslab.com/case-studies/ai-catalog-content-engine): E-commerce retailer. Automated cleanup, translation, and formatting of supplier product catalogs.
+  - [The Lead Sales Engine That Runs Itself](https://www.whisperslab.com/case-studies/lead-sales-engine): Real estate compliance lead business. Automated sourcing, pitching, and selling of property violation leads to contractors.
+  - [The Zero Double-Entry Financial Pipeline](https://www.whisperslab.com/case-studies/zero-double-entry-financial-pipeline): Professional services firm. Two-way sync between an operations app and an accounting system, plus no-login quote acceptance.
+  - [The CRM That Fills Itself In](https://www.whisperslab.com/case-studies/crm-that-fills-itself-in): Education-sector organization. Automatically logs relevant emails and meetings into a shared CRM, filtering out noise.
+  - [The Onboarding Pipeline That Runs on Autopilot](https://www.whisperslab.com/case-studies/onboarding-pipeline-autopilot): Coaching business. Self-serve client booking with automatic video links, reminders, and CRM updates.
+  - [The Inspection Report That Writes Itself](https://www.whisperslab.com/case-studies/inspection-report-writes-itself): Vehicle inspection service. Auto-generates a formatted, multi-page report the moment a field inspection form is submitted.
+  - [The Self-Cleaning Warehouse System](https://www.whisperslab.com/case-studies/self-cleaning-warehouse-system): Warehousing and fulfillment operation. Bulk-clears empty storage locations and auto-deletes leftover shipping-slip files.
 - [Contact](https://www.whisperslab.com/contact): Contact form and business details. Response time is within 24 hours from a real person, not a bot.
 - [Book a Call](https://www.whisperslab.com/book): Free discovery call booking (Calendly embed), the primary top-of-funnel CTA.
 

@@ -36,9 +36,33 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE_URL = "https://www.whisperslab.com";
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Case Studies",
+  description:
+    "Real systems Whispers Lab has built for real small businesses, rebuilt from manual chaos into quiet automation.",
+  url: `${SITE_URL}/case-studies`,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: CASE_STUDIES.map((cs, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${SITE_URL}/case-studies/${cs.slug}`,
+      name: cs.title,
+    })),
+  },
+};
+
 export default function CaseStudiesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
       <SiteHeader />
       <main>
         <section className="contact-banner">
