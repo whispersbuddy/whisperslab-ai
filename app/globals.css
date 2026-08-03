@@ -888,7 +888,54 @@ h3 { font-size: 26px; letter-spacing: -1px; }
 .case-detail-challenges .promise-check { margin-top: 2px; }
 .case-detail-challenges span { color: #475569; font-size: 15px; line-height: 1.6; }
 
+.case-detail-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.case-detail-tool {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+  background: rgba(15,23,42,0.05);
+  border: 1px solid rgba(15,23,42,0.08);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.case-detail-steps {
+  list-style: none;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.case-detail-steps li { display: flex; align-items: flex-start; gap: 16px; }
+.case-detail-step-index {
+  flex: none;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+  min-width: 28px;
+  background: linear-gradient(135deg, #3691ff, #8041ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.case-detail-steps span:last-child { color: #475569; font-size: 15px; line-height: 1.65; padding-top: 2px; }
+
 .case-detail-numbers { margin-top: 48px; }
+.case-metrics-disclaimer {
+  display: block;
+  margin-top: 16px;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+}
 .case-detail-cta {
   margin-top: 56px;
   padding-top: 40px;

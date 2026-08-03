@@ -3,7 +3,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import { CASE_STUDIES } from "@/app/_content/caseStudiesData";
+import { CASE_STUDIES, METRICS_DISCLAIMER } from "@/app/_content/caseStudiesData";
 
 export const metadata: Metadata = {
   title: "Case Studies — Whispers Lab",
@@ -103,6 +103,9 @@ export default function CaseStudiesPage() {
                 </article>
               ))}
             </div>
+            <span className="case-metrics-disclaimer">
+              * {METRICS_DISCLAIMER}
+            </span>
           </div>
         </section>
 

@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
+import {
+  CASE_STUDIES,
+  getCaseStudyBySlug,
+  METRICS_DISCLAIMER,
+} from "@/app/_content/caseStudiesData";
 
 export function generateStaticParams() {
   return CASE_STUDIES.map((cs) => ({ slug: cs.slug }));
@@ -120,6 +124,13 @@ export default async function CaseStudyDetailPage({
               <p style={{ color: "#475569", fontSize: "15.5px", lineHeight: 1.7 }}>
                 {cs.detail.clientSnapshot}
               </p>
+              <div className="case-detail-tools">
+                {cs.detail.tools.map((tool) => (
+                  <span className="case-detail-tool" key={tool}>
+                    {tool}
+                  </span>
+                ))}
+              </div>
 
               <div className="case-detail-section">
                 <h2>The situation</h2>
@@ -133,6 +144,20 @@ export default async function CaseStudyDetailPage({
                 {cs.detail.whatWeBuilt.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
+              </div>
+
+              <div className="case-detail-section">
+                <h2>How it works</h2>
+                <ol className="case-detail-steps">
+                  {cs.detail.howItWorks.map((step, i) => (
+                    <li key={i}>
+                      <span className="case-detail-step-index">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
 
               <div className="case-detail-section">
@@ -172,6 +197,9 @@ export default async function CaseStudyDetailPage({
                   </div>
                 ))}
               </div>
+              <span className="case-metrics-disclaimer">
+                * {METRICS_DISCLAIMER}
+              </span>
 
               <div className="case-detail-cta">
                 <p>Want a system like this built for your business?</p>
