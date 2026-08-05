@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CORE_BUILD_HTML } from "@/app/_content/coreBuild";
 
+const SITE_URL = "https://www.whisperslab.com";
+
 export const metadata: Metadata = {
   title: "The Core Build — Whispers Lab",
   description:
@@ -29,6 +31,34 @@ export const metadata: Metadata = {
     description:
       "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",
     images: ["/og-image.png"],
+  },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Business Process Automation Development",
+  name: "The Core Build",
+  description:
+    "A fixed-price build that designs, develops, and deploys the 2-3 automations that pay for themselves fastest for a small business, production-ready within 30 days, with documentation and training handoff.",
+  provider: {
+    "@type": "Organization",
+    name: "Whispers Lab",
+    url: SITE_URL,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  offers: {
+    "@type": "Offer",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      minPrice: "2500",
+      priceCurrency: "USD",
+    },
+    url: `${SITE_URL}/core-build`,
+    availability: "https://schema.org/InStock",
   },
 };
 
@@ -90,6 +120,10 @@ const faqSchema = {
 export default function CoreBuildPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

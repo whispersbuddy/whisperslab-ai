@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { AUDIT_HTML } from "@/app/_content/audit";
 
+const SITE_URL = "https://www.whisperslab.com";
+
 export const metadata: Metadata = {
   title: "The Automation Audit — Whispers Lab",
   description:
@@ -29,6 +31,31 @@ export const metadata: Metadata = {
     description:
       "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",
     images: ["/og-image.png"],
+  },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Business Process Automation Audit",
+  name: "The Automation Audit",
+  description:
+    "A $250, 7-day sprint that maps a small business's daily operations and delivers a prioritized automation roadmap: an Automation Readiness Scorecard, Visual Workflow Map, Automation Priority Matrix, and Execution Blueprint.",
+  provider: {
+    "@type": "Organization",
+    name: "Whispers Lab",
+    url: SITE_URL,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "250",
+    priceCurrency: "USD",
+    url: `${SITE_URL}/audit`,
+    availability: "https://schema.org/InStock",
   },
 };
 
@@ -98,6 +125,10 @@ const faqSchema = {
 export default function AuditPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

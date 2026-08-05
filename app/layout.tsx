@@ -49,6 +49,20 @@ const organizationSchema = {
     "@type": "Country",
     name: "United States",
   },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "30 N Gould St, Ste R",
+    addressLocality: "Sheridan",
+    addressRegion: "WY",
+    postalCode: "82801",
+    addressCountry: "US",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: "hello@whisperslab.com",
+    areaServed: "US",
+  },
   sameAs: [
     "https://www.instagram.com/whispers__lab/",
     "https://www.linkedin.com/company/whispers-lab/",
