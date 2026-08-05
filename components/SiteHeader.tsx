@@ -15,6 +15,7 @@ export default function SiteHeader() {
           <a href="/audit">AI Audit</a>
           <a href="/core-build">Core Build</a>
           <a href="/case-studies">Case Studies</a>
+          <a href="/blog">Blog</a>
           <a href="/contact">Contact</a>
         </nav>
         <a href="/book" className="btn btn-cta">
@@ -44,6 +45,7 @@ export default function SiteHeader() {
         <a href="/audit">AI Audit</a>
         <a href="/core-build">Core Build</a>
         <a href="/case-studies">Case Studies</a>
+        <a href="/blog">Blog</a>
         <a href="/contact">Contact</a>
         <a href="/book" className="btn btn-cta">
           Book Free Discovery Call

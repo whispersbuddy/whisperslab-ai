@@ -14,6 +14,7 @@ export default function SiteFooter() {
             <a href="/audit">AI AUDIT</a>&nbsp;&nbsp;·&nbsp;&nbsp;
             <a href="/core-build">CORE BUILD</a>&nbsp;&nbsp;·&nbsp;&nbsp;
             <a href="/case-studies">CASE STUDIES</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+            <a href="/blog">BLOG</a>&nbsp;&nbsp;·&nbsp;&nbsp;
             <a href="/contact">CONTACT</a>
           </p>
           <div className="footer-social">

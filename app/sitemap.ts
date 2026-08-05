@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/app/_content/caseStudiesData";
+import { BLOG_POSTS } from "@/app/_content/blogData";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -15,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/case-studies", changeFrequency: "weekly", priority: 0.8 },
     ...CASE_STUDIES.map((cs) => ({
       path: `/case-studies/${cs.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+    ...BLOG_POSTS.map((post) => ({
+      path: `/blog/${post.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
