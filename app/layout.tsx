@@ -98,6 +98,18 @@ export default function RootLayout({
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DT0L4C5NMQ"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DT0L4C5NMQ');
+          `}
+        </Script>
       </body>
     </html>
   );
