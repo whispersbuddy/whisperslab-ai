@@ -8,9 +8,15 @@ import {
   getCaseStudyBySlug,
   METRICS_DISCLAIMER,
 } from "@/app/_content/caseStudiesData";
+import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
 
-export function generateStaticParams() {
-  return CASE_STUDIES.map((cs) => ({ slug: cs.slug }));
+export async function generateStaticParams() {
+  const strapiStudies = await fetchCaseStudies();
+  const allSlugs = new Set([...CASE_STUDIES.map(cs => cs.slug)]);
+  if (Array.isArray(strapiStudies)) {
+    strapiStudies.forEach((cs: any) => allSlugs.add(cs.slug));
+  }
+  return Array.from(allSlugs).map(slug => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,8 +25,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const cs = getCaseStudyBySlug(slug);
-  if (!cs) return {};
+  const staticCs = getCaseStudyBySlug(slug);
+  const strapiCs = await fetchCaseStudyBySlug(slug);
+  
+  if (!staticCs && !strapiCs) return {};
+  
+  const cs = { ...staticCs, ...strapiCs };
+  if (!cs || !cs.title) return {};
 
   const title = `${cs.title} — Whispers Lab Case Study`;
   const description = cs.goal;
@@ -61,8 +72,21 @@ export default async function CaseStudyDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const cs = getCaseStudyBySlug(slug);
-  if (!cs) notFound();
+  const staticCs = getCaseStudyBySlug(slug);
+  const strapiCs = await fetchCaseStudyBySlug(slug);
+  
+  if (!staticCs && !strapiCs) notFound();
+
+  const cs = {
+    ...staticCs,
+    ...strapiCs,
+  };
+  
+  if (staticCs && strapiCs && strapiCs.detail) {
+    cs.detail = { ...staticCs.detail, ...strapiCs.detail };
+  } else if (!cs.detail && staticCs) {
+    cs.detail = staticCs.detail;
+  }
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -125,23 +149,42 @@ export default async function CaseStudyDetailPage({
                 {cs.detail.clientSnapshot}
               </p>
               <div className="case-detail-tools">
-                {cs.detail.tools.map((tool) => (
+                {cs.detail.tools?.map((tool: string) => (
                   <span className="case-detail-tool" key={tool}>
                     {tool}
                   </span>
                 ))}
               </div>
 
+              {cs.detail.media && Array.isArray(cs.detail.media) && cs.detail.media.length > 0 && (
+                <div className="case-detail-section case-detail-media" style={{ marginTop: '2.5rem' }}>
+                  {cs.detail.media.map((item: any, i: number) => {
+                    const isUrl = typeof item === 'string';
+                    const url = isUrl ? item : item.url;
+                    const isVideo = url.match(/\.(mp4|webm|ogg)$/i) || (!isUrl && item.type === 'video');
+                    
+                    if (isVideo) {
+                      return (
+                        <video key={i} src={url} controls style={{ width: '100%', marginBottom: '1.5rem', borderRadius: '8px' }} />
+                      );
+                    }
+                    return (
+                      <img key={i} src={url} alt={!isUrl && item.alt ? item.alt : ''} style={{ width: '100%', marginBottom: '1.5rem', borderRadius: '8px' }} />
+                    );
+                  })}
+                </div>
+              )}
+
               <div className="case-detail-section">
                 <h2>The situation</h2>
-                {cs.detail.situation.map((p, i) => (
+                {cs.detail.situation?.map((p: string, i: number) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
 
               <div className="case-detail-section">
                 <h2>What we built</h2>
-                {cs.detail.whatWeBuilt.map((p, i) => (
+                {cs.detail.whatWeBuilt?.map((p: string, i: number) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
@@ -149,7 +192,7 @@ export default async function CaseStudyDetailPage({
               <div className="case-detail-section">
                 <h2>How it works</h2>
                 <ol className="case-detail-steps">
-                  {cs.detail.howItWorks.map((step, i) => (
+                  {cs.detail.howItWorks?.map((step: string, i: number) => (
                     <li key={i}>
                       <span className="case-detail-step-index">
                         {String(i + 1).padStart(2, "0")}
@@ -163,7 +206,7 @@ export default async function CaseStudyDetailPage({
               <div className="case-detail-section">
                 <h2>The challenges we solved</h2>
                 <ul className="case-detail-challenges">
-                  {cs.detail.challenges.map((c, i) => (
+                  {cs.detail.challenges?.map((c: string, i: number) => (
                     <li key={i}>
                       <span className="promise-check">
                         <svg viewBox="0 0 24 24" fill="none">
@@ -184,13 +227,13 @@ export default async function CaseStudyDetailPage({
 
               <div className="case-detail-section">
                 <h2>The result</h2>
-                {cs.detail.result.map((p, i) => (
+                {cs.detail.result?.map((p: string, i: number) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
 
               <div className="case-detail-numbers case-numbers">
-                {cs.metrics.map((m) => (
+                {cs.metrics?.map((m: any) => (
                   <div className="case-metric" key={m.label}>
                     <span className="case-metric-num">{m.num}</span>
                     <span className="case-metric-label">{m.label}</span>

@@ -3,7 +3,8 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import { CASE_STUDIES, METRICS_DISCLAIMER } from "@/app/_content/caseStudiesData";
+import { CASE_STUDIES, getCaseStudyBySlug, METRICS_DISCLAIMER } from "@/app/_content/caseStudiesData";
+import { fetchCaseStudies } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Case Studies — Whispers Lab",
@@ -38,25 +39,36 @@ export const metadata: Metadata = {
 
 const SITE_URL = "https://www.whisperslab.com";
 
-const collectionSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Case Studies",
-  description:
-    "Real systems Whispers Lab has built for real small businesses, rebuilt from manual chaos into quiet automation.",
-  url: `${SITE_URL}/case-studies`,
-  mainEntity: {
-    "@type": "ItemList",
-    itemListElement: CASE_STUDIES.map((cs, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${SITE_URL}/case-studies/${cs.slug}`,
-      name: cs.title,
-    })),
-  },
-};
+export default async function CaseStudiesPage() {
+  const strapiData = await fetchCaseStudies();
+  const strapiStudies = Array.isArray(strapiData) && strapiData.length > 0 ? strapiData : CASE_STUDIES;
 
-export default function CaseStudiesPage() {
+  const studies = strapiStudies.map((study: any) => {
+    const staticData = getCaseStudyBySlug(study.slug) || CASE_STUDIES.find(c => c.title === study.title);
+    return {
+      ...staticData,
+      ...study, // Strapi overwrites static
+    };
+  });
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Case Studies",
+    description:
+      "Real systems Whispers Lab has built for real small businesses, rebuilt from manual chaos into quiet automation.",
+    url: `${SITE_URL}/case-studies`,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: studies.map((cs: any, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/case-studies/${cs.slug}`,
+        name: cs.title,
+      })),
+    },
+  };
+
   return (
     <>
       <script
@@ -77,7 +89,7 @@ export default function CaseStudiesPage() {
         <section className="section case-section">
           <div className="container">
             <div className="cases-list">
-              {CASE_STUDIES.map((cs) => (
+              {studies.map((cs: any) => (
                 <article className="case-study" key={cs.slug}>
                   <div className="case-study-head">
                     <div className="case-tags">
@@ -112,7 +124,7 @@ export default function CaseStudiesPage() {
                     </div>
                   </div>
                   <div className="case-numbers">
-                    {cs.metrics.map((m) => (
+                    {cs.metrics.map((m: any) => (
                       <div className="case-metric" key={m.label}>
                         <span className="case-metric-num">{m.num}</span>
                         <span className="case-metric-label">{m.label}</span>
