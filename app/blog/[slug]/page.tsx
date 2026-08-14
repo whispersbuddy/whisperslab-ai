@@ -12,6 +12,17 @@ import { fetchArticleBySlug } from "@/lib/api";
 
 const SITE_URL = "https://www.whisperslab.com";
 
+function getResolvedImageUrl(imagePath?: string): string {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://localhost:1337")) {
+    return imagePath.replace("http://localhost:1337", process.env.NEXT_PUBLIC_STRAPI_URL || "");
+  }
+  if (imagePath.startsWith("/uploads/")) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imagePath}`;
+  }
+  return imagePath;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,7 +38,7 @@ export async function generateMetadata({
   const post = {
     ...staticData,
     ...fetchedPost,
-    heroImage: strapiImage || staticData?.heroImage,
+    heroImage: getResolvedImageUrl(strapiImage || staticData?.heroImage),
     heroImageAlt: fetchedPost.heroImageAlt || staticData?.heroImageAlt,
   };
 
@@ -36,8 +47,6 @@ export async function generateMetadata({
   const url = `/blog/${post.slug}`;
   const imageUrl = post.heroImage?.startsWith("http")
     ? post.heroImage
-    : post.heroImage?.startsWith("/uploads/")
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.heroImage}`
     : `${SITE_URL}${post.heroImage}`;
 
   return {
@@ -78,7 +87,7 @@ export default async function BlogPostPage({
   const post = {
     ...staticData,
     ...fetchedPost,
-    heroImage: strapiImage || staticData?.heroImage,
+    heroImage: getResolvedImageUrl(strapiImage || staticData?.heroImage),
     heroImageAlt: fetchedPost.heroImageAlt || staticData?.heroImageAlt,
     heroImageCredit: fetchedPost.heroImageCredit || staticData?.heroImageCredit,
     category: categoryVal,
@@ -101,8 +110,6 @@ export default async function BlogPostPage({
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
   const imageUrl = post.heroImage?.startsWith("http")
     ? post.heroImage
-    : post.heroImage?.startsWith("/uploads/")
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.heroImage}`
     : `${SITE_URL}${post.heroImage}`;
 
   const articleSchema = {
@@ -265,18 +272,6 @@ export default async function BlogPostPage({
                   </div>
                 )}
 
-                {relatedPosts.length > 0 && (
-                  <div className="blog-related-case">
-                    <span className="blog-takeaways-label">RELATED READING</span>
-                    <ul>
-                      {relatedPosts.map((p: any) => (
-                        <li key={p.slug}>
-                          <Link href={`/blog/${p.slug}`}>{p.title} →</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
 
                 {post.faq && post.faq.length > 0 && (
                   <div className="blog-faq">

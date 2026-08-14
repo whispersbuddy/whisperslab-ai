@@ -40,6 +40,17 @@ export const metadata: Metadata = {
 
 const SITE_URL = "https://www.whisperslab.com";
 
+function getResolvedImageUrl(imagePath?: string): string {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://localhost:1337")) {
+    return imagePath.replace("http://localhost:1337", process.env.NEXT_PUBLIC_STRAPI_URL || "");
+  }
+  if (imagePath.startsWith("/uploads/")) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imagePath}`;
+  }
+  return imagePath;
+}
+
 export default async function BlogPage() {
   const articles = await fetchArticles();
 
@@ -61,9 +72,15 @@ export default async function BlogPage() {
       publishedAt: article.publishedAt || staticData?.publishedAt,
       readTime: article.readTime || staticData?.readTime,
     };
-  }).sort(
-    (a: any, b: any) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  }).sort((a: any, b: any) => {
+    const timeDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    if (timeDiff !== 0) return timeDiff;
+    
+    // If publishedAt is identical, fallback to createdAt to ensure newest created comes first
+    const createA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const createB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return createB - createA;
+  });
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -103,11 +120,7 @@ export default async function BlogPage() {
             <div className="blog-grid">
               {posts.map((post: any) => {
                 const category = typeof post.category === "object" ? post.category : getCategoryBySlug(post.category);
-                const imageUrl = post.heroImage?.startsWith("http")
-                  ? post.heroImage
-                  : post.heroImage?.startsWith("/uploads/")
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.heroImage}`
-                    : post.heroImage;
+                const imageUrl = getResolvedImageUrl(post.heroImage);
 
                 return (
                   <Link
