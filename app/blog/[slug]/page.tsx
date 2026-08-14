@@ -5,14 +5,22 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import { renderInline, toPlainText } from "@/components/BlogInline";
-import { BLOG_POSTS, getBlogPostBySlug } from "@/app/_content/blogData";
 import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
 import { getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
+import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
+import { fetchArticleBySlug } from "@/lib/api";
 
 const SITE_URL = "https://www.whisperslab.com";
 
-export function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+function getResolvedImageUrl(imagePath?: string): string {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://localhost:1337")) {
+    return imagePath.replace("http://localhost:1337", process.env.NEXT_PUBLIC_STRAPI_URL || "");
+  }
+  if (imagePath.startsWith("/uploads/")) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imagePath}`;
+  }
+  return imagePath;
 }
 
 export async function generateMetadata({
@@ -21,13 +29,23 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
-  if (!post) return {};
+  const fetchedPost = await fetchArticleBySlug(slug);
+  if (!fetchedPost) return {};
+
+  const staticData = getBlogPostBySlug(slug) || BLOG_POSTS.find(p => p.title === fetchedPost.title);
+  const strapiImage = fetchedPost.cover?.url || fetchedPost.heroImage;
+  
+  const post = {
+    ...staticData,
+    ...fetchedPost,
+    heroImage: getResolvedImageUrl(strapiImage || staticData?.heroImage),
+    heroImageAlt: fetchedPost.heroImageAlt || staticData?.heroImageAlt,
+  };
 
   const title = `${post.title} — Whispers Lab Blog`;
-  const description = post.excerpt;
+  const description = post.description;
   const url = `/blog/${post.slug}`;
-  const imageUrl = post.heroImage.startsWith("http")
+  const imageUrl = post.heroImage?.startsWith("http")
     ? post.heroImage
     : `${SITE_URL}${post.heroImage}`;
 
@@ -59,18 +77,38 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
-  if (!post) notFound();
+  const fetchedPost = await fetchArticleBySlug(slug);
+  if (!fetchedPost) notFound();
 
-  const category = getCategoryBySlug(post.category);
+  const staticData = getBlogPostBySlug(slug) || BLOG_POSTS.find(p => p.title === fetchedPost.title);
+  const strapiImage = fetchedPost.cover?.url || fetchedPost.heroImage;
+  const categoryVal = typeof fetchedPost.category === "object" ? fetchedPost.category : (fetchedPost.category || staticData?.category);
+
+  const post = {
+    ...staticData,
+    ...fetchedPost,
+    heroImage: getResolvedImageUrl(strapiImage || staticData?.heroImage),
+    heroImageAlt: fetchedPost.heroImageAlt || staticData?.heroImageAlt,
+    heroImageCredit: fetchedPost.heroImageCredit || staticData?.heroImageCredit,
+    category: categoryVal,
+    publishedAt: fetchedPost.publishedAt || staticData?.publishedAt,
+    readTime: fetchedPost.readTime || staticData?.readTime,
+    takeaways: fetchedPost.takeaways || staticData?.takeaways,
+    content: staticData?.content,
+    faq: fetchedPost.faq || staticData?.faq,
+    relatedCaseStudySlugs: fetchedPost.relatedCaseStudySlugs || staticData?.relatedCaseStudySlugs,
+    relatedPosts: fetchedPost.relatedPosts || staticData?.relatedPosts,
+  };
+
+  const category = typeof post.category === "object" ? post.category : getCategoryBySlug(post.category);
   const relatedCaseStudies = (post.relatedCaseStudySlugs ?? [])
-    .map((s) => getCaseStudyBySlug(s))
-    .filter((cs): cs is NonNullable<typeof cs> => Boolean(cs));
-  const relatedPosts = (post.relatedPosts ?? [])
-    .map((s) => getBlogPostBySlug(s))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+    .map((s: string) => getCaseStudyBySlug(s))
+    .filter((cs: any): cs is NonNullable<typeof cs> => Boolean(cs));
+  
+  const relatedPosts = post.relatedPosts ?? [];
+
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
-  const imageUrl = post.heroImage.startsWith("http")
+  const imageUrl = post.heroImage?.startsWith("http")
     ? post.heroImage
     : `${SITE_URL}${post.heroImage}`;
 
@@ -78,7 +116,7 @@ export default async function BlogPostPage({
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.excerpt,
+    description: post.description,
     image: imageUrl,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
@@ -110,11 +148,11 @@ export default async function BlogPostPage({
   };
 
   const faqSchema =
-    post.faq.length > 0
+    post.faq && post.faq.length > 0
       ? {
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: post.faq.map((item) => ({
+          mainEntity: post.faq.map((item: any) => ({
             "@type": "Question",
             name: item.question,
             acceptedAnswer: {
@@ -182,18 +220,18 @@ export default async function BlogPostPage({
           <section className="section">
             <div className="container">
               <div className="blog-detail-body">
-                {post.takeaways.length > 0 && (
+                {post.takeaways && post.takeaways.length > 0 && (
                   <div className="blog-takeaways">
                     <span className="blog-takeaways-label">KEY TAKEAWAYS</span>
                     <ul>
-                      {post.takeaways.map((t, i) => (
+                      {post.takeaways.map((t: any, i: number) => (
                         <li key={i}>{renderInline(t)}</li>
                       ))}
                     </ul>
                   </div>
                 )}
 
-                {post.content.map((block, i) => {
+                {post.content?.map((block: any, i: number) => {
                   if (block.type === "h2") {
                     return <h2 key={i}>{block.text}</h2>;
                   }
@@ -203,7 +241,7 @@ export default async function BlogPostPage({
                   if (block.type === "list") {
                     return (
                       <ul key={i}>
-                        {block.items.map((item, j) => (
+                        {block.items.map((item: any, j: number) => (
                           <li key={j}>{renderInline(item)}</li>
                         ))}
                       </ul>
@@ -225,7 +263,7 @@ export default async function BlogPostPage({
                       {relatedCaseStudies.length > 1 ? "RELATED CASE STUDIES" : "RELATED CASE STUDY"}
                     </span>
                     <ul>
-                      {relatedCaseStudies.map((cs) => (
+                      {relatedCaseStudies.map((cs: any) => (
                         <li key={cs.slug}>
                           <Link href={`/case-studies/${cs.slug}`}>{cs.title} →</Link>
                         </li>
@@ -234,23 +272,11 @@ export default async function BlogPostPage({
                   </div>
                 )}
 
-                {relatedPosts.length > 0 && (
-                  <div className="blog-related-case">
-                    <span className="blog-takeaways-label">RELATED READING</span>
-                    <ul>
-                      {relatedPosts.map((p) => (
-                        <li key={p.slug}>
-                          <Link href={`/blog/${p.slug}`}>{p.title} →</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
 
-                {post.faq.length > 0 && (
+                {post.faq && post.faq.length > 0 && (
                   <div className="blog-faq">
                     <h2>Frequently asked questions</h2>
-                    {post.faq.map((item, i) => (
+                    {post.faq.map((item: any, i: number) => (
                       <div className="blog-faq-item" key={i}>
                         <h3>{item.question}</h3>
                         <p>{renderInline(item.answer)}</p>

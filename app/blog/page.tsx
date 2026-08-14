@@ -3,8 +3,9 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import { BLOG_POSTS } from "@/app/_content/blogData";
 import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
+import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
+import { fetchArticles } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Blog — Whispers Lab",
@@ -39,28 +40,65 @@ export const metadata: Metadata = {
 
 const SITE_URL = "https://www.whisperslab.com";
 
-const collectionSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Blog",
-  description:
-    "Automation guides for small business owners: what to fix first, how it actually works, and what it looks like in your industry.",
-  url: `${SITE_URL}/blog`,
-  mainEntity: {
-    "@type": "ItemList",
-    itemListElement: BLOG_POSTS.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${SITE_URL}/blog/${post.slug}`,
-      name: post.title,
-    })),
-  },
-};
+function getResolvedImageUrl(imagePath?: string): string {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://localhost:1337")) {
+    return imagePath.replace("http://localhost:1337", process.env.NEXT_PUBLIC_STRAPI_URL || "");
+  }
+  if (imagePath.startsWith("/uploads/")) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imagePath}`;
+  }
+  return imagePath;
+}
 
-export default function BlogPage() {
-  const posts = [...BLOG_POSTS].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+export default async function BlogPage() {
+  const articles = await fetchArticles();
+
+  const posts = [...articles].map((article: any) => {
+    const staticData = getBlogPostBySlug(article.slug) || BLOG_POSTS.find(p => p.title === article.title);
+
+    // Check if Strapi has an image (cover or heroImage)
+    const strapiImage = article.cover?.url || article.heroImage;
+
+    // Resolve category correctly if Strapi sends an object
+    const categoryVal = typeof article.category === "object" ? article.category : (article.category || staticData?.category);
+
+    return {
+      ...staticData,
+      ...article,
+      heroImage: strapiImage || staticData?.heroImage,
+      heroImageAlt: article.heroImageAlt || staticData?.heroImageAlt,
+      category: categoryVal,
+      publishedAt: article.publishedAt || staticData?.publishedAt,
+      readTime: article.readTime || staticData?.readTime,
+    };
+  }).sort((a: any, b: any) => {
+    const timeDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    if (timeDiff !== 0) return timeDiff;
+    
+    // If publishedAt is identical, fallback to createdAt to ensure newest created comes first
+    const createA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const createB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return createB - createA;
+  });
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Blog",
+    description:
+      "Automation guides for small business owners: what to fix first, how it actually works, and what it looks like in your industry.",
+    url: `${SITE_URL}/blog`,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: posts.map((post: any, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  };
 
   return (
     <>
@@ -80,8 +118,10 @@ export default function BlogPage() {
         <section className="section">
           <div className="container">
             <div className="blog-grid">
-              {posts.map((post) => {
-                const category = getCategoryBySlug(post.category);
+              {posts.map((post: any) => {
+                const category = typeof post.category === "object" ? post.category : getCategoryBySlug(post.category);
+                const imageUrl = getResolvedImageUrl(post.heroImage);
+
                 return (
                   <Link
                     href={`/blog/${post.slug}`}
@@ -89,12 +129,12 @@ export default function BlogPage() {
                     key={post.slug}
                   >
                     <div className="blog-grid-card-image">
-                      <img src={post.heroImage} alt={post.heroImageAlt} />
+                      <img src={imageUrl} alt={post.heroImageAlt} />
                     </div>
                     <div className="blog-grid-card-body">
                       <span className="blog-category-badge">{category?.name}</span>
                       <h3>{post.title}</h3>
-                      <p>{post.excerpt}</p>
+                      <p>{post.description}</p>
                       <time className="blog-meta" dateTime={post.publishedAt}>
                         {new Date(post.publishedAt).toLocaleDateString("en-US", {
                           month: "long",
