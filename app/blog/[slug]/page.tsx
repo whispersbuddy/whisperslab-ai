@@ -8,7 +8,7 @@ import { renderInline, toPlainText } from "@/components/BlogInline";
 import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
 import { getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
-import { fetchArticleBySlug } from "@/lib/api";
+import { fetchArticleBySlug, fetchCaseStudyBySlug } from "@/lib/api";
 import ReactMarkdown from 'react-markdown';
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -85,6 +85,45 @@ export default async function BlogPostPage({
   const strapiImage = fetchedPost.cover?.url || fetchedPost.heroImage;
   const categoryVal = typeof fetchedPost.category === "object" ? fetchedPost.category : (fetchedPost.category || staticData?.category);
 
+  let contentVal = fetchedPost.content || staticData?.content;
+  
+  if (typeof contentVal === 'string') {
+    // Convert "Not sure ... Automation Audit" paragraphs into blockquotes so they render as callouts
+    contentVal = contentVal.replace(/^(Not sure.*?Automation Audit.*?)$/gm, '> $1');
+  }
+  let readTimeVal = fetchedPost.readTime || staticData?.readTime;
+  if (!readTimeVal && typeof contentVal === 'string') {
+    const wordCount = contentVal.trim().split(/\s+/).length;
+    const minutes = Math.max(1, Math.round(wordCount / 225));
+    readTimeVal = `${minutes} min read`;
+  }
+
+  let faqVal = fetchedPost.faq || staticData?.faq;
+  if ((!faqVal || faqVal.length === 0) && typeof contentVal === 'string') {
+    const faqRegex = /(?:^|\n)##\s*Frequently [Aa]sked [Qq]uestions\s*\n([\s\S]*)$/i;
+    const match = contentVal.match(faqRegex);
+    if (match) {
+      const faqText = match[1];
+      const newFaq: any[] = [];
+      const blocks = faqText.split(/(?:^|\n)###\s+/);
+      for (const block of blocks) {
+        if (!block.trim()) continue;
+        const firstNewline = block.indexOf('\n');
+        if (firstNewline === -1) {
+          newFaq.push({ question: block.trim(), answer: "" });
+        } else {
+          const question = block.substring(0, firstNewline).trim();
+          const answer = block.substring(firstNewline).trim();
+          newFaq.push({ question, answer });
+        }
+      }
+      if (newFaq.length > 0) {
+        faqVal = newFaq;
+        contentVal = contentVal.replace(faqRegex, '').trim();
+      }
+    }
+  }
+
   const post = {
     ...staticData,
     ...fetchedPost,
@@ -93,10 +132,10 @@ export default async function BlogPostPage({
     heroImageCredit: fetchedPost.heroImageCredit || staticData?.heroImageCredit,
     category: categoryVal,
     publishedAt: fetchedPost.publishedAt || staticData?.publishedAt,
-    readTime: fetchedPost.readTime || staticData?.readTime,
+    readTime: readTimeVal,
     takeaways: fetchedPost.takeaways || staticData?.takeaways,
-    content: fetchedPost.content || staticData?.content,
-    faq: fetchedPost.faq || staticData?.faq,
+    content: contentVal,
+    faq: faqVal,
     relatedCaseStudySlugs: fetchedPost.relatedCaseStudySlugs || staticData?.relatedCaseStudySlugs,
     relatedPosts: fetchedPost.relatedPosts || staticData?.relatedPosts,
   };
@@ -105,10 +144,33 @@ export default async function BlogPostPage({
   let relatedCaseStudies: any[] = [];
   if (fetchedPost?.relatedCaseStudies && fetchedPost.relatedCaseStudies.length > 0) {
     relatedCaseStudies = fetchedPost.relatedCaseStudies;
-  } else {
-    relatedCaseStudies = (post.relatedCaseStudySlugs ?? [])
+  } else if (post.relatedCaseStudySlugs && post.relatedCaseStudySlugs.length > 0) {
+    relatedCaseStudies = post.relatedCaseStudySlugs
       .map((s: string) => getCaseStudyBySlug(s))
       .filter((cs: any): cs is NonNullable<typeof cs> => Boolean(cs));
+  } else if (typeof post.content === 'string') {
+    const caseStudyRegex = /\[([^\]]+)\]\((?:https?:\/\/[^\/]+)?\/case-studies\/([^\)\/]+)\/?\)/;
+    const match = post.content.match(caseStudyRegex);
+    if (match) {
+      const linkText = match[1];
+      const linkSlug = match[2];
+      
+      let csTitle = linkText;
+      const localCs = getCaseStudyBySlug(linkSlug);
+      if (localCs) {
+         csTitle = localCs.title;
+      } else {
+         const strapiCs = await fetchCaseStudyBySlug(linkSlug);
+         if (strapiCs) {
+             csTitle = strapiCs.title;
+         }
+      }
+      
+      relatedCaseStudies = [{
+         title: csTitle,
+         slug: linkSlug
+      }];
+    }
   }
   
   const relatedPosts = post.relatedPosts ?? [];
