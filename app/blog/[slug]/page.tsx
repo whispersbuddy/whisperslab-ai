@@ -9,6 +9,7 @@ import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
 import { getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchArticleBySlug } from "@/lib/api";
+import ReactMarkdown from 'react-markdown';
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -94,16 +95,21 @@ export default async function BlogPostPage({
     publishedAt: fetchedPost.publishedAt || staticData?.publishedAt,
     readTime: fetchedPost.readTime || staticData?.readTime,
     takeaways: fetchedPost.takeaways || staticData?.takeaways,
-    content: staticData?.content,
+    content: fetchedPost.content || staticData?.content,
     faq: fetchedPost.faq || staticData?.faq,
     relatedCaseStudySlugs: fetchedPost.relatedCaseStudySlugs || staticData?.relatedCaseStudySlugs,
     relatedPosts: fetchedPost.relatedPosts || staticData?.relatedPosts,
   };
 
   const category = typeof post.category === "object" ? post.category : getCategoryBySlug(post.category);
-  const relatedCaseStudies = (post.relatedCaseStudySlugs ?? [])
-    .map((s: string) => getCaseStudyBySlug(s))
-    .filter((cs: any): cs is NonNullable<typeof cs> => Boolean(cs));
+  let relatedCaseStudies: any[] = [];
+  if (fetchedPost?.relatedCaseStudies && fetchedPost.relatedCaseStudies.length > 0) {
+    relatedCaseStudies = fetchedPost.relatedCaseStudies;
+  } else {
+    relatedCaseStudies = (post.relatedCaseStudySlugs ?? [])
+      .map((s: string) => getCaseStudyBySlug(s))
+      .filter((cs: any): cs is NonNullable<typeof cs> => Boolean(cs));
+  }
   
   const relatedPosts = post.relatedPosts ?? [];
 
@@ -224,38 +230,50 @@ export default async function BlogPostPage({
                   <div className="blog-takeaways">
                     <span className="blog-takeaways-label">KEY TAKEAWAYS</span>
                     <ul>
-                      {post.takeaways.map((t: any, i: number) => (
+                      {(typeof post.takeaways === 'string' ? post.takeaways.split('\n').filter(Boolean) : post.takeaways).map((t: any, i: number) => (
                         <li key={i}>{renderInline(t)}</li>
                       ))}
                     </ul>
                   </div>
                 )}
 
-                {post.content?.map((block: any, i: number) => {
-                  if (block.type === "h2") {
-                    return <h2 key={i}>{block.text}</h2>;
-                  }
-                  if (block.type === "p") {
-                    return <p key={i}>{renderInline(block.text)}</p>;
-                  }
-                  if (block.type === "list") {
-                    return (
-                      <ul key={i}>
-                        {block.items.map((item: any, j: number) => (
-                          <li key={j}>{renderInline(item)}</li>
-                        ))}
-                      </ul>
-                    );
-                  }
-                  if (block.type === "callout") {
-                    return (
-                      <div className="blog-detail-callout" key={i}>
-                        {renderInline(block.text)}
-                      </div>
-                    );
-                  }
-                  return null;
-                })}
+                {typeof post.content === 'string' ? (
+                  <ReactMarkdown
+                    components={{
+                      blockquote(props) {
+                        return <div className="blog-detail-callout">{props.children}</div>;
+                      }
+                    }}
+                  >
+                    {post.content}
+                  </ReactMarkdown>
+                ) : (
+                  post.content?.map((block: any, i: number) => {
+                    if (block.type === "h2") {
+                      return <h2 key={i}>{block.text}</h2>;
+                    }
+                    if (block.type === "p") {
+                      return <p key={i}>{renderInline(block.text)}</p>;
+                    }
+                    if (block.type === "list") {
+                      return (
+                        <ul key={i}>
+                          {block.items.map((item: any, j: number) => (
+                            <li key={j}>{renderInline(item)}</li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    if (block.type === "callout") {
+                      return (
+                        <div className="blog-detail-callout" key={i}>
+                          {renderInline(block.text)}
+                        </div>
+                      );
+                    }
+                    return null;
+                  })
+                )}
 
                 {relatedCaseStudies.length > 0 && (
                   <div className="blog-related-case">
