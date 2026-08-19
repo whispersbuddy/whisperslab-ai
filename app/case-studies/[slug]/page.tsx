@@ -3,11 +3,7 @@ import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import {
-  CASE_STUDIES,
-  getCaseStudyBySlug,
-  METRICS_DISCLAIMER,
-} from "@/app/_content/caseStudiesData";
+import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
 
 export async function generateStaticParams() {
@@ -240,9 +236,6 @@ export default async function CaseStudyDetailPage({
                   </div>
                 ))}
               </div>
-              <span className="case-metrics-disclaimer">
-                * {METRICS_DISCLAIMER}
-              </span>
 
               <div className="case-detail-cta">
                 <p>Want a system like this built for your business?</p>

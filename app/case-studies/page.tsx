@@ -3,7 +3,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
-import { CASE_STUDIES, getCaseStudyBySlug, METRICS_DISCLAIMER } from "@/app/_content/caseStudiesData";
+import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies } from "@/lib/api";
 
 export const metadata: Metadata = {
@@ -139,9 +139,6 @@ export default async function CaseStudiesPage() {
                 </article>
               ))}
             </div>
-            <span className="case-metrics-disclaimer">
-              * {METRICS_DISCLAIMER}
-            </span>
           </div>
         </section>
 
