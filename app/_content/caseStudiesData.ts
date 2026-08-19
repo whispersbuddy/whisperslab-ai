@@ -5,18 +5,6 @@
 // expanded, plain-language write-ups sourced from the underlying project
 // doc, with client names left out (same anonymization the site has always
 // used).
-//
-// A note on the "hours saved" figures in `metrics`: the source doc these
-// case studies are drawn from describes each project in engineering terms
-// (what was built, what broke, how it was fixed) and does not state
-// measured time-savings for the client. The hours-saved numbers were
-// estimated from typical task frequency and time-per-task, not measured
-// client data. METRICS_DISCLAIMER below is rendered wherever these
-// numbers appear so that isn't overstated. If real client-reported
-// numbers become available for any project, replace the relevant
-// metric and drop the disclaimer for that card.
-export const METRICS_DISCLAIMER =
-  "Hours-saved figures are estimates based on typical task frequency and time per task, not measured client data.";
 
 export type CaseStudy = {
   slug: string;
