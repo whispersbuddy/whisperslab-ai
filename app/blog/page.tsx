@@ -63,6 +63,14 @@ export default async function BlogPage() {
     // Resolve category correctly if Strapi sends an object
     const categoryVal = typeof article.category === "object" ? article.category : (article.category || staticData?.category);
 
+    const contentVal = article.content || staticData?.content;
+    let readTimeVal = article.readTime || staticData?.readTime;
+    if (!readTimeVal && typeof contentVal === 'string') {
+      const wordCount = contentVal.trim().split(/\s+/).length;
+      const minutes = Math.max(1, Math.round(wordCount / 225));
+      readTimeVal = `${minutes} min read`;
+    }
+
     return {
       ...staticData,
       ...article,
@@ -70,7 +78,7 @@ export default async function BlogPage() {
       heroImageAlt: article.heroImageAlt || staticData?.heroImageAlt,
       category: categoryVal,
       publishedAt: article.publishedAt || staticData?.publishedAt,
-      readTime: article.readTime || staticData?.readTime,
+      readTime: readTimeVal,
     };
   }).sort((a: any, b: any) => {
     const timeDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
