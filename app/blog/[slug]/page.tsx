@@ -9,6 +9,8 @@ import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
 import { getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchArticleBySlug, fetchCaseStudyBySlug } from "@/lib/api";
+import { getAllPosts, getRelatedPosts } from "@/lib/content";
+import RelatedLinks from "@/components/RelatedLinks";
 import ReactMarkdown from 'react-markdown';
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -24,13 +26,27 @@ function getResolvedImageUrl(imagePath?: string): string {
   return imagePath;
 }
 
+// Uses the local copy of a post when Strapi is unreachable, so an outage
+// doesn't turn every post into a 404.
+async function loadPost(slug: string) {
+  const fromStrapi = await fetchArticleBySlug(slug);
+  if (fromStrapi) return fromStrapi;
+  const local = getBlogPostBySlug(slug);
+  return local ? { ...local, description: local.excerpt } : null;
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const fetchedPost = await fetchArticleBySlug(slug);
+  const fetchedPost = await loadPost(slug);
   if (!fetchedPost) return {};
 
   const staticData = getBlogPostBySlug(slug) || BLOG_POSTS.find(p => p.title === fetchedPost.title);
@@ -78,7 +94,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const fetchedPost = await fetchArticleBySlug(slug);
+  const fetchedPost = await loadPost(slug);
   if (!fetchedPost) notFound();
 
   const staticData = getBlogPostBySlug(slug) || BLOG_POSTS.find(p => p.title === fetchedPost.title);
@@ -173,7 +189,7 @@ export default async function BlogPostPage({
     }
   }
   
-  const relatedPosts = post.relatedPosts ?? [];
+  const relatedPosts = await getRelatedPosts(post.slug);
 
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
   const imageUrl = post.heroImage?.startsWith("http")
@@ -352,6 +368,10 @@ export default async function BlogPostPage({
                   </div>
                 )}
 
+                <RelatedLinks
+                  label="KEEP READING"
+                  links={relatedPosts.map((p) => ({ href: `/blog/${p.slug}`, title: p.title }))}
+                />
 
                 {post.faq && post.faq.length > 0 && (
                   <div className="blog-faq">
