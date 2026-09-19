@@ -5,6 +5,8 @@ import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
+import { getPostsForCaseStudy, getRelatedCaseStudies } from "@/lib/content";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   const strapiStudies = await fetchCaseStudies();
@@ -83,6 +85,11 @@ export default async function CaseStudyDetailPage({
   } else if (!cs.detail && staticCs) {
     cs.detail = staticCs.detail;
   }
+
+  const [relatedGuides, moreCaseStudies] = await Promise.all([
+    getPostsForCaseStudy(slug),
+    getRelatedCaseStudies(slug),
+  ]);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -236,6 +243,15 @@ export default async function CaseStudyDetailPage({
                   </div>
                 ))}
               </div>
+
+              <RelatedLinks
+                label={relatedGuides.length > 1 ? "RELATED GUIDES" : "RELATED GUIDE"}
+                links={relatedGuides.map((p) => ({ href: `/blog/${p.slug}`, title: p.title }))}
+              />
+              <RelatedLinks
+                label="MORE CASE STUDIES"
+                links={moreCaseStudies.map((s) => ({ href: `/case-studies/${s.slug}`, title: s.title }))}
+              />
 
               <div className="case-detail-cta">
                 <p>Want a system like this built for your business?</p>
