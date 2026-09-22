@@ -285,3 +285,36 @@
   .sv-bar-row { grid-template-columns: 90px 1fr 60px; }
 }
 @media (prefers-reduced-motion: reduce) { .sv-spoke { animation: none; } }
+
+/* ================= industry template (law firms and later industries) ================= */
+.trust-layers { margin-top: 28px; }
+.moment-human { color: #B45309; font-weight: 700; font-size: 12px; }
+.citation-box { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; background: #fff; border: 1px solid var(--sv-line); border-radius: 18px; padding: 22px; margin-top: 28px; }
+.citation-badge { font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 13px; letter-spacing: 1px; color: #fff; background: var(--navy); border-radius: 10px; padding: 10px 12px; line-height: 1.1; text-align: center; height: fit-content; }
+.citation-badge small { display: block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 10px; color: #CBD5E1; margin-top: 3px; }
+.citation-box p { font-size: 14.5px; color: #334155; line-height: 1.6; }
+.citation-box a { color: #5B4FF0; font-weight: 600; }
+.citation-fine { font-size: 12.5px; color: var(--sv-soft); margin-top: 6px; }
+.citation-promises { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.citation-promise { background: #fff; border: 1px solid var(--sv-line); border-radius: 14px; padding: 14px; font-size: 13.5px; color: var(--sv-muted); }
+.citation-promise b { display: block; color: var(--navy); font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 15px; margin-bottom: 3px; }
+.match-rows { display: grid; gap: 14px; margin-top: 36px; }
+.match-row { display: grid; grid-template-columns: 1fr 44px 1.2fr auto; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--sv-line); border-radius: 18px; padding: 16px 18px; text-decoration: none; }
+.match-need { font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 16.5px; color: var(--navy); line-height: 1.3; }
+.match-need small { display: block; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--sv-soft); margin-bottom: 4px; }
+.match-arrow { width: 44px; height: 44px; border-radius: 50%; background: var(--grad); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; }
+.match-build small { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--sv-soft); margin-bottom: 4px; }
+.match-build b { font-weight: 700; color: var(--navy); }
+.match-build span { display: block; font-size: 13px; color: var(--sv-muted); margin-top: 2px; }
+.match-metric { text-align: right; }
+.match-metric span:last-child { font-size: 12px; color: var(--sv-soft); }
+@media (max-width: 1080px) {
+  .citation-box { grid-template-columns: 1fr; }
+  .match-row { grid-template-columns: 1fr auto; }
+  .match-arrow { display: none; }
+  .match-build { grid-column: 1 / -1; grid-row: 2; }
+  .match-metric { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 720px) {
+  .citation-promises { grid-template-columns: 1fr; }
+}
