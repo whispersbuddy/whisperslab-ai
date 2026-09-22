@@ -2,6 +2,7 @@
 
 // Site-wide footer, rendered once from app/layout.tsx. Columns are built from
 // lib/routes.ts so only live pages are linked.
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BARE_PATHS } from "@/components/SiteHeader";
 import { isPathLive, liveRoutes, type SiteRoute } from "@/lib/routes";
@@ -22,7 +23,7 @@ function Column({ title, links }: { title: string; links: { href: string; label:
       <ul>
         {links.map((l) => (
           <li key={l.href}>
-            <a href={l.href}>{l.label}</a>
+            <Link href={l.href}>{l.label}</Link>
           </li>
         ))}
       </ul>
@@ -58,9 +59,9 @@ export default function SiteFooter() {
       <div className="container">
         <div className="sf-top">
           <div className="sf-brand">
-            <a href="/" className="logo" aria-label="Whispers Lab home">
+            <Link href="/" className="logo" aria-label="Whispers Lab home">
               <img src="/assets/logo-trim.png" alt="Whispers Lab" width={348} height={45} />
-            </a>
+            </Link>
             <p className="sf-tag">We delete busywork. Custom AI and automation for small business owners.</p>
             <p className="footer-mandate">THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME.</p>
             <div className="footer-social">
@@ -94,9 +95,9 @@ export default function SiteFooter() {
           {legal.length ? (
             <span className="sf-legal">
               {legal.map((r) => (
-                <a key={r.path} href={r.path}>
+                <Link key={r.path} href={r.path}>
                   {r.label}
-                </a>
+                </Link>
               ))}
             </span>
           ) : null}

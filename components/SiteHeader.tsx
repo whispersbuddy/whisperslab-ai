@@ -8,6 +8,7 @@
 // hero's light/dark toggle in ClientEffects adds `nav-light` to it) and the
 // transparent-over-hero look on the homepage.
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, CalendarCheck, ChevronDown, Menu, X } from "lucide-react";
 import SiteIcon from "@/components/SiteIcon";
@@ -24,7 +25,7 @@ function isActive(pathname: string, href: string) {
 
 function MenuLink({ route, onNavigate, showBlurb = true }: { route: SiteRoute; onNavigate: () => void; showBlurb?: boolean }) {
   return (
-    <a href={route.path} className="sh-item" onClick={onNavigate}>
+    <Link href={route.path} className="sh-item" onClick={onNavigate}>
       <span className="sh-item-icon">
         <SiteIcon name={route.icon} />
       </span>
@@ -35,7 +36,7 @@ function MenuLink({ route, onNavigate, showBlurb = true }: { route: SiteRoute; o
         </span>
         {showBlurb && route.blurb ? <span className="sh-item-blurb">{route.blurb}</span> : null}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -61,10 +62,14 @@ export default function SiteHeader() {
     setMobileOpen(false);
   }, []);
 
-  // Close menus on navigation.
-  useEffect(() => {
-    closeAll();
-  }, [pathname, closeAll]);
+  // Close menus on navigation (reset during render, the pattern React
+  // recommends over a state-setting effect).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(null);
+    setMobileOpen(false);
+  }
 
   // Escape and outside-click close the open dropdown.
   useEffect(() => {
@@ -128,9 +133,9 @@ export default function SiteHeader() {
   return (
     <header className={"nav-wrap site-header" + (isHome ? "" : " nav-solid") + (mobileOpen ? " is-open" : "")}>
       <div className="container nav">
-        <a href="/" className="logo" aria-label="Whispers Lab home">
+        <Link href="/" className="logo" aria-label="Whispers Lab home">
           <img src="/assets/logo-trim.png" alt="Whispers Lab" width={348} height={45} />
-        </a>
+        </Link>
 
         <nav className="nav-links sh-nav" aria-label="Main" ref={navRef}>
           {hasServicesMenu ? (
@@ -144,9 +149,9 @@ export default function SiteHeader() {
                       <MenuLink key={r.path} route={r} onNavigate={closeAll} />
                     ))}
                     {servicesHubLive ? (
-                      <a href="/services" className="sh-all" onClick={closeAll}>
+                      <Link href="/services" className="sh-all" onClick={closeAll}>
                         All services <ArrowRight size={14} aria-hidden="true" />
-                      </a>
+                      </Link>
                     ) : null}
                   </div>
                 ) : null}
@@ -157,20 +162,20 @@ export default function SiteHeader() {
                       <MenuLink key={r.path} route={r} onNavigate={closeAll} showBlurb={false} />
                     ))}
                     {integrationsHubLive ? (
-                      <a href="/integrations" className="sh-all" onClick={closeAll}>
+                      <Link href="/integrations" className="sh-all" onClick={closeAll}>
                         All integrations <ArrowRight size={14} aria-hidden="true" />
-                      </a>
+                      </Link>
                     ) : null}
                   </div>
                 ) : null}
-                <a href="/audit" className="sh-feature" onClick={closeAll}>
+                <Link href="/audit" className="sh-feature" onClick={closeAll}>
                   <span className="sh-feature-kicker">Not sure where to start?</span>
                   <span className="sh-feature-title">Start with the $250 Automation Audit</span>
                   <span className="sh-feature-copy">In 7 days you get a plan showing exactly what to automate first. The $250 is credited if you build with us.</span>
                   <span className="sh-feature-cta">
                     See how the Audit works <ArrowRight size={14} aria-hidden="true" />
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           ) : null}
@@ -183,9 +188,9 @@ export default function SiteHeader() {
                   <MenuLink key={r.path} route={r} onNavigate={closeAll} />
                 ))}
                 {industriesHubLive ? (
-                  <a href="/industries" className="sh-all" onClick={closeAll}>
+                  <Link href="/industries" className="sh-all" onClick={closeAll}>
                     All industries <ArrowRight size={14} aria-hidden="true" />
-                  </a>
+                  </Link>
                 ) : null}
               </div>
             </div>
@@ -200,9 +205,9 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <a href="/case-studies" className={isActive(pathname, "/case-studies") ? "nav-active" : undefined}>
+          <Link href="/case-studies" className={isActive(pathname, "/case-studies") ? "nav-active" : undefined}>
             Case Studies
-          </a>
+          </Link>
 
           {resources.length > 1 ? (
             <div className="sh-dd" onMouseEnter={() => hoverOpen("resources")} onMouseLeave={hoverClose}>
@@ -214,28 +219,28 @@ export default function SiteHeader() {
               </div>
             </div>
           ) : (
-            <a href="/blog" className={isActive(pathname, "/blog") ? "nav-active" : undefined}>
+            <Link href="/blog" className={isActive(pathname, "/blog") ? "nav-active" : undefined}>
               Blog
-            </a>
+            </Link>
           )}
 
           {aboutLive ? (
-            <a href="/about" className={isActive(pathname, "/about") ? "nav-active" : undefined}>
+            <Link href="/about" className={isActive(pathname, "/about") ? "nav-active" : undefined}>
               About
-            </a>
+            </Link>
           ) : (
-            <a href="/contact" className={isActive(pathname, "/contact") ? "nav-active" : undefined}>
+            <Link href="/contact" className={isActive(pathname, "/contact") ? "nav-active" : undefined}>
               Contact
-            </a>
+            </Link>
           )}
         </nav>
 
-        <a href="/book" className="btn btn-cta sh-cta">
+        <Link href="/book" className="btn btn-cta sh-cta">
           Book Free Discovery Call
           <svg className="btn-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -282,27 +287,27 @@ export default function SiteHeader() {
               <MenuLink key={r.path} route={r} onNavigate={closeAll} showBlurb={false} />
             ))}
           </details>
-          <a href="/case-studies" className="sh-mobile-link" onClick={closeAll}>
+          <Link href="/case-studies" className="sh-mobile-link" onClick={closeAll}>
             Case Studies
-          </a>
+          </Link>
           {resources.map((r) => (
-            <a key={r.path} href={r.path} className="sh-mobile-link" onClick={closeAll}>
+            <Link key={r.path} href={r.path} className="sh-mobile-link" onClick={closeAll}>
               {r.label}
-            </a>
+            </Link>
           ))}
           {aboutLive ? (
-            <a href="/about" className="sh-mobile-link" onClick={closeAll}>
+            <Link href="/about" className="sh-mobile-link" onClick={closeAll}>
               About
-            </a>
+            </Link>
           ) : null}
-          <a href="/contact" className="sh-mobile-link" onClick={closeAll}>
+          <Link href="/contact" className="sh-mobile-link" onClick={closeAll}>
             Contact
-          </a>
+          </Link>
         </div>
         <div className="sh-mobile-cta">
-          <a href="/book" className="btn btn-cta" onClick={closeAll}>
+          <Link href="/book" className="btn btn-cta" onClick={closeAll}>
             <CalendarCheck size={16} aria-hidden="true" /> Book Free Discovery Call
-          </a>
+          </Link>
         </div>
       </div>
     </header>

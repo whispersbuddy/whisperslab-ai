@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const strapiStudies = await fetchCaseStudies();
     if (Array.isArray(strapiStudies)) {
-      strapiStudies.forEach((cs: any) => caseStudyDateMap.set(cs.slug, cs.updatedAt ? new Date(cs.updatedAt) : commonDate));
+      strapiStudies.forEach((cs: { slug: string; updatedAt?: string }) => caseStudyDateMap.set(cs.slug, cs.updatedAt ? new Date(cs.updatedAt) : commonDate));
     }
   } catch (err) {
     console.error("Error fetching case studies for sitemap:", err);
@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const strapiArticles = await fetchArticles();
     if (Array.isArray(strapiArticles)) {
-      strapiArticles.forEach((article: any) => blogDateMap.set(article.slug, article.updatedAt ? new Date(article.updatedAt) : commonDate));
+      strapiArticles.forEach((article: { slug: string; updatedAt?: string }) => blogDateMap.set(article.slug, article.updatedAt ? new Date(article.updatedAt) : commonDate));
     }
   } catch (err) {
     console.error("Error fetching articles for sitemap:", err);
