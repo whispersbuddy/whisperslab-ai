@@ -271,6 +271,220 @@ export const INTEGRATIONS: IntegrationPage[] = [
       posts: ["accounting-workflow-automation-tasks-to-fix-first"],
     },
   },
+  {
+    slug: "n8n",
+    tool: { name: "n8n", url: "https://n8n.io", sameAs: ["https://github.com/n8n-io/n8n"] },
+    seo: {
+      title: "n8n Consultant for Small Businesses | Whispers Lab",
+      description:
+        "Whispers Lab designs, builds, and maintains n8n workflows for small businesses, on n8n Cloud or your own server. Two real builds, honestly explained.",
+      keyword: "n8n consultant",
+    },
+    hero: {
+      eyebrow: "Integration · n8n",
+      title: "n8n consultants for teams",
+      highlight: "done bridging apps by hand.",
+      answer:
+        "Whispers Lab designs, builds, and maintains n8n workflows for small businesses. n8n is a workflow automation platform that connects your apps, runs multi-step logic, and can call AI where it helps. We set it up on n8n Cloud or your own server, document everything, and hand over workflows your team owns.",
+      secondaryCta: { label: "See what an n8n build includes", href: "#includes" },
+    },
+    simulator: [
+      {
+        key: "crm",
+        tab: "Email logs itself",
+        source: "Gmail + Calendar",
+        sourceIcon: "@",
+        doc: { title: "NEW EMAIL", rows: [["From", "ops@riverside.edu"], ["Subject", "Meeting recap"]], lines: 2 },
+        steps: [
+          { t: "0.0s", text: "<b>New email or meeting</b> picked up as it arrives" },
+          { t: "0.5s", text: "<b>Filtered</b>: internal chatter, newsletters, and meeting-bot invites thrown out" },
+          { t: "0.9s", text: "<b>Checked</b> against the saved contact list" },
+          { t: "1.2s", text: "<b>Not saved yet?</b> matched to the right organization by email domain instead" },
+          { t: "1.5s", text: "<b>Logged</b>, linked to both the person and their organization" },
+        ],
+        out: { k: "Contact logged", v: "Auto-matched by domain", s: "0 spam or internal noise reached the CRM" },
+      },
+      {
+        key: "leads",
+        tab: "Lead gets sold",
+        source: "Property lead feed",
+        sourceIcon: "$",
+        doc: { title: "NEW LEAD", rows: [["Type", "Property violation"], ["Homeowner", "Lookup pending"]], lines: 2 },
+        steps: [
+          { t: "0.0s", text: "<b>New lead</b> comes in" },
+          { t: "0.4s", text: "<b>Homeowner contact found</b> by a lookup service" },
+          { t: "0.8s", text: "<b>Teaser built</b>, contact details blacked out" },
+          { t: "1.1s", text: "<b>Texted to local contractors</b> with a payment link" },
+          { t: "1.5s", text: "<b>Payment clears</b>, full lead delivered and marked sold everywhere" },
+        ],
+        out: { k: "Lead sold", v: "0 leads sold twice", s: "Marked sold across every tool the instant payment clears" },
+      },
+    ],
+    values: [
+      { big: "~15 hrs", what: "back every week", from: "About 30 leads a week, no longer handled by hand", href: "/case-studies/lead-sales-engine", hrefLabel: "the Lead Sales Engine" },
+      { big: "~6 hrs", what: "of CRM updates, gone", from: "Every real email and meeting logs itself", href: "/case-studies/crm-that-fills-itself-in", hrefLabel: "the CRM That Fills Itself In" },
+      { big: "0", what: "leads sold twice since launch", from: "Payment, delivery, and \"sold\" status kept in lockstep across five tools", href: "/case-studies/lead-sales-engine", hrefLabel: "see how" },
+    ],
+    beforeAfter: {
+      eyebrow: "Monday morning, two ways",
+      title: "What changes when the handoffs run themselves?",
+      intro: "Drag the handle. Same leads, same Monday.",
+      before: {
+        time: "Monday 8:15 AM",
+        pills: ["12 leads waiting", "3 contractors asking \"is this one still available?\""],
+        table: {
+          title: "Leads tracker (shared).xlsx",
+          head: ["Lead", "Contractor", "Status"],
+          rows: [
+            { cells: ["123 Oak St", "Rivera Roofing", "Pitched?"], status: "bad" },
+            { cells: ["47 Elm Ave", "Tri-County LLC", "Paid"] },
+            { cells: ["9 Birch Rd", "Rivera Roofing", "??"], status: "bad" },
+            { cells: ["210 Maple Dr", "Tri-County LLC", "Sold"] },
+          ],
+          footer: { cells: ["12 leads", "2 unclear", ""], status: "bad" },
+        },
+        aside: { kind: "note", text: "Did we already text this one to Rivera?" },
+      },
+      after: {
+        time: "Monday 8:15 AM",
+        pills: ["0 leads waiting on a person", "Contractors get a text the moment a lead is ready"],
+        table: {
+          title: "Today: pipeline running live",
+          head: ["Lead", "Contractor", "Status"],
+          rows: [
+            { cells: ["123 Oak St", "Rivera Roofing", "Pitched"], status: "ok" },
+            { cells: ["47 Elm Ave", "Tri-County LLC", "Sold"], status: "ok" },
+            { cells: ["9 Birch Rd", "Rivera Roofing", "Pitched"], status: "ok" },
+            { cells: ["210 Maple Dr", "Tri-County LLC", "Sold"], status: "ok" },
+          ],
+        },
+        aside: { kind: "message", channel: "#leads", topic: "Lead pipeline", text: "210 Maple Dr sold to Tri-County LLC. Marked sold everywhere.", actions: ["View receipt", "Open lead"] },
+      },
+      table: [
+        { row: "Who tracks status", before: "Whoever remembers to update the spreadsheet", after: "n8n updates every tool the moment something changes" },
+        { row: "Selling a lead twice", before: "Happens, then someone issues a refund", after: "Marked sold everywhere the instant payment clears" },
+        { row: "Contractors waiting", before: "Text, email, or a phone call, whenever someone gets to it", after: "A text goes out the second a lead is ready" },
+        { row: "Your team's time", before: "Chasing status across a spreadsheet and three group chats", after: "Checking the alerts n8n sends when something needs a person" },
+      ],
+    },
+    steps: {
+      eyebrow: "How it works",
+      title: "How does an n8n build actually happen?",
+      items: [
+        { title: "Map", body: "We look at every app your process touches and where a person currently has to bridge the gap between them.", tools: ["Your current tools", "Interviews"] },
+        { title: "Build the workflow", body: "Triggers, branches, and actions go in n8n, tested step by step against your real data before anything goes live.", tools: ["n8n"] },
+        { title: "Add AI where it earns its place", body: "Where a plain rule can't do the job, like reading a messy note, we call an AI model for that one step. Neither of our two published n8n builds needed it.", tools: ["OpenAI", "Claude"], ai: true },
+        { title: "Test in a safe copy", body: "The workflow runs against a copy of your real data first, so the first live run isn't the first real test.", tools: ["Staging data"] },
+        { title: "Hand off", body: "You get the n8n account, workflow files, error alerts, docs, and a video walkthrough.", tools: ["Docs", "Video walkthroughs"] },
+      ],
+      checkpointAfter: 4,
+      checkpointLabel: "You approve the workflow before it touches real data",
+      human: ["Approving what a workflow flags", "Reading failure alerts", "App logins and access", "Saying when a process changed", "Anything client-facing"],
+    },
+    bento: {
+      eyebrow: "What we build",
+      title: "What does an n8n workflow usually handle?",
+      intro: "Most builds combine a few of these pieces, wired to the apps you already use.",
+      tiles: [
+        {
+          verb: "Route",
+          title: "Lead routing and CRM updates",
+          body: "New leads and contacts get logged, matched, and routed without anyone opening a spreadsheet.",
+          preview: {
+            type: "table",
+            head: ["Lead", "Matched to", "Status"],
+            rows: [
+              { cells: ["Jordan Price", "Ridge Supply Co", "Logged"], status: "Logged", ok: true },
+              { cells: ["Unknown sender", "Matched by domain", "Logged"], status: "Logged", ok: true },
+              { cells: ["Newsletter", "Filtered out", "Ignored"], status: "Ignored", ok: false },
+            ],
+            note: "Example · noise filtered before it reaches the CRM",
+          },
+        },
+        { verb: "Automate", title: "Payment-triggered delivery", body: "The moment payment clears, the rest of the workflow runs on its own.", preview: { type: "txns", rows: [["Payment received", "Lead #4471"], ["Marked sold", "Everywhere"], ["Contractor notified", "Instant"]] } },
+        { verb: "Prove it", title: "Locked previews", preview: { type: "receipt", amount: "Blacked out", label: "contact details hidden until payment clears" } },
+        { verb: "Generate", title: "Documents built on the fly", preview: { type: "pdf", title: "LEAD TEASER", pages: "Built and sent the moment a lead is ready" } },
+        { verb: "Remind", title: "Scheduled follow-ups", preview: { type: "calendar", highlight: 7, reminder: "Reminder: no reply after 7 days, escalate" } },
+        { verb: "Backfill", title: "Years of history, synced once", preview: { type: "counter", from: 4218, label: "old emails and meetings synced, no duplicates" } },
+      ],
+    },
+    estimator: {
+      eyebrow: "Your numbers",
+      title: "What are manual handoffs costing you?",
+      intro: "Move the sliders to match your week.",
+      unit: "handoffs",
+      inputs: [
+        { id: "docs", label: "Handoffs between apps per day", min: 5, max: 150, step: 5, value: 30 },
+        { id: "min", label: "Minutes lost per handoff, checking or re-entering", min: 1, max: 15, step: 1, value: 4 },
+        { id: "days", label: "Working days per week", min: 1, max: 7, step: 1, value: 5 },
+        { id: "rate", label: "Hourly cost of that time", min: 15, max: 150, step: 5, value: 35, hint: "Wages plus overhead, or your own hourly value", format: "money" },
+        { id: "flag", label: "Share still needing a person to double check", min: 0, max: 50, step: 5, value: 10, format: "percent" },
+        { id: "rev", label: "Minutes to check one of those", min: 1, max: 10, step: 1, value: 2 },
+      ],
+      worth: ["Worth it once three or more apps are involved", "When the process needs real branching logic, not just a straight line", "When it runs often enough that a person checking in is the bottleneck"],
+    },
+    proof: {
+      featured: {
+        slug: "lead-sales-engine",
+        big: "~15 hrs",
+        bigLabel: "saved every week, with leads never sold twice since launch",
+        title: "The Lead Sales Engine That Runs Itself",
+        before: "Every lead meant looking up the homeowner by hand, texting contractors one at a time, and occasionally selling the same lead twice.",
+        after: "New leads are found, pitched to contractors automatically, and marked sold the instant payment clears, so it can never go out twice.",
+        chips: ["Real estate", "n8n", "Twilio", "Stripe"],
+        caption: "Illustration of the locked lead preview",
+      },
+      more: [{ slug: "crm-that-fills-itself-in", big: "~6 hrs", title: "The CRM That Fills Itself In", detail: "saved weekly · n8n, Airtable, Gmail" }],
+    },
+    stack: {
+      title: "Built on the tools you already pay for",
+      intro: "n8n connects to almost anything with an API. Here's what shows up most in our builds.",
+      center: "Your workflows",
+      tools: ["Airtable", "Gmail", "Google Calendar", "Google Sheets", "Twilio", "Stripe", "PDFMonkey", "HubSpot", "Slack", "OpenAI", "Claude"],
+      links: [
+        { label: "Airtable", href: "/integrations/airtable" },
+        { label: "Zapier", href: "/integrations/zapier" },
+        { label: "Data Entry Automation", href: "/services/data-entry-automation" },
+      ],
+    },
+    faq: {
+      title: "Questions owners ask about n8n",
+      items: [
+        {
+          q: "What is n8n used for?",
+          a: "n8n is a workflow automation platform used to connect business apps and run multi-step processes without manual work, things like logging emails to a CRM, routing new leads, generating documents, or sending alerts. Workflows can branch on conditions, run custom code, and call AI models where a step needs it.",
+        },
+        {
+          q: "Is n8n free?",
+          a: "n8n has a free, self-hosted Community edition that includes most features, but your business provides and maintains the server. n8n Cloud is a paid, fully managed service billed by workflow execution, where one execution is a single run of a whole workflow no matter how many steps it has. Current prices are on n8n's pricing page.",
+        },
+        {
+          q: "Should a small business use n8n Cloud or self-host n8n?",
+          a: "n8n Cloud suits most small businesses because n8n handles hosting, updates, and scaling. Self-hosting suits businesses that need full control over where their data lives and have someone to handle updates, backups, and security. Whispers Lab recommends one during the Automation Audit based on the data involved, the budget, and who will maintain it.",
+        },
+        {
+          q: "Can n8n workflows use AI like OpenAI or Claude?",
+          a: "Yes. An n8n workflow can send text or documents to an AI model to classify, extract, or summarize, then use the result in later steps. Whispers Lab adds AI only where a plain rule can't do the job, because rules are cheaper and more predictable. Neither of our two published n8n builds needed AI.",
+        },
+        {
+          q: "Who maintains n8n workflows after they're built?",
+          a: "After a Whispers Lab build, you get documentation, video walkthroughs, and an error workflow that alerts a named person when a run fails. Businesses that want ongoing monitoring, fixes, and a new workflow added each month can use the AI Growth Partner plan at $500 a month.",
+        },
+        {
+          q: "How much does it cost to have n8n workflows built?",
+          a: "Whispers Lab starts with a $250 Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the $250 is credited toward the build. n8n's own subscription or server costs are separate and estimated during the Audit.",
+        },
+      ],
+    },
+    cta: {
+      title: "Find out which of your workflows belong in n8n.",
+      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+    },
+    related: {
+      industries: ["/industries/real-estate", "/industries/property-management", "/industries/accounting-bookkeeping"],
+      posts: ["real-estate-lead-follow-up-automation"],
+    },
+  },
 ];
 
 export function getIntegration(slug: string): IntegrationPage | undefined {
