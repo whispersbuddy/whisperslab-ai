@@ -10,7 +10,7 @@ const PATH = "/about";
 export const metadata: Metadata = buildMetadata({
   title: "About Whispers Lab | AI Automation for Small Business",
   description:
-    "Whispers Lab builds custom AI and automation for small business owners. Founded in 2025, a US LLC with a 10 to 12 person team based in Lahore, Pakistan.",
+    "Whispers Lab builds custom AI and automation for small business owners. Founded in 2025, a US LLC with a 10 to 12 person team based in Karachi, Pakistan.",
   path: PATH,
 });
 
@@ -154,9 +154,9 @@ export default function AboutPage() {
           <div className="container about-where">
             <div>
               <span className="eyebrow">WHERE WE ARE</span>
-              <h2>A US company with a team in Lahore.</h2>
+              <h2>A US company with a team in Karachi.</h2>
               <p>
-                Whispers Lab LLC is registered in Sheridan, Wyoming. Our build team works from Lahore, Pakistan, and
+                Whispers Lab LLC is registered in Sheridan, Wyoming. Our build team works from Karachi, Pakistan, and
                 we work with small businesses across the United States remotely. Calls happen during US business
                 hours, and every project gets a private Slack channel so you always know where things stand.
               </p>

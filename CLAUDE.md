@@ -60,7 +60,8 @@ If `RESEND_API_KEY`/`CONTACT_NOTIFY_EMAIL` are missing, both routes return a 500
 - Three offer tiers: Automation Audit ($250, one-time, credited toward Core Build), Core Build (starts at $2,500, 30-day sprint), AI Growth Partner ($500/mo, /growth-partner page added in the site expansion).
 - Founder: Haris Ali, Co-Founder, Whispers Lab.
 - Footer tagline: "THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME."
-- Social links currently point to generic `linkedin.com` / `instagram.com` / `facebook.com` placeholders — replace with real profile URLs when known.
+- Social links: LinkedIn and Instagram point to the real profiles. Clutch links (footer + Organization `sameAs`) use a dummy placeholder URL (`clutch.co/profile/whispers-lab`) pending the real profile URL and logo asset from the user.
+- Team location: Karachi, Pakistan (confirmed; not Lahore).
 
 ## Still open
 

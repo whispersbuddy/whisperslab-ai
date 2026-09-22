@@ -43,7 +43,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo-trim.png`,
   description:
-    "AI automation agency helping small business owners, primarily in the United States, eliminate manual busywork with custom-built automation and AI systems. A US LLC with its build team based in Lahore, Pakistan, working with clients remotely.",
+    "AI automation agency helping small business owners, primarily in the United States, eliminate manual busywork with custom-built automation and AI systems. A US LLC with its build team based in Karachi, Pakistan, working with clients remotely.",
   foundingDate: "2025",
   numberOfEmployees: {
     "@type": "QuantitativeValue",
@@ -75,6 +75,8 @@ const organizationSchema = {
   sameAs: [
     "https://www.instagram.com/whispers__lab/",
     "https://www.linkedin.com/company/whispers-lab/",
+    // TODO: dummy placeholder until the user supplies the real Clutch profile URL
+    "https://www.clutch.co/profile/whispers-lab",
   ],
 };
 

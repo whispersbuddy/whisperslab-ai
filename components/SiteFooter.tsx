@@ -15,6 +15,10 @@ const SOCIALS = [
   },
 ];
 
+// TODO: dummy placeholder until the user supplies the real Clutch profile URL
+// (and a proper logo asset to replace this inline star mark).
+const CLUTCH_URL = "https://www.clutch.co/profile/whispers-lab";
+
 function Column({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   if (links.length === 0) return null;
   return (
@@ -79,6 +83,17 @@ export default function SiteFooter() {
                   <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
                 </svg>
               </a>
+              {/* Placeholder link until the user provides the real Clutch profile URL + logo */}
+              <a href={CLUTCH_URL} target="_blank" rel="noopener" aria-label="Clutch" className="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3.4 14.1 9h5.9l-4.78 3.47L17.3 18 12 14.5 6.7 18l1.98-5.53L3.9 9h5.9L12 3.4Z"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
           <div className="sf-cols">
@@ -91,7 +106,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="sf-bottom">
-          <span>© {new Date().getFullYear()} Whispers Lab LLC. Sheridan, WY, USA · Team in Lahore, Pakistan.</span>
+          <span>© {new Date().getFullYear()} Whispers Lab LLC. Sheridan, WY, USA · Team in Karachi, Pakistan.</span>
           {legal.length ? (
             <span className="sf-legal">
               {legal.map((r) => (

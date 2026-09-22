@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
 
               <h2>Who we are</h2>
               <p>
-                Whispers Lab LLC, 30 N Gould St, Ste R, Sheridan, WY 82801, USA. Our team works from Lahore, Pakistan.
+                Whispers Lab LLC, 30 N Gould St, Ste R, Sheridan, WY 82801, USA. Our team works from Karachi, Pakistan.
                 You can reach us at <a href="mailto:hello@whisperslab.com">hello@whisperslab.com</a>.
               </p>
 
