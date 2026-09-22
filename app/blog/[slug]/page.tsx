@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import { renderInline, toPlainText } from "@/components/BlogInline";
 import { getCategoryBySlug } from "@/app/_content/blogTaxonomy";
@@ -59,7 +57,7 @@ export async function generateMetadata({
     heroImageAlt: fetchedPost.heroImageAlt || staticData?.heroImageAlt,
   };
 
-  const title = `${post.title} — Whispers Lab Blog`;
+  const title = `${post.title} | Whispers Lab Blog`;
   const description = post.description;
   const url = `/blog/${post.slug}`;
   const imageUrl = post.heroImage?.startsWith("http")
@@ -263,7 +261,6 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <SiteHeader />
       <main>
         <article>
           <section className="blog-detail-banner">
@@ -398,7 +395,6 @@ export default async function BlogPostPage({
 
         <NewsletterSection />
       </main>
-      <SiteFooter />
     </>
   );
 }

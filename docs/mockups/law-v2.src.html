@@ -1,0 +1,588 @@
+<title>Whispers Lab Law Firms Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/*__BASE_CSS__*/
+/*__V2_CSS__*/
+
+/* ================= law firm, story-led ================= */
+.week-card { background: var(--card); color: var(--navy); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 90px rgba(2,6,23,.55), 0 0 0 1px rgba(255,255,255,.06); }
+.week-body { padding: 18px 18px 14px; }
+.week-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 14px; }
+.week-top .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); }
+.week-top .tot { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -1px; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+.week-top .tot small { font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+.week { display: grid; grid-template-columns: 34px repeat(10, 1fr); gap: 4px; }
+.week .hl, .week .dl { font-size: 10px; color: var(--soft); font-weight: 600; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.week .dl { justify-content: flex-start; }
+.cell { aspect-ratio: 1.15; border-radius: 5px; border: 0; padding: 0; transition: background .35s ease, transform .15s; position: relative; }
+.cell:hover, .cell:focus-visible { transform: scale(1.12); z-index: 2; }
+.cell.client { background: #BFDBFE; }
+.cell.court { background: #E2E8F0; }
+.cell.lunch { background: repeating-linear-gradient(45deg, #F1F5F9 0 3px, #fff 3px 6px); }
+.cell.admin { background: #F87171; }
+.cell.review { background: #F59E0B; }
+.cell.freed { background: repeating-linear-gradient(135deg, #86EFAC 0 5px, #BBF7D0 5px 10px); }
+.week-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 11.5px; color: var(--muted); }
+.week-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.week-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.week-cap { margin-top: 10px; min-height: 20px; font-size: 12.5px; color: var(--navy); font-weight: 600; }
+.week-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 10px 18px; background: var(--navy); color: #CBD5E1; font-size: 12px; }
+.seg { display: inline-flex; background: #EEF0F5; border-radius: 10px; padding: 3px; }
+.seg button { font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 8px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: #fff; color: var(--navy); box-shadow: 0 1px 3px rgba(15,23,42,.14); }
+.seg.dark { background: rgba(255,255,255,.08); }
+.seg.dark button { color: rgba(255,255,255,.7); }
+.seg.dark button[aria-pressed="true"] { background: #fff; color: var(--navy); }
+.vtile .big.word { font-size: clamp(32px, 3.4vw, 42px); }
+
+/* day timeline */
+.day-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; }
+.day { position: relative; margin-top: 36px; display: grid; gap: 14px; }
+.day::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 2px; background: #E2E8F0; }
+.moment { display: grid; grid-template-columns: 80px 26px 1fr; gap: 12px; align-items: start; }
+.moment time { font-family: var(--mono); font-size: 12.5px; color: var(--soft); padding-top: 16px; text-align: right; font-variant-numeric: tabular-nums; }
+.moment .pin { width: 26px; height: 26px; border-radius: 50%; margin-top: 12px; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 800; transition: background .3s; }
+.mcard { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; transition: border-color .3s, background .3s; }
+.mcard p { font-size: 15px; color: #334155; line-height: 1.5; }
+.mcard .svc { font-size: 12.5px; font-weight: 700; color: #5B4FF0; text-decoration: none; white-space: nowrap; background: #EEF2FF; border-radius: 99px; padding: 5px 11px; }
+.mcard .who { grid-column: 1 / -1; display: none; font-size: 12px; font-weight: 700; color: #B45309; }
+.day[data-view="before"] .pin { background: #F87171; }
+.day[data-view="before"] .mcard { background: #FFF7F7; border-color: #FECACA; }
+.day[data-view="after"] .pin { background: var(--ok); }
+.day[data-view="after"] .mcard { background: #F6FEF9; border-color: #BBF7D0; }
+.day[data-view="after"] .moment.human .pin { background: #F59E0B; }
+.day[data-view="after"] .moment.human .mcard { background: #FFFBEB; border-color: #FDE68A; }
+.day[data-view="after"] .moment.human .who { display: block; }
+
+/* intake simulator (branching) */
+.intake { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.decide { margin: 4px 16px 16px; border: 2px solid #F59E0B; background: #FFFBEB; border-radius: 14px; padding: 14px; display: grid; gap: 10px; }
+.decide .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #B45309; }
+.decide p { font-size: 13.5px; color: #78350F; }
+.decide .row2 { display: flex; flex-wrap: wrap; gap: 8px; }
+.decide button { font-size: 13px; font-weight: 700; border-radius: 9px; padding: 9px 13px; }
+.decide .yes { background: var(--ok); color: #fff; }
+.decide .no { background: #fff; color: #B91C1C; border: 1.5px solid #FCA5A5; }
+.intake-copy .points { display: grid; gap: 14px; margin-top: 22px; }
+.intake-copy .points div { display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.intake-copy .points b { font-family: var(--display); font-weight: 900; color: #fff; display: block; font-size: 16px; }
+.intake-copy .points span.t { font-size: 14.5px; color: var(--on-dark-muted); }
+.intake-copy .points .ic { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,.08); border: 1px solid var(--dark-line); display: flex; align-items: center; justify-content: center; color: var(--tint); font-weight: 800; }
+
+/* trust layers */
+.trust { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 36px; }
+.layers { display: grid; }
+.layer { border-radius: 26px; padding: 14px 14px 14px; display: grid; gap: 10px; }
+.layer > .lab { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; font-weight: 700; padding: 0 6px; }
+.layer > .lab small { font-weight: 500; opacity: .8; }
+.l1 { background: #EEF2FF; color: #3730A3; }
+.l2 { background: #E0E7FF; color: #3730A3; }
+.l3 { background: #C7D2FE; color: #312E81; }
+.l4 { background: #A5B4FC; color: #1E1B4B; }
+.core { background: var(--navy); color: #fff; border-radius: 16px; padding: 22px; text-align: center; font-family: var(--display); font-weight: 900; font-size: 18px; }
+.core small { display: block; font-family: var(--body); font-weight: 500; font-size: 12.5px; color: var(--tint); margin-top: 4px; }
+.trust-side { display: grid; gap: 16px; }
+.aba2 { display: grid; grid-template-columns: auto 1fr; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 18px; padding: 20px; }
+.aba2 .badge { font-family: var(--display); font-weight: 900; font-size: 13px; letter-spacing: 1px; color: #fff; background: var(--navy); border-radius: 10px; padding: 10px 12px; line-height: 1.1; text-align: center; height: fit-content; }
+.aba2 .badge small { display: block; font-family: var(--body); font-weight: 600; font-size: 10px; color: #CBD5E1; margin-top: 3px; }
+.aba2 p { font-size: 14.5px; color: #334155; line-height: 1.6; }
+.aba2 a { color: #5B4FF0; font-weight: 600; }
+.aba2 .fine { font-size: 12.5px; color: var(--soft); margin-top: 6px; }
+.promise { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.promise div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; font-size: 13.5px; color: var(--muted); }
+.promise b { display: block; color: var(--navy); font-family: var(--display); font-weight: 900; font-size: 15px; margin-bottom: 3px; }
+
+/* pattern match proof */
+.match { display: grid; gap: 14px; margin-top: 36px; }
+.mrow { display: grid; grid-template-columns: 1fr 44px 1.2fr auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; }
+.mrow .need { font-family: var(--display); font-weight: 900; font-size: 16.5px; color: var(--navy); line-height: 1.3; }
+.mrow .need small { display: block; font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+.mrow .arrow { width: 44px; height: 44px; border-radius: 50%; background: var(--grad); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; }
+.mrow .build small { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+.mrow .build a { font-weight: 700; color: var(--navy); text-decoration: none; }
+.mrow .build span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.mrow .m { text-align: right; }
+.mrow .m b { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -1px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; line-height: 1; white-space: nowrap; }
+.mrow .m span { font-size: 12px; color: var(--soft); }
+.uniq { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.uniq .big { font-family: var(--display); font-weight: 900; font-size: 40px; letter-spacing: -1px; color: var(--ok); line-height: 1; }
+.uniq .big.bad { color: #B91C1C; }
+.bar2 { height: 10px; border-radius: 99px; background: #F1F5F9; overflow: hidden; margin: 6px 0 4px; }
+.bar2 span { display: block; height: 100%; background: var(--ok); border-radius: 99px; }
+@media (max-width: 1080px) {
+  .intake, .trust { grid-template-columns: 1fr; }
+  .mrow { grid-template-columns: 1fr auto; }
+  .mrow .arrow { display: none; }
+  .mrow .build { grid-column: 1 / -1; grid-row: 2; }
+  .mrow .m { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 720px) {
+  .week { grid-template-columns: 28px repeat(10, 1fr); gap: 3px; }
+  .day::before { left: 70px; }
+  .moment { grid-template-columns: 58px 26px 1fr; gap: 10px; }
+  .mcard { grid-template-columns: 1fr; }
+  .promise { grid-template-columns: 1fr; }
+  .aba2 { grid-template-columns: 1fr; }
+}
+</style>
+
+<button class="anno-toggle" id="annoToggle" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><span class="lbl-long">SEO &amp; CMS </span>annotations</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="mockbar">
+  <div class="wrap">
+    <span><b>Template mockup v2</b> · Industry page, story-led</span>
+    <span>URL <code>/industries/law-firms</code></span>
+    <span>No law firm case study exists, so value is shown through the visitor's own week, a live intake demo, and the closest builds.</span>
+  </div>
+</div>
+
+<header class="section dark hero v2" id="top">
+  <div class="wrap">
+    /*__NAV__*/
+    <div class="hero-grid">
+      <div data-unique>
+        <div class="anno"><b>sections.hero</b><span class="sep">|</span>H1 = "AI automation for law firms" (validate)<span class="sep">|</span>direct answer: <span id="answerCount">…</span> words</div>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="#" data-route="/">Home</a><span aria-hidden="true">›</span><a href="#" data-route="/industries">Industries</a><span aria-hidden="true">›</span><span aria-current="page">Law Firms</span></nav>
+        <span class="eyebrow">Industry · Law firms</span>
+        <h1>AI automation for law firms that <span class="grad-word">keeps the lawyering human.</span></h1>
+        <p class="answer" id="answer">AI automation for law firms handles the administrative work around a matter: answering and routing new inquiries, preparing conflict checks, drafting engagement letters from your templates, chasing signatures, and sending status updates. Attorneys still make every legal decision. The system prepares the work and flags anything that needs a lawyer.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" data-route="/audit">Start with the $250 Audit <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#intake">Try the intake demo</a>
+        </div>
+        <div class="byline">
+          <img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="38" height="38">
+          <span>Written by <b>Haris Ali</b>, Co-Founder · Updated <time datetime="2026-09-17">Sep 17, 2026</time></span>
+        </div>
+      </div>
+      <div data-unique>
+        <div class="anno"><b>sections.week-heatmap</b><span class="sep">|</span>illustrative week, totals computed from the grid itself<span class="sep">|</span>hover a block</div>
+        <div class="week-card">
+          <div class="sim-head">
+            <span class="live"><i style="background:#F87171;box-shadow:0 0 0 4px rgba(248,113,113,.2)"></i>ILLUSTRATIVE WEEK · ONE ATTORNEY</span>
+            <div class="seg" role="group" aria-label="Show week"><button aria-pressed="true" data-week="before">Before</button><button aria-pressed="false" data-week="after">After</button></div>
+          </div>
+          <div class="week-body">
+            <div class="week-top">
+              <div><div class="k">Admin hours this week</div><div class="tot" id="weekTot">21 <small>of 45 working hours</small></div></div>
+              <div style="text-align:right"><div class="k">Back to client work</div><div class="tot" id="weekFreed" style="color:var(--ok)">0 <small>hours</small></div></div>
+            </div>
+            <div class="week" id="week"></div>
+            <div class="week-cap" id="weekCap">Hover a block to see what filled that hour.</div>
+            <div class="week-legend">
+              <span><i style="background:#BFDBFE"></i>Client work</span><span><i style="background:#E2E8F0"></i>Court &amp; meetings</span><span><i style="background:#F87171"></i>Admin</span><span><i style="background:#F59E0B"></i>Attorney review</span><span><i style="background:repeating-linear-gradient(135deg,#86EFAC 0 5px,#BBF7D0 5px 10px)"></i>Handled by automation</span>
+            </div>
+          </div>
+          <div class="week-foot"><span>Intake · conflicts · status calls · signatures · billing</span><span>Conflict decisions stay with the attorney</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="value-band" data-unique>
+  <div class="wrap">
+    <div class="values">
+      <div class="vtile"><span class="big word">9:47 PM</span><span class="what">Sunday inquiry, answered that minute</span><span class="from">Every prospect hears back right away, with no legal information given</span></div>
+      <div class="vtile"><span class="big word">0 replies</span><span class="what">sent before a conflict is cleared</span><span class="from">The workflow stops and waits for an attorney decision</span></div>
+      <div class="vtile"><span class="big word">1 search</span><span class="what">across every place names live</span><span class="from">Contacts, matters, adverse parties, and the old spreadsheet</span></div>
+    </div>
+    <div class="anno" style="margin-top:14px;margin-bottom:0"><b>sections.value-strip (no-proof variant)</b><span class="sep">|</span>design promises, not measured results<span class="sep">|</span>switches to case study numbers once a law firm build exists</div>
+  </div>
+</section>
+
+<!-- ================= DAY TIMELINE ================= -->
+<section class="section" style="padding-top:72px" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.day-timeline</b><span class="sep">|</span>pain and solution in one story<span class="sep">|</span>each moment links to its service page; amber = attorney still decides</div>
+    <div class="day-head">
+      <div>
+        <span class="eyebrow">A Monday at a small firm</span>
+        <h2>Which law firm tasks can be automated?</h2>
+        <p class="lede">Six moments from an ordinary Monday. Flip to After to see which ones run on their own and which still wait for a lawyer.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Show day"><button aria-pressed="true" data-day="before">Before</button><button aria-pressed="false" data-day="after">After</button></div>
+    </div>
+    <div class="day" id="day" data-view="before"></div>
+  </div>
+</section>
+
+<!-- ================= STACK HUB ================= -->
+<section class="section white" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.stack-hub</b><span class="sep">|</span>legal software entities<span class="sep">|</span>connection limits stated plainly</div>
+    <div class="hub">
+      <div>
+        <span class="eyebrow">Works with your stack</span>
+        <h2>Built around the software your firm already uses</h2>
+        <p class="lede">Practice management, intake, e-signature, billing, and email stay where they are. Automation connects them. Which connections are possible depends on each tool's API and your plan, and the Audit confirms that before anything is built.</p>
+      </div>
+      <svg id="hub" viewBox="0 0 600 420" role="img" aria-label="Legal software connected to your firm: Clio, MyCase, PracticePanther, Smokeball, Clio Grow, Lawmatics, DocuSign, LawPay, QuickBooks, Outlook, Gmail, Calendly"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTAKE SIMULATOR ================= -->
+<section class="section dark" id="intake" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.branching-simulator</b><span class="sep">|</span>the visitor plays the attorney<span class="sep">|</span>proves the human checkpoint instead of claiming it</div>
+    <div class="intake">
+      <div class="intake-copy">
+        <span class="eyebrow">Try it</span>
+        <h2>How does automated legal intake work?</h2>
+        <p class="lede">A fictional inquiry arrives on Sunday night. The system does the prep, then stops. You make the conflict call.</p>
+        <div class="points">
+          <div><span class="ic">1</span><span><b>Acknowledge</b><span class="t">A reply goes out at once, with no legal information in it.</span></span></div>
+          <div><span class="ic">2</span><span><b>Summarize</b><span class="t">Practice area, every name, and any urgent dates, written up for the attorney.</span></span></div>
+          <div><span class="ic">3</span><span><b>Search</b><span class="t">Every name is checked against clients, former clients, and adverse parties.</span></span></div>
+          <div><span class="ic" style="color:#FBBF24">4</span><span><b>Stop for a lawyer</b><span class="t">A possible match waits for an attorney. Nothing substantive goes out until then.</span></span></div>
+        </div>
+      </div>
+      <div class="sim" id="sim">
+        <div class="sim-head">
+          <span class="live"><i></i>LIVE DEMO · FICTIONAL DATA</span>
+          <button class="run" id="resetBtn"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1.5v9l8-4.5z"/></svg><span>Replay</span></button>
+        </div>
+        <ol class="log" id="simLog"></ol>
+        <div class="decide" id="decide">
+          <span class="k">Attorney decision needed</span>
+          <p><b>Harbor Point Properties LLC</b> matches a former client (matter closed 2023). The prospective client is Jordan Reyes, in a lease deposit dispute with them.</p>
+          <div class="row2"><button class="yes" data-choice="clear">Cleared, continue</button><button class="no" data-choice="conflict">Conflict, decline</button></div>
+        </div>
+        <div class="sim-out"><div><div class="o-k" id="outK">Status</div><div class="o-v" id="outV">Waiting for an attorney</div><div class="o-s" id="outS">Prospect has been acknowledged, nothing more</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="section" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.trust-layers</b><span class="sep">|</span>confidentiality as a visual, not a wall of text<span class="sep">|</span>confirm every commitment with the team</div>
+    <span class="eyebrow">Confidentiality &amp; ethics</span>
+    <h2>How is client confidentiality protected?</h2>
+    <div class="trust">
+      <div class="layers" aria-label="Layers of protection around client data">
+        <div class="layer l1"><span class="lab">Attorney sign-off <small>on anything substantive</small></span>
+          <div class="layer l2"><span class="lab">Every action logged <small>linked to its source</small></span>
+            <div class="layer l3"><span class="lab">Least access <small>per workflow</small></span>
+              <div class="layer l4"><span class="lab">Your systems <small>tools your firm controls</small></span>
+                <div class="core">Client &amp; prospect data<small>AI steps via business API accounts only</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-side">
+        <div class="aba2">
+          <div class="badge">ABA<small>Op. 512</small></div>
+          <div>
+            <p><b>What the ABA says.</b> In <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/" target="_blank" rel="noopener">Formal Opinion 512</a>, released July 29, 2024, the ABA's ethics committee said lawyers using generative AI must consider their duties of competence, confidentiality, client communication, and reasonable fees. Those duties stay with your firm. We build so they are easier to meet, and show you exactly where AI is used.</p>
+            <p class="fine">General information, not legal advice. Check your state bar's guidance too.</p>
+          </div>
+        </div>
+        <div class="promise">
+          <div><b>Your templates</b>Letters and updates use wording your firm approved.</div>
+          <div><b>Prospects count too</b>Intake details get the same care as client files.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTIMATOR ================= -->
+<section class="section dark" id="estimate" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.estimator (law variant)</b><span class="sep">|</span>value from the firm's own numbers<span class="sep">|</span>every assumption is a slider</div>
+    <span class="eyebrow">Your numbers</span>
+    <h2>What does the admin cost your firm each week?</h2>
+    <p class="lede">Set these to an honest guess for your firm. Nothing here comes from us except the math.</p>
+    <div class="est">
+      <div class="est-in">
+        <div class="field"><div class="fl"><label for="e-inq">New inquiries per week</label><output id="o-inq">15</output></div><input type="range" id="e-inq" min="0" max="80" step="1" value="15"><span class="hint">About 10 minutes each to reply, summarize, and route</span></div>
+        <div class="field"><div class="fl"><label for="e-con">Conflict checks per week</label><output id="o-con">5</output></div><input type="range" id="e-con" min="0" max="40" step="1" value="5"><span class="hint">About 20 minutes each across every system</span></div>
+        <div class="field"><div class="fl"><label for="e-upd">"Any update?" calls and emails per week</label><output id="o-upd">12</output></div><input type="range" id="e-upd" min="0" max="80" step="1" value="12"><span class="hint">About 8 minutes each</span></div>
+        <div class="field"><div class="fl"><label for="e-chase">Signature and document chases per week</label><output id="o-chase">8</output></div><input type="range" id="e-chase" min="0" max="60" step="1" value="8"><span class="hint">About 10 minutes each</span></div>
+        <div class="field"><div class="fl"><label for="e-share">Share of that work automation takes over</label><output id="o-share">70%</output></div><input type="range" id="e-share" min="10" max="90" step="5" value="70"><span class="hint">Conflict decisions and review always stay with people</span></div>
+        <div class="field"><div class="fl"><label for="e-rate">Hourly cost of the person doing it</label><output id="o-rate">$60</output></div><input type="range" id="e-rate" min="20" max="300" step="10" value="60"></div>
+      </div>
+      <div class="est-out" aria-live="polite">
+        <span class="k">Estimated time back</span>
+        <div class="headline" id="r-hours">0 hrs</div>
+        <span class="sub">every week, across intake, conflicts, updates, and chasing</span>
+        <div class="money"><div><b id="r-month">$0</b><span>a month</span></div><div><b id="r-year">$0</b><span>a year</span></div></div>
+        <div class="bars">
+          <div class="bar-row"><span>By hand now</span><div class="bar-track"><div class="bar-fill now" id="b-now"></div></div><output id="v-now"></output></div>
+          <div class="bar-row"><span>Still by hand</span><div class="bar-track"><div class="bar-fill after" id="b-after"></div></div><output id="v-after"></output></div>
+        </div>
+        <div class="formula" id="formula"></div>
+        <p class="est-note">An estimate from your inputs, not a promise. The Audit measures your real volumes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSEST PROOF ================= -->
+<section class="section" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.pattern-match-proof</b><span class="sep">|</span>proofMode = closest<span class="sep">|</span>law need on the left, the real build that solved the same shape on the right</div>
+    <span class="eyebrow">Proof · Closest builds</span>
+    <h2>Our published case studies are not from law firms. These solved the same problems elsewhere.</h2>
+    <div class="match">
+      <div class="mrow"><div class="need"><small>Your firm needs</small>Consults booked with intake finished first</div><span class="arrow" aria-hidden="true">&rarr;</span><div class="build"><small>We built</small><a href="#" data-route="/case-studies/onboarding-pipeline-autopilot">The Onboarding Pipeline That Runs on Autopilot</a><span>Coaching · clients book themselves and arrive with intake forms done</span></div><div class="m"><b>~5 hrs</b><span>saved weekly</span></div></div>
+      <div class="mrow"><div class="need"><small>Your firm needs</small>Client history out of one partner's inbox</div><span class="arrow" aria-hidden="true">&rarr;</span><div class="build"><small>We built</small><a href="#" data-route="/case-studies/crm-that-fills-itself-in">The CRM That Fills Itself In</a><span>Education · emails and meetings log themselves to the right record</span></div><div class="m"><b>~6 hrs</b><span>saved weekly</span></div></div>
+      <div class="mrow"><div class="need"><small>Your firm needs</small>One client's data never visible to another</div><span class="arrow" aria-hidden="true">&rarr;</span><div class="build"><small>We built</small><a href="#" data-route="/case-studies/financial-document-reader">The Financial Document Reader</a><span>Financial services · every account's data walled off</span></div><div class="m"><b>~15 hrs</b><span>saved weekly</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section white" data-unique>
+  <div class="wrap">
+    <div class="anno"><b>sections.faq</b><span class="sep">|</span>6 self-contained answers &rarr; FAQPage</div>
+    <div class="faq2">
+      <div class="left">
+        <span class="eyebrow">Clearing the air</span>
+        <h2>Questions attorneys ask before they automate</h2>
+        <div class="askcard"><img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="48" height="48"><div><b>Want to talk it through?</b><a href="#" data-route="/book">Book a free discovery call &rarr;</a></div></div>
+      </div>
+      <div class="faq" id="faq">
+        <details open><summary><span class="q">What can a small law firm automate with AI?</span><i>+</i></summary><div class="a">A small law firm can automate the administrative work around its matters: acknowledging and routing new inquiries, preparing conflict searches, drafting engagement letters from approved templates, collecting client documents, sending status updates, and chasing unpaid invoices. Legal advice, conflict decisions, court deadlines, and trust accounting stay with attorneys and staff.</div></details>
+        <details><summary><span class="q">Is it ethical for lawyers to use AI and automation?</span><i>+</i></summary><div class="a">It can be, when the firm meets its professional duties. In Formal Opinion 512, released July 29, 2024, the American Bar Association's ethics committee said lawyers using generative AI must consider their duties of competence, confidentiality, client communication, and reasonable fees. State bars publish their own guidance, so firms should also check the rules in their jurisdiction.</div></details>
+        <details><summary><span class="q">How is client confidentiality protected when a law firm automates?</span><i>+</i></summary><div class="a">Confidentiality is protected through how the system is built. Information moves only between tools the firm already controls, each workflow gets only the access it needs, AI steps run through business accounts rather than consumer chat apps, every automated action is logged, and anything substantive waits for attorney approval. Prospective client information collected at intake gets the same care as client files.</div></details>
+        <details><summary><span class="q">Does law firm automation work with Clio or MyCase?</span><i>+</i></summary><div class="a">It depends on the tool and the subscription plan. Most modern practice management, email, e-signature, and billing tools offer some way to connect other software, but the options vary. Whispers Lab confirms which connections are possible for a firm's specific tools during the $250 Automation Audit, before anything is built.</div></details>
+        <details><summary><span class="q">How much does automation cost for a small law firm?</span><i>+</i></summary><div class="a">With Whispers Lab, it starts with a $250 Automation Audit that maps intake, conflicts, onboarding, and billing workflows and ranks them by time saved. If the firm goes ahead, the build is quoted as a fixed price with no hourly billing, and the $250 is credited toward it. Ongoing maintenance and new workflows are available through the AI Growth Partner plan at $500 a month.</div></details>
+        <details><summary><span class="q">Will automation replace paralegals or legal assistants?</span><i>+</i></summary><div class="a">No. Automation removes the retyping, chasing, and copying between systems, not the judgment. Paralegals and legal assistants spend that time on work that needs a person, such as preparing matters, talking with clients, and checking the details an attorney relies on.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="anno"><b>sections.cta-audit-preview</b><span class="sep">|</span>Global, copy overridden per industry</div>
+    <div class="cta2">
+      <div>
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Find the admin your firm can stop doing by hand.</h2>
+        <p class="lede">In 7 days, the Automation Audit maps intake, conflicts, onboarding, and billing, and hands you a plan you keep either way. Build it with us and the $250 is credited.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#" data-route="/audit">Book Your Audit ($250) <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn-ghost" href="#" data-route="/book">Book a free discovery call</a></div>
+      </div>
+      <div class="deliv" aria-label="Audit deliverables">
+        <div class="dv"><span class="day">DAYS 1 TO 2</span><b>Automation Readiness Scorecard</b><div class="viz"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 3 TO 4</span><b>Visual Workflow Map</b><div class="viz"><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 5 TO 6</span><b>Automation Priority Matrix</b><div class="viz"><i style="height:90%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:20%"></i></div></div>
+        <div class="dv"><span class="day">DAY 7</span><b>Execution Blueprint</b><div class="viz"><i style="height:50%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:100%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+/*__FOOTER__*/
+
+<section class="spec" aria-label="Template spec">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--anno)">Outside the page · template spec</span>
+    <h2>What ships in the &lt;head&gt; and the CMS</h2>
+    <div class="spec-grid">
+      <div class="panel">
+        <h3>Search result preview</h3>
+        <div class="serp">
+          <div class="site"><i>W</i><span>Whispers Lab<small>https://www.whisperslab.com › industries › law-firms</small></span></div>
+          <div class="st" id="serpTitle">AI Automation for Law Firms | Whispers Lab</div>
+          <div class="sd" id="serpDesc">Automate client intake, conflict check prep, engagement letters, and status updates. Attorneys keep every legal decision. Try the live intake demo.</div>
+        </div>
+        <div class="counts" id="counts"></div>
+      </div>
+      <div class="panel">
+        <h3>Doorway-page guard</h3>
+        <div class="uniq"><span class="big" id="uniqPct">…</span><span style="font-size:13.5px;color:var(--muted)">of words sit in sections written for law firms. Target 75%+.</span></div>
+        <div class="bar2"><span id="uniqBar" style="width:0"></span></div>
+      </div>
+      <div class="panel">
+        <h3>Keywords to validate before writing</h3>
+        <div class="kw">
+          <div><span class="tag">primary?</span><span>AI automation for law firms · law firm automation</span></div>
+          <div><span class="tag">secondary</span><span>legal intake automation · conflict check automation · AI for small law firms</span></div>
+          <div><span class="tag risk">SERP risk</span><span>"legal automation" results may be owned by legal software vendors. Prefer task phrases with an agency angle.</span></div>
+          <div><span class="tag risk">no volumes</span><span>Paste Semrush data before locking the H1</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Services this page links to</h3>
+        <ul class="plain" id="svcLinks"></ul>
+      </div>
+      <div class="panel span2">
+        <h3>Section &rarr; Strapi &rarr; data source</h3>
+        <div class="table-scroll" style="margin-top:0">
+          <table class="map">
+            <thead><tr><th>Section</th><th>Component</th><th>Filled from</th></tr></thead>
+            <tbody>
+              <tr><td>Hero + week heatmap</td><td>sections.week-heatmap</td><td>Industry entry: days[] of 10 slot codes + category labels</td></tr>
+              <tr><td>Value strip</td><td>sections.value-strip</td><td>proofMode closest: text tiles; direct: case study metrics</td></tr>
+              <tr><td>Day timeline</td><td>sections.day-timeline</td><td>Industry entry: moments[] (time, before, after, human, service relation)</td></tr>
+              <tr><td>Stack hub</td><td>sections.stack-hub</td><td>Industry entry: tools[] + caveat</td></tr>
+              <tr><td>Intake simulator</td><td>sections.branching-simulator</td><td>Industry entry: steps[], decision, branches{clear, conflict}</td></tr>
+              <tr><td>Trust layers + citation</td><td>sections.trust-layers</td><td>Industry entry: layers[], citation {url, claim, verifiedOn}</td></tr>
+              <tr><td>Estimator</td><td>sections.estimator</td><td>Industry entry: tasks[] {label, default, minutes}</td></tr>
+              <tr><td>Closest proof</td><td>sections.pattern-match-proof</td><td>Relation: case-studies + need text per row</td></tr>
+              <tr><td>FAQ, CTA</td><td>sections.faq, sections.cta-audit-preview</td><td>Entry; Global</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel span2"><h3>JSON-LD (Service with BusinessAudience + BreadcrumbList + FAQPage)</h3><pre class="jsonld" id="jsonld"></pre></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  /*__COMMON_JS__*/
+
+  /* ===== week heatmap ===== */
+  var LABELS = { c: "Client work", m: "Court or client meeting", l: "Lunch", i: "Reading and answering new inquiries", k: "Conflict check across three systems", u: "\"Any update?\" calls and emails", s: "Chasing an unsigned engagement letter", b: "Writing invoice reminders" };
+  var AFTER_LABELS = { i: "Handled: inquiries acknowledged and summarized", k: "Attorney reviews the flagged conflict match", u: "Handled: clients got stage updates automatically", s: "Handled: e-signature reminders went out on their own", b: "Handled: invoice reminders with payment links" };
+  var DAYS = [["Mon", "ikccluccsb"], ["Tue", "icmmlcucsc"], ["Wed", "ikcclcuccb"], ["Thu", "iccmluckcs"], ["Fri", "icccluc sbb".replace(" ", "")]];
+  var HOURS = ["8", "9", "10", "11", "12", "1", "2", "3", "4", "5"];
+  var week = $("#week"), weekCap = $("#weekCap"), view = "before";
+  function cls(code, v) {
+    if (code === "c") return "client"; if (code === "m") return "court"; if (code === "l") return "lunch";
+    if (v === "before") return "admin";
+    return code === "k" ? "review" : "freed";
+  }
+  function drawWeek() {
+    var html = '<span></span>' + HOURS.map(function (h) { return '<span class="hl">' + h + '</span>'; }).join("");
+    var admin = 0, freed = 0, review = 0;
+    DAYS.forEach(function (d) {
+      html += '<span class="dl">' + d[0] + '</span>';
+      d[1].split("").forEach(function (code, j) {
+        var c = cls(code, view);
+        if (c === "admin") admin++; if (c === "freed") freed++; if (c === "review") review++;
+        var label = view === "after" && AFTER_LABELS[code] ? AFTER_LABELS[code] : LABELS[code];
+        html += '<button class="cell ' + c + '" data-label="' + d[0] + " " + HOURS[j] + (j < 4 ? " AM" : " PM") + " · " + label.replace(/"/g, "&quot;") + '" aria-label="' + d[0] + " " + HOURS[j] + ": " + label.replace(/"/g, "&quot;") + '"></button>';
+      });
+    });
+    week.innerHTML = html;
+    var adminNow = view === "before" ? admin : review;
+    $("#weekTot").innerHTML = adminNow + " <small>of 45 working hours</small>";
+    $("#weekFreed").innerHTML = (view === "before" ? 0 : freed) + " <small>hours</small>";
+  }
+  week.addEventListener("mouseover", function (e) { var c = e.target.closest(".cell"); if (c) weekCap.textContent = c.getAttribute("data-label"); });
+  week.addEventListener("focusin", function (e) { var c = e.target.closest(".cell"); if (c) weekCap.textContent = c.getAttribute("data-label"); });
+  $$("[data-week]").forEach(function (b) { b.addEventListener("click", function () { view = b.dataset.week; $$("[data-week]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); drawWeek(); }); });
+  drawWeek();
+
+  /* ===== day timeline ===== */
+  var MOMENTS = [
+    ["8:10 AM", "Finds Sunday's 9:47 PM web inquiry. The prospect has already booked with another firm.", "That inquiry was acknowledged Sunday at 9:47 PM, and a summary is waiting in the intake queue.", 0, "Lead Response Automation", "/services/lead-response-automation"],
+    ["9:30 AM", "Checks names in Clio, an old spreadsheet, and a partner's memory.", "The conflict search ran overnight. One possible match is waiting for an attorney.", 1, "Systems Integration", "/services/systems-integration"],
+    ["11:00 AM", "Two clients call to ask, \"Any update on my case?\"", "Both received a stage update when their matters moved last week.", 0, "Client Journey Automation", "/services/client-journey-automation"],
+    ["1:30 PM", "Builds an engagement letter from an old Word file.", "A draft from your approved template is waiting for attorney approval.", 1, "Document Automation", "/services/document-automation"],
+    ["3:00 PM", "Emails a third reminder about the unsigned letter.", "The e-signature reminder went out on its own. Signed at 2:12 PM.", 0, "Client Journey Automation", "/services/client-journey-automation"],
+    ["5:45 PM", "Writes invoice reminders before leaving.", "Reminders with payment links went out at 9 AM.", 0, "Finance Operations Automation", "/services/finance-operations-automation"]
+  ];
+  var day = $("#day");
+  function drawDay(v) {
+    day.setAttribute("data-view", v);
+    day.innerHTML = MOMENTS.map(function (m) {
+      return '<div class="moment' + (m[3] ? ' human' : '') + '"><time>' + m[0] + '</time><span class="pin">' + (v === "before" ? "!" : (m[3] ? "A" : "&#10003;")) + '</span>' +
+        '<div class="mcard"><p>' + (v === "before" ? m[1] : m[2]) + '</p><a class="svc" href="#" data-route="' + m[5] + '">' + m[4] + ' &rarr;</a><span class="who">Attorney still decides</span></div></div>';
+    }).join("");
+  }
+  $$("[data-day]").forEach(function (b) { b.addEventListener("click", function () { $$("[data-day]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); drawDay(b.dataset.day); }); });
+  drawDay("before");
+  var seen = {}; MOMENTS.forEach(function (m) { seen[m[4]] = m[5]; });
+  $("#svcLinks").innerHTML = Object.keys(seen).map(function (k) { return "<li>" + k + " <code style=\"font-family:var(--mono);font-size:11px;color:var(--anno)\">" + seen[k] + "</code></li>"; }).join("");
+
+  /* ===== stack hub ===== */
+  function drawHub(svgId, center, sub, tools) {
+    var hub = $("#" + svgId), NS = "http://www.w3.org/2000/svg";
+    function mk(n, a, t) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; return e; }
+    var cx = 300, cy = 210, rx = 230, ry = 160;
+    var nodes = tools.map(function (name, i) { var ang = -Math.PI / 2 + i * 2 * Math.PI / tools.length; return { name: name, x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang) }; });
+    nodes.forEach(function (n) { hub.appendChild(mk("line", { x1: cx, y1: cy, x2: n.x, y2: n.y, class: "spoke" })); });
+    hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 66, fill: "rgba(128,65,255,.12)" }));
+    hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 54, class: "core" }));
+    hub.appendChild(mk("text", { x: cx, y: cy - 2, "text-anchor": "middle", class: "core-t" }, center));
+    hub.appendChild(mk("text", { x: cx, y: cy + 16, "text-anchor": "middle", class: "core-s" }, sub));
+    nodes.forEach(function (n) { var w = n.name.length * 7.4 + 24; var g = mk("g", { class: "hn" }); g.appendChild(mk("rect", { x: n.x - w / 2, y: n.y - 16, width: w, height: 32, rx: 16 })); g.appendChild(mk("text", { x: n.x, y: n.y + 4.5, "text-anchor": "middle" }, n.name)); hub.appendChild(g); });
+  }
+  drawHub("hub", "Your firm", "one connected system", ["Clio", "MyCase", "PracticePanther", "Smokeball", "Clio Grow", "Lawmatics", "DocuSign", "LawPay", "QuickBooks", "Outlook", "Gmail", "Calendly"]);
+
+  /* ===== branching intake simulator ===== */
+  var BASE = [["Sun 9:47 PM", "<b>Inquiry received</b> from the website form", 0], ["9:47 PM", "<b>Acknowledgment sent</b>, with no legal information in it", 0], ["9:48 PM", "<b>Summary written</b>: commercial lease dispute, $14,000 deposit, move-out Oct 15", 0], ["9:48 PM", "<b>Conflict search</b>: 3 names, 1 possible match", 1]];
+  var BRANCH = {
+    clear: { steps: [["Mon 8:15 AM", "<b>M. Chen cleared</b> the conflict", 0], ["8:15 AM", "<b>Questionnaire and consult link</b> sent to Jordan", 0], ["After consult", "<b>Engagement letter drafted</b> from template, waiting for approval", 1]], k: "Status", v: "Consult booked", s: "Letter will go out only after attorney approval" },
+    conflict: { steps: [["Mon 8:15 AM", "<b>M. Chen marked a conflict</b>", 0], ["8:15 AM", "<b>Standard decline drafted</b> for approval, with no details shared", 1]], k: "Status", v: "Declined politely", s: "No confidential information left the firm" }
+  };
+  var simLog = $("#simLog"), decide = $("#decide"), timers = [];
+  function li(s, pending) { return '<li class="' + (s[2] ? 'flag' : '') + (pending ? ' pending' : '') + '"><time>' + s[0] + '</time><span class="dotc">' + (s[2] ? '!' : '&#10003;') + '</span><span>' + s[1] + '</span></li>'; }
+  function setOut(k, v, s) { $("#outK").textContent = k; $("#outV").textContent = v; $("#outS").textContent = s; }
+  function play(steps, animate, done) {
+    timers.forEach(clearTimeout); timers = [];
+    var start = simLog.children.length;
+    simLog.insertAdjacentHTML("beforeend", steps.map(function (s) { return li(s, animate && !reduce); }).join(""));
+    if (!animate || reduce) { if (done) done(); return; }
+    var items = Array.prototype.slice.call(simLog.children, start);
+    items.forEach(function (x, i) { timers.push(setTimeout(function () { items.forEach(function (y) { y.classList.remove("now"); }); x.classList.remove("pending"); x.classList.add("now"); }, 300 + i * 500)); });
+    timers.push(setTimeout(function () { items.forEach(function (y) { y.classList.remove("now"); }); if (done) done(); }, 300 + items.length * 500));
+  }
+  function reset(animate) {
+    simLog.innerHTML = ""; decide.hidden = true;
+    setOut("Status", "Working…", "Sunday night, nobody at the office");
+    play(BASE, animate, function () { decide.hidden = false; setOut("Status", "Waiting for an attorney", "Prospect has been acknowledged, nothing more"); });
+  }
+  $$("#decide button").forEach(function (b) { b.addEventListener("click", function () { var br = BRANCH[b.dataset.choice]; decide.hidden = true; play(br.steps, true, function () { setOut(br.k, br.v, br.s); }); }); });
+  $("#resetBtn").addEventListener("click", function () { reset(true); });
+  reset(false);
+
+  /* ===== estimator ===== */
+  var TASKS = [["inq", 10], ["con", 20], ["upd", 8], ["chase", 10]];
+  function v(id) { return Number($("#e-" + id).value); }
+  function money(x) { return "$" + Math.round(x).toLocaleString("en-US"); }
+  function calc() {
+    TASKS.forEach(function (t) { $("#o-" + t[0]).textContent = v(t[0]); });
+    var share = v("share") / 100, rate = v("rate");
+    $("#o-share").textContent = Math.round(share * 100) + "%"; $("#o-rate").textContent = "$" + rate;
+    var now = TASKS.reduce(function (s, t) { return s + v(t[0]) * t[1]; }, 0) / 60;
+    var back = now * share, left = now - back, month = back * 52 / 12 * rate;
+    $("#r-hours").textContent = back.toFixed(1) + " hrs";
+    $("#r-month").textContent = money(month); $("#r-year").textContent = money(month * 12);
+    $("#v-now").textContent = now.toFixed(1) + " h/wk"; $("#v-after").textContent = left.toFixed(1) + " h/wk";
+    $("#b-now").style.width = (now > 0 ? 100 : 0) + "%"; $("#b-after").style.width = (now > 0 ? Math.max(1, left / now * 100) : 0) + "%";
+    $("#formula").textContent = "hours now = (" + v("inq") + "x10 + " + v("con") + "x20 + " + v("upd") + "x8 + " + v("chase") + "x10) min / 60 = " + now.toFixed(1) + "; time back = hours now x " + Math.round(share * 100) + "%; per month = x 52/12 x $" + rate;
+  }
+  ["inq", "con", "upd", "chase", "share", "rate"].forEach(function (id) { $("#e-" + id).addEventListener("input", calc); });
+  calc();
+
+  /* ===== spec ===== */
+  var answer = $("#answer").textContent.trim();
+  $("#answerCount").textContent = answer.split(/\s+/).length;
+  var title = $("#serpTitle").textContent, desc = $("#serpDesc").textContent, dash = new RegExp(String.fromCharCode(8212));
+  $("#counts").innerHTML = '<span class="count' + (title.length > 60 ? ' bad' : '') + '">title ' + title.length + '/60</span><span class="count' + (desc.length > 160 ? ' bad' : '') + '">description ' + desc.length + '/160</span><span class="count' + (dash.test($("main").innerText) ? ' bad">em dashes found' : '">0 em dashes') + '</span>';
+  function words(root) { var c = root.cloneNode(true); $$(".anno, .sim-head, script", c).forEach(function (n) { n.remove(); }); return (c.textContent || "").trim().split(/\s+/).filter(Boolean).length; }
+  var total = words($("main")) + words($("header .hero-grid"));
+  var uniq = $$("[data-unique]").reduce(function (s, el) { return s + words(el); }, 0);
+  var pct = Math.round(uniq / total * 100);
+  $("#uniqPct").textContent = pct + "%"; $("#uniqPct").classList.toggle("bad", pct < 75);
+  $("#uniqBar").style.width = pct + "%"; $("#uniqBar").style.background = pct < 75 ? "#B91C1C" : "var(--ok)";
+
+  var url = "https://www.whisperslab.com/industries/law-firms";
+  var faq = $$("#faq details").map(function (d) { return { "@type": "Question", name: $(".q", d).textContent, acceptedAnswer: { "@type": "Answer", text: $(".a", d).textContent } }; });
+  var ld = { "@context": "https://schema.org", "@graph": [
+    { "@type": "Service", "@id": url + "#service", name: "AI Automation for Law Firms", serviceType: "Workflow and AI automation for law firms", description: answer, url: url,
+      provider: { "@type": "Organization", name: "Whispers Lab", url: "https://www.whisperslab.com" }, areaServed: { "@type": "Country", name: "United States" },
+      audience: { "@type": "BusinessAudience", audienceType: "Law firms" },
+      offers: { "@type": "Offer", name: "Automation Audit", price: "250", priceCurrency: "USD", url: "https://www.whisperslab.com/audit" } },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.whisperslab.com" }, { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.whisperslab.com/industries" }, { "@type": "ListItem", position: 3, name: "Law Firms", item: url }] },
+    { "@type": "FAQPage", mainEntity: faq } ] };
+  $("#jsonld").textContent = JSON.stringify(ld, null, 2);
+  var s = document.createElement("script"); s.type = "application/ld+json"; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+})();
+</script>

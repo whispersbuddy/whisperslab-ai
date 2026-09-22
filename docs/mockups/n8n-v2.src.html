@@ -1,0 +1,615 @@
+<title>Whispers Lab n8n Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/*__BASE_CSS__*/
+/*__V2_CSS__*/
+
+/* ================= n8n, craft-led ================= */
+.canvas-card { background: var(--card); color: var(--navy); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 90px rgba(2,6,23,.55), 0 0 0 1px rgba(255,255,255,.06); }
+.canvas { background-color: #F6F7FB; background-image: radial-gradient(#D5DAE5 1px, transparent 1.2px); background-size: 18px 18px; overflow-x: auto; }
+.canvas svg { display: block; width: 100%; min-width: 600px; height: auto; }
+.cnode { cursor: pointer; outline: none; }
+.cnode rect.box { fill: #fff; stroke: #CBD5E1; stroke-width: 1.5; transition: stroke .2s; }
+.cnode:hover rect.box { stroke: #94A3B8; }
+.cnode.sel rect.box { stroke: var(--c); stroke-width: 2.5; }
+.cnode:focus-visible rect.box { stroke: var(--blue); stroke-width: 3; }
+.cnode .glyph { font-family: var(--display); font-weight: 900; font-size: 13px; fill: #0F172A; }
+.cnode .lbl { font-family: var(--body); font-weight: 600; font-size: 11.5px; fill: #334155; }
+.static .cnode { cursor: default; }
+.cedge { fill: none; stroke: #B6BFCE; stroke-width: 2; }
+.celabel { font-family: var(--body); font-size: 10.5px; font-weight: 700; }
+.cdot { fill: #8041FF; }
+.cdetail { padding: 14px 16px; min-height: 78px; display: grid; gap: 4px; border-top: 1px solid var(--line); }
+.cdetail .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.cdetail .t { font-family: var(--display); font-weight: 900; font-size: 15px; color: var(--navy); }
+.cdetail p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* build exhibits */
+.exhibits { display: grid; gap: 28px; margin-top: 40px; }
+.exhibit { display: grid; grid-template-columns: 1.15fr .85fr; border-radius: 24px; overflow: hidden; border: 1px solid var(--dark-line); background: rgba(255,255,255,.03); }
+.exhibit:nth-child(even) { grid-template-columns: .85fr 1.15fr; }
+.exhibit:nth-child(even) .ex-canvas { order: 2; }
+.ex-canvas { background-color: #F6F7FB; background-image: radial-gradient(#D5DAE5 1px, transparent 1.2px); background-size: 18px 18px; display: grid; align-content: center; padding: 10px; min-width: 0; overflow-x: auto; position: relative; }
+.ex-canvas .stamp { position: absolute; top: 12px; left: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: 1px; color: var(--anno); background: #fff; border: 1px dashed var(--anno); border-radius: 6px; padding: 3px 7px; }
+.ex-body { padding: 28px; display: grid; gap: 14px; align-content: start; }
+.ex-body .ind-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--on-dark-soft); }
+.ex-body h3 { font-size: 24px; letter-spacing: -.6px; }
+.ex-body p { font-size: 14.5px; color: var(--on-dark-muted); line-height: 1.6; }
+.ex-nums { display: flex; flex-wrap: wrap; gap: 26px; }
+.ex-nums b { display: block; font-family: var(--display); font-weight: 900; font-size: 40px; letter-spacing: -1.5px; line-height: 1; background: linear-gradient(90deg, #6FB0FF, #B38BFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ex-nums span { font-size: 12.5px; color: var(--on-dark-muted); }
+.why { font-size: 14px; color: #fff; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 12px 14px; }
+.why b { color: var(--tint); display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.stack-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack-tools span { font-size: 12px; font-weight: 600; color: #E2E8F0; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 7px; padding: 3px 8px; }
+.ex-body a.more { color: #fff; font-weight: 600; font-size: 14px; }
+
+/* fit checker */
+.checker { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; margin-top: 36px; align-items: start; }
+.qs { display: grid; gap: 10px; }
+.q { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+.q b { display: block; font-family: var(--display); font-weight: 900; font-size: 16px; color: var(--navy); }
+.q span { font-size: 13.5px; color: var(--muted); }
+.switch { position: relative; width: 52px; height: 30px; border-radius: 99px; background: #CBD5E1; transition: background .2s; flex: none; }
+.switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(15,23,42,.25); transition: left .2s; }
+.switch[aria-checked="true"] { background: var(--ok); }
+.switch[aria-checked="true"]::after { left: 25px; }
+.verdict { position: sticky; top: 20px; background: var(--navy); color: #fff; border-radius: 22px; padding: 26px; display: grid; gap: 14px; justify-items: start; }
+.verdict .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--on-dark-soft); }
+.gauge { width: 100%; max-width: 280px; }
+.gauge path { fill: none; stroke-width: 18; stroke-linecap: round; }
+.gauge .track { stroke: rgba(255,255,255,.12); }
+.gauge .fill { stroke: url(#gg); transition: stroke-dashoffset .5s ease; }
+.gauge text { font-family: var(--display); font-weight: 900; font-size: 30px; fill: #fff; }
+.verdict h3 { color: #fff; font-size: 24px; letter-spacing: -.5px; }
+.verdict p { color: var(--on-dark-muted); font-size: 14.5px; line-height: 1.6; }
+.verdict .tag { font-size: 12px; font-weight: 700; border-radius: 99px; padding: 4px 10px; }
+.tag.good { background: #DCFCE7; color: #166534; } .tag.maybe { background: #FEF3C7; color: #92400E; } .tag.no { background: #E2E8F0; color: #334155; }
+
+/* hosting helper */
+.host-q { display: grid; gap: 16px; margin-top: 30px; }
+.host-q .row3 { display: grid; grid-template-columns: 240px 1fr; gap: 14px; align-items: center; }
+.host-q .row3 > span { font-size: 15px; font-weight: 600; color: var(--navy); }
+.host-q .seg { display: inline-flex; flex-wrap: wrap; background: #EEF0F5; border-radius: 10px; padding: 3px; width: fit-content; }
+.host-q .seg button { font-size: 13px; font-weight: 700; padding: 8px 13px; border-radius: 8px; color: var(--muted); }
+.host-q .seg button[aria-pressed="true"] { background: #fff; color: var(--navy); box-shadow: 0 1px 3px rgba(15,23,42,.14); }
+.host { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+.hcard { position: relative; background: var(--paper); border: 2px solid var(--line); border-radius: 20px; padding: 26px; display: grid; gap: 10px; align-content: start; transition: border-color .3s, box-shadow .3s, opacity .3s; }
+.hcard.rec { border-color: #8B7BFF; box-shadow: 0 20px 50px rgba(128,65,255,.18); background: #fff; }
+.hcard.dim { opacity: .62; }
+.hcard .ribbon { position: absolute; top: -12px; right: 20px; background: var(--grad); color: #fff; font-size: 11.5px; font-weight: 700; border-radius: 99px; padding: 5px 11px; display: none; }
+.hcard.rec .ribbon { display: block; }
+.hcard .tagx { width: fit-content; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 9px; border-radius: 99px; }
+.hcard.cloud .tagx { color: #1D4ED8; background: #DBEAFE; }
+.hcard.self .tagx { color: #6D28D9; background: #EDE9FE; }
+.hcard h3 { font-size: 22px; letter-spacing: -.5px; }
+.hcard ul { list-style: none; display: grid; gap: 8px; }
+.hcard li { font-size: 14px; color: #334155; padding-left: 18px; position: relative; }
+.hcard li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 2px; background: #94A3B8; }
+.hreason { margin-top: 18px; font-size: 14.5px; color: var(--navy); font-weight: 600; background: #F5F3FF; border: 1px solid #DDD6FE; border-radius: 14px; padding: 14px 16px; }
+.src { font-size: 12.5px; color: var(--soft); margin-top: 14px; }
+.src a { color: #5B4FF0; font-weight: 600; }
+
+/* handoff kit */
+.kit { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: center; }
+.fan { position: relative; height: 380px; }
+.kcard { position: absolute; width: 58%; background: var(--card); color: var(--navy); border-radius: 18px; padding: 16px; box-shadow: 0 24px 50px rgba(2,6,23,.45); transition: transform .3s ease, z-index 0s; display: grid; gap: 8px; }
+.kcard:hover, .kcard:focus-within { transform: translateY(-10px) rotate(0deg) !important; z-index: 10; }
+.kcard .kk { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); }
+.kcard b { font-family: var(--display); font-weight: 900; font-size: 16px; }
+.k1 { left: 0; top: 40px; transform: rotate(-8deg); z-index: 1; }
+.k2 { left: 10%; top: 10px; transform: rotate(-3deg); z-index: 2; }
+.k3 { left: 21%; top: 30px; transform: rotate(2deg); z-index: 3; }
+.k4 { left: 32%; top: 70px; transform: rotate(6deg); z-index: 4; }
+.k5 { left: 42%; top: 130px; transform: rotate(10deg); z-index: 5; }
+.code { font-family: var(--mono); font-size: 11px; background: #0F172A; color: #A5B4FC; border-radius: 8px; padding: 10px; line-height: 1.5; white-space: pre; overflow: hidden; }
+.alert { display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 12.5px; color: #334155; }
+.alert i { width: 26px; height: 26px; border-radius: 7px; background: #FEE2E2; color: #B91C1C; display: flex; align-items: center; justify-content: center; font-style: normal; font-weight: 800; }
+.video { height: 92px; border-radius: 10px; background: linear-gradient(135deg, #1E293B, #312E81); position: relative; }
+.video::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-40%, -50%); border-left: 18px solid #fff; border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+.video span { position: absolute; right: 8px; bottom: 6px; font-family: var(--mono); font-size: 10.5px; color: #fff; background: rgba(0,0,0,.4); border-radius: 4px; padding: 1px 5px; }
+.docl { display: grid; gap: 5px; }
+.docl span { height: 6px; border-radius: 3px; background: #E7EAF0; }
+.docl span.h { height: 9px; width: 55%; background: #C7D2FE; }
+.keyrow { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+.keyrow i { width: 26px; height: 26px; border-radius: 50%; background: var(--grad); }
+.kit-list { display: grid; gap: 12px; margin-top: 22px; }
+.kit-list div { display: grid; grid-template-columns: 28px 1fr; gap: 12px; font-size: 14.5px; color: var(--on-dark-muted); }
+.kit-list b { color: #fff; }
+.kit-list .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); border: 1px solid var(--dark-line); color: var(--tint); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
+.human-band.dark-band { background: rgba(245,158,11,.08); border-color: rgba(251,191,36,.3); }
+.human-band.dark-band .k { color: #FBBF24; }
+.human-band.dark-band span.c { background: rgba(255,255,255,.05); border-color: rgba(251,191,36,.3); color: #FDE68A; }
+
+.checks-live { list-style: none; display: grid; gap: 8px; }
+.checks-live li { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 13.5px; color: #334155; }
+.checks-live .st { font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 5px; }
+.checks-live .pass { color: var(--ok); background: var(--ok-bg); }
+.checks-live .fail { color: #B91C1C; background: #FEE2E2; }
+.sources { list-style: none; display: grid; gap: 10px; font-size: 13.5px; }
+.sources li { display: grid; gap: 2px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.sources li:last-child { border-bottom: 0; }
+.sources a { color: #5B4FF0; font-weight: 600; overflow-wrap: anywhere; }
+.sources span { color: var(--muted); }
+
+@media (max-width: 1080px) {
+  .exhibit, .exhibit:nth-child(even) { grid-template-columns: 1fr; }
+  .exhibit:nth-child(even) .ex-canvas { order: 0; }
+  .checker, .kit { grid-template-columns: 1fr; }
+  .verdict { position: static; }
+  .host-q .row3 { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 720px) {
+  .host { grid-template-columns: 1fr; }
+  .fan { height: auto; display: grid; gap: 12px; }
+  .kcard { position: static; width: 100%; transform: none !important; }
+}
+</style>
+
+<button class="anno-toggle" id="annoToggle" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><span class="lbl-long">SEO &amp; CMS </span>annotations</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="mockbar">
+  <div class="wrap">
+    <span><b>Template mockup v2</b> · Integration page, craft-led</span>
+    <span>URL <code>/integrations/n8n</code></span>
+    <span>Direct proof from two published n8n builds. Every n8n fact is sourced from n8n's own site.</span>
+  </div>
+</div>
+
+<header class="section dark hero v2" id="top">
+  <div class="wrap">
+    /*__NAV__*/
+    <div class="hero-grid">
+      <div>
+        <div class="anno"><b>sections.hero</b><span class="sep">|</span>H1 = "n8n automation services" (validate vs "n8n consultant")<span class="sep">|</span>direct answer: <span id="answerCount">…</span> words</div>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="#" data-route="/">Home</a><span aria-hidden="true">›</span><a href="#" data-route="/integrations">Integrations</a><span aria-hidden="true">›</span><span aria-current="page">n8n</span></nav>
+        <span class="eyebrow">Integration · Workflow automation platform</span>
+        <h1>n8n automation services, <span class="grad-word">built and looked after for you.</span></h1>
+        <p class="answer" id="answer">Whispers Lab designs, builds, and maintains n8n workflows for small businesses. n8n is a workflow automation platform that connects your apps, runs multi-step logic, and can call AI where it helps. We set it up on n8n Cloud or your own server, document everything, and hand over workflows your team owns.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" data-route="/audit">Start with the $250 Audit <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#fit">Is n8n right for you?</a>
+        </div>
+        <div class="byline">
+          <img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="38" height="38">
+          <span>Written by <b>Haris Ali</b>, Co-Founder · Updated <time datetime="2026-09-17">Sep 17, 2026</time></span>
+        </div>
+      </div>
+      <div>
+        <div class="anno"><b>sections.build-canvas</b><span class="sep">|</span>real build steps from the case studies, redrawn<span class="sep">|</span>click a step</div>
+        <div class="canvas-card">
+          <div class="sim-head">
+            <span class="live"><i></i>REAL BUILD · REDRAWN</span>
+            <div class="tabs" role="tablist" aria-label="Build">
+              <button class="tab" role="tab" aria-selected="true" data-build="crm">CRM logger</button>
+              <button class="tab" role="tab" aria-selected="false" data-build="leads">Lead sales</button>
+            </div>
+          </div>
+          <div class="canvas"><svg id="canvas" viewBox="0 0 720 310" role="group" aria-label="Workflow steps"></svg></div>
+          <div class="cdetail" id="cdetail" aria-live="polite"></div>
+          <div class="pv-foot" id="cfoot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="value-band">
+  <div class="wrap">
+    <div class="values">
+      <div class="vtile"><span class="big">~15 hrs</span><span class="what">back every week</span><span class="from">From <a href="#" data-route="/case-studies/lead-sales-engine">the Lead Sales Engine</a>: about 30 leads a week, no longer handled by hand</span></div>
+      <div class="vtile"><span class="big">~6 hrs</span><span class="what">of CRM updates, gone</span><span class="from">From <a href="#" data-route="/case-studies/crm-that-fills-itself-in">the CRM That Fills Itself In</a>: every real email and meeting logs itself</span></div>
+      <div class="vtile"><span class="big">0</span><span class="what">leads sold twice since launch</span><span class="from">Payment, delivery, and "sold" status kept in lockstep across five tools</span></div>
+    </div>
+    <div class="anno" style="margin-top:14px;margin-bottom:0"><b>sections.value-strip</b><span class="sep">|</span>direct proof: numbers from n8n case studies only</div>
+  </div>
+</section>
+
+<!-- ================= EXHIBITS ================= -->
+<section class="section dark" id="builds" style="margin-top:72px">
+  <div class="wrap">
+    <div class="anno"><b>sections.build-exhibits</b><span class="sep">|</span>each build shown as its workflow, not just a card<span class="sep">|</span>"why n8n" line per build</div>
+    <span class="eyebrow">Proof · Built on n8n</span>
+    <h2>Two n8n builds, running today. Neither needed AI.</h2>
+    <p class="lede">n8n handled both with plain, predictable logic. We add AI only where a rule cannot do the job.</p>
+    <div class="exhibits">
+      <article class="exhibit">
+        <div class="ex-canvas"><span class="stamp">REDRAWN · SCREENSHOT SLOT</span><svg class="static" id="ex-crm" viewBox="0 0 720 310" aria-hidden="true" style="min-width:560px"></svg></div>
+        <div class="ex-body">
+          <span class="ind-tag">Education · Relationship management</span>
+          <h3>The CRM That Fills Itself In</h3>
+          <p>Years of conversations with schools sat in one founder's inbox. Now real emails and meetings log themselves to Airtable, and unknown senders still get matched to the right school by email domain.</p>
+          <div class="ex-nums"><div><b>~6 hrs</b><span>saved weekly</span></div><div><b>100%</b><span>of relevant emails and meetings logged</span></div></div>
+          <div class="why"><b>Why n8n fit</b>Two ways to match every contact, a noise filter, and a years-long backfill without duplicates needed real branching logic.</div>
+          <div class="stack-tools"><span>n8n</span><span>Airtable</span><span>Gmail</span><span>Google Calendar</span></div>
+          <a class="more" href="#" data-route="/case-studies/crm-that-fills-itself-in">Read the case study &rarr;</a>
+        </div>
+      </article>
+      <article class="exhibit">
+        <div class="ex-canvas"><span class="stamp">REDRAWN · SCREENSHOT SLOT</span><svg class="static" id="ex-leads" viewBox="0 0 720 310" aria-hidden="true" style="min-width:560px"></svg></div>
+        <div class="ex-body">
+          <span class="ind-tag">Real estate · Lead sales</span>
+          <h3>The Lead Sales Engine That Runs Itself</h3>
+          <p>Property leads are enriched, pitched to contractors by text with a locked preview, and delivered the second payment clears, then marked sold everywhere.</p>
+          <div class="ex-nums"><div><b>~15 hrs</b><span>saved weekly</span></div><div><b>0</b><span>leads sold twice</span></div></div>
+          <div class="why"><b>Why n8n fit</b>Payment, PDF generation, and text messages had to stay in lockstep across five tools, with gaps in contact data handled without stopping the run.</div>
+          <div class="stack-tools"><span>n8n</span><span>Twilio</span><span>Stripe</span><span>PDFMonkey</span><span>Google Sheets</span></div>
+          <a class="more" href="#" data-route="/case-studies/lead-sales-engine">Read the case study &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIT CHECKER ================= -->
+<section class="section" id="fit">
+  <div class="wrap">
+    <div class="anno"><b>sections.fit-checker</b><span class="sep">|</span>replaces good-fit / bad-fit lists<span class="sep">|</span>framed on the owner's needs, never tool vs tool</div>
+    <span class="eyebrow">Honest fit</span>
+    <h2>When is n8n the right choice?</h2>
+    <p class="lede">Flip the switches to match the workflow you have in mind.</p>
+    <div class="checker">
+      <div class="qs" id="qs">
+        <div class="q"><div><b>It touches three or more apps</b><span>For example email, a CRM, and a payment tool</span></div><button class="switch" role="switch" aria-checked="true" data-q="apps" aria-label="Touches three or more apps"></button></div>
+        <div class="q"><div><b>It needs if/then branches or custom rules</b><span>Different paths depending on what comes in</span></div><button class="switch" role="switch" aria-checked="true" data-q="branch" aria-label="Needs branches or custom rules"></button></div>
+        <div class="q"><div><b>It runs many times a day or week</b><span>n8n Cloud counts whole workflow runs, not individual steps</span></div><button class="switch" role="switch" aria-checked="true" data-q="often" aria-label="Runs often"></button></div>
+        <div class="q"><div><b>The data should stay on your own server</b><span>Self-hosted n8n makes that possible</span></div><button class="switch" role="switch" aria-checked="false" data-q="self" aria-label="Data should stay on your own server"></button></div>
+        <div class="q"><div><b>Someone will own it after launch</b><span>Your team, or a maintenance plan</span></div><button class="switch" role="switch" aria-checked="true" data-q="owner" aria-label="Someone will own it after launch"></button></div>
+      </div>
+      <div class="verdict" aria-live="polite">
+        <span class="k">Verdict</span>
+        <svg class="gauge" viewBox="0 0 240 140" aria-hidden="true">
+          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#3691FF"/><stop offset="1" stop-color="#8041FF"/></linearGradient></defs>
+          <path class="track" d="M20 120 A100 100 0 0 1 220 120"/>
+          <path class="fill" id="gFill" d="M20 120 A100 100 0 0 1 220 120" stroke-dasharray="314.2" stroke-dashoffset="314.2"/>
+          <text x="120" y="112" text-anchor="middle" id="gText">0/4</text>
+        </svg>
+        <span class="tag good" id="vTag">Strong fit</span>
+        <h3 id="vTitle"></h3>
+        <p id="vText"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOSTING HELPER ================= -->
+<section class="section white">
+  <div class="wrap">
+    <div class="anno"><b>sections.hosting-helper</b><span class="sep">|</span>three answers highlight one option<span class="sep">|</span>facts sourced from n8n docs, no prices</div>
+    <span class="eyebrow">Hosting</span>
+    <h2>Where should your n8n run?</h2>
+    <div class="host-q">
+      <div class="row3"><span>Who will look after a server?</span><div class="seg" data-h="who"><button aria-pressed="true" data-v="nobody">Nobody in-house</button><button aria-pressed="false" data-v="it">Our IT person</button><button aria-pressed="false" data-v="us">Whispers Lab plan</button></div></div>
+      <div class="row3"><span>Must data stay on infrastructure you control?</span><div class="seg" data-h="data"><button aria-pressed="true" data-v="no">No</button><button aria-pressed="false" data-v="yes">Yes</button></div></div>
+      <div class="row3"><span>Will custom code need external libraries?</span><div class="seg" data-h="libs"><button aria-pressed="true" data-v="no">No</button><button aria-pressed="false" data-v="yes">Yes</button></div></div>
+    </div>
+    <div class="host">
+      <article class="hcard cloud" id="hCloud"><span class="ribbon">Recommended for you</span><span class="tagx">Managed</span><h3>n8n Cloud</h3><ul><li>n8n handles hosting, updates, and scaling</li><li>No installation, fastest to start</li><li>Paid plans, billed by workflow execution</li><li>Custom code cannot import external npm modules</li></ul></article>
+      <article class="hcard self" id="hSelf"><span class="ribbon">Recommended for you</span><span class="tagx">Self-hosted</span><h3>Your own server</h3><ul><li>Runs on your server or cloud account</li><li>Free Community edition with most features, plus server costs</li><li>Updates, backups, and security are someone's job</li><li>Full control over where data lives</li></ul></article>
+    </div>
+    <div class="hreason" id="hReason"></div>
+    <p class="src">Sources: <a href="https://docs.n8n.io/choose-how-to-use-n8n" target="_blank" rel="noopener">n8n docs, Choose how to use n8n</a> · <a href="https://n8n.io/pricing/" target="_blank" rel="noopener">n8n pricing</a> · <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code" target="_blank" rel="noopener">n8n docs, Code node</a></p>
+  </div>
+</section>
+
+<!-- ================= HANDOFF KIT ================= -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="anno"><b>sections.handoff-kit</b><span class="sep">|</span>answers "am I locked in?" with things you can see<span class="sep">|</span>confirm each item matches your real handoff</div>
+    <div class="kit">
+      <div>
+        <span class="eyebrow">What you own</span>
+        <h2>What do you get at handoff?</h2>
+        <div class="kit-list">
+          <div><span class="num">1</span><span><b>Your n8n account.</b> Workflows live where your business controls them.</span></div>
+          <div><span class="num">2</span><span><b>Workflow files.</b> JSON exports as a backup, with credential names cleaned.</span></div>
+          <div><span class="num">3</span><span><b>Error alerts.</b> A named person hears about a failed run, and where it failed.</span></div>
+          <div><span class="num">4</span><span><b>Documentation.</b> What runs, what triggers it, what data it touches.</span></div>
+          <div><span class="num">5</span><span><b>Video walkthroughs.</b> So your team can check and pause things without us.</span></div>
+        </div>
+      </div>
+      <div class="fan" aria-hidden="true">
+        <div class="kcard k1"><span class="kk">1 · Account</span><b>Workspace owner</b><div class="keyrow"><i></i>you@yourbusiness.com</div></div>
+        <div class="kcard k2"><span class="kk">2 · Workflow file</span><b>crm-logger.json</b><div class="code">{
+  "name": "CRM logger",
+  "nodes": [ ... ],
+  "connections": { ... }
+}</div></div>
+        <div class="kcard k3"><span class="kk">3 · Error alert</span><b>Run failed</b><div class="alert"><i>!</i><span>"Lead delivery" stopped at <b>Send SMS</b>. Open the execution to retry.</span></div></div>
+        <div class="kcard k4"><span class="kk">4 · Documentation</span><b>How the lead workflow works</b><div class="docl"><span class="h"></span><span></span><span style="width:86%"></span><span class="h"></span><span style="width:72%"></span></div></div>
+        <div class="kcard k5"><span class="kk">5 · Walkthrough</span><b>Pausing a workflow safely</b><div class="video"><span>4:12</span></div></div>
+      </div>
+    </div>
+    <div class="human-band dark-band">
+      <span class="k">n8n doesn't do this for you</span>
+      <span class="c">Approving what a workflow flags</span><span class="c">Reading failure alerts</span><span class="c">App logins and access</span><span class="c">Saying when a process changed</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STACK HUB ================= -->
+<section class="section white">
+  <div class="wrap">
+    <div class="anno"><b>sections.stack-hub</b><span class="sep">|</span>apps from real n8n builds first<span class="sep">|</span>relation: integrations</div>
+    <div class="hub">
+      <div>
+        <span class="eyebrow">Connects to</span>
+        <h2>Apps we have connected with n8n</h2>
+        <p class="lede">The ones from our published builds, plus the tools small businesses ask for most. Anything with an API can usually join.</p>
+        <div class="int-links"><a href="#" data-route="/integrations/airtable">Airtable</a><a href="#" data-route="/integrations/hubspot">HubSpot</a><a href="#" data-route="/integrations/openai-claude">OpenAI &amp; Claude</a><a href="#" data-route="/integrations/make">Make.com</a><a href="#" data-route="/integrations/zapier">Zapier</a></div>
+      </div>
+      <svg id="hub" viewBox="0 0 600 420" role="img" aria-label="Apps connected through n8n: Airtable, Gmail, Google Calendar, Google Sheets, Twilio, Stripe, PDFMonkey, HubSpot, Slack, OpenAI, Claude, any API"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="anno"><b>sections.faq</b><span class="sep">|</span>6 self-contained answers &rarr; FAQPage</div>
+    <div class="faq2">
+      <div class="left">
+        <span class="eyebrow">Clearing the air</span>
+        <h2>Questions owners ask about n8n</h2>
+        <div class="askcard"><img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="48" height="48"><div><b>Have a workflow in mind?</b><a href="#" data-route="/book">Book a free discovery call &rarr;</a></div></div>
+      </div>
+      <div class="faq" id="faq">
+        <details open><summary><span class="q">What is n8n used for?</span><i>+</i></summary><div class="a">n8n is a workflow automation platform used to connect business apps and run multi-step processes without manual work, such as logging emails to a CRM, routing new leads, generating documents, or sending alerts. Workflows can branch on conditions, run custom JavaScript, and call AI models where a step needs it.</div></details>
+        <details><summary><span class="q">Is n8n free?</span><i>+</i></summary><div class="a">n8n has a free self-hosted Community edition that includes most features, but the business provides and maintains the server. n8n Cloud is a paid, fully managed service billed by workflow executions, where one execution is a single run of a whole workflow no matter how many steps it has. Current prices are listed on n8n's pricing page.</div></details>
+        <details><summary><span class="q">Should a small business use n8n Cloud or self-host n8n?</span><i>+</i></summary><div class="a">n8n Cloud suits most small businesses because n8n handles hosting, updates, and scaling. Self-hosting suits businesses that need full control over where their data lives and have someone to handle updates, backups, and security. Whispers Lab recommends one during the Automation Audit based on the data involved, the budget, and who will maintain it.</div></details>
+        <details><summary><span class="q">Can n8n workflows use AI like OpenAI or Claude?</span><i>+</i></summary><div class="a">Yes. An n8n workflow can send text or documents to an AI model to classify, extract, or summarize, then use the result in later steps. Whispers Lab adds AI only where a plain rule cannot do the job, because rules are cheaper and more predictable. Neither of Whispers Lab's two published n8n builds needed AI.</div></details>
+        <details><summary><span class="q">Who maintains n8n workflows after they are built?</span><i>+</i></summary><div class="a">After a Whispers Lab build, the business receives documentation, video walkthroughs, and an error workflow that alerts a named person when a run fails. Businesses that want ongoing monitoring, fixes, and a new workflow added each month can use the AI Growth Partner plan at $500 a month.</div></details>
+        <details><summary><span class="q">How much does it cost to have n8n workflows built?</span><i>+</i></summary><div class="a">Whispers Lab starts with a $250 Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the $250 is credited toward the build. n8n's own subscription or server costs are separate from the build and are estimated during the Audit.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="anno"><b>sections.cta-audit-preview</b><span class="sep">|</span>Global, copy overridden per integration</div>
+    <div class="cta2">
+      <div>
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Find out which of your workflows belong in n8n.</h2>
+        <p class="lede">In 7 days, the Automation Audit maps your processes, recommends Cloud or self-hosted, and hands you a build plan you keep either way. Build it with us and the $250 is credited.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#" data-route="/audit">Book Your Audit ($250) <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn-ghost" href="#" data-route="/book">Book a free discovery call</a></div>
+      </div>
+      <div class="deliv" aria-label="Audit deliverables">
+        <div class="dv"><span class="day">DAYS 1 TO 2</span><b>Automation Readiness Scorecard</b><div class="viz"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 3 TO 4</span><b>Visual Workflow Map</b><div class="viz"><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 5 TO 6</span><b>Automation Priority Matrix</b><div class="viz"><i style="height:90%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:20%"></i></div></div>
+        <div class="dv"><span class="day">DAY 7</span><b>Execution Blueprint</b><div class="viz"><i style="height:50%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:100%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+/*__FOOTER__*/
+
+<section class="spec" aria-label="Template spec">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--anno)">Outside the page · template spec</span>
+    <h2>What ships in the &lt;head&gt; and the CMS</h2>
+    <div class="spec-grid">
+      <div class="panel">
+        <h3>Search result preview</h3>
+        <div class="serp">
+          <div class="site"><i>W</i><span>Whispers Lab<small>https://www.whisperslab.com › integrations › n8n</small></span></div>
+          <div class="st" id="serpTitle">n8n Automation Services for Small Businesses | Whispers Lab</div>
+          <div class="sd" id="serpDesc">We design, build, and maintain n8n workflows on n8n Cloud or your own server. See two real n8n builds and check whether n8n fits your workflow.</div>
+        </div>
+        <div class="counts" id="counts"></div>
+      </div>
+      <div class="panel"><h3>Integration guardrails (live checks)</h3><ul class="checks-live" id="guards"></ul></div>
+      <div class="panel">
+        <h3>Keywords to validate before writing</h3>
+        <div class="kw">
+          <div><span class="tag">primary?</span><span>n8n automation services · n8n consultant</span></div>
+          <div><span class="tag">secondary</span><span>n8n agency · hire n8n developer · n8n expert</span></div>
+          <div><span class="tag risk">SERP risk</span><span>n8n.io templates and freelance marketplaces may own these results. Check before committing the H1.</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Sources, verified 2026-09-17</h3>
+        <ul class="sources">
+          <li><a href="https://n8n.io/pricing/" target="_blank" rel="noopener">n8n.io/pricing</a><span>An execution is a single run of the whole workflow, regardless of steps.</span></li>
+          <li><a href="https://docs.n8n.io/choose-how-to-use-n8n" target="_blank" rel="noopener">docs: Choose how to use n8n</a><span>Cloud is fully managed; free self-hosted Community edition with most features.</span></li>
+          <li><a href="https://docs.n8n.io/n8n-community-license/sustainable-use-license" target="_blank" rel="noopener">docs: Sustainable Use License</a><span>Building workflows as a consultant is an allowed use.</span></li>
+          <li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code" target="_blank" rel="noopener">docs: Code node</a><span>JavaScript; n8n Cloud cannot import external npm modules.</span></li>
+          <li><a href="https://docs.n8n.io/build/manage-workflows/export-and-import" target="_blank" rel="noopener">docs: Export and import</a><span>JSON exports include credential names and IDs.</span></li>
+        </ul>
+      </div>
+      <div class="panel span2">
+        <h3>Section &rarr; Strapi &rarr; data source</h3>
+        <div class="table-scroll" style="margin-top:0">
+          <table class="map">
+            <thead><tr><th>Section</th><th>Component</th><th>Filled from</th></tr></thead>
+            <tbody>
+              <tr><td>Hero + build canvas</td><td>sections.build-canvas</td><td>Relation: case-studies, each with canvasNodes[] and edges[]</td></tr>
+              <tr><td>Value strip</td><td>sections.value-strip</td><td>Relation: case-studies metrics</td></tr>
+              <tr><td>Build exhibits</td><td>sections.build-exhibits</td><td>Relation: case-studies + whyThisTool</td></tr>
+              <tr><td>Fit checker</td><td>sections.fit-checker</td><td>Integration entry: questions[] {text, hint, weight, blocking}</td></tr>
+              <tr><td>Hosting helper</td><td>sections.hosting-helper</td><td>Integration entry, optional: options[], questions[], rules</td></tr>
+              <tr><td>Handoff kit</td><td>sections.handoff-kit</td><td>Global (shared) + humanItems[] per tool</td></tr>
+              <tr><td>Stack hub</td><td>sections.stack-hub</td><td>Relation: integrations</td></tr>
+              <tr><td>FAQ, CTA</td><td>sections.faq, sections.cta-audit-preview</td><td>Entry; Global</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel span2"><h3>JSON-LD (Service + mentions SoftwareApplication + BreadcrumbList + FAQPage)</h3><pre class="jsonld" id="jsonld"></pre></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  /*__COMMON_JS__*/
+
+  /* ===== canvas renderer ===== */
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var COLORS = { trigger: "#3691FF", rule: "#64748B", action: "#15803D" };
+  var TYPE_LABEL = { trigger: "Trigger", rule: "Rule", action: "Action" };
+  var W = 88, H = 64;
+  var BUILDS = {
+    crm: { foot: "Result: <b>~6 hrs</b> saved weekly", foot2: "0 noise reaching the CRM",
+      nodes: [
+        { id: "a", x: 30, y: 90, type: "trigger", glyph: "@", lbl: ["New email", "or meeting"], d: "Every new email and calendar invite is picked up as it arrives." },
+        { id: "b", x: 170, y: 90, type: "rule", glyph: "Filter", lbl: ["Filter out", "the noise"], d: "Internal chatter, newsletters, and meeting-bot invites are thrown out before anything reaches the CRM." },
+        { id: "c", x: 310, y: 90, type: "rule", glyph: "IF", lbl: ["Known", "contact?"], d: "The sender is looked up in the saved contact list." },
+        { id: "d", x: 450, y: 196, type: "rule", glyph: "Domain", lbl: ["Match by", "email domain"], d: "If the person is not saved yet, their email domain is matched against known schools, so the conversation still lands on the right organization." },
+        { id: "e", x: 590, y: 90, type: "action", glyph: "Log", lbl: ["Log to", "the CRM"], d: "The email or meeting is logged, linked to both the person and their organization." } ],
+      edges: [["a", "b"], ["b", "c"], ["c", "e", "yes", "#15803D"], ["c", "d", "no", "#B45309"], ["d", "e"]] },
+    leads: { foot: "Result: <b>~15 hrs</b> saved weekly", foot2: "0 leads sold twice since launch",
+      nodes: [
+        { id: "a", x: 30, y: 60, type: "trigger", glyph: "Lead", lbl: ["New property", "lead"], d: "New property violation leads come in." },
+        { id: "b", x: 170, y: 60, type: "action", glyph: "Find", lbl: ["Find homeowner", "contact"], d: "A lookup service finds the homeowner's phone and email. Missing results are handled without stopping the pipeline." },
+        { id: "c", x: 310, y: 60, type: "action", glyph: "PDF", lbl: ["Build teaser", "PDF"], d: "A teaser document proves the lead is real, with contact details blacked out." },
+        { id: "d", x: 450, y: 60, type: "action", glyph: "SMS", lbl: ["Text contractors", "+ pay link"], d: "Local contractors get a text with the teaser and a payment link." },
+        { id: "e", x: 590, y: 60, type: "trigger", glyph: "Paid", lbl: ["Payment", "clears"], d: "The moment a contractor pays, the rest of the workflow starts." },
+        { id: "f", x: 590, y: 196, type: "action", glyph: "Sold", lbl: ["Deliver lead,", "mark sold"], d: "The full document is texted to the buyer and the lead is marked sold everywhere, so it can never be offered twice." } ],
+      edges: [["a", "b"], ["b", "c"], ["c", "d"], ["d", "e"], ["e", "f"]] }
+  };
+  function el(name, attrs, text) { var n = document.createElementNS(SVGNS, name); for (var k in attrs) n.setAttribute(k, attrs[k]); if (text != null) n.textContent = text; return n; }
+  function edgePath(s, t) {
+    if (t.x === s.x) { var x = s.x + W / 2; return "M" + x + " " + (s.y + H + 40) + " L" + x + " " + (t.y - 6); }
+    var sx = s.x + W, sy = s.y + H / 2, tx = t.x - 4, ty = t.y + H / 2, mx = (sx + tx) / 2;
+    return "M" + sx + " " + sy + " C" + mx + " " + sy + ", " + mx + " " + ty + ", " + tx + " " + ty;
+  }
+  function draw(svg, key, interactive, onSelect) {
+    var b = BUILDS[key], byId = {}, uid = svg.id;
+    b.nodes.forEach(function (n) { byId[n.id] = n; });
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var defs = el("defs", {}), marker = el("marker", { id: "arrow-" + uid, viewBox: "0 0 10 10", refX: "8", refY: "5", markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse" });
+    marker.appendChild(el("path", { d: "M0 0 L10 5 L0 10 z", fill: "#94A3B8" })); defs.appendChild(marker); svg.appendChild(defs);
+    b.edges.forEach(function (e, i) {
+      var s = byId[e[0]], t = byId[e[1]], d = edgePath(s, t);
+      svg.appendChild(el("path", { d: d, class: "cedge", "marker-end": "url(#arrow-" + uid + ")" }));
+      if (e[2]) svg.appendChild(el("text", { x: (s.x + W + t.x) / 2, y: (s.y + t.y) / 2 + H / 2 - 8, "text-anchor": "middle", class: "celabel", fill: e[3] }, e[2]));
+      if (!reduce) { var dot = el("circle", { r: "4", class: "cdot" }); dot.appendChild(el("animateMotion", { dur: "1.6s", repeatCount: "indefinite", path: d, begin: (i * 0.4) + "s" })); svg.appendChild(dot); }
+    });
+    b.nodes.forEach(function (n) {
+      var g = el("g", { class: "cnode", transform: "translate(" + n.x + " " + n.y + ")", "data-id": n.id });
+      if (interactive) { g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", n.lbl.join(" ")); }
+      g.style.setProperty("--c", COLORS[n.type]);
+      g.appendChild(el("rect", { class: "box", width: W, height: H, rx: "16" }));
+      g.appendChild(el("rect", { x: "10", y: "10", width: "10", height: "10", rx: n.type === "trigger" ? "5" : "2", fill: COLORS[n.type], transform: n.type === "rule" ? "rotate(45 15 15)" : "" }));
+      g.appendChild(el("text", { x: W / 2, y: H / 2 + 9, "text-anchor": "middle", class: "glyph" }, n.glyph));
+      n.lbl.forEach(function (line, j) { g.appendChild(el("text", { x: W / 2, y: H + 17 + j * 14, "text-anchor": "middle", class: "lbl" }, line)); });
+      if (interactive) {
+        g.addEventListener("click", function () { onSelect(n); });
+        g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); onSelect(n); } });
+      }
+      svg.appendChild(g);
+    });
+    return b;
+  }
+  var canvas = $("#canvas"), cdetail = $("#cdetail"), cfoot = $("#cfoot");
+  function select(n) {
+    $$(".cnode", canvas).forEach(function (g) { g.classList.toggle("sel", g.getAttribute("data-id") === n.id); });
+    cdetail.innerHTML = '<span class="k" style="color:' + COLORS[n.type] + '">' + TYPE_LABEL[n.type] + '</span><span class="t">' + n.lbl.join(" ") + '</span><p>' + n.d + '</p>';
+  }
+  function showBuild(key) {
+    var b = draw(canvas, key, true, select);
+    cfoot.innerHTML = "<span>" + b.foot + "</span><span>" + b.foot2 + "</span>";
+    $$(".canvas-card .tab").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.build === key ? "true" : "false"); });
+    select(b.nodes[0]);
+  }
+  $$(".canvas-card .tab").forEach(function (t) { t.addEventListener("click", function () { showBuild(t.dataset.build); }); });
+  showBuild("crm");
+  draw($("#ex-crm"), "crm", false);
+  draw($("#ex-leads"), "leads", false);
+
+  /* ===== fit checker ===== */
+  var state = { apps: true, branch: true, often: true, self: false, owner: true };
+  function verdict() {
+    var score = (state.apps ? 1 : 0) + (state.branch ? 1 : 0) + (state.often ? 1 : 0) + (state.self ? 1 : 0);
+    $("#gFill").setAttribute("stroke-dashoffset", String(314.2 * (1 - score / 4)));
+    $("#gText").textContent = score + "/4";
+    var tag = $("#vTag"), t, x, cls;
+    if (!state.owner) { cls = "maybe"; tag.textContent = "Hold on"; t = "Decide who owns it first"; x = "Any workflow needs someone to read its alerts. Keep it small, give it an owner, or add a maintenance plan before building anything complex."; }
+    else if (score >= 3) { cls = "good"; tag.textContent = "Strong fit"; t = "n8n is a good fit"; x = "Several apps, real branching, and frequent runs are exactly what n8n handles well." + (state.self ? " Self-hosting keeps the data on your own server." : ""); }
+    else if (score === 2) { cls = "good"; tag.textContent = "Good fit"; t = "n8n will work well"; x = "It is more than a simple two-step connection, so a platform with branching pays off." + (state.self ? " Self-hosting keeps the data on your own server." : ""); }
+    else if (score === 1) { cls = "maybe"; tag.textContent = "Could go either way"; t = "A simpler option may do"; x = "If a tool you already pay for has a built-in integration that does the whole job, start there. The Audit will tell you which."; }
+    else { cls = "no"; tag.textContent = "Probably not n8n"; t = "Use what you already have"; x = "A two-step connection with no branches rarely needs a new platform. Check your apps' built-in integrations first."; }
+    tag.className = "tag " + cls; $("#vTitle").textContent = t; $("#vText").textContent = x;
+  }
+  $$(".switch").forEach(function (s) {
+    s.addEventListener("click", function () { var on = s.getAttribute("aria-checked") !== "true"; s.setAttribute("aria-checked", on ? "true" : "false"); state[s.dataset.q] = on; verdict(); });
+  });
+  verdict();
+
+  /* ===== hosting helper ===== */
+  var host = { who: "nobody", data: "no", libs: "no" };
+  function recommend() {
+    var needSelf = host.data === "yes" || host.libs === "yes";
+    var self = needSelf && host.who !== "nobody", cloud = !needSelf;
+    $("#hCloud").classList.toggle("rec", cloud); $("#hCloud").classList.toggle("dim", !cloud && (self || needSelf));
+    $("#hSelf").classList.toggle("rec", needSelf); $("#hSelf").classList.toggle("dim", cloud);
+    var r;
+    if (cloud) r = "n8n Cloud. Nothing you described needs your own server, and n8n handles hosting, updates, and scaling.";
+    else if (self) r = "Self-hosted. " + (host.data === "yes" ? "Your data needs to stay on infrastructure you control" : "Your code needs external libraries, which n8n Cloud does not allow") + ", and " + (host.who === "it" ? "your IT person" : "a Whispers Lab maintenance plan") + " can look after the server.";
+    else r = "Self-hosted, but only with a maintenance plan. You need your own server, and nobody in-house can look after it yet.";
+    $("#hReason").textContent = "Recommendation: " + r;
+  }
+  $$(".host-q .seg").forEach(function (seg) {
+    $$("button", seg).forEach(function (b) {
+      b.addEventListener("click", function () { $$("button", seg).forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); host[seg.dataset.h] = b.dataset.v; recommend(); });
+    });
+  });
+  recommend();
+
+  /* ===== stack hub ===== */
+  (function () {
+    var hub = $("#hub");
+    function mk(n, a, t) { var e = document.createElementNS(SVGNS, n); for (var k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; return e; }
+    var tools = ["Airtable", "Gmail", "Google Calendar", "Google Sheets", "Twilio", "Stripe", "PDFMonkey", "HubSpot", "Slack", "OpenAI", "Claude", "Any API"];
+    var cx = 300, cy = 210, rx = 230, ry = 160;
+    var nodes = tools.map(function (name, i) { var ang = -Math.PI / 2 + i * 2 * Math.PI / tools.length; return { name: name, x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang) }; });
+    nodes.forEach(function (n) { hub.appendChild(mk("line", { x1: cx, y1: cy, x2: n.x, y2: n.y, class: "spoke" })); });
+    hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 66, fill: "rgba(128,65,255,.12)" }));
+    hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 54, class: "core" }));
+    hub.appendChild(mk("text", { x: cx, y: cy - 2, "text-anchor": "middle", class: "core-t" }, "n8n"));
+    hub.appendChild(mk("text", { x: cx, y: cy + 16, "text-anchor": "middle", class: "core-s" }, "your workflows"));
+    nodes.forEach(function (n) { var w = n.name.length * 7.4 + 24; var g = mk("g", { class: "hn" }); g.appendChild(mk("rect", { x: n.x - w / 2, y: n.y - 16, width: w, height: 32, rx: 16 })); g.appendChild(mk("text", { x: n.x, y: n.y + 4.5, "text-anchor": "middle" }, n.name)); hub.appendChild(g); });
+  })();
+
+  /* ===== spec ===== */
+  var answer = $("#answer").textContent.trim();
+  $("#answerCount").textContent = answer.split(/\s+/).length;
+  var title = $("#serpTitle").textContent, desc = $("#serpDesc").textContent, dash = new RegExp(String.fromCharCode(8212));
+  $("#counts").innerHTML = '<span class="count' + (title.length > 60 ? ' bad' : '') + '">title ' + title.length + '/60</span><span class="count' + (desc.length > 160 ? ' bad' : '') + '">description ' + desc.length + '/160</span><span class="count' + (dash.test($("main").innerText) ? ' bad">em dashes found' : '">0 em dashes') + '</span>';
+  var headings = $$("header h1, main h2, main h3").map(function (h) { return h.textContent; });
+  var mc = $("main").cloneNode(true); $$(".anno", mc).forEach(function (n) { n.remove(); });
+  var pageText = mc.textContent + " " + $("header .hero-grid").textContent;
+  var guards = [
+    ["No \"vs\" or \"versus\" in any heading", !headings.some(function (h) { return /\b(vs\.?|versus)\b/i.test(h); })],
+    ["No \"best X software\" or \"alternatives to\" framing", !/\bbest\s+\w+\s+(software|tools?)\b|\balternatives? to\b/i.test(pageText)],
+    ["Brand written \"n8n\" everywhere", !/\bN8N\b|\bN8n\b/.test(pageText)],
+    ["No \"AI agents\" wording", !/\bAI agents?\b/i.test(pageText)],
+    ["No n8n plan prices quoted", !/n8n[^.?!]{0,60}\$\d/i.test(pageText)],
+    ["Hosting facts link to n8n's own docs", $$(".src a[href*='n8n.io']").length >= 2]
+  ];
+  $("#guards").innerHTML = guards.map(function (g) { return '<li><span class="st ' + (g[1] ? 'pass">PASS' : 'fail">FAIL') + '</span><span>' + g[0] + '</span></li>'; }).join("");
+
+  var url = "https://www.whisperslab.com/integrations/n8n";
+  var faq = $$("#faq details").map(function (d) { return { "@type": "Question", name: $(".q", d).textContent, acceptedAnswer: { "@type": "Answer", text: $(".a", d).textContent } }; });
+  var ld = { "@context": "https://schema.org", "@graph": [
+    { "@type": "Service", "@id": url + "#service", name: "n8n Automation Services", serviceType: "n8n workflow design, build, and maintenance", description: answer, url: url,
+      provider: { "@type": "Organization", name: "Whispers Lab", url: "https://www.whisperslab.com" }, areaServed: { "@type": "Country", name: "United States" },
+      audience: { "@type": "BusinessAudience", audienceType: "Small businesses" },
+      mentions: { "@type": "SoftwareApplication", name: "n8n", applicationCategory: "BusinessApplication", url: "https://n8n.io", sameAs: ["https://github.com/n8n-io/n8n"] },
+      subjectOf: [{ "@type": "Article", name: "The CRM That Fills Itself In", url: "https://www.whisperslab.com/case-studies/crm-that-fills-itself-in" }, { "@type": "Article", name: "The Lead Sales Engine That Runs Itself", url: "https://www.whisperslab.com/case-studies/lead-sales-engine" }],
+      offers: { "@type": "Offer", name: "Automation Audit", price: "250", priceCurrency: "USD", url: "https://www.whisperslab.com/audit" } },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.whisperslab.com" }, { "@type": "ListItem", position: 2, name: "Integrations", item: "https://www.whisperslab.com/integrations" }, { "@type": "ListItem", position: 3, name: "n8n", item: url }] },
+    { "@type": "FAQPage", mainEntity: faq } ] };
+  $("#jsonld").textContent = JSON.stringify(ld, null, 2);
+  var s = document.createElement("script"); s.type = "application/ld+json"; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+})();
+</script>

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import BlogCard from "@/components/BlogCard";
 import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Blog — Whispers Lab",
+  title: "Blog | Whispers Lab",
   description:
     "Automation guides for small business owners: what to fix first, how it actually works, and what it looks like in your industry.",
   alternates: { canonical: "/blog" },
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Whispers Lab",
     locale: "en_US",
-    title: "Blog — Whispers Lab",
+    title: "Blog | Whispers Lab",
     description:
       "Automation guides for small business owners: what to fix first, how it actually works, and what it looks like in your industry.",
     url: "/blog",
@@ -23,13 +21,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Whispers Lab — We delete busywork.",
+        alt: "Whispers Lab. We delete busywork.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog — Whispers Lab",
+    title: "Blog | Whispers Lab",
     description:
       "Automation guides for small business owners: what to fix first, how it actually works, and what it looks like in your industry.",
     images: ["/og-image.png"],
@@ -65,7 +63,6 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <SiteHeader />
       <main>
         <section className="contact-banner">
           <div className="container">
@@ -86,7 +83,6 @@ export default async function BlogPage() {
 
         <NewsletterSection />
       </main>
-      <SiteFooter />
     </>
   );
 }

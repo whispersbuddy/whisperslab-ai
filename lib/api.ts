@@ -8,7 +8,9 @@ export const CASE_STUDIES_TAG = 'case-studies';
 const REVALIDATE_SECONDS = 3600;
 
 function strapiInit(tag: string): RequestInit {
-  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  // Server-only name. The NEXT_PUBLIC_ fallback keeps existing deploys working
+  // until the env var is renamed on the host; remove it after that.
+  const token = process.env.STRAPI_API_TOKEN || process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   return {
     method: 'GET',
     headers: token ? { Authorization: `Bearer ${token}` } : {},

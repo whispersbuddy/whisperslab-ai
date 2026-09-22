@@ -4,32 +4,32 @@ import { CORE_BUILD_HTML } from "@/app/_content/coreBuild";
 const SITE_URL = "https://www.whisperslab.com";
 
 export const metadata: Metadata = {
-  title: "The Core Build — Whispers Lab",
+  title: "The Core Build | Whispers Lab",
   description:
-    "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",
+    "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days, starting at $2,500.",
   alternates: { canonical: "/core-build" },
   openGraph: {
     type: "website",
     siteName: "Whispers Lab",
     locale: "en_US",
-    title: "The Core Build — Whispers Lab",
+    title: "The Core Build | Whispers Lab",
     description:
-      "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",
+      "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days, starting at $2,500.",
     url: "/core-build",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Whispers Lab — We delete busywork.",
+        alt: "Whispers Lab. We delete busywork.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Core Build — Whispers Lab",
+    title: "The Core Build | Whispers Lab",
     description:
-      "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days — starting at $2,500.",
+      "We build and deploy the 2–3 automations that pay for themselves fastest, production-ready in 30 days, starting at $2,500.",
     images: ["/og-image.png"],
   },
 };

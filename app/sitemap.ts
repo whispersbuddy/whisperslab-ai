@@ -4,6 +4,7 @@ import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/app/_content/caseStudiesData";
 import { BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchCaseStudies, fetchArticles } from "@/lib/api";
+import { ROUTES, isLive } from "@/lib/routes";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -44,25 +45,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: number;
     lastModified?: Date;
   }> = [
-    { path: "/", changeFrequency: "weekly", priority: 1, lastModified: commonDate },
-    { path: "/audit", changeFrequency: "monthly", priority: 0.9, lastModified: commonDate },
-    { path: "/core-build", changeFrequency: "monthly", priority: 0.9, lastModified: commonDate },
-    { path: "/case-studies", changeFrequency: "weekly", priority: 0.8, lastModified: commonDate },
+    // Registry pages (lib/routes.ts): only live ones are listed.
+    ...ROUTES.filter(isLive).map((r) => ({
+      path: r.path,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+      lastModified: r.updated ? new Date(r.updated) : commonDate,
+    })),
     ...Array.from(caseStudyDateMap.entries()).map(([slug, date]) => ({
       path: `/case-studies/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
       lastModified: date,
     })),
-    { path: "/blog", changeFrequency: "weekly", priority: 0.8, lastModified: commonDate },
     ...Array.from(blogDateMap.entries()).map(([slug, date]) => ({
       path: `/blog/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
       lastModified: date,
     })),
-    { path: "/contact", changeFrequency: "monthly", priority: 0.7, lastModified: commonDate },
-    { path: "/book", changeFrequency: "monthly", priority: 0.6, lastModified: commonDate },
   ];
 
   return routes.map(({ path, changeFrequency, priority, lastModified }) => ({

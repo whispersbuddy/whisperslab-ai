@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import ClientEffects from "@/components/ClientEffects";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Whispers Lab — We delete busywork.",
+        alt: "Whispers Lab. We delete busywork.",
       },
     ],
   },
@@ -40,7 +42,13 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo-trim.png`,
   description:
-    "AI automation agency helping small business owners — primarily in the United States — eliminate manual busywork through custom-built automation and AI systems. Works with clients remotely worldwide.",
+    "AI automation agency helping small business owners, primarily in the United States, eliminate manual busywork with custom-built automation and AI systems. A US LLC with its build team based in Lahore, Pakistan, working with clients remotely.",
+  foundingDate: "2025",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    minValue: 10,
+    maxValue: 12,
+  },
   founder: {
     "@type": "Person",
     name: "Haris Ali",
@@ -92,7 +100,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <ClientEffects />
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"

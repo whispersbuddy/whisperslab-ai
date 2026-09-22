@@ -12,7 +12,7 @@ export const CALENDLY_URLS: Record<CalendlyType, string> = {
     "https://calendly.com/whisperslab/30min",
 };
 
-// Light, brand-accented theming applied to every embed — renders as a clean
+// Light, brand-accented theming applied to every embed; renders as a clean
 // white card against the site's dark booking sections.
 const THEME_PARAMS: Record<string, string> = {
   hide_gdpr_banner: "1",

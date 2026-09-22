@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Whispers Lab",
+  title: "Case Studies | Whispers Lab",
   description:
     "Real systems we've built for real small businesses, rebuilt from manual chaos into quiet automation.",
   alternates: { canonical: "/case-studies" },
@@ -15,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Whispers Lab",
     locale: "en_US",
-    title: "Case Studies — Whispers Lab",
+    title: "Case Studies | Whispers Lab",
     description:
       "Real systems we've built for real small businesses, rebuilt from manual chaos into quiet automation.",
     url: "/case-studies",
@@ -24,13 +22,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Whispers Lab — We delete busywork.",
+        alt: "Whispers Lab. We delete busywork.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Case Studies — Whispers Lab",
+    title: "Case Studies | Whispers Lab",
     description:
       "Real systems we've built for real small businesses, rebuilt from manual chaos into quiet automation.",
     images: ["/og-image.png"],
@@ -75,7 +73,6 @@ export default async function CaseStudiesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <SiteHeader />
       <main>
         <section className="contact-banner">
           <div className="container">
@@ -144,7 +141,6 @@ export default async function CaseStudiesPage() {
 
         <NewsletterSection />
       </main>
-      <SiteFooter />
     </>
   );
 }
