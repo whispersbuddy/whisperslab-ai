@@ -6,7 +6,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 import SiteIcon from "@/components/SiteIcon";
 import BeforeAfter from "@/components/service/BeforeAfter";
 import Estimator from "@/components/service/Estimator";
-import { CtaAudit, FaqSplit, SectionHead, ServiceHero, StackHub, Stepper } from "@/components/service/Sections";
+import { CtaAudit, FaqSplit, ResultStory, SectionHead, ServiceHero, StackHub, Stepper } from "@/components/service/Sections";
 import { DayTimeline, PatternMatchProof, TrustLayers } from "@/components/industry/Sections";
 import { getIndustry, INDUSTRIES } from "@/app/_content/industries";
 import { getAllPosts } from "@/lib/content";
@@ -138,10 +138,19 @@ export default async function IndustryPageRoute({ params }: { params: Promise<{ 
           </div>
         </section>
 
-        <section className="section sv-section">
+        <section className="section sv-section" id="proof">
           <div className="container">
-            <SectionHead eyebrow={i.proof.eyebrow} title={i.proof.title} intro={i.proof.intro} />
-            <PatternMatchProof rows={i.proof.rows} />
+            {i.proof.mode === "direct" ? (
+              <>
+                <SectionHead eyebrow={i.proof.eyebrow} title={i.proof.title} />
+                <ResultStory proof={{ featured: i.proof.featured, more: i.proof.more }} />
+              </>
+            ) : (
+              <>
+                <SectionHead eyebrow={i.proof.eyebrow} title={i.proof.title} intro={i.proof.intro} />
+                <PatternMatchProof rows={i.proof.rows} />
+              </>
+            )}
           </div>
         </section>
 

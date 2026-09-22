@@ -24,18 +24,20 @@ export function TrustLayers({ trust }: { trust: IndustryPage["trust"] }) {
           );
         })}
       </div>
-      <div className="citation-box">
-        <span className="citation-badge">
-          {trust.citation.badge}
-          <small>{trust.citation.badgeSmall}</small>
-        </span>
-        <div>
-          <p>
-            {trust.citation.text} <a href={trust.citation.url} target="_blank" rel="noopener">Read the opinion &rarr;</a>
-          </p>
-          <p className="citation-fine">{trust.citation.fine}</p>
+      {trust.citation ? (
+        <div className="citation-box">
+          <span className="citation-badge">
+            {trust.citation.badge}
+            <small>{trust.citation.badgeSmall}</small>
+          </span>
+          <div>
+            <p>
+              {trust.citation.text} <a href={trust.citation.url} target="_blank" rel="noopener">Read the guidance &rarr;</a>
+            </p>
+            <p className="citation-fine">{trust.citation.fine}</p>
+          </div>
         </div>
-      </div>
+      ) : null}
       <div className="citation-promises">
         {trust.promises.map((p) => (
           <div key={p.label} className="citation-promise">
