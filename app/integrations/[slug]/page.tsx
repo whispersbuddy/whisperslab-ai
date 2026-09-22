@@ -176,7 +176,7 @@ export default async function IntegrationPageRoute({ params }: { params: Promise
           </section>
         ) : null}
 
-        <section className="section sv-section">
+        <section className="section sv-section" id="faq">
           <div className="container">
             <FaqSplit faq={i.faq} />
           </div>

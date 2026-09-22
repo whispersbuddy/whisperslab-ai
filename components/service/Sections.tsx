@@ -261,17 +261,19 @@ export function ResultStory({ proof }: { proof: ServicePage["proof"] }) {
           <figcaption>{f.caption}</figcaption>
         </figure>
       </div>
-      <div className="sv-more">
-        {proof.more.map((m) => (
-          <a key={m.slug} className="sv-mr" href={`/case-studies/${m.slug}`}>
-            <span className="sv-mr-n">{m.big}</span>
-            <span>
-              <b>{m.title}</b>
-              <span>{m.detail}</span>
-            </span>
-          </a>
-        ))}
-      </div>
+      {proof.more.length ? (
+        <div className="sv-more">
+          {proof.more.map((m) => (
+            <a key={m.slug} className="sv-mr" href={`/case-studies/${m.slug}`}>
+              <span className="sv-mr-n">{m.big}</span>
+              <span>
+                <b>{m.title}</b>
+                <span>{m.detail}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }

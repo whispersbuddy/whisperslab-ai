@@ -25,7 +25,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     seo: {
       title: "Airtable Consultant for Small Businesses | Whispers Lab",
       description:
-        "Whispers Lab builds Airtable bases and automations for small businesses: CRMs, project trackers, and client databases, used in many of our builds. No certification claimed, just real bases.",
+        "Whispers Lab builds Airtable bases and automations for small businesses: CRMs, trackers, client databases. Used in many builds, no certification claimed.",
       keyword: "airtable consultant",
     },
     hero: {

@@ -180,7 +180,7 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
           </section>
         ) : null}
 
-        <section className="section sv-section">
+        <section className="section sv-section" id="faq">
           <div className="container">
             <FaqSplit faq={s.faq} />
           </div>
