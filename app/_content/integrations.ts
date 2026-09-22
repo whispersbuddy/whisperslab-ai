@@ -485,6 +485,218 @@ export const INTEGRATIONS: IntegrationPage[] = [
       posts: ["real-estate-lead-follow-up-automation"],
     },
   },
+  {
+    slug: "zapier",
+    tool: { name: "Zapier", url: "https://zapier.com" },
+    seo: {
+      title: "Zapier Consultant for Small Businesses | Whispers Lab",
+      description:
+        "Whispers Lab builds Zapier workflows for small businesses: two-way syncs, branded quotes, and clean handoffs between the apps you already pay for.",
+      keyword: "zapier consultant",
+    },
+    hero: {
+      eyebrow: "Integration · Zapier",
+      title: "Zapier consultants for teams",
+      highlight: "done retyping the same record twice.",
+      answer:
+        "Whispers Lab builds Zapier workflows, called Zaps, that keep your apps in sync: a new customer in one tool becomes a new customer everywhere else, without anyone copying a field by hand. We build multi-step Zaps, add safeguards so two systems never loop on each other, and hand over workflows your team owns.",
+      secondaryCta: { label: "See what a Zapier build includes", href: "#includes" },
+    },
+    simulator: [
+      {
+        key: "sync",
+        tab: "New customer syncs",
+        source: "Operations app",
+        sourceIcon: "O",
+        doc: { title: "NEW CUSTOMER", rows: [["Name", "Ridge Supply Co"], ["Email", "ap@ridgesupply.com"]], lines: 2 },
+        steps: [
+          { t: "0.0s", text: "<b>New customer created</b> in the operations app" },
+          { t: "0.4s", text: "<b>Mirrored</b> into Xero automatically" },
+          { t: "0.7s", text: "<b>Circuit breaker checked</b>: this update won't bounce back and forth" },
+          { t: "1.0s", text: "<b>Synced</b>, both systems now match" },
+        ],
+        out: { k: "Customer synced", v: "0 records typed twice", s: "Both systems match, nothing re-triggers the other" },
+      },
+      {
+        key: "quote",
+        tab: "Quote gets accepted",
+        source: "Operations app",
+        sourceIcon: "Q",
+        doc: { title: "NEW QUOTE", rows: [["Client", "Metro Fuel"], ["Amount", "$4,200"]], lines: 2 },
+        steps: [
+          { t: "0.0s", text: "<b>Quote ready</b> to send" },
+          { t: "0.3s", text: "<b>Branded PDF built</b>, no login wall" },
+          { t: "0.6s", text: "<b>Emailed</b> straight to the client's inbox" },
+          { t: "1.0s", text: "<b>Client clicks Accept</b>" },
+          { t: "1.3s", text: "<b>Both systems update</b> at the same instant" },
+        ],
+        out: { k: "Quote accepted", v: "1 click, 2 systems updated", s: "No login and no separate follow-up needed" },
+      },
+    ],
+    values: [
+      { big: "~10 hrs", what: "saved every week on manual entry", from: "Customers and invoices stay in sync without anyone retyping them", href: "/case-studies/zero-double-entry-financial-pipeline", hrefLabel: "the Zero Double-Entry Financial Pipeline" },
+      { big: "0", what: "records typed twice", from: "A safeguard stops the two systems from endlessly correcting each other", href: "/case-studies/zero-double-entry-financial-pipeline", hrefLabel: "see how" },
+      { big: "100", what: "tasks a month, free", from: "Zapier's own Free plan, no subscription needed to start", href: "#faq", hrefLabel: "how task billing works" },
+    ],
+    beforeAfter: {
+      eyebrow: "End of month, two ways",
+      title: "What changes when your apps stop needing a translator?",
+      intro: "Drag the handle. Same invoices, same closing day.",
+      before: {
+        time: "Friday 4:50 PM",
+        pills: ["18 customers to re-enter", "Quotes sitting unopened behind a login wall"],
+        table: {
+          title: "New customers (ops app export).csv",
+          head: ["Customer", "In Xero?", "Quote"],
+          rows: [
+            { cells: ["Ridge Supply Co", "No", "Sent, unopened"], status: "bad" },
+            { cells: ["Metro Fuel", "Yes", "Accepted"] },
+            { cells: ["Harbor Electric", "No", "Sent, unopened"], status: "bad" },
+            { cells: ["Northside Plumbing", "Yes", "Accepted"] },
+          ],
+          footer: { cells: ["18 customers", "2 still missing", ""], status: "bad" },
+        },
+        aside: { kind: "note", text: "Did anyone add Ridge Supply to Xero yet?" },
+      },
+      after: {
+        time: "Friday 4:50 PM",
+        pills: ["0 customers to re-enter", "Quotes accepted with one click, no login"],
+        table: {
+          title: "Today: synced automatically",
+          head: ["Customer", "In Xero?", "Quote"],
+          rows: [
+            { cells: ["Ridge Supply Co", "Yes", "Accepted"], status: "ok" },
+            { cells: ["Metro Fuel", "Yes", "Accepted"], status: "ok" },
+            { cells: ["Harbor Electric", "Yes", "Accepted"], status: "ok" },
+            { cells: ["Northside Plumbing", "Yes", "Accepted"], status: "ok" },
+          ],
+        },
+        aside: { kind: "message", channel: "#finance", topic: "Customer sync", text: "Ridge Supply Co synced to Xero and accepted their quote. Nothing to check.", actions: ["View record", "Open in Xero"] },
+      },
+      table: [
+        { row: "New customers", before: "Built once, then rebuilt by hand in accounting", after: "Mirrored automatically, both systems match" },
+        { row: "Quotes", before: "Behind a login wall, plenty never opened", after: "A branded PDF straight to the inbox, one click to accept" },
+        { row: "Risk of double entry", before: "Happens most weeks", after: "A safeguard stops the two systems looping on each other" },
+        { row: "Your team's time", before: "Retyping the same record in two places", after: "Checking the rare Zap that needs a person" },
+      ],
+    },
+    steps: {
+      eyebrow: "How it works",
+      title: "How does a Zapier build actually happen?",
+      items: [
+        { title: "Map", body: "We look at which apps hold the same information twice, and where a person currently has to copy it by hand.", tools: ["Your current tools", "Interviews"] },
+        { title: "Build the Zap", body: "Triggers and multi-step actions go in Zapier, with a safeguard so two connected systems never loop on each other.", tools: ["Zapier"] },
+        { title: "Test in a safe copy", body: "The Zap runs against a copy of your real data first, so the first live run isn't the first real test.", tools: ["Staging data"] },
+        { title: "Hand off", body: "You get the Zapier account, documentation, error alerts, and a video walkthrough.", tools: ["Docs", "Video walkthroughs"] },
+      ],
+      checkpointAfter: 3,
+      checkpointLabel: "You approve the Zap before it touches real data",
+      human: ["Approving what a Zap flags", "Reading failure alerts", "App logins and access", "Saying when a process changed", "Anything client-facing"],
+    },
+    bento: {
+      eyebrow: "What we build",
+      title: "What does a Zapier workflow usually handle?",
+      intro: "Most builds combine a few of these pieces, wired to the apps you already use.",
+      tiles: [
+        {
+          verb: "Sync",
+          title: "Two-way customer and invoice sync",
+          body: "A record created in one app mirrors into the other, with a safeguard so they never loop.",
+          preview: {
+            type: "table",
+            head: ["Customer", "In Xero?", "Status"],
+            rows: [
+              { cells: ["Ridge Supply Co", "Yes", "Synced"], status: "Synced", ok: true },
+              { cells: ["Metro Fuel", "Yes", "Synced"], status: "Synced", ok: true },
+              { cells: ["New signup", "Pending", "Syncing"], status: "Syncing", ok: false },
+            ],
+            note: "Example · both systems match within seconds",
+          },
+        },
+        { verb: "Automate", title: "Quote to accept, in one click", body: "A branded PDF goes out, and one click updates every connected system.", preview: { type: "txns", rows: [["Quote sent", "Metro Fuel"], ["Quote accepted", "1 click"], ["Xero updated", "Instant"]] } },
+        { verb: "Bill by task", title: "No surprise per-Zap pricing", preview: { type: "receipt", amount: "100/mo", label: "tasks included on Zapier's Free plan" } },
+        { verb: "Generate", title: "Branded documents, no login wall", preview: { type: "pdf", title: "QUOTE #4471", pages: "Built and emailed the moment it's ready" } },
+        { verb: "Remind", title: "Follow-ups that don't rely on memory", preview: { type: "calendar", highlight: 5, reminder: "Reminder: quote unopened after 5 days" } },
+        { verb: "Untangle", title: "Duplicate records, cleared once", preview: { type: "counter", from: 246, label: "duplicate customer records merged, one time" } },
+      ],
+    },
+    estimator: {
+      eyebrow: "Your numbers",
+      title: "What is double entry costing you?",
+      intro: "Move the sliders to match your week.",
+      unit: "records",
+      inputs: [
+        { id: "docs", label: "Records typed into a second system per day", min: 5, max: 100, step: 5, value: 20 },
+        { id: "min", label: "Minutes to retype each one", min: 1, max: 15, step: 1, value: 4 },
+        { id: "days", label: "Working days per week", min: 1, max: 7, step: 1, value: 5 },
+        { id: "rate", label: "Hourly cost of that time", min: 15, max: 150, step: 5, value: 35, hint: "Wages plus overhead, or your own hourly value", format: "money" },
+        { id: "flag", label: "Share still needing a person to double check", min: 0, max: 50, step: 5, value: 10, format: "percent" },
+        { id: "rev", label: "Minutes to check one of those", min: 1, max: 10, step: 1, value: 2 },
+      ],
+      worth: ["Worth it once the same record lives in two systems", "When quotes or invoices sit behind a login wall customers skip", "When a Zap replaces a person copying fields between tabs"],
+    },
+    proof: {
+      featured: {
+        slug: "zero-double-entry-financial-pipeline",
+        big: "~10 hrs",
+        bigLabel: "saved every week, with zero records typed twice",
+        title: "The Zero Double-Entry Financial Pipeline",
+        before: "Every customer and invoice was built once, then rebuilt by hand in the accounting system. Quotes hit a login wall, so plenty went unread.",
+        after: "Customers and invoices sync both ways automatically, and quotes go out as branded PDFs with a one-click Accept button.",
+        chips: ["Professional services", "Zapier", "Xero"],
+        caption: "Illustration of the one-click quote acceptance",
+      },
+      more: [],
+    },
+    stack: {
+      title: "Built on the tools you already pay for",
+      intro: "Zapier connects to thousands of apps. Here's what shows up most in our builds.",
+      center: "Your Zaps",
+      tools: ["Xero", "QuickBooks", "Resend", "Gmail", "Google Sheets", "HubSpot", "Slack", "Stripe"],
+      links: [
+        { label: "Airtable", href: "/integrations/airtable" },
+        { label: "n8n", href: "/integrations/n8n" },
+        { label: "Software Integration Services", href: "/services/software-integration-services" },
+      ],
+    },
+    faq: {
+      title: "Questions owners ask about Zapier",
+      items: [
+        {
+          q: "What is Zapier used for?",
+          a: "Zapier connects business apps so information moves between them without anyone copying it by hand. A workflow, called a Zap, starts with a trigger in one app and runs one or more actions in others, like creating a record, sending an email, or updating a spreadsheet. Most Zaps need no code to build.",
+        },
+        {
+          q: "Is Zapier free?",
+          a: "Zapier has a free plan that includes 100 tasks a month and unlimited Zaps, but each Zap on the free plan is limited to one trigger and one action. Multi-step Zaps, more tasks, and faster checks for new triggers need a paid plan. Whispers Lab sizes the right plan during the Automation Audit.",
+        },
+        {
+          q: "How does Zapier pricing work?",
+          a: "Zapier bills by task, not by Zap. A task is counted each time Zapier completes one unit of work, so a single Zap can use several tasks depending on how many actions it runs. You choose a monthly task allowance and pay monthly or annually.",
+        },
+        {
+          q: "Should I use Zapier or n8n?",
+          a: "Zapier is usually faster to set up for simpler, app-to-app workflows and has the widest range of ready-made app connections. n8n handles more complex branching logic and can run on your own server if your data needs to stay there. Whispers Lab recommends one during the Automation Audit based on the actual workflow, not a fixed preference.",
+        },
+        {
+          q: "Who maintains Zaps after they're built?",
+          a: "After a Whispers Lab build, you get documentation, a video walkthrough, and alerts sent to a named person when a Zap fails. Businesses that want ongoing monitoring, fixes, and a new workflow added each month can use the AI Growth Partner plan at $500 a month.",
+        },
+        {
+          q: "How much does it cost to have Zapier workflows built?",
+          a: "Whispers Lab starts with a $250 Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the $250 is credited toward the build. Zapier's own subscription cost is separate and estimated during the Audit.",
+        },
+      ],
+    },
+    cta: {
+      title: "Find out which of your apps should be talking to each other.",
+      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+    },
+    related: {
+      industries: ["/industries/accounting-bookkeeping", "/industries/real-estate", "/industries/ecommerce-retail"],
+      posts: ["accounting-workflow-automation-tasks-to-fix-first"],
+    },
+  },
 ];
 
 export function getIntegration(slug: string): IntegrationPage | undefined {
