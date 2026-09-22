@@ -26,10 +26,21 @@ Path rewrites applied during extraction:
 |---|---|---|
 | `/` | `index.html` | Homepage — hero, problem/solution narrative, pricing (3 tiers), features, case studies, newsletter |
 | `/audit` | `audit.html` | Offer page for the **$250 Automation Audit** (low-ticket entry offer) |
-| `/core-build` | `core-build.html` | Offer page for **The Core Build** (starts at $1,500, the main build service) |
+| `/core-build` | `core-build.html` | Offer page for **The Core Build** (starts at $2,500, the main build service) |
 | `/contact` | `contact.html` | Contact page — banner, two-column (details + smart form), newsletter footer |
 
 Section order, design system (colors, typography, `.grad-word`, `.textured-section`, the toolkit marquee, etc.), and all copy/business facts are unchanged from the static prototype — see `legacy-static/` for the original source if you need to diff.
+
+## Site expansion (branch `feature/site-expansion`)
+
+Approved plan: new service, industry, integration, pricing and resource pages, a redesigned nav, and weekly releases. Key pieces:
+
+- **`lib/routes.ts`** is the single list of pages. Each has a `live` flag. The header, footer, sitemap (`app/sitemap.ts`) and `/llms.txt` (`app/llms.txt/route.ts` + `lib/llms.ts`) only show live pages, and unreleased pages 404 via `requireLive()` from `lib/seo.ts`. Publishing a weekly batch = flipping `live: true`. Set `NEXT_PUBLIC_SHOW_UNRELEASED=1` in `.env.development.local` (dev only) to preview everything. Never set it in production.
+- **Header/footer**: `components/SiteHeader.tsx` (mega menu, lucide-react icons, mobile sheet) and `components/SiteFooter.tsx`, rendered once in `app/layout.tsx`. Legacy HTML strings no longer contain header/footer (`scripts/strip-legacy-chrome.js`).
+- **Service pages**: typed content in `app/_content/services.ts`, rendered by `app/services/[slug]/page.tsx` using `components/service/*` and `app/styles/sections.css` (ported from the approved mockups in `docs/mockups/`). Offers/prices live in `lib/offers.ts`.
+- **Copy rules**: plain words, no em dashes, no hype, no "AI agents", only case-study numbers. AI-generated illustrations are allowed (prompts in `docs/visuals/image-prompts.md`) but never as fake screenshots or results.
+- **Keywords**: `docs/seo/keyword-map.csv` (Semrush US data, page decisions).
+- Strapi token is read from server-only `STRAPI_API_TOKEN` (old `NEXT_PUBLIC_` name is a temporary fallback).
 
 ## Forms — now wired to Resend
 
@@ -46,7 +57,7 @@ If `RESEND_API_KEY`/`CONTACT_NOTIFY_EMAIL` are missing, both routes return a 500
 ## Known content/business facts to preserve
 
 - Brand voice: direct, no-fluff, "boring AI that works," small-business-owner focused.
-- Three offer tiers: Automation Audit ($250, one-time, credited toward Core Build), Core Build (starts at $1,500, 30-day sprint), AI Growth Partner ($500/mo, no dedicated offer page yet).
+- Three offer tiers: Automation Audit ($250, one-time, credited toward Core Build), Core Build (starts at $2,500, 30-day sprint), AI Growth Partner ($500/mo, /growth-partner page added in the site expansion).
 - Founder: Haris Ali, Co-Founder, Whispers Lab.
 - Footer tagline: "THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME."
 - Social links currently point to generic `linkedin.com` / `instagram.com` / `facebook.com` placeholders — replace with real profile URLs when known.
