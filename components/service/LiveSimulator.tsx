@@ -56,8 +56,8 @@ export default function LiveSimulator({ modes }: { modes: SimMode[] }) {
           </span>
           <div className="sv-thumb" aria-hidden="true">
             <div className="sv-thumb-title">{mode.doc.title}</div>
-            {mode.doc.rows.map(([a, b]) => (
-              <div key={a} className="sv-thumb-row">
+            {mode.doc.rows.map(([a, b], i) => (
+              <div key={i} className="sv-thumb-row">
                 <span>{a}</span>
                 <span>{b}</span>
               </div>

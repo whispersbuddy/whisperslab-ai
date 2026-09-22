@@ -54,8 +54,8 @@ export function ValueStrip({ values }: { values: ServicePage["values"] }) {
   return (
     <section className="sv-values-band">
       <div className="container sv-values">
-        {values.map((v) => (
-          <div key={v.big} className="sv-vtile">
+        {values.map((v, i) => (
+          <div key={i} className="sv-vtile">
             <span className="sv-big">{v.big}</span>
             <span className="sv-what">{v.what}</span>
             <span className="sv-from">
@@ -90,13 +90,13 @@ export function Stepper({ steps }: { steps: ServicePage["steps"] }) {
           <small>{steps.checkpointLabel}</small>
         </div>
         {steps.items.map((s, i) => (
-          <div key={s.title} className={"sv-step" + (s.ai ? " ai" : "")}>
+          <div key={i} className={"sv-step" + (s.ai ? " ai" : "")}>
             <span className="sv-step-n">{i + 1}</span>
             <h3>{s.title}</h3>
             <p>{s.body}</p>
             <span className="sv-step-tools">
-              {s.tools.map((t) => (
-                <span key={t}>{t}</span>
+              {s.tools.map((t, j) => (
+                <span key={j}>{t}</span>
               ))}
             </span>
           </div>
@@ -104,8 +104,8 @@ export function Stepper({ steps }: { steps: ServicePage["steps"] }) {
       </div>
       <div className="sv-human">
         <span className="sv-human-k">Stays human</span>
-        {steps.human.map((h) => (
-          <span key={h} className="sv-human-c">
+        {steps.human.map((h, i) => (
+          <span key={i} className="sv-human-c">
             {h}
           </span>
         ))}
@@ -120,15 +120,15 @@ function Preview({ p }: { p: BentoTile["preview"] }) {
       return (
         <div className="sv-prev">
           <div className="sv-mini-table">
-            {[...p.head].map((h) => (
-              <span key={h} className="h">
+            {[...p.head].map((h, i) => (
+              <span key={i} className="h">
                 {h}
               </span>
             ))}
-            {p.rows.map((r) => (
-              <span key={r.cells[0]} className="sv-mini-row">
-                {r.cells.map((c) => (
-                  <span key={c}>{c}</span>
+            {p.rows.map((r, i) => (
+              <span key={`${i}-${r.cells[0]}`} className="sv-mini-row">
+                {r.cells.map((c, j) => (
+                  <span key={j}>{c}</span>
                 ))}
                 <span className={r.ok ? "ok" : "rv"}>{r.status}</span>
               </span>
@@ -201,7 +201,7 @@ export function Bento({ tiles }: { tiles: BentoTile[] }) {
   return (
     <div className="sv-bento">
       {tiles.map((t, i) => (
-        <article key={t.title} className={`sv-tile sv-tile-${areas[i]}`}>
+        <article key={i} className={`sv-tile sv-tile-${areas[i]}`}>
           <div className="sv-tile-head">
             <span className="sv-tile-verb">{t.verb}</span>
             <h3>{t.title}</h3>
@@ -235,8 +235,8 @@ export function ResultStory({ proof }: { proof: ServicePage["proof"] }) {
             </div>
           </div>
           <div className="sv-chips">
-            {f.chips.map((c) => (
-              <span key={c}>{c}</span>
+            {f.chips.map((c, i) => (
+              <span key={i}>{c}</span>
             ))}
           </div>
           <a className="sv-go" href={`/case-studies/${f.slug}`}>

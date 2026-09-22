@@ -157,11 +157,11 @@ export const INTEGRATIONS: IntegrationPage[] = [
           body: "Contacts, companies, and deals linked together, with a view built for sales and a different one for leadership.",
           preview: {
             type: "table",
-            head: ["Lead", "Source", "Status"],
+            head: ["Lead", "Source", "Owner", "Status"],
             rows: [
-              { cells: ["Jordan Price", "Website form", "New"], status: "New", ok: false },
-              { cells: ["Priya Shah", "Referral", "Assigned"], status: "Assigned", ok: true },
-              { cells: ["Sam Torres", "Website form", "Assigned"], status: "Assigned", ok: true },
+              { cells: ["Jordan Price", "Website form", "Unassigned"], status: "New", ok: false },
+              { cells: ["Priya Shah", "Referral", "Priya"], status: "Assigned", ok: true },
+              { cells: ["Sam Torres", "Website form", "Sam"], status: "Assigned", ok: true },
             ],
             note: "Example · new leads route to the right owner automatically",
           },
@@ -392,11 +392,11 @@ export const INTEGRATIONS: IntegrationPage[] = [
           body: "New leads and contacts get logged, matched, and routed without anyone opening a spreadsheet.",
           preview: {
             type: "table",
-            head: ["Lead", "Matched to", "Status"],
+            head: ["Lead", "Matched to", "Logged at", "Status"],
             rows: [
-              { cells: ["Jordan Price", "Ridge Supply Co", "Logged"], status: "Logged", ok: true },
-              { cells: ["Unknown sender", "Matched by domain", "Logged"], status: "Logged", ok: true },
-              { cells: ["Newsletter", "Filtered out", "Ignored"], status: "Ignored", ok: false },
+              { cells: ["Jordan Price", "Ridge Supply Co", "0.4s"], status: "Logged", ok: true },
+              { cells: ["Unknown sender", "Matched by domain", "0.6s"], status: "Logged", ok: true },
+              { cells: ["Newsletter", "Filtered out", "n/a"], status: "Ignored", ok: false },
             ],
             note: "Example · noise filtered before it reaches the CRM",
           },
@@ -604,11 +604,11 @@ export const INTEGRATIONS: IntegrationPage[] = [
           body: "A record created in one app mirrors into the other, with a safeguard so they never loop.",
           preview: {
             type: "table",
-            head: ["Customer", "In Xero?", "Status"],
+            head: ["Customer", "In Xero?", "Quote", "Status"],
             rows: [
-              { cells: ["Ridge Supply Co", "Yes", "Synced"], status: "Synced", ok: true },
-              { cells: ["Metro Fuel", "Yes", "Synced"], status: "Synced", ok: true },
-              { cells: ["New signup", "Pending", "Syncing"], status: "Syncing", ok: false },
+              { cells: ["Ridge Supply Co", "Yes", "Accepted"], status: "Synced", ok: true },
+              { cells: ["Metro Fuel", "Yes", "Accepted"], status: "Synced", ok: true },
+              { cells: ["New signup", "Pending", "Sent"], status: "Syncing", ok: false },
             ],
             note: "Example · both systems match within seconds",
           },

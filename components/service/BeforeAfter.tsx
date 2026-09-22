@@ -11,8 +11,8 @@ function Side({ side, variant }: { side: BaSide; variant: "before" | "after" }) 
     <div className={`sv-ba-layer sv-ba-${variant}`} aria-hidden={variant === "after" ? "true" : undefined}>
       <div className="sv-ba-top">
         <span className={"sv-pill " + (good ? "green" : "red")}>● {side.time}</span>
-        {side.pills.map((p) => (
-          <span key={p} className={"sv-pill " + (good ? "green" : "red")}>
+        {side.pills.map((p, i) => (
+          <span key={i} className={"sv-pill " + (good ? "green" : "red")}>
             {p}
           </span>
         ))}
@@ -20,8 +20,8 @@ function Side({ side, variant }: { side: BaSide; variant: "before" | "after" }) 
       <div className="sv-win">
         <h4>{side.table.title}</h4>
         <div className="sv-sheet" style={{ gridTemplateColumns: `1.4fr repeat(${side.table.head.length - 1}, 0.8fr)` }}>
-          {side.table.head.map((h) => (
-            <span key={h} className="h">
+          {side.table.head.map((h, i) => (
+            <span key={i} className="h">
               {h}
             </span>
           ))}
@@ -51,7 +51,7 @@ function Side({ side, variant }: { side: BaSide; variant: "before" | "after" }) 
               <p>{side.aside.text}</p>
               <div className="sv-msg-btns">
                 {side.aside.actions.map((a, i) => (
-                  <span key={a} className={i === 0 ? "primary" : ""}>
+                  <span key={i} className={i === 0 ? "primary" : ""}>
                     {a}
                   </span>
                 ))}
