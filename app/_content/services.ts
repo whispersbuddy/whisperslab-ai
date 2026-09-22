@@ -21,7 +21,11 @@ export type BaSide = {
   time: string;
   pills: string[];
   table: { title: string; head: string[]; rows: BaRow[]; footer?: BaRow };
-  aside: { kind: "mail"; title: string; items: { from: string; subject: string }[] } | { kind: "note"; text: string } | { kind: "message"; channel: string; text: string; actions: string[] };
+  aside:
+    | { kind: "mail"; title: string; items: { from: string; subject: string }[] }
+    | { kind: "note"; text: string }
+    /** `topic` is the small label after the channel name, e.g. "Data entry workflow". Defaults to that for pages that don't set it. */
+    | { kind: "message"; channel: string; topic?: string; text: string; actions: string[] };
 };
 
 export type BentoPreview =
@@ -48,6 +52,8 @@ export type ServicePage = {
     eyebrow: string;
     title: string;
     intro: string;
+    /** Noun for the first input in the formula sentence, e.g. "docs" or "updates". Defaults to "docs". */
+    unit?: string;
     inputs: EstimatorInput[];
     worth: string[];
   };

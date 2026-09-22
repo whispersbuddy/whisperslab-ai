@@ -7,7 +7,7 @@ import type { EstimatorInput } from "@/app/_content/services";
 
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 
-export default function Estimator({ inputs }: { inputs: EstimatorInput[] }) {
+export default function Estimator({ inputs, unit = "docs" }: { inputs: EstimatorInput[]; unit?: string }) {
   const [v, setV] = useState<Record<string, number>>(Object.fromEntries(inputs.map((i) => [i.id, i.value])));
   const get = (id: string) => v[id] ?? 0;
 
@@ -72,7 +72,7 @@ export default function Estimator({ inputs }: { inputs: EstimatorInput[] }) {
           </div>
         </div>
         <p className="sv-formula">
-          time back = ({get("docs")} docs × {get("min")} min − {get("docs")} × {get("flag")}% × {get("rev")} min) × {get("days")} days ÷ 60 ={" "}
+          time back = ({get("docs")} {unit} × {get("min")} min − {get("docs")} × {get("flag")}% × {get("rev")} min) × {get("days")} days ÷ 60 ={" "}
           {back.toFixed(1)} hrs/wk · per month = hrs × 52 ÷ 12 × ${get("rate")}
         </p>
         <p className="sv-est-note">An estimate from your numbers, not a promise. The Automation Audit measures your real volumes before anything is built.</p>

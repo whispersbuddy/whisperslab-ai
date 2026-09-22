@@ -8,7 +8,7 @@ import LiveSimulator from "@/components/service/LiveSimulator";
 import BeforeAfter from "@/components/service/BeforeAfter";
 import Estimator from "@/components/service/Estimator";
 import { Bento, CtaAudit, FaqSplit, ResultStory, SectionHead, ServiceHero, StackHub, Stepper, ValueStrip } from "@/components/service/Sections";
-import { getService, SERVICES } from "@/app/_content/services";
+import { getIntegration, INTEGRATIONS } from "@/app/_content/integrations";
 import { getAllPosts } from "@/lib/content";
 import { getRoute, isLive, isPathLive } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
@@ -16,31 +16,31 @@ import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLiv
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SERVICES.map((s) => ({ slug: s.slug }));
+  return INTEGRATIONS.map((i) => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const s = getService(slug);
-  if (!s) return {};
-  return buildMetadata({ title: s.seo.title, description: s.seo.description, path: `/services/${slug}` });
+  const i = getIntegration(slug);
+  if (!i) return {};
+  return buildMetadata({ title: i.seo.title, description: i.seo.description, path: `/integrations/${slug}` });
 }
 
-export default async function ServicePageRoute({ params }: { params: Promise<{ slug: string }> }) {
+export default async function IntegrationPageRoute({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const s = getService(slug);
-  if (!s) notFound();
-  const path = `/services/${slug}`;
+  const i = getIntegration(slug);
+  if (!i) notFound();
+  const path = `/integrations/${slug}`;
   requireLive(path);
 
   const route = getRoute(path);
   const crumbs = [
     { name: "Home", path: "/" },
-    ...(isPathLive("/services") ? [{ name: "Services", path: "/services" }] : []),
-    { name: route?.label ?? s.seo.keyword, path },
+    ...(isPathLive("/integrations") ? [{ name: "Integrations", path: "/integrations" }] : []),
+    { name: route?.label ?? i.seo.keyword, path },
   ];
-  const industries = s.related.industries.map((p) => getRoute(p)).filter((r) => r && isLive(r));
-  const posts = (await getAllPosts()).filter((p) => s.related.posts.includes(p.slug));
+  const industries = i.related.industries.map((p) => getRoute(p)).filter((r) => r && isLive(r));
+  const posts = (await getAllPosts()).filter((p) => i.related.posts.includes(p.slug));
 
   return (
     <>
@@ -50,39 +50,35 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
             "@type": "Service",
             "@id": SITE_URL + path + "#service",
             name: route?.label,
-            serviceType: s.seo.keyword,
-            description: s.hero.answer,
+            serviceType: i.seo.keyword,
+            description: i.hero.answer,
             url: SITE_URL + path,
             provider: PROVIDER,
             areaServed: { "@type": "Country", name: "United States" },
             audience: { "@type": "BusinessAudience", audienceType: "Small businesses" },
-            hasOfferCatalog: {
-              "@type": "OfferCatalog",
-              name: `${route?.label} workflows`,
-              itemListElement: s.bento.tiles.map((t) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t.title } })),
-            },
+            mentions: { "@type": "SoftwareApplication", name: i.tool.name, applicationCategory: "BusinessApplication", url: i.tool.url, ...(i.tool.sameAs ? { sameAs: i.tool.sameAs } : {}) },
             offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/audit" },
           },
-          faqSchema(s.faq.items),
+          faqSchema(i.faq.items),
           breadcrumbSchema(crumbs)
         )}
       />
       <main className="sv-page">
-        <ServiceHero hero={s.hero} crumbs={crumbs}>
-          <LiveSimulator modes={s.simulator} />
+        <ServiceHero hero={i.hero} crumbs={crumbs}>
+          <LiveSimulator modes={i.simulator} />
         </ServiceHero>
 
-        <ValueStrip values={s.values} />
+        <ValueStrip values={i.values} />
 
-        <section className="section sv-section">
+        <section className="section sv-section" id="includes">
           <div className="container">
-            <SectionHead eyebrow={s.beforeAfter.eyebrow} title={s.beforeAfter.title} intro={s.beforeAfter.intro} />
-            <BeforeAfter before={s.beforeAfter.before} after={s.beforeAfter.after} />
+            <SectionHead eyebrow={i.beforeAfter.eyebrow} title={i.beforeAfter.title} intro={i.beforeAfter.intro} />
+            <BeforeAfter before={i.beforeAfter.before} after={i.beforeAfter.after} />
             <details className="sv-more-detail">
               <summary>See the before and after in detail</summary>
               <div className="compare-scroll">
                 <table className="compare-table">
-                  <caption className="sr-only">Before and after {s.seo.keyword}</caption>
+                  <caption className="sr-only">Before and after {i.seo.keyword}</caption>
                   <thead>
                     <tr>
                       <th scope="col">
@@ -93,7 +89,7 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
                     </tr>
                   </thead>
                   <tbody>
-                    {s.beforeAfter.table.map((r) => (
+                    {i.beforeAfter.table.map((r) => (
                       <tr key={r.row}>
                         <th scope="row">{r.row}</th>
                         <td>{r.before}</td>
@@ -109,24 +105,24 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
 
         <section className="section sv-section sv-white">
           <div className="container">
-            <SectionHead eyebrow={s.steps.eyebrow} title={s.steps.title} />
-            <Stepper steps={s.steps} />
+            <SectionHead eyebrow={i.steps.eyebrow} title={i.steps.title} />
+            <Stepper steps={i.steps} />
           </div>
         </section>
 
         <section className="section sv-section">
           <div className="container">
-            <SectionHead eyebrow={s.bento.eyebrow} title={s.bento.title} intro={s.bento.intro} />
-            <Bento tiles={s.bento.tiles} />
+            <SectionHead eyebrow={i.bento.eyebrow} title={i.bento.title} intro={i.bento.intro} />
+            <Bento tiles={i.bento.tiles} />
           </div>
         </section>
 
         <section className="section sv-section sv-dark" id="estimate">
           <div className="container">
-            <SectionHead eyebrow={s.estimator.eyebrow} title={s.estimator.title} intro={s.estimator.intro} light />
-            <Estimator inputs={s.estimator.inputs} unit={s.estimator.unit} />
+            <SectionHead eyebrow={i.estimator.eyebrow} title={i.estimator.title} intro={i.estimator.intro} light />
+            <Estimator inputs={i.estimator.inputs} unit={i.estimator.unit} />
             <div className="sv-worth">
-              {s.estimator.worth.map((w) => (
+              {i.estimator.worth.map((w) => (
                 <span key={w}>{w}</span>
               ))}
             </div>
@@ -135,13 +131,13 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
 
         <section className="section sv-section">
           <div className="container">
-            <ResultStory proof={s.proof} />
+            <ResultStory proof={i.proof} />
           </div>
         </section>
 
         <section className="section sv-section sv-white">
           <div className="container">
-            <StackHub stack={s.stack} />
+            <StackHub stack={i.stack} />
           </div>
         </section>
 
@@ -182,11 +178,11 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
 
         <section className="section sv-section">
           <div className="container">
-            <FaqSplit faq={s.faq} />
+            <FaqSplit faq={i.faq} />
           </div>
         </section>
 
-        <CtaAudit cta={s.cta} />
+        <CtaAudit cta={i.cta} />
         <NewsletterSection />
       </main>
     </>

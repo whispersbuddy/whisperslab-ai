@@ -47,7 +47,7 @@ function Side({ side, variant }: { side: BaSide; variant: "before" | "after" }) 
           <div className="sv-win sv-msg">
             <span className="sv-msg-av" />
             <div>
-              <b>{side.aside.channel}</b> · Data entry workflow
+              <b>{side.aside.channel}</b> · {side.aside.topic ?? "Data entry workflow"}
               <p>{side.aside.text}</p>
               <div className="sv-msg-btns">
                 {side.aside.actions.map((a, i) => (
