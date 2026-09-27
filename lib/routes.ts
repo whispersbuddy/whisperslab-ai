@@ -74,40 +74,40 @@ export const ROUTES: SiteRoute[] = [
   { path: "/book", label: "Book a Call", group: "utility", live: true, priority: 0.6, changeFrequency: "monthly" },
 
   // R0: foundation
-  { path: "/about", label: "About", group: "company", icon: "info", live: false, release: "R0", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/privacy-policy", label: "Privacy Policy", group: "legal", live: false, release: "R0", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/terms", label: "Terms", group: "legal", live: false, release: "R0", priority: 0.2, changeFrequency: "yearly" },
+  { path: "/about", label: "About", group: "company", icon: "info", live: true, release: "R0", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/privacy-policy", label: "Privacy Policy", group: "legal", live: true, release: "R0", priority: 0.2, changeFrequency: "yearly" },
+  { path: "/terms", label: "Terms", group: "legal", live: true, release: "R0", priority: 0.2, changeFrequency: "yearly" },
 
   // R1: pricing
-  { path: "/pricing", label: "Compare all plans", group: "pricing", icon: "layers", blurb: "Audit, Build, Care, and Growth side by side", live: false, release: "R1", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/automation-care", label: "Automation Care", group: "pricing", icon: "shield", price: "$500/mo", blurb: "Monitoring and maintenance for existing workflows", live: false, release: "R1", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/growth-partner", label: "AI Growth Partner", group: "pricing", icon: "trendingUp", price: "from $1,250/mo", blurb: "Maintenance plus one new workflow each month", live: false, release: "R1", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/pricing", label: "Compare all plans", group: "pricing", icon: "layers", blurb: "Audit, Build, Care, and Growth side by side", live: true, release: "R1", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/automation-care", label: "Automation Care", group: "pricing", icon: "shield", price: "$500/mo", blurb: "Monitoring and maintenance for existing workflows", live: true, release: "R1", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/growth-partner", label: "AI Growth Partner", group: "pricing", icon: "trendingUp", price: "from $1,250/mo", blurb: "Maintenance plus one new workflow each month", live: true, release: "R1", priority: 0.8, changeFrequency: "monthly" },
 
   // R2+: services
-  { path: "/services", label: "All services", group: "core", live: false, release: "R2", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/services/data-entry-automation", label: "Data Entry Automation", group: "services", icon: "scanText", blurb: "Invoices, statements, and forms read and filed for you", live: false, release: "R2", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/services/bookkeeping-automation", label: "Bookkeeping Automation", group: "services", icon: "calculator", blurb: "Invoices, reminders, and your books kept in sync", live: false, release: "R5", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/services/client-onboarding-automation", label: "Client Onboarding Automation", group: "services", icon: "userPlus", blurb: "New clients booked, set up, and welcomed on autopilot", live: false, release: "R6", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/services/lead-follow-up-automation", label: "Lead Follow-Up Automation", group: "services", icon: "messageReply", blurb: "Every lead answered fast and followed up", live: false, release: "R6", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/services/software-integration-services", label: "Software Integration Services", group: "services", icon: "plug", blurb: "Your apps sharing one set of data", live: false, release: "R7", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services", label: "All services", group: "core", live: true, release: "R2", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/data-entry-automation", label: "Data Entry Automation", group: "services", icon: "scanText", blurb: "Invoices, statements, and forms read and filed for you", live: true, release: "R2", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/bookkeeping-automation", label: "Bookkeeping Automation", group: "services", icon: "calculator", blurb: "Invoices, reminders, and your books kept in sync", live: true, release: "R5", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/client-onboarding-automation", label: "Client Onboarding Automation", group: "services", icon: "userPlus", blurb: "New clients booked, set up, and welcomed on autopilot", live: true, release: "R6", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/lead-follow-up-automation", label: "Lead Follow-Up Automation", group: "services", icon: "messageReply", blurb: "Every lead answered fast and followed up", live: true, release: "R6", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/software-integration-services", label: "Software Integration Services", group: "services", icon: "plug", blurb: "Your apps sharing one set of data", live: true, release: "R7", priority: 0.9, changeFrequency: "monthly" },
 
   // R3+: integrations
-  { path: "/integrations", label: "All integrations", group: "core", live: false, release: "R3", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/integrations/airtable", label: "Airtable", group: "integrations", icon: "table", blurb: "Airtable consultants for bases that run themselves", live: false, release: "R3", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/integrations/n8n", label: "n8n", group: "integrations", icon: "workflow", blurb: "n8n workflows built and looked after for you", live: false, release: "R3", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/integrations/zapier", label: "Zapier", group: "integrations", icon: "zap", blurb: "Zapier experts for multi-step workflows", live: false, release: "R7", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/integrations", label: "All integrations", group: "core", live: true, release: "R3", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/integrations/airtable", label: "Airtable", group: "integrations", icon: "table", blurb: "Airtable consultants for bases that run themselves", live: true, release: "R3", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/integrations/n8n", label: "n8n", group: "integrations", icon: "workflow", blurb: "n8n workflows built and looked after for you", live: true, release: "R3", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/integrations/zapier", label: "Zapier", group: "integrations", icon: "zap", blurb: "Zapier experts for multi-step workflows", live: true, release: "R7", priority: 0.7, changeFrequency: "monthly" },
 
   // R4+: industries
-  { path: "/industries", label: "All industries", group: "core", live: false, release: "R4", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/industries/law-firms", label: "Law Firms", group: "industries", icon: "scale", blurb: "Intake, conflicts, and letters without the admin", live: false, release: "R4", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/industries/real-estate", label: "Real Estate", group: "industries", icon: "house", blurb: "Leads and deals that follow themselves up", live: false, release: "R5", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/industries/ecommerce-retail", label: "E-commerce & Retail", group: "industries", icon: "shoppingCart", blurb: "Catalogs, orders, and listings kept up to date", live: false, release: "R6", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/industries/property-management", label: "Property Management", group: "industries", icon: "building", blurb: "Tenants, maintenance, and rent handled faster", live: false, release: "R7", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/industries/accounting-bookkeeping", label: "Accounting & Bookkeeping", group: "industries", icon: "receipt", blurb: "Client documents in, clean books out", live: false, release: "R8", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries", label: "All industries", group: "core", live: true, release: "R4", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/industries/law-firms", label: "Law Firms", group: "industries", icon: "scale", blurb: "Intake, conflicts, and letters without the admin", live: true, release: "R4", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries/real-estate", label: "Real Estate", group: "industries", icon: "house", blurb: "Leads and deals that follow themselves up", live: true, release: "R5", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries/ecommerce-retail", label: "E-commerce & Retail", group: "industries", icon: "shoppingCart", blurb: "Catalogs, orders, and listings kept up to date", live: true, release: "R6", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries/property-management", label: "Property Management", group: "industries", icon: "building", blurb: "Tenants, maintenance, and rent handled faster", live: true, release: "R7", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/industries/accounting-bookkeeping", label: "Accounting & Bookkeeping", group: "industries", icon: "receipt", blurb: "Client documents in, clean books out", live: true, release: "R8", priority: 0.8, changeFrequency: "monthly" },
 
   // Resources
-  { path: "/resources/automation-roi-calculator", label: "ROI Calculator", group: "resources", icon: "gauge", blurb: "See what manual work costs you each month", live: false, release: "R4", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/resources/ai-readiness-assessment", label: "AI Readiness Assessment", group: "resources", icon: "fileText", blurb: "A free 3-minute check of where AI fits", live: false, release: "R8", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/resources/automation-roi-calculator", label: "ROI Calculator", group: "resources", icon: "gauge", blurb: "See what manual work costs you each month", live: true, release: "R4", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/resources/ai-readiness-assessment", label: "AI Readiness Assessment", group: "resources", icon: "fileText", blurb: "A free 3-minute check of where AI fits", live: true, release: "R8", priority: 0.7, changeFrequency: "monthly" },
 ];
 
 export function showUnreleased(): boolean {

@@ -30,10 +30,7 @@ function MenuLink({ route, onNavigate, showBlurb = true }: { route: SiteRoute; o
         <SiteIcon name={route.icon} />
       </span>
       <span className="sh-item-text">
-        <span className="sh-item-label">
-          {route.label}
-          {route.price ? <span className="sh-item-price">{route.price}</span> : null}
-        </span>
+        <span className="sh-item-label">{route.label}</span>
         {showBlurb && route.blurb ? <span className="sh-item-blurb">{route.blurb}</span> : null}
       </span>
     </Link>
