@@ -1,0 +1,991 @@
+<title>Whispers Lab Document Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/*__BASE_CSS__*/
+
+/* ================= v2: demo-led service template ================= */
+.hero.v2 { padding-bottom: 140px; }
+.hero.v2 .hero-grid { grid-template-columns: .92fr 1.08fr; align-items: start; padding-top: 30px; }
+.hero.v2 h1 { font-size: clamp(38px, 5vw, 58px); }
+.menu-mega.v2 { width: min(860px, calc(100vw - 64px)); grid-template-columns: 1.25fr .9fr .6fr; }
+.menu a.svc small { margin-top: 1px; }
+
+/* simulator */
+.sim { background: var(--card); color: var(--navy); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 90px rgba(2,6,23,.55), 0 0 0 1px rgba(255,255,255,.06); }
+.sim-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--line); background: #FBFBFD; }
+.live { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 1px; color: var(--soft); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+.sim-body { display: grid; grid-template-columns: .85fr 1.15fr; }
+.sim-in { background: #F3F4F7; padding: 18px; border-right: 1px solid var(--line); display: grid; gap: 12px; align-content: start; }
+.src-chip { display: inline-flex; align-items: center; gap: 8px; width: fit-content; font-size: 12px; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 5px 10px 5px 6px; }
+.src-chip b { width: 20px; height: 20px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--display); }
+.thumb { background: #fff; border-radius: 8px; box-shadow: 0 8px 20px rgba(15,23,42,.12); padding: 14px; font-size: 10.5px; color: #475569; transform: rotate(-2deg); transition: transform .5s ease; }
+.sim.running .thumb { transform: rotate(0deg) scale(.98); }
+.thumb .tt { font-family: var(--display); font-weight: 900; font-size: 13px; color: var(--navy); letter-spacing: .6px; }
+.thumb .ln { height: 5px; border-radius: 3px; background: #E7EAF0; margin: 6px 0; }
+.thumb .row { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; }
+.photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 8px; }
+.photos span { aspect-ratio: 1; border-radius: 3px; background: linear-gradient(135deg, #CBD5E1, #E2E8F0); }
+.log { list-style: none; padding: 16px; display: grid; gap: 4px; }
+.log li { display: grid; grid-template-columns: 50px 18px 1fr; gap: 8px; align-items: start; padding: 7px 8px; border-radius: 9px; font-size: 13px; color: #334155; transition: opacity .25s, background .25s; }
+.log li time { font-family: var(--mono); font-size: 11px; color: var(--soft); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.log li .dotc { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; background: var(--ok); margin-top: 1px; }
+.log li.flag .dotc { background: #D97706; }
+.log li b { color: var(--navy); font-weight: 600; }
+.log li.pending { opacity: .28; }
+.log li.pending .dotc { background: #CBD5E1; }
+.log li.now { background: #F1F5FF; }
+.sim-out { display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; align-items: center; padding: 14px 16px; border-top: 1px solid var(--line); }
+.sim-out .o-k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); }
+.sim-out .o-v { font-family: var(--display); font-weight: 900; font-size: 16px; color: var(--navy); }
+.sim-out .o-s { font-size: 12.5px; color: var(--muted); }
+.run { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 600; }
+.run svg { width: 12px; height: 12px; }
+.run[disabled] { opacity: .5; cursor: default; }
+
+/* value strip */
+.value-band { position: relative; z-index: 5; margin-top: -92px; }
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.vtile { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 24px 20px; box-shadow: 0 24px 50px rgba(15,23,42,.1); display: grid; gap: 6px; align-content: start; }
+.vtile .big { font-family: var(--display); font-weight: 900; font-size: clamp(38px, 4vw, 50px); letter-spacing: -1.6px; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+.vtile .what { font-family: var(--display); font-weight: 900; font-size: 17px; color: var(--navy); letter-spacing: -.3px; }
+.vtile .from { font-size: 12.5px; color: var(--soft); }
+.vtile .from a { color: #5B4FF0; font-weight: 600; text-decoration: none; }
+
+/* before / after slider */
+.ba-wrap { margin-top: 36px; }
+.ba { position: relative; height: 420px; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); --pos: 50%; user-select: none; }
+.ba-layer { position: absolute; inset: 0; padding: 26px; display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: auto 1fr; gap: 16px; }
+.ba-before { background: #E9EBF0; }
+.ba-after { background: linear-gradient(160deg, #F4F7FF, #FBF9FF); clip-path: inset(0 0 0 var(--pos)); }
+.ba-tag { position: absolute; top: 16px; z-index: 3; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; padding: 5px 10px; border-radius: 99px; }
+.ba-tag.l { left: 16px; background: #fff; color: #B91C1C; }
+.ba-tag.r { right: 16px; background: var(--navy); color: #fff; }
+.win { background: #fff; border-radius: 12px; box-shadow: 0 8px 22px rgba(15,23,42,.08); padding: 14px 16px; font-size: 13px; color: #334155; min-width: 0; }
+.win h4 { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); margin-bottom: 8px; }
+.w-top { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 26px; }
+.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; border-radius: 99px; padding: 6px 12px; background: #fff; box-shadow: 0 2px 8px rgba(15,23,42,.06); }
+.pill.red { color: #B91C1C; } .pill.green { color: var(--ok); }
+.sheet { display: grid; grid-template-columns: 1.4fr .8fr .8fr; font-family: var(--mono); font-size: 11.5px; }
+.sheet span { padding: 6px 8px; border-bottom: 1px solid #EEF0F4; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sheet .h { color: var(--soft); font-weight: 700; }
+.sheet .bad { background: #FEE2E2; color: #B91C1C; }
+.sheet .ok { color: var(--ok); font-weight: 700; }
+.mail { display: grid; gap: 8px; }
+.mail div { border-left: 3px solid #E2E8F0; padding: 2px 0 2px 10px; }
+.mail b { display: block; color: var(--navy); font-size: 13px; }
+.mail span { font-size: 12px; color: var(--soft); }
+.sticky-note { background: #FEF3C7; color: #78350F; font-family: var(--display); font-weight: 700; transform: rotate(2deg); font-size: 15px; }
+.slack { display: grid; grid-template-columns: 30px 1fr; gap: 10px; }
+.slack .av { width: 30px; height: 30px; border-radius: 8px; background: var(--grad); }
+.slack b { color: var(--navy); }
+.slack .btns { display: flex; gap: 6px; margin-top: 8px; }
+.slack .btns span { font-size: 11.5px; font-weight: 700; border: 1px solid var(--line-strong); border-radius: 6px; padding: 3px 9px; }
+.slack .btns span:first-child { background: var(--ok); color: #fff; border-color: var(--ok); }
+.summary .num { font-family: var(--display); font-weight: 900; font-size: 34px; color: var(--navy); letter-spacing: -1px; line-height: 1; }
+.summary p { margin-top: 4px; }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(15,23,42,.12); z-index: 4; pointer-events: none; }
+.ba-handle::after { content: "\2039  \203A"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; letter-spacing: 2px; box-shadow: 0 8px 20px rgba(15,23,42,.3); }
+.ba input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 5; margin: 0; }
+.ba input[type=range]:focus-visible + .ba-handle::after { outline: 3px solid var(--blue); outline-offset: 3px; }
+.more-detail { margin-top: 16px; }
+.more-detail summary { cursor: pointer; font-weight: 600; color: #5B4FF0; font-size: 14px; }
+.more-detail .table-scroll { margin-top: 14px; }
+
+/* stepper with checkpoint */
+.stepper { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+.stepper::before { content: ""; position: absolute; left: 6%; right: 6%; top: 27px; height: 2px; background: repeating-linear-gradient(90deg, #CBD5E1 0 7px, transparent 7px 12px); }
+.step { position: relative; display: grid; gap: 8px; align-content: start; }
+.step .n { width: 56px; height: 56px; border-radius: 16px; background: var(--card); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: 18px; color: var(--navy); position: relative; z-index: 1; }
+.step.ai .n { background: var(--grad); color: #fff; border-color: transparent; }
+.step h3 { font-size: 18px; margin-top: 8px; }
+.step p { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+.step .tl { display: flex; flex-wrap: wrap; gap: 4px; }
+.step .tl span { font-size: 11px; font-weight: 600; color: var(--muted); background: #EEF1F6; border-radius: 5px; padding: 2px 7px; }
+.checkpoint { position: absolute; top: 4px; left: calc(75% - 8px); transform: translateX(-50%); z-index: 2; display: grid; justify-items: center; gap: 6px; width: 150px; text-align: center; }
+.checkpoint .dia { width: 30px; height: 30px; background: #F59E0B; transform: rotate(45deg); border-radius: 6px; box-shadow: 0 0 0 5px rgba(245,158,11,.2); display: flex; align-items: center; justify-content: center; }
+.checkpoint .dia span { transform: rotate(-45deg); color: #fff; font-size: 11px; font-weight: 800; }
+.checkpoint small { font-size: 11.5px; font-weight: 700; color: #B45309; background: #FEF3C7; border-radius: 8px; padding: 3px 8px; line-height: 1.3; }
+.human-band { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 36px; padding: 16px 18px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 16px; }
+.human-band .k { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #B45309; margin-right: 6px; }
+.human-band span.c { font-size: 13.5px; font-weight: 600; color: #78350F; background: #fff; border: 1px solid #FDE68A; border-radius: 99px; padding: 5px 11px; }
+
+/* bento */
+.bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-areas: "inv inv bank rep" "inv inv rec rep" "con con con clean"; gap: 16px; margin-top: 40px; }
+.tile { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 12px; align-content: start; overflow: hidden; min-width: 0; }
+.tile .th { display: grid; gap: 3px; }
+.tile .th .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5B4FF0; }
+.tile h3 { font-size: 18px; }
+.tile p { font-size: 13.5px; color: var(--muted); }
+.tile .prev { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; font-size: 12px; color: #334155; }
+.tile .ex { font-family: var(--mono); font-size: 9.5px; letter-spacing: 1px; color: var(--anno); }
+.t-inv { grid-area: inv; background: linear-gradient(160deg, #F2F5FF, #F9F8F6 60%); }
+.t-bank { grid-area: bank; } .t-rec { grid-area: rec; } .t-rep { grid-area: rep; } .t-con { grid-area: con; } .t-clean { grid-area: clean; }
+.mini-table { display: grid; grid-template-columns: 1.5fr .9fr .9fr .9fr; font-size: 12px; }
+.mini-table span { padding: 8px 6px; border-bottom: 1px solid #EEF0F4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-table .h { font-size: 10.5px; color: var(--soft); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+.st-ok { color: var(--ok); font-weight: 700; } .st-rv { color: var(--warn); font-weight: 700; }
+.txn { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; font-size: 12px; }
+.txn span:nth-child(even) { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.phone { display: grid; grid-template-columns: 44px 1fr; gap: 10px; align-items: center; }
+.phone .ph { width: 44px; height: 64px; border-radius: 8px; border: 3px solid var(--navy); background: repeating-linear-gradient(0deg, #F1F5F9 0 6px, #fff 6px 9px); }
+.pdf { display: grid; gap: 6px; }
+.pdf .pt { font-family: var(--display); font-weight: 900; font-size: 12px; color: var(--navy); }
+.pdf .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.pdf .grid6 span { aspect-ratio: 4/3; border-radius: 3px; background: linear-gradient(135deg, #C7D2FE, #E0E7FF); }
+.pdf .note { height: 5px; border-radius: 3px; background: #E7EAF0; }
+.pages { font-size: 11px; color: var(--soft); font-weight: 600; }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal span { aspect-ratio: 1.6; border-radius: 5px; background: #F1F5F9; font-size: 10px; color: var(--soft); display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.cal span.hit { background: var(--grad); color: #fff; font-weight: 700; }
+.remind { margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--navy); }
+.counter { font-family: var(--display); font-weight: 900; font-size: 34px; letter-spacing: -1px; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+.counter small { font-family: var(--body); font-size: 12px; font-weight: 600; color: var(--soft); letter-spacing: 0; display: block; margin-top: 6px; }
+
+/* estimator */
+.est { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; align-items: start; }
+.est-in { display: grid; gap: 18px; background: rgba(255,255,255,.04); border: 1px solid var(--dark-line); border-radius: 20px; padding: 24px; }
+.field { display: grid; gap: 8px; }
+.field .fl { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; color: var(--on-dark-muted); }
+.field .fl output { font-family: var(--display); font-weight: 900; color: #fff; font-size: 16px; font-variant-numeric: tabular-nums; }
+.field input[type=range] { width: 100%; accent-color: #8B7BFF; }
+.field .hint { font-size: 12px; color: var(--on-dark-soft); }
+.est-out { background: var(--card); color: var(--navy); border-radius: 22px; padding: 26px; box-shadow: 0 30px 70px rgba(2,6,23,.45); display: grid; gap: 16px; }
+.est-out .k { font-size: 11.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); }
+.est-out .headline { font-family: var(--display); font-weight: 900; font-size: clamp(44px, 5vw, 64px); letter-spacing: -2px; line-height: .95; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+.est-out .sub { font-size: 15px; color: var(--muted); }
+.est-out .money { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.est-out .money div { background: #F6F7FB; border-radius: 12px; padding: 12px 14px; }
+.est-out .money b { display: block; font-family: var(--display); font-weight: 900; font-size: 22px; color: var(--navy); font-variant-numeric: tabular-nums; }
+.est-out .money span { font-size: 12.5px; color: var(--soft); }
+.bars { display: grid; gap: 10px; }
+.bar-row { display: grid; grid-template-columns: 96px 1fr 70px; gap: 10px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.bar-track { height: 14px; background: #EEF0F5; border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 99px; transition: width .35s ease; }
+.bar-fill.now { background: #F87171; }
+.bar-fill.after { background: var(--grad); }
+.bar-row output { font-family: var(--mono); font-size: 12px; color: var(--navy); text-align: right; font-variant-numeric: tabular-nums; }
+.formula { font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: #F8FAFC; border: 1px dashed var(--line-strong); border-radius: 10px; padding: 10px 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.est-note { font-size: 12.5px; color: var(--soft); }
+.worth { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.worth span { font-size: 13px; font-weight: 600; color: #E2E8F0; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 99px; padding: 6px 12px; }
+
+/* result story */
+.story { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; margin-top: 12px; }
+.story .mega { font-family: var(--display); font-weight: 900; font-size: clamp(76px, 10vw, 132px); letter-spacing: -5px; line-height: .9; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.story .mega-l { font-family: var(--display); font-weight: 900; font-size: 20px; color: var(--navy); margin-top: 6px; }
+.story h3 { font-size: 26px; letter-spacing: -.6px; margin-top: 22px; }
+.ba-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.ba-strip div { border-radius: 14px; padding: 14px 16px; font-size: 14px; line-height: 1.55; }
+.ba-strip .b { background: #FEF2F2; color: #7F1D1D; }
+.ba-strip .a { background: #F0FDF4; color: #14532D; }
+.ba-strip b { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.story .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.story .chips span { font-size: 12px; font-weight: 600; color: var(--muted); background: #EEF1F6; border-radius: 7px; padding: 4px 9px; }
+.story .go { display: inline-block; margin-top: 18px; color: #5B4FF0; font-weight: 700; text-decoration: none; }
+.frame { border-radius: 18px; background: #0F1422; padding: 12px; box-shadow: 0 30px 60px rgba(15,23,42,.25); }
+.frame .bar { display: flex; gap: 6px; padding: 4px 4px 12px; }
+.frame .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.frame .scr { border-radius: 10px; background: #fff; padding: 14px; display: grid; gap: 8px; }
+.frame .scr .r { display: grid; grid-template-columns: .8fr 1.6fr .8fr; gap: 10px; }
+.frame .scr .r span { height: 10px; border-radius: 3px; background: #E7EAF0; }
+.frame .scr .r:first-child span { background: #C7D2FE; }
+.frame figcaption { color: #FF9CC5; font-size: 12px; padding: 12px 4px 2px; line-height: 1.5; }
+.more-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+.mr { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; text-decoration: none; }
+.mr .n { font-family: var(--display); font-weight: 900; font-size: 34px; letter-spacing: -1px; color: var(--navy); line-height: 1; white-space: nowrap; }
+.mr b { font-family: var(--display); font-weight: 900; font-size: 16px; color: var(--navy); display: block; }
+.mr span { font-size: 13px; color: var(--muted); }
+
+/* stack hub */
+.hub { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: center; }
+.hub svg { width: 100%; height: auto; display: block; }
+.hub .hn rect { fill: #fff; stroke: #D6DCE6; }
+.hub .hn text { font-family: var(--body); font-size: 12.5px; font-weight: 600; fill: #0F172A; }
+.hub .spoke { stroke: #C9D1DE; stroke-width: 1.5; stroke-dasharray: 5 5; animation: dash 1.2s linear infinite; }
+.hub .core { fill: #0F172A; }
+.hub .core-t { font-family: var(--display); font-weight: 900; font-size: 15px; fill: #fff; }
+.hub .core-s { font-family: var(--body); font-size: 11px; fill: #A9C2FF; }
+.int-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.int-links a { font-size: 13.5px; font-weight: 600; color: var(--navy); background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 7px 13px; text-decoration: none; }
+.int-links a:hover { border-color: rgba(91,79,240,.45); }
+
+/* faq two column */
+.faq2 { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+.faq2 .left { position: sticky; top: 24px; }
+.faq2 .faq { margin: 0; max-width: none; }
+.askcard { margin-top: 24px; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; }
+.askcard img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.askcard b { font-family: var(--display); font-weight: 900; color: var(--navy); display: block; }
+.askcard a { color: #5B4FF0; font-weight: 600; font-size: 14px; text-decoration: none; }
+
+/* cta with audit deliverables */
+.cta2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; text-align: left; }
+.cta2 h2, .cta2 .lede { margin-inline: 0; }
+.cta2 .hero-actions { justify-content: flex-start; }
+.deliv { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dv { background: rgba(255,255,255,.05); border: 1px solid var(--dark-line); border-radius: 16px; padding: 16px; display: grid; gap: 8px; }
+.dv .day { font-family: var(--mono); font-size: 10.5px; color: var(--tint); letter-spacing: 1px; }
+.dv b { color: #fff; font-family: var(--display); font-weight: 900; font-size: 15px; }
+.dv .viz { height: 46px; border-radius: 8px; background: rgba(255,255,255,.06); display: flex; align-items: flex-end; gap: 4px; padding: 6px; }
+.dv .viz i { flex: 1; border-radius: 3px; background: linear-gradient(180deg, #8B7BFF, #3691FF); }
+
+/* spec additions */
+.lineup { width: 100%; min-width: 640px; font-size: 13px; }
+.lineup td:first-child b { display: block; color: var(--navy); }
+.lineup td:first-child code { font-family: var(--mono); font-size: 11px; color: var(--anno); }
+.lineup tr.cur td { background: #FFF0F6; }
+.kw { display: grid; gap: 8px; }
+.kw div { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 13.5px; }
+.kw .tag { font-family: var(--mono); font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 5px; background: #EEF2FF; color: #4338CA; white-space: nowrap; }
+.kw .tag.risk { background: #FEF3C7; color: #92400E; }
+
+@media (max-width: 1080px) {
+  .hero.v2 .hero-grid { grid-template-columns: 1fr; }
+  .values { grid-template-columns: 1fr 1fr 1fr; }
+  .stepper { grid-template-columns: 1fr 1fr; row-gap: 36px; }
+  .stepper::before, .checkpoint { display: none; }
+  .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "inv inv" "bank rec" "rep clean" "con con"; }
+  .est, .story, .hub, .faq2, .cta2 { grid-template-columns: 1fr; }
+  .faq2 .left { position: static; }
+  .menu-mega.v2 { left: -40px; }
+}
+@media (max-width: 720px) {
+  .sim-body { grid-template-columns: 1fr; }
+  .sim-in { border-right: 0; border-bottom: 1px solid var(--line); grid-template-columns: 1fr 1fr; align-items: start; }
+  .values { grid-template-columns: 1fr; }
+  .value-band { margin-top: -110px; }
+  .ba { height: 600px; }
+  .ba-layer { grid-template-columns: 1fr; grid-template-rows: auto; padding: 18px; gap: 10px; align-content: start; }
+  .w-top { margin-top: 30px; }
+  .stepper { grid-template-columns: 1fr; }
+  .bento { grid-template-columns: 1fr; grid-template-areas: "inv" "bank" "rec" "rep" "clean" "con"; }
+  .ba-strip, .more-results, .deliv { grid-template-columns: 1fr; }
+  .est-out .money { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 70px 1fr 60px; }
+}
+@media (prefers-reduced-motion: reduce) { .hub .spoke { animation: none; } }
+</style>
+
+<button class="anno-toggle" id="annoToggle" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><span class="lbl-long">SEO &amp; CMS </span>annotations</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="mockbar">
+  <div class="wrap">
+    <span><b>Template mockup v2</b> · Service page, demo-led</span>
+    <span>URL <code>/services/document-automation</code></span>
+    <span>New service lineup: services are business areas that each draw on several case studies. See the spec at the bottom.</span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="section dark hero v2" id="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="#" data-route="/"><img src="data:image/png;base64,__LOGO__" alt="Whispers Lab" width="202" height="26"></a>
+      <div class="nav-links">
+        <div class="nav-item">
+          <button class="nav-link active" aria-expanded="false" aria-controls="m-services">Services <svg class="chev" viewBox="0 0 10 10" fill="none"><path d="M2 3.5 5 6.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <div class="menu menu-mega v2" id="m-services" hidden>
+            <div>
+              <h5>By business area</h5>
+              <a href="#" class="svc" data-route="/services/lead-response-automation">Lead Response Automation<small>Reply fast, route, and follow up</small></a>
+              <a href="#" class="svc" data-route="/services/client-journey-automation">Client Journey Automation<small>Onboarding, updates, reminders</small></a>
+              <a href="#" class="svc here" data-route="/services/document-automation">Document Automation<small>Read, create, and file documents</small></a>
+              <a href="#" class="svc" data-route="/services/finance-operations-automation">Finance Operations Automation<small>Invoices, payments, accounting sync</small></a>
+              <a href="#" class="svc" data-route="/services/systems-integration">Systems Integration<small>One set of data across your tools</small></a>
+              <a href="#" class="svc" data-route="/services/reporting-automation">Reporting &amp; Alerts<small>Numbers delivered, problems flagged</small></a>
+            </div>
+            <div>
+              <h5>AI</h5>
+              <a href="#" class="svc" data-route="/services/custom-ai-assistants">Custom AI Assistants<small>Email drafting, call answering, internal Q&amp;A</small></a>
+              <h5 style="margin-top:18px">Start here</h5>
+              <a href="#" data-route="/audit">Automation Audit · $250</a>
+              <a href="#" class="all" data-route="/services">All services &rarr;</a>
+            </div>
+            <div>
+              <h5>Built on</h5>
+              <a href="#" data-route="/integrations/n8n">n8n</a>
+              <a href="#" data-route="/integrations/make">Make.com</a>
+              <a href="#" data-route="/integrations/zapier">Zapier</a>
+              <a href="#" data-route="/integrations/hubspot">HubSpot</a>
+              <a href="#" class="all" data-route="/integrations">All &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="m-industries">Industries <svg class="chev" viewBox="0 0 10 10" fill="none"><path d="M2 3.5 5 6.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <div class="menu" id="m-industries" hidden style="min-width:280px">
+            <a href="#" data-route="/industries/accounting-bookkeeping">Accounting &amp; Bookkeeping</a>
+            <a href="#" data-route="/industries/real-estate">Real Estate</a>
+            <a href="#" data-route="/industries/ecommerce-retail">E-commerce &amp; Retail</a>
+            <a href="#" data-route="/industries/law-firms">Law Firms</a>
+            <a href="#" data-route="/industries/medical-dental">Medical &amp; Dental</a>
+            <a href="#" class="all" data-route="/industries">All industries &rarr;</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="m-pricing">Pricing <svg class="chev" viewBox="0 0 10 10" fill="none"><path d="M2 3.5 5 6.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <div class="menu" id="m-pricing" hidden style="min-width:300px">
+            <a href="#" data-route="/pricing">Compare all plans</a>
+            <a href="#" data-route="/audit"><span class="price">$250</span>Automation Audit</a>
+            <a href="#" data-route="/core-build"><span class="price">fixed quote</span>Core Build</a>
+            <a href="#" data-route="/growth-partner"><span class="price">$500/mo</span>AI Growth Partner</a>
+          </div>
+        </div>
+        <a class="nav-link" href="#" data-route="/case-studies">Case Studies</a>
+        <div class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="m-resources">Resources <svg class="chev" viewBox="0 0 10 10" fill="none"><path d="M2 3.5 5 6.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <div class="menu" id="m-resources" hidden style="min-width:260px">
+            <a href="#" data-route="/blog">Blog</a>
+            <a href="#" data-route="/resources/automation-roi-calculator">Automation ROI Calculator</a>
+            <a href="#" data-route="/resources/automation-readiness-quiz">Automation Readiness Quiz</a>
+          </div>
+        </div>
+        <a class="nav-link" href="#" data-route="/about">About</a>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#" data-route="/book">Book Free Discovery Call <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <details open><summary>Services <span>+</span></summary>
+        <a href="#" data-route="/services/lead-response-automation">Lead Response Automation</a>
+        <a href="#" data-route="/services/client-journey-automation">Client Journey Automation</a>
+        <a href="#" data-route="/services/document-automation">Document Automation</a>
+        <a href="#" data-route="/services/finance-operations-automation">Finance Operations Automation</a>
+        <a href="#" data-route="/services/systems-integration">Systems Integration</a>
+        <a href="#" data-route="/services/reporting-automation">Reporting &amp; Alerts</a>
+        <a href="#" data-route="/services/custom-ai-assistants">Custom AI Assistants</a>
+      </details>
+      <details><summary>Industries <span>+</span></summary>
+        <a href="#" data-route="/industries/law-firms">Law Firms</a>
+        <a href="#" data-route="/industries">All industries &rarr;</a>
+      </details>
+      <details><summary>Pricing <span>+</span></summary>
+        <a href="#" data-route="/audit">Automation Audit · $250</a>
+        <a href="#" data-route="/core-build">Core Build</a>
+        <a href="#" data-route="/growth-partner">AI Growth Partner · $500/mo</a>
+      </details>
+      <a href="#" data-route="/case-studies">Case Studies</a>
+      <a href="#" data-route="/blog">Blog</a>
+      <a href="#" data-route="/about">About</a>
+      <a class="btn btn-primary" href="#" data-route="/book">Book Free Discovery Call</a>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="anno"><b>sections.hero</b><span class="sep">|</span>H1 carries "document automation" (validate in keyword research)<span class="sep">|</span>direct answer: <span id="answerCount">…</span> words</div>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="#" data-route="/">Home</a><span aria-hidden="true">›</span><a href="#" data-route="/services">Services</a><span aria-hidden="true">›</span><span aria-current="page">Document Automation</span></nav>
+        <span class="eyebrow">Service · Documents &amp; data entry</span>
+        <h1>Document automation for teams that are <span class="grad-word">done retyping.</span></h1>
+        <p class="answer" id="answer">Document automation reads the invoices, statements, and forms your team retypes, creates the reports and letters they build by hand, and files everything in the tools you already use. A person reviews only what the system flags. Whispers Lab builds it around your documents in under 30 days.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" data-route="/audit">Start with the $250 Audit <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#estimate">Estimate your hours</a>
+        </div>
+        <div class="byline">
+          <img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="38" height="38">
+          <span>Written by <b>Haris Ali</b>, Co-Founder · Updated <time datetime="2026-09-17">Sep 17, 2026</time></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="anno"><b>sections.live-simulator</b><span class="sep">|</span>visitor presses Run and watches it work<span class="sep">|</span>final state is server-rendered text</div>
+        <div class="sim" id="sim">
+          <div class="sim-head">
+            <span class="live"><i></i>LIVE DEMO · SAMPLE DATA</span>
+            <div class="tabs" role="tablist" aria-label="Demo mode">
+              <button class="tab" role="tab" aria-selected="true" data-mode="read">Read a document</button>
+              <button class="tab" role="tab" aria-selected="false" data-mode="create">Create a document</button>
+            </div>
+          </div>
+          <div class="sim-body">
+            <div class="sim-in" id="simIn"></div>
+            <ol class="log" id="simLog"></ol>
+          </div>
+          <div class="sim-out">
+            <div><div class="o-k" id="outK"></div><div class="o-v" id="outV"></div><div class="o-s" id="outS"></div></div>
+            <button class="run" id="runBtn"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1.5v9l8-4.5z"/></svg><span>Run again</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= VALUE STRIP ================= -->
+<section class="value-band">
+  <div class="wrap">
+    <div class="values">
+      <div class="vtile"><span class="big">~15 hrs</span><span class="what">back every week</span><span class="from">From <a href="#" data-route="/case-studies/financial-document-reader">the Financial Document Reader</a>: about 40 statements a day, no longer typed</span></div>
+      <div class="vtile"><span class="big">~4 hrs</span><span class="what">saved on every report</span><span class="from">From <a href="#" data-route="/case-studies/inspection-report-writes-itself">the Inspection Report build</a>: 38+ photos laid out automatically</span></div>
+      <div class="vtile"><span class="big">1 upload</span><span class="what">clears every empty location</span><span class="from">From <a href="#" data-route="/case-studies/self-cleaning-warehouse-system">the Self-Cleaning Warehouse</a>: no more removing them one at a time</span></div>
+    </div>
+    <div class="anno" style="margin-top:14px;margin-bottom:0"><b>sections.value-strip</b><span class="sep">|</span>outcomes, not features<span class="sep">|</span>only numbers from published case studies, each linked</div>
+  </div>
+</section>
+
+<!-- ================= BEFORE / AFTER ================= -->
+<section class="section" style="padding-top:72px">
+  <div class="wrap">
+    <div class="anno"><b>sections.before-after-slider</b><span class="sep">|</span>replaces pain cards + comparison table<span class="sep">|</span>the table stays in the DOM below for AI answers</div>
+    <span class="eyebrow">Friday afternoon, two ways</span>
+    <h2>What changes when documents file themselves?</h2>
+    <p class="lede">Drag the handle. Same documents, same people, same Friday.</p>
+    <div class="ba-wrap">
+      <div class="ba" id="ba">
+        <span class="ba-tag l">BEFORE</span><span class="ba-tag r">AFTER</span>
+        <div class="ba-layer ba-before" aria-hidden="true">
+          <div class="w-top"><span class="pill red">&#9679; Friday 6:40 PM</span><span class="pill red">To enter: 47 files</span><span class="pill red">3 emails asking "did you get my invoice?"</span></div>
+          <div class="win">
+            <h4>AP spreadsheet (v7 FINAL)</h4>
+            <div class="sheet">
+              <span class="h">Vendor</span><span class="h">Due</span><span class="h">Total</span>
+              <span>Northside Plumbing</span><span>10/03</span><span>1,284.50</span>
+              <span>Harbor Electric</span><span class="bad">??</span><span>612.00</span>
+              <span>Ridge Supply Co</span><span>09/28</span><span class="bad">1,971.00</span>
+              <span>Metro Fuel</span><span>09/30</span><span>418.75</span>
+              <span class="h">Sum</span><span></span><span class="bad">off by $90</span>
+            </div>
+          </div>
+          <div style="display:grid;gap:12px;align-content:start">
+            <div class="win mail"><h4>Inbox</h4><div><b>Re: Re: Invoice INV-20417</b><span>Just checking this came through...</span></div><div><b>Statement for August</b><span>3 attachments</span></div></div>
+            <div class="win sticky-note">Ask Sam which total is right??</div>
+          </div>
+        </div>
+        <div class="ba-layer ba-after" aria-hidden="true">
+          <div class="w-top" style="justify-content:flex-end"><span class="pill green">&#9679; Friday 3:05 PM</span><span class="pill green">To enter: 0</span><span class="pill green">Vendors get a receipt automatically</span></div>
+          <div class="win summary">
+            <h4>Today</h4>
+            <div class="num">46 filed</div>
+            <p>automatically, each linked to its original PDF</p>
+            <div class="sheet" style="margin-top:12px">
+              <span class="h">Vendor</span><span class="h">Due</span><span class="h">Status</span>
+              <span>Northside Plumbing</span><span>10/03</span><span class="ok">Filed</span>
+              <span>Harbor Electric</span><span>10/06</span><span class="ok">Filed</span>
+              <span>Ridge Supply Co</span><span>09/28</span><span class="ok">Filed</span>
+            </div>
+          </div>
+          <div class="win slack">
+            <span class="av"></span>
+            <div><b>#finance</b> · Document workflow<br>INV-20417 is missing a PO number. Everything else checked out.<div class="btns"><span>Approve</span><span>Fix</span></div></div>
+          </div>
+        </div>
+        <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Compare before and after">
+        <div class="ba-handle" aria-hidden="true"></div>
+      </div>
+      <details class="more-detail">
+        <summary>See the before and after in detail</summary>
+        <div class="table-scroll">
+          <table>
+            <caption>Document handling before and after document automation</caption>
+            <thead><tr><th scope="col">&nbsp;</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Data entry</th><td class="before">Someone retypes every field</td><td class="after">Fields are read and filed automatically</td></tr>
+              <tr><th scope="row">Mistakes</th><td class="before">Found at month end, if at all</td><td class="after">Checked on arrival; unsure fields go to a person</td></tr>
+              <tr><th scope="row">Reports and letters</th><td class="before">Built by hand from a template</td><td class="after">Generated the moment the form or data is ready</td></tr>
+              <tr><th scope="row">Your team's time</th><td class="before">Typing and chasing</td><td class="after">Reviewing the exceptions</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section white">
+  <div class="wrap">
+    <div class="anno"><b>sections.stepper</b><span class="sep">|</span>real sequence, so numbers carry meaning<span class="sep">|</span>human checkpoint drawn into the flow</div>
+    <span class="eyebrow">How it works</span>
+    <h2>How does document automation work?</h2>
+    <div class="stepper">
+      <div class="checkpoint" aria-hidden="true"><div class="dia"><span>YOU</span></div><small>Only flagged documents stop here</small></div>
+      <div class="step"><span class="n">1</span><h3>Capture</h3><p>Documents arrive the way they do now: email, a shared folder, a phone photo, a form.</p><span class="tl"><span>Gmail</span><span>Google Drive</span><span>Forms</span></span></div>
+      <div class="step ai"><span class="n">2</span><h3>Read</h3><p>AI pulls out the exact fields you use, in the same structure every time. It extracts. It does not guess.</p><span class="tl"><span>OpenAI</span><span>Claude</span></span></div>
+      <div class="step"><span class="n">3</span><h3>Check</h3><p>Plain rules test the result: totals add up, the vendor is known, the date makes sense.</p><span class="tl"><span>Validation rules</span></span></div>
+      <div class="step"><span class="n">4</span><h3>File</h3><p>Clean data lands in your system with a link to the original. Anything unsure waits for a person.</p><span class="tl"><span>Xero</span><span>QuickBooks</span><span>Airtable</span></span></div>
+    </div>
+    <div class="human-band">
+      <span class="k">Stays human</span>
+      <span class="c">Approving payments</span><span class="c">Anything flagged unsure</span><span class="c">Vendor disputes</span><span class="c">Tax treatment of odd items</span><span class="c">Deciding when a number looks wrong</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENTO ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="anno"><b>sections.bento</b><span class="sep">|</span>each tile shows where the data ends up<span class="sep">|</span>tiles are sub-workflows of this service, not separate pages</div>
+    <span class="eyebrow">What it handles</span>
+    <h2>Which documents can be automated?</h2>
+    <div class="bento">
+      <article class="tile t-inv">
+        <div class="th"><span class="k">Read</span><h3>Invoices &amp; bills</h3><p>Vendor, dates, line items, tax, and total, checked and filed as draft bills.</p></div>
+        <div class="prev">
+          <div class="mini-table">
+            <span class="h">Vendor</span><span class="h">Due</span><span class="h">Total</span><span class="h">Status</span>
+            <span>Northside Plumbing</span><span>Oct 3</span><span>$1,284.50</span><span class="st-rv">Review</span>
+            <span>Harbor Electric</span><span>Oct 6</span><span>$612.00</span><span class="st-ok">Filed</span>
+            <span>Ridge Supply Co</span><span>Sep 28</span><span>$1,971.00</span><span class="st-ok">Filed</span>
+            <span>Metro Fuel</span><span>Sep 30</span><span>$418.75</span><span class="st-ok">Filed</span>
+          </div>
+          <div class="ex" style="margin-top:8px">EXAMPLE · LANDS IN XERO OR QUICKBOOKS</div>
+        </div>
+      </article>
+      <article class="tile t-bank">
+        <div class="th"><span class="k">Read</span><h3>Bank statements</h3></div>
+        <div class="prev txn"><span>Metro Fuel</span><span>-64.20</span><span>Stripe payout</span><span>+2,410.00</span><span>Office lease</span><span>-3,200.00</span></div>
+      </article>
+      <article class="tile t-rec">
+        <div class="th"><span class="k">Read</span><h3>Receipts</h3></div>
+        <div class="prev phone"><span class="ph"></span><span><b>$42.18</b><br>Fuel · Truck 2</span></div>
+      </article>
+      <article class="tile t-rep">
+        <div class="th"><span class="k">Create</span><h3>Reports from forms</h3><p>A form with notes and photos becomes a finished PDF in your layout.</p></div>
+        <div class="prev pdf">
+          <span class="pt">Site Inspection Report</span>
+          <span class="grid6"><span></span><span></span><span></span><span></span><span></span><span></span></span>
+          <span class="note" style="width:92%"></span><span class="note" style="width:78%"></span>
+          <span class="pages">Page 1 of 7 · built on submit</span>
+        </div>
+      </article>
+      <article class="tile t-con">
+        <div class="th"><span class="k">Read + remind</span><h3>Contracts &amp; renewals</h3><p>Parties, dates, and terms pulled out, with reminders before anything renews.</p></div>
+        <div class="prev">
+          <div class="cal"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span class="hit">12</span><span>13</span><span>14</span></div>
+          <div class="remind">Reminder: office lease renews in 30 days</div>
+        </div>
+      </article>
+      <article class="tile t-clean">
+        <div class="th"><span class="k">Tidy</span><h3>File cleanup</h3></div>
+        <div class="counter" id="counter">3,214<small>leftover files, cleared in batches</small><span class="ex" style="display:block;margin-top:8px">EXAMPLE COUNT</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTIMATOR ================= -->
+<section class="section dark" id="estimate">
+  <div class="wrap">
+    <div class="anno"><b>sections.estimator</b><span class="sep">|</span>value from the visitor's own numbers, never invented stats<span class="sep">|</span>formula shown</div>
+    <span class="eyebrow">Your numbers</span>
+    <h2>What is retyping costing you?</h2>
+    <p class="lede">Move the sliders to match your week. The defaults use the document volume from one of our builds.</p>
+    <div class="est">
+      <div class="est-in">
+        <div class="field"><div class="fl"><label for="e-docs">Documents per day</label><output id="o-docs">40</output></div><input type="range" id="e-docs" min="5" max="200" step="5" value="40"></div>
+        <div class="field"><div class="fl"><label for="e-min">Minutes to enter each one</label><output id="o-min">4</output></div><input type="range" id="e-min" min="1" max="15" step="1" value="4"></div>
+        <div class="field"><div class="fl"><label for="e-days">Working days per week</label><output id="o-days">5</output></div><input type="range" id="e-days" min="1" max="7" step="1" value="5"></div>
+        <div class="field"><div class="fl"><label for="e-rate">Hourly cost of that time</label><output id="o-rate">$35</output></div><input type="range" id="e-rate" min="15" max="150" step="5" value="35"><span class="hint">Wages plus overhead, or your own hourly value</span></div>
+        <div class="field"><div class="fl"><label for="e-flag">Share flagged for review</label><output id="o-flag">10%</output></div><input type="range" id="e-flag" min="0" max="50" step="5" value="10"></div>
+        <div class="field"><div class="fl"><label for="e-rev">Minutes per review</label><output id="o-rev">3</output></div><input type="range" id="e-rev" min="1" max="10" step="1" value="3"></div>
+      </div>
+      <div class="est-out" aria-live="polite">
+        <span class="k">Estimated time back</span>
+        <div class="headline" id="r-hours">12.3 hrs</div>
+        <span class="sub">every week, after reviewing the flagged documents</span>
+        <div class="money">
+          <div><b id="r-month">$1,868</b><span>a month</span></div>
+          <div><b id="r-year">$22,412</b><span>a year</span></div>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span>Typing now</span><div class="bar-track"><div class="bar-fill now" id="b-now" style="width:100%"></div></div><output id="v-now">13.3 h/wk</output></div>
+          <div class="bar-row"><span>Reviewing after</span><div class="bar-track"><div class="bar-fill after" id="b-after" style="width:8%"></div></div><output id="v-after">1.0 h/wk</output></div>
+        </div>
+        <div class="formula" id="formula"></div>
+        <p class="est-note">An estimate from your inputs, not a promise. The Automation Audit measures your real volumes before anything is built.</p>
+      </div>
+    </div>
+    <div class="worth"><span>Worth it when the same document types repeat every week</span><span>When the data already ends up in a tool</span><span>When review beats retyping</span></div>
+  </div>
+</section>
+
+<!-- ================= RESULT STORY ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="anno"><b>sections.result-story</b><span class="sep">|</span>one oversized proof, then smaller ones<span class="sep">|</span>relation: case-studies</div>
+    <div class="story">
+      <div>
+        <span class="eyebrow">Result story</span>
+        <div class="mega">~15 hrs</div>
+        <div class="mega-l">saved every week, with no manual data entry left</div>
+        <h3>The Financial Document Reader</h3>
+        <div class="ba-strip">
+          <div class="b"><b>Before</b>A black-box scanner pulled numbers from bank statements, and someone still checked its work by hand.</div>
+          <div class="a"><b>After</b>An AI reader extracts every transaction in a fixed structure, with each client's data walled off.</div>
+        </div>
+        <div class="chips"><span>Financial services SaaS</span><span>OpenAI</span><span>Supabase</span></div>
+        <a class="go" href="#" data-route="/case-studies/financial-document-reader">Read the full story &rarr;</a>
+      </div>
+      <figure class="frame">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="scr" aria-hidden="true"><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div><div class="r"><span></span><span></span><span></span></div></div>
+        <figcaption>Screenshot slot: anonymized extracted-transactions view from this build. Use a real screenshot, not the current AI-generated case study image.</figcaption>
+      </figure>
+    </div>
+    <div class="more-results">
+      <a class="mr" href="#" data-route="/case-studies/inspection-report-writes-itself"><span class="n">~4 hrs</span><span><b>The Inspection Report That Writes Itself</b><span>saved per report · Make.com, Documint, Jotform</span></span></a>
+      <a class="mr" href="#" data-route="/case-studies/self-cleaning-warehouse-system"><span class="n">~3 hrs</span><span><b>The Self-Cleaning Warehouse System</b><span>saved weekly on cleanup · Make.com, Google Drive</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STACK HUB ================= -->
+<section class="section white">
+  <div class="wrap">
+    <div class="anno"><b>sections.stack-hub</b><span class="sep">|</span>relation: integrations<span class="sep">|</span>tool names are real text for crawlers</div>
+    <div class="hub">
+      <div>
+        <span class="eyebrow">Works with your stack</span>
+        <h2>Built on the tools you already pay for</h2>
+        <p class="lede">We connect what you have instead of adding another subscription. If a tool has an API, it can usually join the workflow.</p>
+        <div class="int-links">
+          <a href="#" data-route="/integrations/n8n">n8n</a><a href="#" data-route="/integrations/make">Make.com</a><a href="#" data-route="/integrations/zapier">Zapier</a><a href="#" data-route="/integrations/xero">Xero</a><a href="#" data-route="/integrations/quickbooks">QuickBooks</a><a href="#" data-route="/integrations/airtable">Airtable</a>
+        </div>
+      </div>
+      <svg id="hub" viewBox="0 0 600 420" role="img" aria-label="Tools connected to your document workflow: Gmail, Google Drive, Jotform, Xero, QuickBooks, Airtable, Supabase, OpenAI, Claude, n8n, Make.com, HubSpot"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="anno"><b>sections.faq</b><span class="sep">|</span>6 self-contained answers &rarr; FAQPage<span class="sep">|</span>questions from People Also Ask after keyword research</div>
+    <div class="faq2">
+      <div class="left">
+        <span class="eyebrow">Clearing the air</span>
+        <h2>Questions owners ask first</h2>
+        <div class="askcard">
+          <img src="data:image/jpeg;base64,__HARIS__" alt="Haris Ali" width="48" height="48">
+          <div><b>Still not sure?</b><a href="#" data-route="/book">Ask Haris on a free discovery call &rarr;</a></div>
+        </div>
+      </div>
+      <div class="faq" id="faq">
+        <details open><summary><span class="q">What is document automation?</span><i>+</i></summary><div class="a">Document automation is software that handles documents without manual retyping. It reads incoming documents such as invoices, bank statements, and forms and files their data into your systems, and it creates outgoing documents such as reports and letters from templates. A well-built setup checks its own work and sends anything uncertain to a person for review.</div></details>
+        <details><summary><span class="q">How much does document automation cost for a small business?</span><i>+</i></summary><div class="a">At Whispers Lab it starts with a $250 Automation Audit that measures which documents cost your team the most time. If you go ahead, the build is quoted as a fixed price for the specific workflows, with no hourly billing, and the $250 is credited toward it. Ongoing maintenance and new workflows are available through the AI Growth Partner plan at $500 a month.</div></details>
+        <details><summary><span class="q">How long does it take to set up?</span><i>+</i></summary><div class="a">A document automation workflow built in the Whispers Lab Core Build is production-ready in under 30 days. That includes designing the data flow, building and connecting the automation, testing it against real sample documents, and training your team to review flagged items.</div></details>
+        <details><summary><span class="q">Is it accurate enough for financial documents?</span><i>+</i></summary><div class="a">It is accurate enough when the system is built to be checked. The AI is told exactly which fields to return and in what format, plain rules confirm totals and dates, and any field that fails a check goes to a person instead of being filed. In the Financial Document Reader that Whispers Lab built, bank statement transactions are extracted in the same structure every time, which removed manual data entry entirely.</div></details>
+        <details><summary><span class="q">Will it work with the software we already use?</span><i>+</i></summary><div class="a">In most cases, yes. Data can be written to accounting tools like Xero and QuickBooks, to Airtable or Google Sheets, to a CRM like HubSpot, or to your own database, and documents can be collected from email, shared folders, or forms. The Whispers Lab Automation Audit confirms the exact connections before anything is built.</div></details>
+        <details><summary><span class="q">Does document automation replace admin staff?</span><i>+</i></summary><div class="a">No. Document automation removes the retyping, not the judgment. Staff who used to enter data spend that time reviewing flagged documents, fixing real exceptions, and handling work that needs a person, such as approving payments or answering a client's question about a number.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="anno"><b>sections.cta-audit-preview</b><span class="sep">|</span>shows what the $250 actually buys<span class="sep">|</span>deliverable names from the live Audit page</div>
+    <div class="cta2">
+      <div>
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Find out which documents are costing you the most.</h2>
+        <p class="lede">In 7 days, the Automation Audit maps your document workflows and hands you a build plan you keep either way. Build it with us and the $250 is credited.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" data-route="/audit">Book Your Audit ($250) <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#" data-route="/book">Book a free discovery call</a>
+        </div>
+      </div>
+      <div class="deliv" aria-label="Audit deliverables">
+        <div class="dv"><span class="day">DAYS 1 TO 2</span><b>Automation Readiness Scorecard</b><div class="viz"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 3 TO 4</span><b>Visual Workflow Map</b><div class="viz"><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i><i style="height:30%"></i></div></div>
+        <div class="dv"><span class="day">DAYS 5 TO 6</span><b>Automation Priority Matrix</b><div class="viz"><i style="height:90%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:20%"></i></div></div>
+        <div class="dv"><span class="day">DAY 7</span><b>Execution Blueprint</b><div class="viz"><i style="height:50%"></i><i style="height:65%"></i><i style="height:80%"></i><i style="height:100%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div><h5>Services</h5><a href="#" data-route="/services/lead-response-automation">Lead Response</a><a href="#" data-route="/services/client-journey-automation">Client Journey</a><a href="#" data-route="/services/document-automation">Document Automation</a><a href="#" data-route="/services/finance-operations-automation">Finance Operations</a><a href="#" data-route="/services/systems-integration">Systems Integration</a><a href="#" data-route="/services/reporting-automation">Reporting &amp; Alerts</a><a href="#" data-route="/services/custom-ai-assistants">Custom AI Assistants</a></div>
+        <div><h5>Industries</h5><a href="#" data-route="/industries/accounting-bookkeeping">Accounting</a><a href="#" data-route="/industries/real-estate">Real Estate</a><a href="#" data-route="/industries/ecommerce-retail">E-commerce</a><a href="#" data-route="/industries/law-firms">Law Firms</a><a href="#" data-route="/industries">All industries</a></div>
+        <div><h5>Integrations</h5><a href="#" data-route="/integrations/n8n">n8n</a><a href="#" data-route="/integrations/make">Make.com</a><a href="#" data-route="/integrations/zapier">Zapier</a><a href="#" data-route="/integrations">All integrations</a></div>
+        <div><h5>Company</h5><a href="#" data-route="/about">About</a><a href="#" data-route="/case-studies">Case Studies</a><a href="#" data-route="/pricing">Pricing</a><a href="#" data-route="/contact">Contact</a></div>
+        <div><h5>Resources</h5><a href="#" data-route="/blog">Blog</a><a href="#" data-route="/resources/automation-roi-calculator">ROI Calculator</a></div>
+      </div>
+      <div class="foot-base">
+        <span>THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME.</span>
+        <span>© 2026 Whispers Lab<a href="#" data-route="/privacy-policy">Privacy</a><a href="#" data-route="/terms">Terms</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= SPEC ================= -->
+<section class="spec" aria-label="Template spec">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--anno)">Outside the page · template spec</span>
+    <h2>New service lineup, and what ships with this page</h2>
+    <p class="lede">Services are now business areas. Each one draws on several case studies instead of mirroring one, and the old narrow services become sections inside them.</p>
+    <div class="spec-grid">
+      <div class="panel span2">
+        <h3>Service lineup (7 pages, was 15)</h3>
+        <div class="table-scroll" style="margin-top:0">
+          <table class="lineup">
+            <thead><tr><th>Service</th><th>Covers</th><th>Proof it draws on</th></tr></thead>
+            <tbody>
+              <tr><td><b>Lead Response Automation</b><code>/services/lead-response-automation</code></td><td>Lead capture, qualification, routing, instant replies, follow-up, booking</td><td>Lead Sales Engine; Onboarding Pipeline (booking)</td></tr>
+              <tr><td><b>Client Journey Automation</b><code>/services/client-journey-automation</code></td><td>Intake, welcome sequences, document requests, status updates, reminders</td><td>Onboarding Pipeline; CRM That Fills Itself In</td></tr>
+              <tr class="cur"><td><b>Document Automation</b><code>/services/document-automation</code></td><td>Reading documents in, creating documents out, filing and cleanup</td><td>Financial Document Reader; Inspection Report; Self-Cleaning Warehouse</td></tr>
+              <tr><td><b>Finance Operations Automation</b><code>/services/finance-operations-automation</code></td><td>Invoicing, payment reminders, accounting sync, expense capture</td><td>Zero Double-Entry Financial Pipeline</td></tr>
+              <tr><td><b>Systems Integration</b><code>/services/systems-integration</code></td><td>Connecting tools, CRM and data sync, migrations, product and catalog feeds</td><td>AI Catalog &amp; Content Engine; CRM That Fills Itself In</td></tr>
+              <tr><td><b>Reporting &amp; Alerts</b><code>/services/reporting-automation</code></td><td>Daily summaries, owner dashboards, exception alerts</td><td>No direct case study yet (closest-builds mode)</td></tr>
+              <tr><td><b>Custom AI Assistants</b><code>/services/custom-ai-assistants</code></td><td>Email triage and drafting, call answering and booking, internal Q&amp;A, website chat</td><td>Financial Document Reader and AI Catalog Engine (AI builds)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Search result preview</h3>
+        <div class="serp">
+          <div class="site"><i>W</i><span>Whispers Lab<small>https://www.whisperslab.com › services › document-automation</small></span></div>
+          <div class="st" id="serpTitle">Document Automation for Small Businesses | Whispers Lab</div>
+          <div class="sd" id="serpDesc">Stop retyping invoices, statements, and forms. We build document automation that reads, creates, and files documents in your tools, and flags what needs a person.</div>
+        </div>
+        <div class="counts" id="counts"></div>
+      </div>
+      <div class="panel">
+        <h3>Keywords to validate before writing</h3>
+        <div class="kw">
+          <div><span class="tag">primary?</span><span>document automation for small business</span></div>
+          <div><span class="tag">secondary</span><span>automate invoice data entry · automated data entry from PDF · bank statement data extraction</span></div>
+          <div><span class="tag">secondary</span><span>automated report generation from forms</span></div>
+          <div><span class="tag risk">SERP risk</span><span>"document automation" alone may mean legal document assembly software. Check the results page before committing the H1.</span></div>
+          <div><span class="tag risk">no volumes</span><span>Paste Semrush data; web search cannot supply volume</span></div>
+        </div>
+      </div>
+      <div class="panel span2">
+        <h3>Section &rarr; Strapi &rarr; data source</h3>
+        <div class="table-scroll" style="margin-top:0">
+          <table class="map">
+            <thead><tr><th>Section</th><th>Component</th><th>Filled from</th></tr></thead>
+            <tbody>
+              <tr><td>Hero + live simulator</td><td>sections.hero, sections.live-simulator</td><td>Entry: modes[] with source, input preview, log steps (time, text, flag), output</td></tr>
+              <tr><td>Value strip</td><td>sections.value-strip</td><td>Relation: case-studies, picking one metric each</td></tr>
+              <tr><td>Before / after slider</td><td>sections.before-after-slider</td><td>Entry: before and after panels + detail table rows</td></tr>
+              <tr><td>How it works</td><td>sections.stepper</td><td>Entry: steps[] + checkpoint position + humanItems[]</td></tr>
+              <tr><td>What it handles</td><td>sections.bento</td><td>Entry: tiles[] (verb, title, text, previewType, size)</td></tr>
+              <tr><td>Estimator</td><td>sections.estimator</td><td>Entry: inputs[] with defaults and a formula key</td></tr>
+              <tr><td>Result story</td><td>sections.result-story</td><td>Relation: case-studies (first = featured)</td></tr>
+              <tr><td>Stack hub</td><td>sections.stack-hub</td><td>Relation: integrations</td></tr>
+              <tr><td>FAQ</td><td>sections.faq</td><td>Entry: 6 items &rarr; FAQPage</td></tr>
+              <tr><td>CTA with Audit preview</td><td>sections.cta-audit-preview</td><td>Global (shared)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel span2">
+        <h3>JSON-LD (Service + BreadcrumbList + FAQPage)</h3>
+        <pre class="jsonld" id="jsonld"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var toastEl = $("#toast"), toastTimer;
+  window.toast = function (html) {
+    toastEl.innerHTML = html; toastEl.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2200);
+  };
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-route]");
+    if (!a) return;
+    e.preventDefault();
+    toast("Links to <code>" + a.getAttribute("data-route") + "</code>");
+  });
+
+  var annoBtn = $("#annoToggle");
+  function setAnno(on) {
+    document.body.classList.toggle("anno-off", !on);
+    annoBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    try { localStorage.setItem("wl-anno", on ? "1" : "0"); } catch (err) {}
+  }
+  var stored = null;
+  try { stored = localStorage.getItem("wl-anno"); } catch (err) {}
+  setAnno(stored !== "0");
+  annoBtn.addEventListener("click", function () { setAnno(document.body.classList.contains("anno-off")); });
+
+  var navBtns = $$(".nav-item > .nav-link");
+  function closeMenus(except) {
+    navBtns.forEach(function (b) {
+      if (b === except) return;
+      b.setAttribute("aria-expanded", "false");
+      document.getElementById(b.getAttribute("aria-controls")).hidden = true;
+    });
+  }
+  navBtns.forEach(function (b) {
+    var menu = document.getElementById(b.getAttribute("aria-controls"));
+    var item = b.parentElement, hoverTimer;
+    function open() { closeMenus(b); b.setAttribute("aria-expanded", "true"); menu.hidden = false; }
+    function close() { b.setAttribute("aria-expanded", "false"); menu.hidden = true; }
+    b.addEventListener("click", function (e) { e.stopPropagation(); (menu.hidden ? open : close)(); });
+    if (window.matchMedia("(hover: hover)").matches) {
+      item.addEventListener("mouseenter", function () { clearTimeout(hoverTimer); open(); });
+      item.addEventListener("mouseleave", function () { hoverTimer = setTimeout(close, 160); });
+    }
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav-item")) closeMenus(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenus(); });
+  var burger = $("#burger"), mm = $("#mobileMenu");
+  burger.addEventListener("click", function () { mm.hidden = !mm.hidden; burger.setAttribute("aria-expanded", mm.hidden ? "false" : "true"); });
+
+  /* ===== live simulator ===== */
+  var MODES = {
+    read: {
+      input: '<span class="src-chip"><b>@</b>ap@yourbusiness.com</span>' +
+        '<div class="thumb"><div class="tt">INVOICE</div><div class="row"><span>Northside Plumbing Supply</span><span>INV-20417</span></div><div class="ln" style="width:90%"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:82%"></div><div class="row" style="font-weight:700;color:#0F172A"><span>Total</span><span>$1,284.50</span></div></div>',
+      log: [["0.0s", "<b>Received</b> from the AP inbox", 0], ["0.9s", "<b>Read 9 fields</b>: vendor, dates, 4 line items, tax, total", 0], ["1.3s", "<b>Checked</b>: line items match total, vendor on file", 0], ["1.4s", "<b>PO number missing</b>, sent to Dana to confirm", 1], ["1.6s", "<b>Filed</b> to Xero as a draft bill, PDF attached", 0]],
+      outK: "Draft bill created", outV: "$1,284.50 · due Oct 3", outS: "1 field waiting for review"
+    },
+    create: {
+      input: '<span class="src-chip"><b>F</b>Mobile inspection form</span>' +
+        '<div class="thumb"><div class="tt">SITE VISIT</div><div class="row"><span>38 photos</span><span>12 notes</span></div><div class="photos"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="ln" style="width:80%"></div></div>',
+      log: [["0.0s", "<b>Form submitted</b> on site", 0], ["0.6s", "<b>Collected</b> 38 photos and 12 notes", 0], ["1.9s", "<b>Built the report</b> from your template: photo grid, notes kept separate", 0], ["2.4s", "<b>Saved</b> a 7-page PDF to the client folder", 0], ["2.5s", "<b>Emailed</b> the report to the client", 0]],
+      outK: "Report ready", outV: "7 pages · 38 photos placed", outS: "Nobody touched a layout tool"
+    }
+  };
+  var sim = $("#sim"), simIn = $("#simIn"), simLog = $("#simLog"), runBtn = $("#runBtn"), mode = "read", timers = [];
+  function renderMode(m, animate) {
+    mode = m;
+    timers.forEach(clearTimeout); timers = [];
+    var d = MODES[m];
+    simIn.innerHTML = d.input;
+    simLog.innerHTML = d.log.map(function (l) {
+      return '<li class="' + (l[2] ? 'flag' : '') + (animate ? ' pending' : '') + '"><time>' + l[0] + '</time><span class="dotc">' + (l[2] ? '!' : '&#10003;') + '</span><span>' + l[1] + '</span></li>';
+    }).join("");
+    $("#outK").textContent = d.outK; $("#outV").textContent = d.outV; $("#outS").textContent = d.outS;
+    $$(".sim .tab").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.mode === m ? "true" : "false"); });
+    if (!animate || reduce) return;
+    var items = $$("li", simLog), out = $(".sim-out > div");
+    out.style.opacity = ".25"; sim.classList.add("running"); runBtn.disabled = true;
+    items.forEach(function (li, i) {
+      timers.push(setTimeout(function () {
+        items.forEach(function (x) { x.classList.remove("now"); });
+        li.classList.remove("pending"); li.classList.add("now");
+      }, 350 + i * 520));
+    });
+    timers.push(setTimeout(function () {
+      items.forEach(function (x) { x.classList.remove("now"); });
+      out.style.opacity = "1"; sim.classList.remove("running"); runBtn.disabled = false;
+    }, 350 + items.length * 520));
+  }
+  $$(".sim .tab").forEach(function (t) { t.addEventListener("click", function () { renderMode(t.dataset.mode, true); }); });
+  runBtn.addEventListener("click", function () { renderMode(mode, true); });
+  renderMode("read", false);
+
+  /* ===== before / after ===== */
+  var ba = $("#ba"), baRange = $("#baRange");
+  function setPos(v) { ba.style.setProperty("--pos", v + "%"); }
+  baRange.addEventListener("input", function () { setPos(baRange.value); });
+  setPos(50);
+
+  /* ===== counter tile ===== */
+  var counter = $("#counter"), counted = false;
+  function runCounter() {
+    if (counted || reduce) return; counted = true;
+    var start = 3214, t0 = null;
+    function tick(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 1600), v = Math.round(start * (1 - p));
+      counter.firstChild.nodeValue = v.toLocaleString("en-US");
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries, obs) { entries.forEach(function (e) { if (e.isIntersecting) { setTimeout(runCounter, 400); obs.disconnect(); } }); }, { threshold: .6 }).observe(counter);
+  }
+
+  /* ===== estimator ===== */
+  var ids = ["docs", "min", "days", "rate", "flag", "rev"];
+  function num(n) { return Number($("#e-" + n).value); }
+  function fmtMoney(v) { return "$" + Math.round(v).toLocaleString("en-US"); }
+  function calc() {
+    var docs = num("docs"), min = num("min"), days = num("days"), rate = num("rate"), flag = num("flag") / 100, rev = num("rev");
+    $("#o-docs").textContent = docs; $("#o-min").textContent = min; $("#o-days").textContent = days;
+    $("#o-rate").textContent = "$" + rate; $("#o-flag").textContent = Math.round(flag * 100) + "%"; $("#o-rev").textContent = rev;
+    var now = docs * min * days / 60, after = docs * flag * rev * days / 60, back = Math.max(0, now - after);
+    var month = back * 52 / 12 * rate;
+    $("#r-hours").textContent = back.toFixed(1) + " hrs";
+    $("#r-month").textContent = fmtMoney(month);
+    $("#r-year").textContent = fmtMoney(month * 12);
+    $("#v-now").textContent = now.toFixed(1) + " h/wk";
+    $("#v-after").textContent = after.toFixed(1) + " h/wk";
+    $("#b-now").style.width = (now > 0 ? 100 : 0) + "%";
+    $("#b-after").style.width = (now > 0 ? Math.max(1, after / now * 100) : 0) + "%";
+    $("#formula").textContent = "time back = (" + docs + " docs x " + min + " min - " + docs + " x " + Math.round(flag * 100) + "% x " + rev + " min) x " + days + " days / 60 = " + back.toFixed(1) + " hrs/wk; per month = hrs x 52/12 x $" + rate;
+  }
+  ids.forEach(function (n) { $("#e-" + n).addEventListener("input", calc); });
+  calc();
+
+  /* ===== stack hub ===== */
+  var hub = $("#hub"), NS = "http://www.w3.org/2000/svg";
+  function mk(n, a, t) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; return e; }
+  var tools = ["Gmail", "Google Drive", "Jotform", "Xero", "QuickBooks", "Airtable", "Supabase", "OpenAI", "Claude", "n8n", "Make.com", "HubSpot"];
+  var cx = 300, cy = 210, rx = 230, ry = 160;
+  var nodes = tools.map(function (name, i) {
+    var ang = -Math.PI / 2 + i * 2 * Math.PI / tools.length;
+    return { name: name, x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang) };
+  });
+  nodes.forEach(function (n) { hub.appendChild(mk("line", { x1: cx, y1: cy, x2: n.x, y2: n.y, class: "spoke" })); });
+  hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 66, fill: "rgba(128,65,255,.12)" }));
+  hub.appendChild(mk("circle", { cx: cx, cy: cy, r: 54, class: "core" }));
+  hub.appendChild(mk("text", { x: cx, y: cy - 2, "text-anchor": "middle", class: "core-t" }, "Your"));
+  hub.appendChild(mk("text", { x: cx, y: cy + 16, "text-anchor": "middle", class: "core-s" }, "document workflow"));
+  nodes.forEach(function (n) {
+    var w = n.name.length * 7.4 + 24;
+    var g = mk("g", { class: "hn" });
+    g.appendChild(mk("rect", { x: n.x - w / 2, y: n.y - 16, width: w, height: 32, rx: 16 }));
+    g.appendChild(mk("text", { x: n.x, y: n.y + 4.5, "text-anchor": "middle" }, n.name));
+    hub.appendChild(g);
+  });
+
+  /* ===== spec ===== */
+  var answer = $("#answer").textContent.trim();
+  $("#answerCount").textContent = answer.split(/\s+/).length;
+  var title = $("#serpTitle").textContent, desc = $("#serpDesc").textContent;
+  var dash = new RegExp(String.fromCharCode(8212));
+  $("#counts").innerHTML =
+    '<span class="count' + (title.length > 60 ? ' bad' : '') + '">title ' + title.length + '/60</span>' +
+    '<span class="count' + (desc.length > 160 ? ' bad' : '') + '">description ' + desc.length + '/160</span>' +
+    '<span class="count' + (dash.test($("main").innerText) ? ' bad">em dashes found' : '">0 em dashes') + '</span>';
+
+  var url = "https://www.whisperslab.com/services/document-automation";
+  var faq = $$("#faq details").map(function (d) {
+    return { "@type": "Question", name: $(".q", d).textContent, acceptedAnswer: { "@type": "Answer", text: $(".a", d).textContent } };
+  });
+  var ld = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Service", "@id": url + "#service", name: "Document Automation", serviceType: "Document automation and data entry automation", description: answer, url: url,
+        provider: { "@type": "Organization", name: "Whispers Lab", url: "https://www.whisperslab.com" },
+        areaServed: { "@type": "Country", name: "United States" },
+        audience: { "@type": "BusinessAudience", audienceType: "Small businesses" },
+        hasOfferCatalog: { "@type": "OfferCatalog", name: "Document automation workflows", itemListElement: $$(".bento .tile h3").map(function (h) { return { "@type": "Offer", itemOffered: { "@type": "Service", name: h.textContent } }; }) },
+        offers: { "@type": "Offer", name: "Automation Audit", price: "250", priceCurrency: "USD", url: "https://www.whisperslab.com/audit" } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.whisperslab.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.whisperslab.com/services" },
+        { "@type": "ListItem", position: 3, name: "Document Automation", item: url } ] },
+      { "@type": "FAQPage", mainEntity: faq }
+    ]
+  };
+  $("#jsonld").textContent = JSON.stringify(ld, null, 2);
+  var s = document.createElement("script"); s.type = "application/ld+json"; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+})();
+</script>

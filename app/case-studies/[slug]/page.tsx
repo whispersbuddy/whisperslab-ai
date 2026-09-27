@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import NewsletterSection from "@/components/NewsletterSection";
 import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
@@ -31,7 +30,7 @@ export async function generateMetadata({
   const cs = { ...staticCs, ...strapiCs };
   if (!cs || !cs.title) return {};
 
-  const title = `${cs.title} — Whispers Lab Case Study`;
+  const title = `${cs.title} | Whispers Lab Case Study`;
   const description = cs.goal;
   const url = `/case-studies/${cs.slug}`;
 
@@ -51,7 +50,7 @@ export async function generateMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Whispers Lab — We delete busywork.",
+          alt: "Whispers Lab. We delete busywork.",
         },
       ],
     },
@@ -118,13 +117,12 @@ export default async function CaseStudyDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <SiteHeader />
       <main>
         <section className="case-detail-banner">
           <div className="container">
-            <a href="/case-studies" className="case-detail-back">
+            <Link href="/case-studies" className="case-detail-back">
               ← All case studies
-            </a>
+            </Link>
             <div className="case-tags">
               <span className="case-industry">{cs.industry}</span>
               <span
@@ -265,7 +263,6 @@ export default async function CaseStudyDetailPage({
 
         <NewsletterSection />
       </main>
-      <SiteFooter />
     </>
   );
 }

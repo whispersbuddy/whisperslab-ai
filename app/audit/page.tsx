@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
 import { AUDIT_HTML } from "@/app/_content/audit";
+import LegacyOfferBody, { OfferAssuranceBand } from "@/components/LegacyOfferBody";
 
 const SITE_URL = "https://www.whisperslab.com";
 
 export const metadata: Metadata = {
-  title: "The Automation Audit — Whispers Lab",
+  title: "The Automation Audit | Whispers Lab",
   description:
-    "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",
+    "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap, credited toward your Core Build if you move forward.",
   alternates: { canonical: "/audit" },
   openGraph: {
     type: "website",
     siteName: "Whispers Lab",
     locale: "en_US",
-    title: "The Automation Audit — Whispers Lab",
+    title: "The Automation Audit | Whispers Lab",
     description:
-      "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",
+      "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap, credited toward your Core Build if you move forward.",
     url: "/audit",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Whispers Lab — We delete busywork.",
+        alt: "Whispers Lab. We delete busywork.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Automation Audit — Whispers Lab",
+    title: "The Automation Audit | Whispers Lab",
     description:
-      "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap — credited toward your Core Build if you move forward.",
+      "A $250, 7-day sprint that maps your daily operations and hands you a prioritized automation roadmap, credited toward your Core Build if you move forward.",
     images: ["/og-image.png"],
   },
 };
@@ -122,6 +123,13 @@ const faqSchema = {
   ],
 };
 
+const AUDIT_PAGE_HTML = AUDIT_HTML
+  .replace(">ZERO RISK<", ">DELIVERY PROMISE<")
+  .replace(
+    "The Automation Audit is a one-time, fixed price of $250 with no long-term commitments. If you choose to hire Whispers Lab for your Core Build, we credit this $250 entirely towards your build cost.",
+    "The Automation Audit is a one-time, fixed price of $250. Once we receive the agreed access and complete kickoff, we deliver every promised Audit asset within 7 business days or refund the $250. Build with Whispers Lab afterward and the full Audit fee is credited toward your Core Build."
+  );
+
 export default function AuditPage() {
   return (
     <>
@@ -133,7 +141,18 @@ export default function AuditPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div dangerouslySetInnerHTML={{ __html: AUDIT_HTML }} />
+      <LegacyOfferBody html={AUDIT_PAGE_HTML} insertBefore="<!-- SECTION 8: FAQ -->" className="legacy-offer-page audit-offer-refresh">
+        <OfferAssuranceBand
+          eyebrow="THE PROMISE, IN PLAIN ENGLISH"
+          title="A useful decision asset—even if we never build it."
+          intro="The Audit lowers the risk of spending on the wrong workflow and leaves you with a plan another qualified team can execute."
+          items={[
+            { label: "7-business-day delivery", body: "After kickoff and the agreed access are complete, every promised Audit asset is delivered within seven business days—or the $250 is refunded." },
+            { label: "$250 build credit", body: "Move into a Core Build with Whispers Lab and the full Audit fee is credited toward the fixed build price." },
+            { label: "Your blueprint", body: "The maps, priority matrix, estimates, and execution plan are yours to keep with no obligation to hire us." },
+          ]}
+        />
+      </LegacyOfferBody>
     </>
   );
 }

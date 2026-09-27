@@ -25,19 +25,7 @@ export default function ClientEffects() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const burger = document.getElementById("burger");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const onBurgerClick = () => mobileMenu?.classList.toggle("open");
-    const menuLinkHandlers: Array<[Element, () => void]> = [];
-    if (burger && mobileMenu) {
-      burger.addEventListener("click", onBurgerClick);
-      mobileMenu.querySelectorAll("a").forEach((a) => {
-        const handler = () => mobileMenu.classList.remove("open");
-        a.addEventListener("click", handler);
-        menuLinkHandlers.push([a, handler]);
-      });
-    }
-
+    // The mobile menu now lives in components/SiteHeader.tsx.
     const viewports = document.querySelectorAll<HTMLElement>(".toolkit-icons");
     viewports.forEach((viewport) => {
       if (viewport.dataset.marqueeReady) return;
@@ -85,7 +73,7 @@ export default function ClientEffects() {
         if (submitBtn) submitBtn.textContent = "Sent!";
         form.reset();
       } catch {
-        if (submitBtn) submitBtn.textContent = "Something went wrong — try again";
+        if (submitBtn) submitBtn.textContent = "Something went wrong. Try again";
       } finally {
         setTimeout(() => {
           if (submitBtn) {
@@ -169,10 +157,6 @@ export default function ClientEffects() {
     return () => {
       if (calendlyPollId) clearInterval(calendlyPollId);
       window.removeEventListener("message", onCalendlyMessage);
-      burger?.removeEventListener("click", onBurgerClick);
-      menuLinkHandlers.forEach(([a, handler]) =>
-        a.removeEventListener("click", handler)
-      );
       forms.forEach((form) =>
         form.removeEventListener("submit", handleFormSubmit)
       );

@@ -4,6 +4,7 @@ import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/app/_content/caseStudiesData";
 import { BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchCaseStudies, fetchArticles } from "@/lib/api";
+import { ROUTES, isLive } from "@/lib/routes";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -15,14 +16,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const csFileStat = fs.statSync(path.join(process.cwd(), 'app/_content/caseStudiesData.ts'));
     CASE_STUDIES.forEach((cs) => caseStudyDateMap.set(cs.slug, csFileStat.mtime));
-  } catch (err) {
+  } catch {
     CASE_STUDIES.forEach((cs) => caseStudyDateMap.set(cs.slug, commonDate));
   }
 
   try {
     const strapiStudies = await fetchCaseStudies();
     if (Array.isArray(strapiStudies)) {
-      strapiStudies.forEach((cs: any) => caseStudyDateMap.set(cs.slug, cs.updatedAt ? new Date(cs.updatedAt) : commonDate));
+      strapiStudies.forEach((cs: { slug: string; updatedAt?: string }) => caseStudyDateMap.set(cs.slug, cs.updatedAt ? new Date(cs.updatedAt) : commonDate));
     }
   } catch (err) {
     console.error("Error fetching case studies for sitemap:", err);
@@ -32,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const strapiArticles = await fetchArticles();
     if (Array.isArray(strapiArticles)) {
-      strapiArticles.forEach((article: any) => blogDateMap.set(article.slug, article.updatedAt ? new Date(article.updatedAt) : commonDate));
+      strapiArticles.forEach((article: { slug: string; updatedAt?: string }) => blogDateMap.set(article.slug, article.updatedAt ? new Date(article.updatedAt) : commonDate));
     }
   } catch (err) {
     console.error("Error fetching articles for sitemap:", err);
@@ -44,25 +45,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: number;
     lastModified?: Date;
   }> = [
-    { path: "/", changeFrequency: "weekly", priority: 1, lastModified: commonDate },
-    { path: "/audit", changeFrequency: "monthly", priority: 0.9, lastModified: commonDate },
-    { path: "/core-build", changeFrequency: "monthly", priority: 0.9, lastModified: commonDate },
-    { path: "/case-studies", changeFrequency: "weekly", priority: 0.8, lastModified: commonDate },
+    // Registry pages (lib/routes.ts): only live ones are listed.
+    ...ROUTES.filter(isLive).map((r) => ({
+      path: r.path,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+      lastModified: r.updated ? new Date(r.updated) : commonDate,
+    })),
     ...Array.from(caseStudyDateMap.entries()).map(([slug, date]) => ({
       path: `/case-studies/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
       lastModified: date,
     })),
-    { path: "/blog", changeFrequency: "weekly", priority: 0.8, lastModified: commonDate },
     ...Array.from(blogDateMap.entries()).map(([slug, date]) => ({
       path: `/blog/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
       lastModified: date,
     })),
-    { path: "/contact", changeFrequency: "monthly", priority: 0.7, lastModified: commonDate },
-    { path: "/book", changeFrequency: "monthly", priority: 0.6, lastModified: commonDate },
   ];
 
   return routes.map(({ path, changeFrequency, priority, lastModified }) => ({

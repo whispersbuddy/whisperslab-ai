@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { timingSafeEqual } from "crypto";
-import { ARTICLES_TAG, CASE_STUDIES_TAG } from "@/lib/api";
+import { ARTICLES_TAG, CASE_STUDIES_TAG, INDUSTRIES_TAG, INTEGRATIONS_TAG, SERVICES_TAG } from "@/lib/api";
 
 // Strapi webhook target. In Strapi admin: Settings → Webhooks → Create, URL
 // https://www.whisperslab.com/api/revalidate, header
@@ -11,6 +11,9 @@ import { ARTICLES_TAG, CASE_STUDIES_TAG } from "@/lib/api";
 const TAG_BY_MODEL: Record<string, string> = {
   article: ARTICLES_TAG,
   "case-study": CASE_STUDIES_TAG,
+  service: SERVICES_TAG,
+  industry: INDUSTRIES_TAG,
+  integration: INTEGRATIONS_TAG,
 };
 
 function isAuthorized(req: Request, secret: string): boolean {

@@ -1,0 +1,317 @@
+﻿semrush_batch,page_type,original_target_url,keyword,role,intent_guess,notes,volume_us,kd_percent,cpc_usd,semrush_intent,page_decision,new_target_url,keyword_decision,decision_notes
+1,Core offers,/,ai automation agency,primary candidate,commercial,,2900,36,6.54,I,BUILD,/,PRIMARY,"SERP: small agencies AS 0 to 23, Reddit, DesignRush. Mixed intent (people starting agencies)"
+1,Core offers,/,ai automation agency for small business,primary candidate,commercial,,40,30,0,C,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,automation agency,secondary,commercial,,390,44,5.23,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,business automation services,secondary,commercial,,1000,28,9.04,I,BUILD,/,SECONDARY,"SERP: vendors + small agencies, Reddit #1"
+1,Core offers,/,small business automation services,primary candidate,commercial,,30,n/a,11.78,,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,business process automation services,secondary,commercial,,1600,31,36.18,I,BUILD,/,SECONDARY,
+1,Core offers,/,workflow automation services,secondary,commercial,,720,38,27.52,"I,C",BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,workflow automation consultant,secondary,transactional,,90,5,12.99,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,automation consultant,secondary,transactional,,590,18,12.01,I,BUILD,/,SECONDARY,KD 18
+1,Core offers,/,ai automation consultant,secondary,transactional,,590,26,15.30,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,ai consultant for small business,primary candidate,transactional,,170,21,8.73,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,ai consulting services for small business,secondary,commercial,,30,n/a,6.57,,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,ai implementation services,secondary,commercial,,480,46,14.59,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,ai integration services,secondary,commercial,,1900,40,12.31,"I,C",BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/,custom ai solutions for small business,secondary,commercial,,10,n/a,0,,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,custom automation development,secondary,commercial,,20,n/a,0,,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,hire automation expert,secondary,transactional,,10,n/a,0,,BUILD,/,LOW/NO VOLUME,Retarget home: ai automation agency + business automation services
+1,Core offers,/,process automation consulting,secondary,commercial,,320,14,13.79,I,BUILD,/,SECONDARY,Retarget home: ai automation agency + business automation services
+1,Core offers,/audit,automation audit,primary candidate,commercial,,70,26,17.82,I,BUILD,/audit,SECONDARY,Keep; automation assessment as secondary
+1,Core offers,/audit,business process audit,secondary,commercial,,70,23,5.77,I,BUILD,/audit,SECONDARY,Keep; automation assessment as secondary
+1,Core offers,/audit,ai readiness assessment,secondary,commercial,,1300,32,17.65,I,BUILD,/resources/ai-readiness-assessment,PRIMARY,Turn the planned readiness quiz into a free AI Readiness Assessment tool
+1,Core offers,/audit,automation assessment,secondary,commercial,,140,15,0,I,BUILD,/audit,SECONDARY,
+1,Core offers,/audit,workflow audit,secondary,commercial,,30,n/a,11.23,,BUILD,/audit,LOW/NO VOLUME,Keep; automation assessment as secondary
+1,Core offers,/audit,ai audit for small business,secondary,commercial,,10,n/a,0,,BUILD,/audit,LOW/NO VOLUME,Keep; automation assessment as secondary
+1,Core offers,/audit,process mapping services,secondary,commercial,,50,7,0,I,BUILD,/audit,SECONDARY,Keep; automation assessment as secondary
+1,Core offers,/core-build + /growth-partner + /pricing,ai automation agency pricing,primary candidate,commercial,,110,9,6.52,I,BUILD,/pricing,PRIMARY,KD 9
+1,Core offers,/core-build + /growth-partner + /pricing,how much does ai automation cost,question (FAQ/PAA),informational,,10,n/a,0,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,business automation cost,question (FAQ/PAA),informational,,0,n/a,0,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,automation retainer,secondary,commercial,,0,n/a,0,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,managed automation services,primary candidate,commercial,,20,n/a,19.89,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,automation maintenance services,secondary,commercial,,110,3,4.12,I,BUILD,/growth-partner,PRIMARY,KD 3
+1,Core offers,/core-build + /growth-partner + /pricing,ai managed services for small business,secondary,commercial,,no data,n/a,,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,fractional ai consultant,secondary,transactional,,20,n/a,7.95,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Core offers,/core-build + /growth-partner + /pricing,ongoing automation support,secondary,commercial,,no data,n/a,,,BUILD,/pricing,LOW/NO VOLUME,Pricing page targets ai automation agency pricing
+1,Service,/services/lead-response-automation,lead response automation,primary candidate,commercial,,40,n/a,0,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,speed to lead automation,primary candidate,commercial,,20,n/a,14.73,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,automated lead follow up,primary candidate,commercial,,110,17,30.43,"I,C",BUILD (rename),/services/lead-follow-up-automation,PRIMARY,"KD 17, commercial"
+1,Service,/services/lead-response-automation,lead follow up automation,secondary,commercial,,20,n/a,25.41,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,automate lead follow up,secondary,commercial,,0,n/a,0,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,lead capture automation,secondary,commercial,,50,22,0,I,BUILD (rename),/services/lead-follow-up-automation,SECONDARY,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,lead routing automation,secondary,commercial,,20,n/a,0,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,automated lead routing,secondary,commercial,,110,20,0,"I,C",BUILD (rename),/services/lead-follow-up-automation,SECONDARY,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,lead qualification automation,secondary,commercial,,40,n/a,0,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,ai lead qualification,secondary,commercial,,260,31,14.29,C,BUILD (rename),/services/lead-follow-up-automation,SECONDARY,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,automated lead nurturing,secondary,commercial,,210,37,15.08,I,BUILD (rename),/services/lead-follow-up-automation,SECONDARY,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,missed call text back,secondary,commercial,,390,18,6.17,I,BUILD (rename),/services/lead-follow-up-automation,SECONDARY / BLOG,Check SERP: may be SaaS tools
+1,Service,/services/lead-response-automation,automated appointment booking,secondary,commercial,,40,87,9.98,I,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,web form to crm automation,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,automated sms follow up for leads,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,lead management automation for small business,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,how fast should you respond to leads,question (FAQ/PAA),informational,,no data,n/a,,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/lead-response-automation,how to automate lead follow up,question (FAQ/PAA),informational,,0,n/a,0,,BUILD (rename),/services/lead-follow-up-automation,LOW/NO VOLUME,"Rename: ""lead response"" has ~40/mo; follow-up phrasing has demand"
+1,Service,/services/client-journey-automation,client onboarding automation,primary candidate,commercial,,90,31,19.64,I,BUILD (rename),/services/client-onboarding-automation,SECONDARY,
+1,Service,/services/client-journey-automation,automate client onboarding,secondary,commercial,,110,13,19.64,I,BUILD (rename),/services/client-onboarding-automation,SECONDARY,KD 13
+1,Service,/services/client-journey-automation,customer onboarding automation,secondary,commercial,,320,23,0,I,BUILD (rename),/services/client-onboarding-automation,PRIMARY,KD 23
+1,Service,/services/client-journey-automation,client intake automation,primary candidate,commercial,,40,13,0,I,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,automated client intake form,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,client onboarding workflow,secondary,informational,,320,16,0,I,BUILD (rename),/blog,BLOG,"Template/guide intent, KD 16"
+1,Service,/services/client-journey-automation,automated welcome email sequence,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,automated status updates for clients,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,automated appointment reminders,secondary,commercial,,590,37,13.85,I,BUILD (rename),,SKIP,Scheduling software intent
+1,Service,/services/client-journey-automation,automated review requests,secondary,commercial,,50,12,15.76,C,BUILD (rename),/services/client-onboarding-automation,SECONDARY,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,customer journey automation,secondary,commercial,,480,26,20.08,I,BUILD (rename),,SKIP,Marketing-automation meaning
+1,Service,/services/client-journey-automation,client communication automation,secondary,commercial,,0,n/a,0,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,crm automation services,primary candidate,commercial,,40,42,0,I,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,automate crm data entry,secondary,commercial,,0,n/a,0,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,automatically log emails to crm,secondary,commercial,,no data,n/a,,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/client-journey-automation,how to automate client onboarding,question (FAQ/PAA),informational,,20,n/a,0,,BUILD (rename),/services/client-onboarding-automation,LOW/NO VOLUME,"Rename: onboarding cluster ~850/mo; ""client journey"" near zero"
+1,Service,/services/document-automation,document automation,primary candidate,commercial,SERP risk: may mean legal document assembly software,1900,35,20.45,I,BUILD (rename),,SKIP,"SERP: Automation Anywhere, Microsoft, NetDocuments, Conga (software + legal assembly)"
+1,Service,/services/document-automation,document automation for small business,primary candidate,commercial,,0,n/a,0,,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,document automation services,secondary,commercial,,90,28,0,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,automated data entry,primary candidate,commercial,,320,16,9.79,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"SERP: Reddit + small tool blogs AS 5 to 14, winnable"
+1,Service,/services/document-automation,data entry automation,secondary,commercial,,390,25,7.69,I,BUILD (rename),/services/data-entry-automation,PRIMARY,KD 25; cluster ~8.3K/mo across variants
+1,Service,/services/document-automation,automate data entry,secondary,commercial,,170,22,6.40,I,BUILD (rename),/services/data-entry-automation,SECONDARY,
+1,Service,/services/document-automation,automate data entry from pdf,secondary,commercial,,0,n/a,0,,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,pdf data extraction,secondary,commercial,SERP risk: tool-seeking,390,49,7.75,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,invoice data extraction,secondary,commercial,,210,8,14.27,I,BUILD (rename),/services/data-entry-automation,SECONDARY,KD 8
+1,Service,/services/document-automation,automate invoice data entry,primary candidate,commercial,,0,n/a,0,,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,invoice processing automation,secondary,commercial,,720,37,54.08,C,BUILD (rename),/services/bookkeeping-automation,SECONDARY,"CPC $54, KD 37"
+1,Service,/services/document-automation,accounts payable automation small business,secondary,commercial,,140,47,0,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,bank statement data extraction,secondary,commercial,,30,20,15.73,I,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,receipt data extraction,secondary,commercial,,50,3,0,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,intelligent document processing,secondary,commercial,SERP risk: enterprise vendors,3600,55,13.75,I,BUILD (rename),,SKIP,"Enterprise IDP vendors, KD 55"
+1,Service,/services/document-automation,ai document processing,secondary,commercial,,1000,59,15.02,I,BUILD (rename),,SKIP,KD 59 vendor SERP
+1,Service,/services/document-automation,automated report generation,secondary,commercial,,70,32,9.61,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,document generation automation,secondary,commercial,,0,n/a,0,,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,automated pdf generation,secondary,commercial,,70,28,0,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,contract data extraction,secondary,commercial,,140,8,28.59,I,BUILD (rename),/services/data-entry-automation,SECONDARY,KD 8
+1,Service,/services/document-automation,extract data from pdf to excel,blog support,informational,likely tool-seeking,320,33,4.18,I,BUILD (rename),/blog,BLOG,
+1,Service,/services/document-automation,bank statement to excel,blog support,informational,likely converter-tool intent,590,13,8.39,I,BUILD (rename),/blog,BLOG,"KD 13, how-to guide; converter-tool intent"
+1,Service,/services/document-automation,how to automate data entry,question (FAQ/PAA),informational,,90,19,4.19,I,BUILD (rename),/services/data-entry-automation,SECONDARY,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+1,Service,/services/document-automation,can ai extract data from invoices,question (FAQ/PAA),informational,,no data,n/a,,,BUILD (rename),/services/data-entry-automation,LOW/NO VOLUME,"Rename: ""document automation"" SERP = software vendors; data entry SERP winnable"
+2,Service,/services/finance-operations-automation,finance automation for small business,primary candidate,commercial,,no data,n/a,,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,accounting automation services,primary candidate,commercial,,30,n/a,0,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,accounting automation,secondary,commercial,,1900,31,13.96,I,BUILD (rename),/services/bookkeeping-automation,SECONDARY,Likely software SERP
+2,Service,/services/finance-operations-automation,bookkeeping automation,secondary,commercial,,720,27,17.40,C,BUILD (rename),/services/bookkeeping-automation,PRIMARY,"Commercial intent, KD 27. Check SERP before writing"
+2,Service,/services/finance-operations-automation,automate bookkeeping,secondary,commercial,,140,32,19.51,I,BUILD (rename),/services/bookkeeping-automation,SECONDARY,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,invoice automation,secondary,commercial,,2400,39,29.90,I,BUILD (rename),/blog,BLOG,"SERP: IBM, NetSuite, Basware guides; write a guide, not a service page"
+2,Service,/services/finance-operations-automation,automated invoicing,secondary,commercial,,480,35,15.35,"I,C",BUILD (rename),/services/bookkeeping-automation,SECONDARY,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,automate invoice reminders,secondary,commercial,,20,n/a,0,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,automated payment reminders,secondary,commercial,,140,14,15.83,I,BUILD (rename),/services/bookkeeping-automation,SECONDARY,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,accounts receivable automation,secondary,commercial,,1900,34,43.44,I,BUILD (rename),,SKIP,"AR software SERP likely, KD 34"
+2,Service,/services/finance-operations-automation,automate bank reconciliation,secondary,commercial,,50,9,16.21,I,BUILD (rename),/services/bookkeeping-automation,SECONDARY,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,expense automation,secondary,commercial,,390,23,20.77,I,BUILD (rename),/services/bookkeeping-automation,SECONDARY,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,sync stripe to quickbooks,secondary,commercial,,20,n/a,11.69,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,financial operations automation,secondary,commercial,,20,n/a,0,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/finance-operations-automation,how to automate invoicing,question (FAQ/PAA),informational,,10,n/a,16.94,,BUILD (rename),/services/bookkeeping-automation,LOW/NO VOLUME,"Rename: bookkeeping automation 720/mo commercial; ""finance operations"" ~20"
+2,Service,/services/systems-integration,systems integration services for small business,primary candidate,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,software integration services,primary candidate,commercial,,1000,13,16.27,I,"BUILD (rename, check SERP)",/services/software-integration-services,PRIMARY,KD 13. Check SERP
+2,Service,/services/systems-integration,api integration services,secondary,commercial,,1300,15,14.76,I,"BUILD (rename, check SERP)",/services/software-integration-services,SECONDARY,KD 15
+2,Service,/services/systems-integration,business software integration,secondary,commercial,,110,23,21.17,I,"BUILD (rename, check SERP)",/services/software-integration-services,SECONDARY,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,integrate crm and accounting software,secondary,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,data sync between apps,secondary,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,data synchronization services,secondary,commercial,,40,24,11.60,I,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,automate data transfer between systems,secondary,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,data migration services small business,secondary,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,crm data cleanup services,secondary,commercial,,70,6,0,I,"BUILD (rename, check SERP)",/services/software-integration-services,SECONDARY,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,integration consultant,secondary,transactional,,40,24,10.03,I,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,no code integration consultant,secondary,transactional,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,product feed automation,secondary,commercial,,20,n/a,0,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,ecommerce catalog automation,secondary,commercial,,0,n/a,0,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,supplier feed automation,secondary,commercial,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/systems-integration,how to connect two apps without code,question (FAQ/PAA),informational,,no data,n/a,,,"BUILD (rename, check SERP)",/services/software-integration-services,LOW/NO VOLUME,api/software integration services ~2.3K/mo at KD 13-15
+2,Service,/services/reporting-automation,automated reporting,primary candidate,commercial,,390,33,14.51,"I,C",MERGE,/services/software-integration-services,SECONDARY,
+2,Service,/services/reporting-automation,automated reporting for small business,primary candidate,commercial,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,automated business reports,secondary,commercial,,0,n/a,0,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,kpi dashboard for small business,secondary,commercial,,20,n/a,0,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,automated kpi reports,secondary,commercial,,0,n/a,0,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,business dashboard automation,secondary,commercial,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,automated daily sales report,secondary,commercial,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,automated email reports,secondary,commercial,,20,n/a,0,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,automated business alerts,secondary,commercial,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,slack alerts automation,secondary,commercial,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/reporting-automation,how to automate reports,question (FAQ/PAA),informational,,110,13,13.00,I,MERGE,/blog,BLOG,KD 13
+2,Service,/services/reporting-automation,google sheets automated report,blog support,informational,,no data,n/a,,,MERGE,/services/software-integration-services,LOW/NO VOLUME,Only ~540/mo; section on integration page + blog post
+2,Service,/services/custom-ai-assistants,custom ai assistant for business,primary candidate,commercial,,no data,n/a,,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai assistant for small business,primary candidate,commercial,,50,35,12.04,"I,C",LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,custom chatgpt for business,secondary,commercial,,no data,n/a,,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai knowledge base for business,secondary,commercial,,10,n/a,0,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,internal knowledge base ai,secondary,commercial,,30,n/a,0,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,train chatgpt on company data,secondary,informational,,no data,n/a,,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai email assistant for business,secondary,commercial,,0,n/a,0,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai inbox management,secondary,commercial,,170,42,11.70,C,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai receptionist,primary candidate,commercial,,5400,61,14.36,I,LATER,/services/custom-ai-assistants,LATER,"SERP: RingCentral, Retell, Synthflow (products), KD 61"
+2,Service,/services/custom-ai-assistants,ai phone answering service,secondary,commercial,,720,51,21.28,C,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai call answering for small business,secondary,commercial,,no data,n/a,,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai answering service,secondary,commercial,,1900,51,15.65,C,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai chatbot for website,secondary,commercial,,1000,83,10.92,C,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai chatbot for small business,secondary,commercial,,110,32,10.34,"I,C",LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,custom ai chatbot development,secondary,commercial,,90,40,0,I,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,ai customer support automation,secondary,commercial,,50,n/a,0,,LATER,/services/custom-ai-assistants,SECONDARY,"High volume but SaaS product SERPs, KD 51-83"
+2,Service,/services/custom-ai-assistants,how to build a custom ai assistant,question (FAQ/PAA),informational,,no data,n/a,,,LATER,/services/custom-ai-assistants,LOW/NO VOLUME,"High volume but SaaS product SERPs, KD 51-83"
+2,Industry,/industries/accounting-bookkeeping,accounting firm automation,primary candidate,commercial,,210,19,0,I,BUILD (phase 2),/industries/accounting-bookkeeping,PRIMARY,KD 19
+2,Industry,/industries/accounting-bookkeeping,automation for accounting firms,secondary,commercial,,0,n/a,0,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,bookkeeping firm automation,secondary,commercial,,no data,n/a,,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,ai for accounting firms,secondary,commercial,,210,72,11.90,I,BUILD (phase 2),/industries/accounting-bookkeeping,SECONDARY,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,cpa firm automation,secondary,commercial,,0,n/a,0,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,accounting practice automation,secondary,commercial,,30,n/a,0,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,tax preparer automation,secondary,commercial,,no data,n/a,,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/accounting-bookkeeping,automate client document collection accounting,secondary,commercial,,no data,n/a,,,BUILD (phase 2),/industries/accounting-bookkeeping,LOW/NO VOLUME,Small (~450) but backed by 2 case studies
+2,Industry,/industries/real-estate,real estate automation,primary candidate,commercial,,260,14,6.83,I,BUILD,/industries/real-estate,PRIMARY,KD 14
+2,Industry,/industries/real-estate,real estate lead follow up automation,secondary,commercial,,0,n/a,0,,BUILD,/industries/real-estate,LOW/NO VOLUME,"real estate automation + workflow automation, KD 14"
+2,Industry,/industries/real-estate,ai for real estate agents,secondary,commercial,,880,62,6.91,I,BUILD,,SKIP,"KD 62, tool roundups"
+2,Industry,/industries/real-estate,real estate crm automation,secondary,commercial,,10,n/a,0,,BUILD,/industries/real-estate,LOW/NO VOLUME,"real estate automation + workflow automation, KD 14"
+2,Industry,/industries/real-estate,real estate transaction management automation,secondary,commercial,,no data,n/a,,,BUILD,/industries/real-estate,LOW/NO VOLUME,"real estate automation + workflow automation, KD 14"
+2,Industry,/industries/real-estate,real estate brokerage automation,secondary,commercial,,no data,n/a,,,BUILD,/industries/real-estate,LOW/NO VOLUME,"real estate automation + workflow automation, KD 14"
+2,Industry,/industries/real-estate,real estate workflow automation,secondary,commercial,,320,14,6.15,I,BUILD,/industries/real-estate,SECONDARY,KD 14
+2,Industry,/industries/ecommerce-retail,ecommerce automation services,primary candidate,commercial,,90,6,14.46,I,BUILD,/industries/ecommerce-retail,SECONDARY,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/ecommerce-retail,ecommerce automation,secondary,commercial,,1900,23,7.26,I,BUILD,/industries/ecommerce-retail,PRIMARY,KD 23. Check SERP
+2,Industry,/industries/ecommerce-retail,shopify automation,secondary,commercial,,110,46,6.04,I,BUILD,/industries/ecommerce-retail,SECONDARY,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/ecommerce-retail,ecommerce order automation,secondary,commercial,,50,12,0,I,BUILD,/industries/ecommerce-retail,SECONDARY,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/ecommerce-retail,inventory automation small business,secondary,commercial,,0,n/a,0,,BUILD,/industries/ecommerce-retail,LOW/NO VOLUME,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/ecommerce-retail,product listing automation,secondary,commercial,,10,n/a,0,,BUILD,/industries/ecommerce-retail,LOW/NO VOLUME,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/ecommerce-retail,ecommerce customer service automation,secondary,commercial,,20,n/a,0,,BUILD,/industries/ecommerce-retail,LOW/NO VOLUME,"ecommerce automation 1.9K/mo KD 23, case study exists"
+2,Industry,/industries/coaching-consulting,automation for coaches,primary candidate,commercial,,10,n/a,0,,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/coaching-consulting,coaching business automation,secondary,commercial,,0,n/a,0,,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/coaching-consulting,client onboarding for coaches,secondary,commercial,,no data,n/a,,,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/coaching-consulting,automate coaching business,secondary,commercial,,0,n/a,0,,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/coaching-consulting,consulting firm automation,secondary,commercial,,no data,n/a,,,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/coaching-consulting,ai for coaches,secondary,commercial,,90,35,5.40,I,DROP,,SKIP,Near-zero demand; keep case study only
+2,Industry,/industries/law-firms,law firm automation,primary candidate,commercial,,260,12,27.00,I,BUILD,/industries/law-firms,PRIMARY,"SERP: Clio guide AS 12, ABA, Reddit, small vendors. Winnable"
+2,Industry,/industries/law-firms,ai automation for law firms,primary candidate,commercial,,30,28,19.44,I,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,legal practice automation,secondary,commercial,,0,n/a,0,,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,ai for law firms,secondary,commercial,,880,54,10.45,I,BUILD,/industries/law-firms,SECONDARY,"KD 54, hard"
+2,Industry,/industries/law-firms,ai for small law firms,secondary,commercial,,30,26,14.26,I,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,legal intake automation,secondary,commercial,,70,21,0,C,BUILD,/industries/law-firms,SECONDARY,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,law firm client intake automation,secondary,commercial,,10,n/a,0,,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,conflict check automation,secondary,commercial,,no data,n/a,,,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,law firm workflow automation,secondary,commercial,,40,21,0,I,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,clio automation,secondary,commercial,,20,n/a,11.71,,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+2,Industry,/industries/law-firms,legal document automation,secondary,commercial,SERP risk: legal software vendors,590,24,30.63,I,BUILD,,SKIP,Legal software SERP
+2,Industry,/industries/law-firms,is it ethical for lawyers to use ai,question (FAQ/PAA),informational,,no data,n/a,,,BUILD,/industries/law-firms,LOW/NO VOLUME,"law firm automation KD 12, SERP winnable; add law firm intake follow up automation (390)"
+3,Industry,/industries/insurance-agencies,insurance agency automation,primary candidate,commercial,,170,7,20.72,I,LATER,/industries/insurance-agencies,SECONDARY,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/insurance-agencies,ai for insurance agencies,secondary,commercial,,110,24,21.56,I,LATER,/industries/insurance-agencies,SECONDARY,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/insurance-agencies,insurance agency workflow automation,secondary,commercial,,0,n/a,0,,LATER,/industries/insurance-agencies,LOW/NO VOLUME,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/insurance-agencies,insurance renewal automation,secondary,commercial,,10,n/a,0,,LATER,/industries/insurance-agencies,LOW/NO VOLUME,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/insurance-agencies,insurance quote follow up automation,secondary,commercial,,no data,n/a,,,LATER,/industries/insurance-agencies,LOW/NO VOLUME,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/insurance-agencies,insurance agency crm automation,secondary,commercial,,10,n/a,0,,LATER,/industries/insurance-agencies,LOW/NO VOLUME,"~300/mo but KD 7 to 24, easy win later"
+3,Industry,/industries/medical-dental,medical practice automation,primary candidate,commercial,,90,19,0,I,LATER,/industries/medical-dental,SECONDARY,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,dental office automation,primary candidate,commercial,,50,13,0,I,LATER,/industries/medical-dental,SECONDARY,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,ai for dental practices,secondary,commercial,,30,30,15.71,I,LATER,/industries/medical-dental,LOW/NO VOLUME,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,patient intake automation,secondary,commercial,,70,15,0,I,LATER,/industries/medical-dental,SECONDARY,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,patient appointment reminder automation,secondary,commercial,,10,n/a,0,,LATER,/industries/medical-dental,LOW/NO VOLUME,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,dental practice workflow automation,secondary,commercial,,0,n/a,0,,LATER,/industries/medical-dental,LOW/NO VOLUME,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,hipaa compliant automation,secondary,commercial,,40,n/a,26.22,,LATER,/industries/medical-dental,LOW/NO VOLUME,"~400/mo, compliance-heavy"
+3,Industry,/industries/medical-dental,is ai hipaa compliant,question (FAQ/PAA),informational,,110,38,4.57,I,LATER,/industries/medical-dental,SECONDARY,"~400/mo, compliance-heavy"
+3,Industry,/industries/home-field-services,home service business automation,primary candidate,commercial,,0,n/a,2.93,,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,field service automation,secondary,commercial,,590,12,22.79,I,LATER (check SERP),/industries/home-field-services,SECONDARY,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,hvac business automation,secondary,commercial,,30,n/a,0,,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,plumbing business automation,secondary,commercial,,0,n/a,0,,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,automation for contractors,secondary,commercial,,10,n/a,0,,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,cleaning business automation,secondary,commercial,,10,n/a,4.39,,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/home-field-services,ai for home service businesses,secondary,commercial,,40,13,0,I,LATER (check SERP),/industries/home-field-services,LOW/NO VOLUME,"field service automation 590 KD 12, likely FSM software SERP"
+3,Industry,/industries/construction,construction business automation,primary candidate,commercial,,0,n/a,0,,DROP,,SKIP,~140/mo
+3,Industry,/industries/construction,construction workflow automation,secondary,commercial,,90,9,0,I,DROP,,SKIP,~140/mo
+3,Industry,/industries/construction,ai for construction companies,secondary,commercial,,50,57,14.80,C,DROP,,SKIP,~140/mo
+3,Industry,/industries/construction,construction bid follow up automation,secondary,commercial,,no data,n/a,,,DROP,,SKIP,~140/mo
+3,Industry,/industries/construction,construction document management automation,secondary,commercial,,no data,n/a,,,DROP,,SKIP,~140/mo
+3,Industry,/industries/property-management,property management automation,primary candidate,commercial,,320,25,15.04,I,BUILD,/industries/property-management,PRIMARY,KD 25
+3,Industry,/industries/property-management,ai for property management,secondary,commercial,,320,41,13.40,I,BUILD,/industries/property-management,SECONDARY,"~900/mo, KD 11 to 25"
+3,Industry,/industries/property-management,maintenance request automation,secondary,commercial,,0,n/a,0,,BUILD,/industries/property-management,LOW/NO VOLUME,"~900/mo, KD 11 to 25"
+3,Industry,/industries/property-management,rent reminder automation,secondary,commercial,,no data,n/a,,,BUILD,/industries/property-management,LOW/NO VOLUME,"~900/mo, KD 11 to 25"
+3,Industry,/industries/property-management,tenant screening automation,secondary,commercial,,no data,n/a,,,BUILD,/industries/property-management,LOW/NO VOLUME,"~900/mo, KD 11 to 25"
+3,Industry,/industries/property-management,property management workflow automation,secondary,commercial,,260,11,18.47,I,BUILD,/industries/property-management,SECONDARY,KD 11
+3,Industry,/industries/marketing-agencies,marketing agency automation,primary candidate,commercial,,210,22,11.07,I,LATER,/industries/marketing-agencies,SECONDARY,~280/mo
+3,Industry,/industries/marketing-agencies,agency operations automation,secondary,commercial,,no data,n/a,,,LATER,/industries/marketing-agencies,LOW/NO VOLUME,~280/mo
+3,Industry,/industries/marketing-agencies,client reporting automation for agencies,secondary,commercial,,no data,n/a,,,LATER,/industries/marketing-agencies,LOW/NO VOLUME,~280/mo
+3,Industry,/industries/marketing-agencies,agency client onboarding automation,secondary,commercial,,no data,n/a,,,LATER,/industries/marketing-agencies,LOW/NO VOLUME,~280/mo
+3,Industry,/industries/marketing-agencies,ai for marketing agencies,secondary,commercial,,70,46,13.16,I,LATER,/industries/marketing-agencies,SECONDARY,~280/mo
+3,Industry,/industries/financial-advisors,financial advisor automation,primary candidate,commercial,,40,18,0,I,LATER,/industries/financial-advisors,LOW/NO VOLUME,financial advisor crm automation 210 KD 16
+3,Industry,/industries/financial-advisors,ria automation,secondary,commercial,,20,n/a,0,,LATER,/industries/financial-advisors,LOW/NO VOLUME,financial advisor crm automation 210 KD 16
+3,Industry,/industries/financial-advisors,ai for financial advisors,secondary,commercial,,320,54,14.30,I,LATER,/industries/financial-advisors,SECONDARY,financial advisor crm automation 210 KD 16
+3,Industry,/industries/financial-advisors,financial advisor client onboarding automation,secondary,commercial,,no data,n/a,,,LATER,/industries/financial-advisors,LOW/NO VOLUME,financial advisor crm automation 210 KD 16
+3,Industry,/industries/financial-advisors,financial advisor crm automation,secondary,commercial,,210,16,0,I,LATER,/industries/financial-advisors,SECONDARY,financial advisor crm automation 210 KD 16
+3,Industry,/industries/recruiting-staffing,staffing agency automation,primary candidate,commercial,,20,n/a,0,,LATER (check SERP),/industries/recruiting-staffing,LOW/NO VOLUME,"recruiting automation 720 KD 24, likely ATS software SERP"
+3,Industry,/industries/recruiting-staffing,recruiting automation,secondary,commercial,,720,24,5.42,"I,C",LATER (check SERP),/industries/recruiting-staffing,SECONDARY,"recruiting automation 720 KD 24, likely ATS software SERP"
+3,Industry,/industries/recruiting-staffing,ai for recruiting agencies,secondary,commercial,,50,59,0,I,LATER (check SERP),/industries/recruiting-staffing,SECONDARY,"recruiting automation 720 KD 24, likely ATS software SERP"
+3,Industry,/industries/recruiting-staffing,candidate screening automation,secondary,commercial,,70,1,0,I,LATER (check SERP),/industries/recruiting-staffing,SECONDARY,"recruiting automation 720 KD 24, likely ATS software SERP"
+3,Industry,/industries/recruiting-staffing,interview scheduling automation,secondary,commercial,,30,n/a,0,,LATER (check SERP),/industries/recruiting-staffing,LOW/NO VOLUME,"recruiting automation 720 KD 24, likely ATS software SERP"
+3,Industry,/industries/logistics-warehousing,logistics automation for small business,primary candidate,commercial,,no data,n/a,,,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Industry,/industries/logistics-warehousing,freight broker automation,secondary,commercial,,20,n/a,0,,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Industry,/industries/logistics-warehousing,trucking company automation,secondary,commercial,,no data,n/a,,,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Industry,/industries/logistics-warehousing,shipping document automation,secondary,commercial,,30,n/a,0,,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Industry,/industries/logistics-warehousing,bill of lading data extraction,secondary,commercial,,0,n/a,0,,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Industry,/industries/logistics-warehousing,warehouse automation,secondary,commercial,SERP risk: physical robotics,5400,31,9.78,I,DROP,,SKIP,warehouse automation 5.4K = robotics; rest near zero
+3,Integration,/integrations/n8n,n8n consultant,primary candidate,transactional,,70,7,10.96,I,BUILD,/integrations/n8n,PRIMARY,SERP: n8n expert directory then small consultants AS 0 to 4
+3,Integration,/integrations/n8n,n8n automation services,primary candidate,commercial,,20,n/a,0,,BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,n8n agency,secondary,commercial,,110,13,3.99,I,BUILD,/integrations/n8n,SECONDARY,KD 13
+3,Integration,/integrations/n8n,n8n expert,secondary,transactional,,30,26,7.93,"I,T",BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,hire n8n developer,secondary,transactional,,10,n/a,0,,BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,n8n workflow development,secondary,commercial,,0,n/a,0,,BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,n8n implementation,secondary,commercial,,20,n/a,4.55,,BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,n8n self hosted setup,secondary,informational,,20,n/a,0,,BUILD,/integrations/n8n,LOW/NO VOLUME,"consultant cluster ~230 + agency 110, SERP AS 0 to 19; ""is n8n free"" 1.6K as blog"
+3,Integration,/integrations/n8n,is n8n free,question (FAQ/PAA),informational,,1600,36,6.50,I,BUILD,/blog,BLOG,"1.6K/mo, facts already verified from n8n docs"
+3,Integration,/integrations/make,make.com consultant,primary candidate,transactional,,50,15,0,I,MERGE,/integrations,SECONDARY,~90/mo; mention on hub
+3,Integration,/integrations/make,make.com expert,secondary,transactional,,30,13,22.13,N,MERGE,/integrations,LOW/NO VOLUME,~90/mo; mention on hub
+3,Integration,/integrations/make,make automation agency,secondary,commercial,,10,n/a,0,,MERGE,/integrations,LOW/NO VOLUME,~90/mo; mention on hub
+3,Integration,/integrations/make,hire make.com developer,secondary,transactional,,no data,n/a,,,MERGE,/integrations,LOW/NO VOLUME,~90/mo; mention on hub
+3,Integration,/integrations/make,make.com partner,secondary,commercial,,0,n/a,0,,MERGE,/integrations,LOW/NO VOLUME,~90/mo; mention on hub
+3,Integration,/integrations/zapier,zapier consultant,primary candidate,transactional,,210,24,11.19,I,BUILD (phase 2),/integrations/zapier,PRIMARY,KD 24
+3,Integration,/integrations/zapier,zapier expert,secondary,transactional,,140,30,21.38,I,BUILD (phase 2),/integrations/zapier,SECONDARY,"~520/mo, KD 24 to 30"
+3,Integration,/integrations/zapier,hire zapier expert,secondary,transactional,,40,26,16.20,"I,T",BUILD (phase 2),/integrations/zapier,LOW/NO VOLUME,"~520/mo, KD 24 to 30"
+3,Integration,/integrations/zapier,zapier automation services,secondary,commercial,,20,n/a,0,,BUILD (phase 2),/integrations/zapier,LOW/NO VOLUME,"~520/mo, KD 24 to 30"
+3,Integration,/integrations/zapier,zapier agency,secondary,commercial,,110,60,6.12,"I,T",BUILD (phase 2),/integrations/zapier,SECONDARY,"~520/mo, KD 24 to 30"
+3,Integration,/integrations/hubspot,hubspot automation services,primary candidate,commercial,,50,33,0,I,LATER,/integrations/hubspot,SECONDARY,hubspot integration services KD 4; no HubSpot case study yet
+3,Integration,/integrations/hubspot,hubspot workflow automation,secondary,commercial,,70,49,11.43,I,LATER,/integrations/hubspot,SECONDARY,hubspot integration services KD 4; no HubSpot case study yet
+3,Integration,/integrations/hubspot,hubspot automation,secondary,commercial,,590,49,13.63,I,LATER,/integrations/hubspot,SECONDARY,hubspot integration services KD 4; no HubSpot case study yet
+3,Integration,/integrations/hubspot,hubspot consultant for small business,secondary,transactional,,no data,n/a,,,LATER,/integrations/hubspot,LOW/NO VOLUME,hubspot integration services KD 4; no HubSpot case study yet
+3,Integration,/integrations/hubspot,hubspot integration services,secondary,commercial,,170,4,0,"I,C",LATER,/integrations/hubspot,PRIMARY (later),KD 4
+3,Integration,/integrations/airtable,airtable consultant,primary candidate,transactional,,720,22,16.30,I,BUILD FIRST,/integrations/airtable,PRIMARY,"SERP: Airtable directory, Reddit, small consultants AS 0 to 8"
+3,Integration,/integrations/airtable,airtable developer,secondary,transactional,,480,23,21.32,N,BUILD FIRST,/integrations/airtable,SECONDARY,
+3,Integration,/integrations/airtable,airtable expert,secondary,transactional,,210,12,24.61,I,BUILD FIRST,/integrations/airtable,SECONDARY,KD 12
+3,Integration,/integrations/airtable,airtable automation,secondary,commercial,,720,39,4.19,I,BUILD FIRST,/integrations/airtable,SECONDARY,Mixed how-to intent
+3,Integration,/integrations/airtable,airtable crm setup,secondary,commercial,,no data,n/a,,,BUILD FIRST,/integrations/airtable,LOW/NO VOLUME,"consultant cluster ~1.3K, KD 11 to 22, SERP AS 0 to 8 after Airtable directory"
+3,Integration,/integrations/quickbooks,quickbooks automation,primary candidate,commercial,,320,38,13.00,I,MERGE,/services/bookkeeping-automation,SECONDARY,Section on bookkeeping page
+3,Integration,/integrations/quickbooks,quickbooks integration services,secondary,commercial,,90,12,0,I,MERGE,/services/bookkeeping-automation,SECONDARY,Section on bookkeeping page
+3,Integration,/integrations/quickbooks,quickbooks online automation,secondary,commercial,,20,n/a,15.39,,MERGE,/services/bookkeeping-automation,LOW/NO VOLUME,Section on bookkeeping page
+3,Integration,/integrations/quickbooks,automate quickbooks data entry,secondary,commercial,,20,n/a,0,,MERGE,/services/bookkeeping-automation,LOW/NO VOLUME,Section on bookkeeping page
+3,Integration,/integrations/xero,xero automation,primary candidate,commercial,,110,30,0,I,MERGE,/services/bookkeeping-automation,SECONDARY,Section on bookkeeping page
+3,Integration,/integrations/xero,xero integration services,secondary,commercial,,0,n/a,0,,MERGE,/services/bookkeeping-automation,LOW/NO VOLUME,Section on bookkeeping page
+3,Integration,/integrations/xero,xero consultant,secondary,transactional,,10,n/a,18.83,,MERGE,/services/bookkeeping-automation,LOW/NO VOLUME,Section on bookkeeping page
+3,Integration,/integrations/xero,automate xero bills,secondary,commercial,,no data,n/a,,,MERGE,/services/bookkeeping-automation,LOW/NO VOLUME,Section on bookkeeping page
+3,Integration,/integrations/openai-claude,chatgpt integration for business,primary candidate,commercial,,0,n/a,0,,LATER,/integrations/llm-integration,LOW/NO VOLUME,"llm/gpt integration services ~250, KD 1 to 12"
+3,Integration,/integrations/openai-claude,openai integration services,secondary,commercial,,30,n/a,0,,LATER,/integrations/llm-integration,LOW/NO VOLUME,"llm/gpt integration services ~250, KD 1 to 12"
+3,Integration,/integrations/openai-claude,openai api consultant,secondary,transactional,,no data,n/a,,,LATER,/integrations/llm-integration,LOW/NO VOLUME,"llm/gpt integration services ~250, KD 1 to 12"
+3,Integration,/integrations/openai-claude,claude api integration,secondary,commercial,,40,73,7.61,I,LATER,/integrations/llm-integration,LOW/NO VOLUME,"llm/gpt integration services ~250, KD 1 to 12"
+3,Integration,/integrations/openai-claude,llm integration services,secondary,commercial,,140,1,0,I,LATER,/integrations/llm-integration,SECONDARY,"llm/gpt integration services ~250, KD 1 to 12"
+3,Integration,/integrations/openai-claude,gpt integration services,secondary,commercial,,110,12,7.45,I,LATER,/integrations/llm-integration,SECONDARY,"llm/gpt integration services ~250, KD 1 to 12"
+4,Resource,/resources/*,automation roi calculator,primary candidate,informational,,170,6,5.65,I,BUILD,/resources/automation-roi-calculator,PRIMARY,KD 6
+4,Resource,/resources/*,time savings calculator,secondary,informational,,30,n/a,0,,BUILD,/resources/automation-roi-calculator,LOW/NO VOLUME,automation roi calculator 170 KD 6
+4,Resource,/resources/*,data entry cost calculator,secondary,informational,,no data,n/a,,,BUILD,/resources/automation-roi-calculator,LOW/NO VOLUME,automation roi calculator 170 KD 6
+4,Resource,/resources/*,automation readiness assessment,secondary,informational,,10,n/a,0,,BUILD,/resources/automation-roi-calculator,LOW/NO VOLUME,automation roi calculator 170 KD 6
+4,Resource,/resources/*,business process automation checklist,secondary,informational,,no data,n/a,,,BUILD,/resources/automation-roi-calculator,LOW/NO VOLUME,automation roi calculator 170 KD 6
+4,Resource,/resources/*,automation checklist for small business,secondary,informational,,no data,n/a,,,BUILD,/resources/automation-roi-calculator,LOW/NO VOLUME,automation roi calculator 170 KD 6
+4,Blog,/blog,how to automate a small business,blog support,informational,,20,n/a,0,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,what can be automated in a small business,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,small business automation ideas,blog support,informational,,20,n/a,0,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,how to automate repetitive tasks,blog support,informational,,70,24,4.48,I,BLOG,/blog,SECONDARY,
+4,Blog,/blog,what tasks can ai automate,blog support,informational,,20,n/a,0,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,what is workflow automation,blog support,informational,,880,52,5.29,I,BLOG,/blog,BLOG,"KD 52, later"
+4,Blog,/blog,what is business process automation,blog support,informational,,480,44,4.88,I,BLOG,/blog,BLOG,"KD 44, later"
+4,Blog,/blog,roi of automation for small business,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,signs your business needs automation,blog support,informational,,0,n/a,0,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,how to reduce admin work in a small business,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,how to use ai in a small business,blog support,informational,,20,n/a,4.28,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,is ai safe for business data,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,cost of manual data entry,blog support,informational,,20,n/a,0,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,how to scale a business without hiring,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Blog,/blog,should i hire a virtual assistant or automate,blog support,informational,,no data,n/a,,,BLOG,/blog,LOW/NO VOLUME,
+4,Watch only,(no page),best ai tools for small business,"watch only, do not target",informational,house rule: no tool roundups,880,52,8.34,C,WATCH,,WATCH,House rule
+4,Watch only,(no page),n8n vs zapier,"watch only, do not target",commercial,house rule: no X vs Y,1900,40,5.37,C,WATCH,,WATCH,1.9K/mo but banned by house rule (no X vs Y)
+4,Watch only,(no page),zapier vs make,"watch only, do not target",commercial,house rule: no X vs Y,590,35,8.41,C,WATCH,,WATCH,House rule
+4,Watch only,(no page),virtual assistant vs automation,"watch only, do not target",informational,house rule: no X vs Y,no data,n/a,,,WATCH,,WATCH,House rule
+4,Watch only,(no page),ai agents for small business,"watch only, do not target",commercial,house rule: avoid AI agents framing,90,14,10.78,I,WATCH,,WATCH,House rule
+4,Watch only,(no page),ai employees for small business,"watch only, do not target",commercial,house rule: avoid AI employees framing,10,n/a,0,,WATCH,,WATCH,House rule
+4,Watch only,(no page),automation agency near me,"watch only, do not target",transactional,"no Google Business Profile, skip local intent",50,1,6.23,T,WATCH,,WATCH,House rule

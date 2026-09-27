@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "whispers-next-alt",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev", "--port", "3107"],
+      "port": 3107
     }
   ]
 }
