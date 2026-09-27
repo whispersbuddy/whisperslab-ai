@@ -4,6 +4,7 @@ import { ArrowRight, Check, ExternalLink, LockKeyhole, ShieldCheck } from "lucid
 import type { ServicePage } from "@/app/_content/services";
 import type { IntegrationPage } from "@/app/_content/integrations";
 import type { IndustryPage } from "@/app/_content/industries";
+import { getBlogPostBySlug } from "@/app/_content/blogData";
 import {
   READINESS_BANDS,
   READINESS_CTA,
@@ -12,12 +13,35 @@ import {
   READINESS_QUESTIONS,
   ROI_CALCULATOR,
 } from "@/app/_content/resources";
+import { getRoute } from "@/lib/routes";
 import type { Crumb } from "@/lib/seo";
 import Estimator from "@/components/service/Estimator";
 import NewsletterSection from "@/components/NewsletterSection";
 import PlatformLogo from "@/components/PlatformLogo";
 import ReadinessQuiz from "@/components/resources/ReadinessQuiz";
 import BentoPreview from "@/components/pilots/BentoPreview";
+import RelatedLinks from "@/components/RelatedLinks";
+
+// Cross-links a service/industry page's `related` slugs and paths to labelled
+// links, dropping anything that doesn't resolve (e.g. a Strapi-only related
+// slug not present in the local route/blog data).
+function resolvePathLinks(paths: string[]): { href: string; title: string }[] {
+  return paths
+    .map((path) => {
+      const label = getRoute(path)?.label;
+      return label ? { href: path, title: label } : null;
+    })
+    .filter((link): link is { href: string; title: string } => link !== null);
+}
+
+function resolvePostLinks(slugs: string[]): { href: string; title: string }[] {
+  return slugs
+    .map((slug) => {
+      const post = getBlogPostBySlug(slug);
+      return post ? { href: `/blog/${slug}`, title: post.title } : null;
+    })
+    .filter((link): link is { href: string; title: string } => link !== null);
+}
 
 function PilotCrumbs({ crumbs, dark = false }: { crumbs: Crumb[]; dark?: boolean }) {
   return (
@@ -176,6 +200,8 @@ const SERVICE_VISUALS: Record<string, {
 export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crumb[] }) {
   const featured = page.proof.featured;
   const visual = SERVICE_VISUALS[page.slug] ?? SERVICE_VISUALS["data-entry-automation"];
+  const relatedIndustries = resolvePathLinks(page.related.industries);
+  const relatedPosts = resolvePostLinks(page.related.posts);
   return (
     <main className={`pilot-page pilot-service service-${page.slug}`}>
       <section className="de-hero">
@@ -254,6 +280,14 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
         </div>
       </section>
 
+      {(relatedIndustries.length > 0 || relatedPosts.length > 0) && (
+        <section className="de-related">
+          <div className="container">
+            <RelatedLinks label="WHO ELSE USES THIS" links={relatedIndustries} />
+            <RelatedLinks label={relatedPosts.length > 1 ? "RELATED GUIDES" : "RELATED GUIDE"} links={relatedPosts} />
+          </div>
+        </section>
+      )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
       <section className="pilot-final pilot-final-service"><div className="container"><span className="pilot-label pilot-label-light">A CLEAR FIRST STEP</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Book the $250 Audit</Link><Link href="/book" className="pilot-text-link is-light">Book a free discovery call</Link></div></div></section>
       <NewsletterSection />
@@ -282,6 +316,8 @@ export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Cr
   // now only possible for a *local* entry with no matching editorial data,
   // not for anything sourced from Strapi.
   const editorial = page.editorial ?? INDUSTRY_EDITORIAL[page.slug] ?? INDUSTRY_EDITORIAL["law-firms"];
+  const relatedServices = resolvePathLinks(page.related.services);
+  const relatedPosts = resolvePostLinks(page.related.posts);
   return (
     <main className={`pilot-page pilot-law industry-${page.slug}`}>
       <section className="law-hero">
@@ -326,6 +362,14 @@ export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Cr
 
       {page.proof.mode === "closest" ? <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">HONEST PATTERN MATCH</span><h2>{page.proof.title}</h2><p>{page.proof.intro}</p></div><div className="law-proof-list">{proofRows.map((row) => <Link key={row.slug} href={`/case-studies/${row.slug}`}><span>{row.need}</span><b>{row.big}</b><small>{row.title} · {row.detail}</small></Link>)}</div></div></section> : <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">PUBLISHED RESULT</span><h2>{page.proof.title}</h2></div><Link className="law-direct-proof" href={`/case-studies/${page.proof.featured.slug}`}><div><strong>{page.proof.featured.big}</strong><small>{page.proof.featured.bigLabel}</small></div><div><h3>{page.proof.featured.title}</h3><p>{page.proof.featured.after}</p><span>Read the full case study <ArrowRight size={15} /></span></div></Link></div></section>}
 
+      {(relatedServices.length > 0 || relatedPosts.length > 0) && (
+        <section className="de-related">
+          <div className="container">
+            <RelatedLinks label="RELATED SERVICES" links={relatedServices} />
+            <RelatedLinks label={relatedPosts.length > 1 ? "RELATED GUIDES" : "RELATED GUIDE"} links={relatedPosts} />
+          </div>
+        </section>
+      )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
       <section className="pilot-final pilot-final-law"><div className="container"><span className="pilot-label">{editorial.final}</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-dark">See the $250 Automation Audit</Link></div></div></section>
       <NewsletterSection />
