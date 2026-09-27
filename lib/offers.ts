@@ -1,7 +1,7 @@
-// The three offers, in one place so /pricing, /growth-partner, and future
+// The four paid offers, in one place so /pricing, offer pages, and future
 // pages quote the same prices and inclusions.
 export type Offer = {
-  key: "audit" | "core-build" | "growth-partner";
+  key: "audit" | "core-build" | "automation-care" | "growth-partner";
   name: string;
   price: string;
   /** Machine-readable price for JSON-LD. */
@@ -18,11 +18,11 @@ export type Offer = {
 export const OFFERS: Offer[] = [
   {
     key: "audit",
-    name: "The Automation Audit",
+    name: "7-Day Automation Audit",
     price: "$250",
     priceValue: 250,
-    pitch: "We map your daily work and hand you a clear plan showing exactly what to automate first.",
-    includes: ["Full operations and workflow mapping", "Prioritized automation roadmap", "Time-savings estimate per workflow", "Delivered in 7 days"],
+    pitch: "Know which 2 to 3 workflows to automate first, what they cost today, and what implementation would involve.",
+    includes: ["Up to 3 mapped workflows", "Cost and time baseline", "Prioritized execution blueprint", "Delivered in 7 business days"],
     bestFor: "Owners who know admin is eating their week but aren't sure what to fix first.",
     timeline: "7 days",
     href: "/audit",
@@ -30,24 +30,37 @@ export const OFFERS: Offer[] = [
   },
   {
     key: "core-build",
-    name: "The Core Build",
+    name: "30-Day Core Build",
     price: "From $2,500",
     priceValue: 2500,
-    pitch: "We build and launch the 2 to 3 automations that pay for themselves the fastest.",
-    includes: ["2 to 3 fully built automations", "Connected to the tools you already use", "Live in under 30 days", "Docs and video training for your team"],
+    pitch: "We build, test, and launch your highest-value workflow with a fixed scope and a clear definition of done.",
+    includes: ["One standard workflow from $2,500", "Acceptance testing and alerts", "Live in under 30 days", "Docs, training, and 30-day stabilization"],
     bestFor: "Businesses ready to remove their biggest time-wasters now.",
     timeline: "Under 30 days",
     href: "/core-build",
     cta: "See the Core Build",
   },
   {
-    key: "growth-partner",
-    name: "AI Growth Partner",
+    key: "automation-care",
+    name: "Automation Care",
     price: "$500/mo",
     priceValue: 500,
     priceUnit: "month",
-    pitch: "We look after your automations and add a new workflow every month.",
-    includes: ["Ongoing monitoring and maintenance", "A new workflow added every month", "Priority technical support", "Ongoing improvements as you grow"],
+    pitch: "We monitor and maintain the automations your business already depends on.",
+    includes: ["Monitoring for agreed workflows", "Failure fixes and connection checks", "One small optimization monthly", "Monthly health report"],
+    bestFor: "Teams that need reliable maintenance without ongoing new development.",
+    timeline: "Monthly",
+    href: "/automation-care",
+    cta: "See Automation Care",
+  },
+  {
+    key: "growth-partner",
+    name: "AI Growth Partner",
+    price: "From $1,250/mo",
+    priceValue: 1250,
+    priceUnit: "month",
+    pitch: "We protect your existing automations and ship one standard new workflow every month.",
+    includes: ["Everything in Automation Care", "One standard workflow monthly", "Priority technical support", "Quarterly ROI and capacity review"],
     bestFor: "Teams that already run automations and want them kept healthy and growing.",
     timeline: "Monthly",
     href: "/growth-partner",

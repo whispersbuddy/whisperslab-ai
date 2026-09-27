@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
 import JsonLd from "@/components/JsonLd";
-import NewsletterSection from "@/components/NewsletterSection";
-import CtaBand from "@/components/sections/CtaBand";
-import Faq, { type FaqItem } from "@/components/sections/Faq";
-import SiteIcon from "@/components/SiteIcon";
+import { IntegrationsHubPilot } from "@/components/pilots/ExpansionHubs";
+import type { FaqItem } from "@/components/sections/Faq";
 import { liveRoutes } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
 
@@ -53,8 +50,6 @@ export default function IntegrationsHubPage() {
   requireLive(PATH);
 
   const integrations = liveRoutes("integrations");
-  const services = liveRoutes("services");
-
   return (
     <>
       <JsonLd
@@ -73,66 +68,7 @@ export default function IntegrationsHubPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <main>
-        <PageBanner
-          eyebrow="INTEGRATIONS"
-          title="Automation tools we work"
-          highlight="inside, not around."
-          intro="We build inside the software you already pay for. Here's what we use most, and when each one actually fits."
-          crumbs={CRUMBS}
-        />
-
-        <section className="section">
-          <div className="container">
-            <div className="sv-ind-grid">
-              {integrations.map((r) => (
-                <a key={r.path} href={r.path} className="sv-ind">
-                  <span className="sv-ind-icon">
-                    <SiteIcon name={r.icon} size={20} />
-                  </span>
-                  <span>
-                    <b>{r.label}</b>
-                    <span>{r.blurb}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {services.length ? (
-          <section className="section sv-section sv-white">
-            <div className="container">
-              <div className="section-head-center">
-                <span className="eyebrow">BUILT FOR</span>
-                <h2>See these tools inside a full service.</h2>
-              </div>
-              <div className="sv-ind-grid">
-                {services.map((r) => (
-                  <a key={r.path} href={r.path} className="sv-ind">
-                    <span className="sv-ind-icon">
-                      <SiteIcon name={r.icon} size={20} />
-                    </span>
-                    <span>
-                      <b>{r.label}</b>
-                      <span>{r.blurb}</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
-
-        <Faq title="Questions about the tools we use." items={FAQS} />
-        <CtaBand
-          title="Not sure which tool fits your workflow?"
-          body="Start with the $250 Automation Audit. We'll map your process first and recommend the platform, not the other way around."
-          primary={{ href: "/audit", label: "See the $250 Automation Audit" }}
-          secondary={{ href: "/book", label: "Book a free discovery call" }}
-        />
-        <NewsletterSection />
-      </main>
+      <IntegrationsHubPilot routes={integrations} crumbs={CRUMBS} faq={FAQS} />
     </>
   );
 }

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
 import JsonLd from "@/components/JsonLd";
-import NewsletterSection from "@/components/NewsletterSection";
-import CtaBand from "@/components/sections/CtaBand";
-import Faq, { type FaqItem } from "@/components/sections/Faq";
-import SiteIcon from "@/components/SiteIcon";
+import { IndustriesHubPilot } from "@/components/pilots/ExpansionHubs";
+import type { FaqItem } from "@/components/sections/Faq";
 import { liveRoutes } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
 
@@ -72,42 +69,7 @@ export default function IndustriesHubPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <main>
-        <PageBanner
-          eyebrow="INDUSTRIES"
-          title="Automation built for"
-          highlight="how your industry actually works."
-          intro="The busywork looks different in every industry. The fix is usually the same: fewer systems, less retyping, and a person only where judgment is needed."
-          crumbs={CRUMBS}
-        />
-
-        <section className="section">
-          <div className="container">
-            <div className="sv-ind-grid">
-              {industries.map((r) => (
-                <a key={r.path} href={r.path} className="sv-ind">
-                  <span className="sv-ind-icon">
-                    <SiteIcon name={r.icon} size={20} />
-                  </span>
-                  <span>
-                    <b>{r.label}</b>
-                    <span>{r.blurb}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <Faq title="Questions about industry fit." items={FAQS} />
-        <CtaBand
-          title="Don't see your industry?"
-          body="Book a free discovery call and tell us what's eating your week. If it can be automated, we'll tell you honestly."
-          primary={{ href: "/audit", label: "See the $250 Automation Audit" }}
-          secondary={{ href: "/book", label: "Book a free discovery call" }}
-        />
-        <NewsletterSection />
-      </main>
+      <IndustriesHubPilot routes={industries} crumbs={CRUMBS} faq={FAQS} />
     </>
   );
 }

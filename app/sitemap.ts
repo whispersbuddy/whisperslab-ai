@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const csFileStat = fs.statSync(path.join(process.cwd(), 'app/_content/caseStudiesData.ts'));
     CASE_STUDIES.forEach((cs) => caseStudyDateMap.set(cs.slug, csFileStat.mtime));
-  } catch (err) {
+  } catch {
     CASE_STUDIES.forEach((cs) => caseStudyDateMap.set(cs.slug, commonDate));
   }
 

@@ -2,6 +2,8 @@
 // approved v2 mockup in docs/mockups/service-v2.src.html). Interactive pieces
 // live in LiveSimulator, BeforeAfter, and Estimator.
 import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import type { BentoTile, ServicePage } from "@/app/_content/services";
 import type { Crumb } from "@/lib/seo";
 
@@ -38,7 +40,7 @@ export function ServiceHero({ hero, crumbs, children }: { hero: ServicePage["her
             </a>
           </div>
           <div className="sv-byline">
-            <img src="/assets/haris-ali.jpg" alt="" width={36} height={36} />
+            <Image src="/assets/haris-ali.jpg" alt="" width={36} height={36} />
             <span>
               Written by <b>Haris Ali</b>, Co-Founder
             </span>
@@ -74,6 +76,62 @@ export function SectionHead({ eyebrow, title, intro, light }: { eyebrow: string;
       <span className={"eyebrow" + (light ? " eyebrow-light" : "")}>{eyebrow}</span>
       <h2>{title}</h2>
       {intro ? <p className="sv-intro">{intro}</p> : null}
+    </div>
+  );
+}
+
+export function DecisionGuide({
+  eyebrow,
+  title,
+  intro,
+  goodTitle,
+  good,
+  cautionTitle,
+  caution,
+  note,
+}: {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  goodTitle: string;
+  good: string[];
+  cautionTitle: string;
+  caution: string[];
+  note?: string;
+}) {
+  return (
+    <div className="sv-decision">
+      <SectionHead eyebrow={eyebrow} title={title} intro={intro} />
+      <div>
+        <div className="sv-decision-grid">
+          <article className="sv-decision-card good">
+            <h3>{goodTitle}</h3>
+            <ul>
+              {good.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </article>
+          <article className="sv-decision-card caution">
+            <h3>{cautionTitle}</h3>
+            <ul>
+              {caution.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </article>
+        </div>
+        {note ? <p className="sv-decision-note">{note}</p> : null}
+      </div>
+    </div>
+  );
+}
+
+export function RoiCallout() {
+  return (
+    <div className="sv-roi-callout">
+      <div>
+        <span className="eyebrow">CHECK THE ECONOMICS</span>
+        <h2>Use your own volume, time, and labor cost.</h2>
+        <p>Our free calculator shows the formula, estimated annual value, and simple payback period. No invented industry averages.</p>
+      </div>
+      <Link className="btn btn-dark" href="/resources/automation-roi-calculator">Calculate your ROI</Link>
     </div>
   );
 }
@@ -114,7 +172,7 @@ export function Stepper({ steps }: { steps: ServicePage["steps"] }) {
   );
 }
 
-function Preview({ p }: { p: BentoTile["preview"] }) {
+function Preview({ p }: { p: NonNullable<BentoTile["preview"]> }) {
   switch (p.type) {
     case "table":
       return (
@@ -207,7 +265,7 @@ export function Bento({ tiles }: { tiles: BentoTile[] }) {
             <h3>{t.title}</h3>
             {t.body ? <p>{t.body}</p> : null}
           </div>
-          <Preview p={t.preview} />
+          {t.preview ? <Preview p={t.preview} /> : null}
         </article>
       ))}
     </div>
@@ -333,7 +391,7 @@ export function FaqSplit({ faq }: { faq: ServicePage["faq"] }) {
         <span className="eyebrow">CLEARING THE AIR</span>
         <h2>{faq.title}</h2>
         <div className="sv-ask">
-          <img src="/assets/haris-ali.jpg" alt="Haris Ali" width={48} height={48} />
+          <Image src="/assets/haris-ali.jpg" alt="Haris Ali" width={48} height={48} />
           <div>
             <b>Still not sure?</b>
             <a href="/book">Ask Haris on a free discovery call →</a>

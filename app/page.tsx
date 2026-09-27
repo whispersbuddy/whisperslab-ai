@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HOME_HTML } from "@/app/_content/home";
+import HomeOfferPath from "@/components/HomeOfferPath";
 import LatestPosts from "@/components/LatestPosts";
 
 export const metadata: Metadata = {
@@ -33,35 +34,45 @@ export const metadata: Metadata = {
   },
 };
 
-// The verbatim legacy markup is split so the latest-posts strip can sit between
-// the case studies and the book-a-call CTA. The CTA lives inside <main>, so the
-// <main> tags are lifted out and rendered as a real element; splitting inside
-// an open element would hand the browser two invalid HTML fragments. If the
-// legacy markup ever changes shape, fall back to rendering it untouched.
+// The legacy homepage markup is split around its old pricing block so the
+// clearer Diagnose → Build → Operate path can be rendered as maintainable JSX.
+// The main tags are lifted out to keep every fragment valid.
 function splitHome(html: string) {
   const mainOpen = html.indexOf("<main>");
+  const pricing = html.indexOf("<!-- PRICING -->");
+  const cases = html.indexOf("<!-- CASE STUDIES -->");
   const cta = html.indexOf("<!-- BOOK A CALL CTA -->");
   const mainClose = html.indexOf("</main>");
-  if (mainOpen === -1 || cta === -1 || mainClose === -1 || !(mainOpen < cta && cta < mainClose)) {
+  if (mainOpen === -1 || pricing === -1 || cases === -1 || cta === -1 || mainClose === -1 || !(mainOpen < pricing && pricing < cases && cases < cta && cta < mainClose)) {
     return null;
   }
   return {
     beforeMain: html.slice(0, mainOpen),
-    beforeCta: html.slice(mainOpen + "<main>".length, cta),
+    beforeOffers: html.slice(mainOpen + "<main>".length, pricing),
+    cases: html.slice(cases, cta),
     fromCta: html.slice(cta, mainClose),
     afterMain: html.slice(mainClose + "</main>".length),
   };
 }
 
-const HOME_PARTS = splitHome(HOME_HTML);
+const HOME_PAGE_HTML = HOME_HTML
+  .replace("What we <span class=\"grad-word\">automate</span> for you.", "Common workflows we <span class=\"grad-word\">automate</span>.")
+  .replace(
+    "Common, repetitive workflows we take off your team's plate, so the busywork runs itself.",
+    "These are examples of the work we deliver across our five service categories—not six separate packages you need to choose between."
+  );
+
+const HOME_PARTS = splitHome(HOME_PAGE_HTML);
 
 export default function Home() {
-  if (!HOME_PARTS) return <div dangerouslySetInnerHTML={{ __html: HOME_HTML }} />;
+  if (!HOME_PARTS) return <div className="home-page" dangerouslySetInnerHTML={{ __html: HOME_HTML }} />;
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: HOME_PARTS.beforeMain }} />
-      <main>
-        <div dangerouslySetInnerHTML={{ __html: HOME_PARTS.beforeCta }} />
+      <main className="home-page">
+        <div dangerouslySetInnerHTML={{ __html: HOME_PARTS.beforeOffers }} />
+        <HomeOfferPath />
+        <div dangerouslySetInnerHTML={{ __html: HOME_PARTS.cases }} />
         <LatestPosts />
         <div dangerouslySetInnerHTML={{ __html: HOME_PARTS.fromCta }} />
       </main>

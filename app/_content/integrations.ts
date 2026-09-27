@@ -258,7 +258,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "What do we own after the build?",
-          a: "Your own Airtable account, a written guide to every table and automation, and a video walkthrough. Nothing about the base depends on Whispers Lab staying involved, though the AI Growth Partner plan is available for $500 a month if you want ongoing changes and monitoring.",
+          a: "Your own Airtable account, a written guide to every table and automation, and a video walkthrough. Nothing about the base depends on Whispers Lab staying involved. Automation Care starts at $500 a month for monitoring and maintenance; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
       ],
     },
@@ -468,7 +468,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Who maintains n8n workflows after they're built?",
-          a: "After a Whispers Lab build, you get documentation, video walkthroughs, and an error workflow that alerts a named person when a run fails. Businesses that want ongoing monitoring, fixes, and a new workflow added each month can use the AI Growth Partner plan at $500 a month.",
+          a: "After a Whispers Lab build, you get documentation, video walkthroughs, and an error workflow that alerts a named person when a run fails. Automation Care starts at $500 a month for ongoing monitoring and fixes; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "How much does it cost to have n8n workflows built?",
@@ -680,7 +680,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Who maintains Zaps after they're built?",
-          a: "After a Whispers Lab build, you get documentation, a video walkthrough, and alerts sent to a named person when a Zap fails. Businesses that want ongoing monitoring, fixes, and a new workflow added each month can use the AI Growth Partner plan at $500 a month.",
+          a: "After a Whispers Lab build, you get documentation, a video walkthrough, and alerts sent to a named person when a Zap fails. Automation Care starts at $500 a month for ongoing monitoring and fixes; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "How much does it cost to have Zapier workflows built?",

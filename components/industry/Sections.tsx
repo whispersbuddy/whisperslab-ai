@@ -2,10 +2,23 @@
 // approved v2 mockup in docs/mockups/law-v2.src.html). Everything else on an
 // industry page (hero, week comparison, intake steps, stack, FAQ, CTA) reuses
 // the exact same generic components built for the service template.
+import Image from "next/image";
 import { CheckCircle2, KeyRound, ShieldCheck, Wrench } from "lucide-react";
 import type { ClosestProofRow, IndustryPage, Moment } from "@/app/_content/industries";
 
 const LAYER_ICONS = [ShieldCheck, CheckCircle2, KeyRound, Wrench];
+
+export function IndustryHeroMedia({ src, alt, label }: { src: string; alt: string; label: string }) {
+  return (
+    <figure className="industry-hero-media">
+      <Image src={src} alt={alt} fill priority sizes="(max-width: 1080px) 100vw, 52vw" />
+      <figcaption className="industry-hero-caption">
+        <b>{label}</b>
+        Automation handles the handoffs. Your team keeps the decisions and relationships.
+      </figcaption>
+    </figure>
+  );
+}
 
 export function TrustLayers({ trust }: { trust: IndustryPage["trust"] }) {
   return (

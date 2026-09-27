@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
 import JsonLd from "@/components/JsonLd";
-import NewsletterSection from "@/components/NewsletterSection";
-import CtaBand from "@/components/sections/CtaBand";
-import Faq, { type FaqItem } from "@/components/sections/Faq";
-import SiteIcon from "@/components/SiteIcon";
+import { ServicesHubPilot } from "@/components/pilots/ExpansionHubs";
+import type { FaqItem } from "@/components/sections/Faq";
 import { liveRoutes } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
 
@@ -29,7 +26,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "Do you build more than one automation at a time?",
-    a: "Yes. Most Core Build projects cover 2 to 3 workflows across one or more of these services, scoped together so the tools stay in sync instead of being automated one at a time.",
+    a: "A standard Core Build starts with one agreed workflow so the scope, acceptance tests, and fixed price stay clear. Connected or additional workflows can be quoted together when they genuinely need to launch as one system.",
   },
   {
     q: "What if my process doesn't match one of these services?",
@@ -45,7 +42,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "What does an automation service cost?",
-    a: "The Automation Audit is a flat $250. A Core Build covering one or more of these services starts from $2,500, quoted as a fixed price before we start. There is no hourly billing.",
+    a: "The Automation Audit is a flat $250. One standard Core Build workflow starts from $2,500, quoted as a fixed price before we start. Connected or additional workflows receive a fixed quote, with no hidden hourly billing.",
   },
 ];
 
@@ -53,8 +50,6 @@ export default function ServicesHubPage() {
   requireLive(PATH);
 
   const services = liveRoutes("services");
-  const integrations = liveRoutes("integrations");
-
   return (
     <>
       <JsonLd
@@ -73,66 +68,7 @@ export default function ServicesHubPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <main>
-        <PageBanner
-          eyebrow="SERVICES"
-          title="Automation services built around"
-          highlight="your busywork."
-          intro="Five ways we take repetitive work off your team's plate. Every build runs in your own accounts, with error alerts, docs, and a video walkthrough."
-          crumbs={CRUMBS}
-        />
-
-        <section className="section">
-          <div className="container">
-            <div className="sv-ind-grid services-hub-grid">
-              {services.map((s) => (
-                <a key={s.path} href={s.path} className="sv-ind">
-                  <span className="sv-ind-icon">
-                    <SiteIcon name={s.icon} size={20} />
-                  </span>
-                  <span>
-                    <b>{s.label}</b>
-                    <span>{s.blurb}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {integrations.length ? (
-          <section className="section sv-section sv-white">
-            <div className="container">
-              <div className="section-head-center">
-                <span className="eyebrow">BUILT ON THE TOOLS YOU USE</span>
-                <h2>We work inside the software you already pay for.</h2>
-              </div>
-              <div className="sv-ind-grid">
-                {integrations.map((s) => (
-                  <a key={s.path} href={s.path} className="sv-ind">
-                    <span className="sv-ind-icon">
-                      <SiteIcon name={s.icon} size={20} />
-                    </span>
-                    <span>
-                      <b>{s.label}</b>
-                      <span>{s.blurb}</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
-
-        <Faq title="Questions about our services." items={FAQS} />
-        <CtaBand
-          title="Not sure which service fits?"
-          body="Start with the $250 Automation Audit. In 7 days you get a clear, ranked plan of what to automate first, credited toward a build if you go ahead."
-          primary={{ href: "/audit", label: "See the $250 Automation Audit" }}
-          secondary={{ href: "/book", label: "Book a free discovery call" }}
-        />
-        <NewsletterSection />
-      </main>
+      <ServicesHubPilot routes={services} crumbs={CRUMBS} faq={FAQS} />
     </>
   );
 }

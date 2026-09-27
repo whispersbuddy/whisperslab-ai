@@ -64,6 +64,25 @@ export type IndustryPage = {
   faq: ServicePage["faq"];
   cta: ServicePage["cta"];
   related: { services: string[]; posts: string[] };
+  /**
+   * Hero image, day-timeline heading, and short copy that used to live only
+   * in the INDUSTRY_EDITORIAL lookup table in ExpansionPilots.tsx, keyed by
+   * slug with a silent fallback to the Law Firms entry for any slug it
+   * didn't recognize (so a new industry added without a matching code entry
+   * would render with Law Firms' photo and copy). Optional here because the
+   * 5 local industries still carry that data in INDUSTRY_EDITORIAL rather
+   * than duplicating it into this file; a Strapi-sourced industry supplies
+   * it directly, since that lookup table has no way to know about it.
+   */
+  editorial?: {
+    image: string;
+    alt: string;
+    handles: string;
+    humans: string;
+    dayTitle: string;
+    cta: string;
+    final: string;
+  };
 };
 
 export const INDUSTRIES: IndustryPage[] = [
@@ -230,7 +249,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does automation cost for a small law firm?",
-          a: "With Whispers Lab, it starts with a $250 Automation Audit that maps intake, conflicts, onboarding, and billing workflows and ranks them by time saved. If the firm goes ahead, the build is quoted as a fixed price with no hourly billing, and the $250 is credited toward it. Ongoing maintenance and new workflows are available through the AI Growth Partner plan at $500 a month.",
+          a: "With Whispers Lab, it starts with a $250 Automation Audit that maps intake, conflicts, onboarding, and billing workflows and ranks them by time saved. If the firm goes ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for maintenance; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace paralegals or legal assistants?",
@@ -415,7 +434,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does real estate automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads and paperwork move through your business today. If you go ahead, the build is quoted as a fixed price starting from $2,500, with the $250 credited toward it. Ongoing support is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads and paperwork move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace my transaction coordinator or assistant?",
@@ -581,7 +600,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does ecommerce automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which catalog and order tasks take your team the most time. If you go ahead, the build is quoted as a fixed price starting from $2,500, with the $250 credited toward it. Ongoing support is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which catalog and order tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automated listings sound generic?",
@@ -773,7 +792,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does property management automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how requests, rent, and screening move through your business today. If you go ahead, the build is quoted as a fixed price starting from $2,500, with the $250 credited toward it. Ongoing support is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how requests, rent, and screening move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace my property manager or assistant?",
@@ -934,7 +953,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does accounting firm automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which client and bookkeeping tasks take your team the most time. If you go ahead, the build is quoted as a fixed price starting from $2,500, with the $250 credited toward it. Ongoing support is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which client and bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace bookkeepers or staff accountants?",

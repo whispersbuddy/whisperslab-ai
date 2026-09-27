@@ -11,6 +11,7 @@ export type QuizBand = { min: number; max: number; verdict: string; body: string
 
 export default function ReadinessQuiz({ questions, bands, maxScore }: { questions: QuizQuestion[]; bands: QuizBand[]; maxScore: number }) {
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [current, setCurrent] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const answeredCount = Object.keys(answers).length;
   const allAnswered = answeredCount === questions.length;
@@ -24,9 +25,13 @@ export default function ReadinessQuiz({ questions, bands, maxScore }: { question
 
   return (
     <div className="quiz">
+      <div className="quiz-progress" aria-label={`Question ${current + 1} of ${questions.length}`}>
+        <span>{current + 1} of {questions.length}</span>
+        <span className="quiz-progress-track" aria-hidden="true"><i style={{ width: `${((current + 1) / questions.length) * 100}%` }} /></span>
+      </div>
       <div className="quiz-questions">
         {questions.map((q, qi) => (
-          <fieldset key={qi} className="quiz-q">
+          <fieldset key={qi} className="quiz-q" hidden={qi !== current}>
             <legend>
               <span className="quiz-q-n">{qi + 1}</span>
               {q.q}
@@ -48,10 +53,17 @@ export default function ReadinessQuiz({ questions, bands, maxScore }: { question
           </fieldset>
         ))}
       </div>
+      <div className="quiz-nav">
+        <button type="button" className="btn btn-dark" disabled={current === 0} onClick={() => setCurrent((n) => Math.max(0, n - 1))}>Back</button>
+        {current < questions.length - 1 ? (
+          <button type="button" className="btn btn-primary" disabled={answers[current] === undefined} onClick={() => setCurrent((n) => Math.min(questions.length - 1, n + 1))}>Next question</button>
+        ) : (
+          <button type="button" className="btn btn-primary" disabled={!allAnswered} onClick={() => setRevealed(true)}>
+            {allAnswered ? "See your result" : `Answered ${answeredCount}/${questions.length}`}
+          </button>
+        )}
+      </div>
       <div className="quiz-result">
-        <button type="button" className="btn btn-primary" disabled={!allAnswered} onClick={() => setRevealed(true)}>
-          {allAnswered ? "See your result" : `Answer all ${questions.length} questions (${answeredCount}/${questions.length})`}
-        </button>
         {revealed ? (
           <div className="quiz-verdict" aria-live="polite">
             <span className="quiz-score">

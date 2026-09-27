@@ -35,7 +35,10 @@ export type BentoPreview =
   | { type: "pdf"; title: string; pages: string }
   | { type: "calendar"; highlight: number; reminder: string }
   | { type: "counter"; from: number; label: string };
-export type BentoTile = { verb: string; title: string; body?: string; preview: BentoPreview };
+// preview is optional because a service/integration sourced from Strapi
+// doesn't carry one (see lib/api.ts's mapStrapiService/mapStrapiIntegration):
+// the bento visual variants are a code-side template, not CMS content.
+export type BentoTile = { verb: string; title: string; body?: string; preview?: BentoPreview };
 
 export type EstimatorInput = { id: string; label: string; min: number; max: number; step: number; value: number; hint?: string; format?: "money" | "percent" };
 
@@ -73,7 +76,7 @@ export const SERVICES: ServicePage[] = [
     seo: {
       title: "Data Entry Automation for Small Businesses | Whispers Lab",
       description:
-        "Stop retyping invoices, statements, and forms. We build data entry automation that reads your documents, files the data in your tools, and flags what needs a person.",
+        "Stop retyping invoices, statements, and forms. We build data entry automation that reads documents, files data in your tools, and flags what needs a person.",
       keyword: "data entry automation",
     },
     hero: {
@@ -253,7 +256,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does data entry automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that measures which documents take your team the most time. If you go ahead, the build is quoted as a fixed price starting from $2,500, with no hourly billing, and the $250 is credited toward it. Ongoing support and a new workflow each month is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that measures which documents take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "How long does it take to set up?",
@@ -463,7 +466,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does bookkeeping automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which bookkeeping tasks take your team the most time. If you go ahead, the build is quoted as a fixed price starting from $2,500, with no hourly billing, and the $250 is credited toward it. Ongoing support and a new workflow each month is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will bookkeeping automation replace my bookkeeper or accountant?",
@@ -673,7 +676,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does client onboarding automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps your current onboarding steps and where they break down. If you go ahead, the build is quoted as a fixed price starting from $2,500, with no hourly billing, and the $250 is credited toward it. Ongoing support and a new workflow each month is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps your current onboarding steps and where they break down. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automated onboarding feel impersonal to new clients?",
@@ -888,7 +891,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does lead follow-up automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads move through your business today. If you go ahead, the build is quoted as a fixed price starting from $2,500, with no hourly billing, and the $250 is credited toward it. Ongoing support and a new workflow each month is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will leads know they're talking to automation?",
@@ -1094,7 +1097,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much do software integration services cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which of your systems should be talking and aren't. If you go ahead, the build is quoted as a fixed price starting from $2,500, with no hourly billing, and the $250 is credited toward it. Ongoing support and a new workflow each month is available for $500 a month.",
+          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which of your systems should be talking and aren't. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "What if the standard connector between our tools has a bug?",

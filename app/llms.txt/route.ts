@@ -9,9 +9,12 @@ export const dynamic = "force-static";
 const line = (r: SiteRoute) => `- [${r.label}](${SITE_URL}${r.path})${r.blurb ? `: ${r.blurb}.` : ""}`;
 
 export function GET() {
+  const care = isPathLive("/automation-care")
+    ? `- [Automation Care](${SITE_URL}/automation-care): $500/month monitoring and maintenance for existing workflows, with one small optimization monthly.`
+    : "- Automation Care: $500/month monitoring and maintenance for existing workflows, with one small optimization monthly.";
   const growth = isPathLive("/growth-partner")
-    ? `- [AI Growth Partner](${SITE_URL}/growth-partner): $500/month ongoing retainer. Maintains deployed systems and adds one new workflow monthly.`
-    : "- AI Growth Partner: $500/month ongoing retainer. Maintains deployed systems and adds one new workflow monthly. Described on the homepage pricing section.";
+    ? `- [AI Growth Partner](${SITE_URL}/growth-partner): plans from $1,250/month. Includes Automation Care plus one standard new workflow monthly.`
+    : "- AI Growth Partner: plans from $1,250/month. Includes Automation Care plus one standard new workflow monthly.";
 
   const sections: string[] = [];
   const add = (title: string, routes: SiteRoute[]) => {
@@ -24,6 +27,6 @@ export function GET() {
   const company = ["/about", "/pricing"].filter(isPathLive).map((p) => liveRoutes().find((r) => r.path === p)!);
   add("Company", company);
 
-  const body = LLMS_BASE.replace("__GROWTH__", growth).trimEnd() + (sections.length ? "\n\n" + sections.join("\n\n") : "") + "\n";
+  const body = LLMS_BASE.replace("__GROWTH__", `${care}\n${growth}`).trimEnd() + (sections.length ? "\n\n" + sections.join("\n\n") : "") + "\n";
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

@@ -1,8 +1,8 @@
-// The three offers as cards, reusing the homepage's .pricing-card styles.
-import { ClipboardCheck, Hammer, TrendingUp } from "lucide-react";
+// The four offers as cards, reusing the homepage's .pricing-card styles.
+import { ClipboardCheck, Hammer, ShieldCheck, TrendingUp } from "lucide-react";
 import { OFFERS, type Offer } from "@/lib/offers";
 
-const ICONS = { audit: ClipboardCheck, "core-build": Hammer, "growth-partner": TrendingUp } as const;
+const ICONS = { audit: ClipboardCheck, "core-build": Hammer, "automation-care": ShieldCheck, "growth-partner": TrendingUp } as const;
 
 export default function PricingCards({ highlight = "audit", offers = OFFERS }: { highlight?: Offer["key"]; offers?: Offer[] }) {
   return (

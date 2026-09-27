@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
 import JsonLd from "@/components/JsonLd";
-import NewsletterSection from "@/components/NewsletterSection";
-import CtaBand from "@/components/sections/CtaBand";
-import Faq from "@/components/sections/Faq";
-import Estimator from "@/components/service/Estimator";
+import { RoiPilot } from "@/components/pilots/ExpansionPilots";
 import { ROI_CALCULATOR } from "@/app/_content/resources";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
 
@@ -23,7 +19,7 @@ const CRUMBS = [
 
 export default function RoiCalculatorPage() {
   requireLive(PATH);
-  const { hero, estimator, benchmarks, faq, cta } = ROI_CALCULATOR;
+  const { faq } = ROI_CALCULATOR;
 
   return (
     <>
@@ -42,55 +38,7 @@ export default function RoiCalculatorPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <main>
-        <PageBanner eyebrow={hero.eyebrow} title={hero.title} highlight={hero.highlight} intro={hero.intro} crumbs={CRUMBS} />
-
-        <section className="section sv-section sv-dark" id="estimate">
-          <div className="container">
-            <div className="sv-head">
-              <span className="eyebrow eyebrow-light">{estimator.eyebrow}</span>
-              <h2>{estimator.title}</h2>
-              <p className="sv-intro">{estimator.intro}</p>
-            </div>
-            <Estimator inputs={estimator.inputs} unit={estimator.unit} />
-            <div className="sv-worth">
-              {estimator.worth.map((w) => (
-                <span key={w}>{w}</span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="section-head-center">
-              <span className="eyebrow">{benchmarks.eyebrow}</span>
-              <h2>{benchmarks.title}</h2>
-              <p>{benchmarks.intro}</p>
-            </div>
-            <div className="sv-more" style={{ marginTop: 36 }}>
-              {benchmarks.rows.map((r) => (
-                <a key={r.slug} className="sv-mr" href={`/case-studies/${r.slug}`}>
-                  <span className="sv-mr-n">{r.big}</span>
-                  <span>
-                    <b>{r.title}</b>
-                    <span>{r.detail}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <Faq title={faq.title} items={faq.items} />
-        <CtaBand
-          title={cta.title}
-          body={cta.body}
-          primary={{ href: "/audit", label: "See the $250 Automation Audit" }}
-          secondary={{ href: "/book", label: "Book a free discovery call" }}
-        />
-        <NewsletterSection />
-      </main>
+      <RoiPilot crumbs={CRUMBS} />
     </>
   );
 }

@@ -7,8 +7,9 @@ import type { EstimatorInput } from "@/app/_content/services";
 
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 
-export default function Estimator({ inputs, unit = "docs" }: { inputs: EstimatorInput[]; unit?: string }) {
+export default function Estimator({ inputs, unit = "docs", showPayback = false }: { inputs: EstimatorInput[]; unit?: string; showPayback?: boolean }) {
   const [v, setV] = useState<Record<string, number>>(Object.fromEntries(inputs.map((i) => [i.id, i.value])));
+  const [buildCost, setBuildCost] = useState(2500);
   const get = (id: string) => v[id] ?? 0;
 
   // Per-item model: items/day × minutes, minus the share flagged for review.
@@ -16,6 +17,7 @@ export default function Estimator({ inputs, unit = "docs" }: { inputs: Estimator
   const after = (get("docs") * (get("flag") / 100) * get("rev") * get("days")) / 60;
   const back = Math.max(0, now - after);
   const month = ((back * 52) / 12) * get("rate");
+  const payback = month > 0 ? buildCost / month : 0;
 
   const fmt = (i: EstimatorInput, n: number) => (i.format === "money" ? "$" + n : i.format === "percent" ? n + "%" : String(n));
 
@@ -55,6 +57,18 @@ export default function Estimator({ inputs, unit = "docs" }: { inputs: Estimator
             <span>a year</span>
           </div>
         </div>
+        {showPayback ? (
+          <>
+            <div className="sv-cost-input">
+              <label htmlFor="est-build-cost">Estimated implementation cost</label>
+              <input id="est-build-cost" type="number" min="0" step="250" value={buildCost} onChange={(e) => setBuildCost(Math.max(0, Number(e.target.value)))} />
+            </div>
+            <div className="sv-payback">
+              <b>{month > 0 ? `${payback.toFixed(1)} months` : "Add a positive time value"}</b>
+              Simple payback at the estimated monthly value above. Your Audit quote replaces this placeholder cost.
+            </div>
+          </>
+        ) : null}
         <div className="sv-bars">
           <div className="sv-bar-row">
             <span>Typing now</span>

@@ -10,7 +10,7 @@ export default async function LatestPosts() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="section">
+    <section className="section home-latest-section">
       <div className="container">
         <span className="eyebrow">THE LAB REPORT · LATEST GUIDES</span>
         <h2>Fix the busywork yourself, one guide at a time.</h2>

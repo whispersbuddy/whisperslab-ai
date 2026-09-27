@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import NewsletterSection from "@/components/NewsletterSection";
 import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
@@ -119,9 +120,9 @@ export default async function CaseStudyDetailPage({
       <main>
         <section className="case-detail-banner">
           <div className="container">
-            <a href="/case-studies" className="case-detail-back">
+            <Link href="/case-studies" className="case-detail-back">
               ← All case studies
-            </a>
+            </Link>
             <div className="case-tags">
               <span className="case-industry">{cs.industry}</span>
               <span
