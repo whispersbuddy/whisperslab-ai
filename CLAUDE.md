@@ -60,7 +60,9 @@ If `RESEND_API_KEY`/`CONTACT_NOTIFY_EMAIL` are missing, both routes return a 500
 - Three offer tiers: Automation Audit ($250, one-time, credited toward Core Build), Core Build (starts at $2,500, 30-day sprint), AI Growth Partner ($500/mo, /growth-partner page added in the site expansion).
 - Founder: Haris Ali, Co-Founder, Whispers Lab.
 - Footer tagline: "THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME."
-- Social links: LinkedIn and Instagram point to the real profiles. Clutch links (footer + Organization `sameAs`) use a dummy placeholder URL (`clutch.co/profile/whispers-lab`) pending the real profile URL and logo asset from the user.
+- Social links: LinkedIn and Instagram point to the real profiles. Clutch link (footer + Organization `sameAs`) uses the shared `CLUTCH_URL` in `lib/social.ts` (`clutch.co/profile/whispers-lab`); the footer icon is still an inline star mark pending a proper Clutch logo asset.
+- Analytics: GA4 (`G-DT0L4C5NMQ`) only loads on `whisperslab.com`/`www.whisperslab.com` (never localhost or preview hosts). Custom events via `lib/analytics.ts` `trackEvent`, fired from `components/ClientEffects.tsx`: `generate_lead` (contact form), `newsletter_signup`, `calendly_booking`, `cta_click` (links to /audit, /book, /contact, /core-build, /pricing, /automation-care, /growth-partner). Mark `generate_lead` and `calendly_booking` as key events in the GA4 UI.
+- Blog posts link to relevant service/industry/integration pages via `lib/blogLinks.ts` (rendered by `app/blog/[slug]/page.tsx`, independent of whether the post body comes from Strapi or `blogData.ts`).
 - Team location: Karachi, Pakistan (confirmed; not Lahore).
 
 ## Still open

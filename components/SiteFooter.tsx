@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BARE_PATHS } from "@/components/SiteHeader";
 import { isPathLive, liveRoutes, type SiteRoute } from "@/lib/routes";
+import { CLUTCH_URL } from "@/lib/social";
 
 const SOCIALS = [
   {
@@ -14,10 +15,6 @@ const SOCIALS = [
     path: "M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.6a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.45 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.68V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.21-1.77 3.43 0 4.06 2.26 4.06 5.2V20Z",
   },
 ];
-
-// TODO: dummy placeholder until the user supplies the real Clutch profile URL
-// (and a proper logo asset to replace this inline star mark).
-const CLUTCH_URL = "https://www.clutch.co/profile/whispers-lab";
 
 function Column({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   if (links.length === 0) return null;
@@ -83,7 +80,7 @@ export default function SiteFooter() {
                   <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
                 </svg>
               </a>
-              {/* Placeholder link until the user provides the real Clutch profile URL + logo */}
+              {/* Inline star mark stands in until a proper Clutch logo asset exists */}
               <a href={CLUTCH_URL} target="_blank" rel="noopener" aria-label="Clutch" className="social-icon">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path

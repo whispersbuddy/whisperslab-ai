@@ -9,6 +9,7 @@ import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchArticleBySlug, fetchCaseStudyBySlug } from "@/lib/api";
 import { getAllPosts, getRelatedPosts } from "@/lib/content";
 import RelatedLinks from "@/components/RelatedLinks";
+import { blogServiceLinks } from "@/lib/blogLinks";
 import ReactMarkdown from 'react-markdown';
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -364,6 +365,8 @@ export default async function BlogPostPage({
                     </ul>
                   </div>
                 )}
+
+                <RelatedLinks label="HOW WE HELP WITH THIS" links={blogServiceLinks(post.slug)} />
 
                 <RelatedLinks
                   label="KEEP READING"

@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { CALENDLY_URLS, CalendlyType, themedCalendlyUrl } from "@/lib/calendly";
+import { trackEvent } from "@/lib/analytics";
+
+// Internal links worth counting as intent: where visitors go to buy or book.
+const CTA_PATHS = new Set(["/audit", "/book", "/contact", "/core-build", "/pricing", "/automation-care", "/growth-partner"]);
 
 declare global {
   interface Window {
@@ -64,6 +68,10 @@ export default function ClientEffects() {
           body: JSON.stringify(data),
         });
         if (!res.ok) throw new Error("Request failed");
+        trackEvent(isContactForm ? "generate_lead" : "newsletter_signup", {
+          form_name: isContactForm ? "contact" : "newsletter",
+          page_path: window.location.pathname,
+        });
         if (isContactForm) {
           // Gated high-ticket flow: hand off to the booking page instead of
           // showing an inline confirmation.
@@ -143,6 +151,10 @@ export default function ClientEffects() {
     // Calendly reports its actual content height via postMessage so the
     // embed can grow to fit instead of showing its own internal scrollbar.
     const onCalendlyMessage = (e: MessageEvent) => {
+      if (e.data?.event === "calendly.event_scheduled") {
+        trackEvent("calendly_booking", { page_path: window.location.pathname });
+        return;
+      }
       if (e.data?.event !== "calendly.page_height") return;
       const height = e.data?.payload?.height;
       if (!height) return;
@@ -154,9 +166,30 @@ export default function ClientEffects() {
     };
     window.addEventListener("message", onCalendlyMessage);
 
+    // One delegated listener covers links in both React components and the
+    // legacy HTML strings rendered via dangerouslySetInnerHTML.
+    const onCtaClick = (e: MouseEvent) => {
+      const link = (e.target as Element | null)?.closest?.("a");
+      if (!link) return;
+      let url: URL;
+      try {
+        url = new URL(link.href, window.location.origin);
+      } catch {
+        return;
+      }
+      if (url.origin !== window.location.origin || !CTA_PATHS.has(url.pathname)) return;
+      trackEvent("cta_click", {
+        cta_destination: url.pathname,
+        cta_text: (link.textContent ?? "").trim().slice(0, 60),
+        page_path: window.location.pathname,
+      });
+    };
+    document.addEventListener("click", onCtaClick);
+
     return () => {
       if (calendlyPollId) clearInterval(calendlyPollId);
       window.removeEventListener("message", onCalendlyMessage);
+      document.removeEventListener("click", onCtaClick);
       forms.forEach((form) =>
         form.removeEventListener("submit", handleFormSubmit)
       );
