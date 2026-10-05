@@ -13,6 +13,7 @@ import {
   READINESS_QUESTIONS,
   ROI_CALCULATOR,
 } from "@/app/_content/resources";
+import { OFFERS } from "@/lib/offers";
 import { getRoute } from "@/lib/routes";
 import type { Crumb } from "@/lib/seo";
 import Estimator from "@/components/service/Estimator";
@@ -425,6 +426,26 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
           <ol>{page.bento.tiles.map((tile, index) => <li key={tile.title}><span>{String(index + 1).padStart(2, "0")}</span><div><small>{tile.verb}</small><h3>{tile.title}</h3>{tile.body ? <p>{tile.body}</p> : null}{tile.preview ? <BentoPreview p={tile.preview} /> : null}</div></li>)}</ol>
         </div>
       </section>
+
+      {page.cost ? (
+        <section className="air-cost" id="cost">
+          <div className="container">
+            <div className="pilot-section-head"><span className="pilot-label">{page.cost.eyebrow}</span><h2>{page.cost.title}</h2><p>{page.cost.intro}</p></div>
+            <div className="air-cost-grid">
+              {OFFERS.map((offer) => (
+                <article key={offer.key}>
+                  <small>{offer.timeline}</small>
+                  <h3>{offer.name}</h3>
+                  <strong>{offer.price}</strong>
+                  <p>{offer.pitch}</p>
+                  <Link href={offer.href}>{offer.cta} <ArrowRight size={14} /></Link>
+                </article>
+              ))}
+            </div>
+            <p className="air-cost-note">{page.cost.note}</p>
+          </div>
+        </section>
+      ) : null}
 
       <section className="air-proof"><div className="container air-proof-grid"><div><span className="pilot-label pilot-label-light">A REAL CONNECTED BUILD</span><strong>{featured.big}</strong><small>{featured.bigLabel}</small></div><div><h2>{featured.title}</h2><p>{featured.after}</p><div>{featured.chips.map((chip) => <span key={chip}>{chip}</span>)}</div><Link href={`/case-studies/${featured.slug}`}>Read the case study <ArrowRight size={15} /></Link></div></div></section>
 

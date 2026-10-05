@@ -259,6 +259,17 @@
 .air-build li small { color: #6b5af4; font-weight: 800; letter-spacing: .8px; }
 .air-build h3 { font-size: 21px; margin-top: 3px; }
 .air-build li p { color: var(--pilot-muted); margin-top: 5px; line-height: 1.55; }
+.air-cost { padding: 112px 0; }
+.air-cost-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+.air-cost-grid article { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--pilot-line); background: #fff; }
+.air-cost-grid small { color: #6b5af4; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+.air-cost-grid h3 { font-size: 19px; line-height: 1.2; margin-top: 10px; }
+.air-cost-grid strong { display: block; font-family: 'Satoshi', sans-serif; font-size: 32px; letter-spacing: -1px; margin-top: 14px; }
+.air-cost-grid p { color: var(--pilot-muted); line-height: 1.55; margin-top: 12px; flex: 1; }
+.air-cost-grid a { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; color: var(--pilot-ink); font-weight: 800; }
+.air-cost-note { margin-top: 28px; color: var(--pilot-muted); font-size: 15px; }
+@media (max-width: 1100px) { .air-cost-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .air-cost { padding: 74px 0; } .air-cost-grid { grid-template-columns: 1fr; } }
 .air-proof { padding: 104px 0; background: #242b4b; color: #fff; }
 .air-proof-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 90px; align-items: center; }
 .air-proof strong { display: block; color: #fff; font-family: 'Satoshi', sans-serif; font-size: clamp(70px, 9vw, 120px); letter-spacing: -5px; line-height: .9; margin-top: 22px; }
