@@ -6,6 +6,7 @@ import "./styles/pilots.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { CLUTCH_URL } from "@/lib/social";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -76,8 +77,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.instagram.com/whispers__lab/",
     "https://www.linkedin.com/company/whispers-lab/",
-    // TODO: dummy placeholder until the user supplies the real Clutch profile URL
-    "https://www.clutch.co/profile/whispers-lab",
+    CLUTCH_URL,
   ],
 };
 
@@ -112,16 +112,20 @@ export default function RootLayout({
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DT0L4C5NMQ"
-          strategy="afterInteractive"
-        />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DT0L4C5NMQ');
+            window.gtag = gtag;
+            var h = window.location.hostname;
+            if (h === 'whisperslab.com' || h === 'www.whisperslab.com') {
+              var s = document.createElement('script');
+              s.async = true;
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DT0L4C5NMQ';
+              document.head.appendChild(s);
+              gtag('js', new Date());
+              gtag('config', 'G-DT0L4C5NMQ');
+            }
           `}
         </Script>
       </body>
