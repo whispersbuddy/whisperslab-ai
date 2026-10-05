@@ -16,6 +16,8 @@ import type { ServicePage } from "@/app/_content/services";
 export type IntegrationPage = ServicePage & {
   /** For JSON-LD `mentions: SoftwareApplication`. */
   tool: { name: string; url: string; sameAs?: string[] };
+  /** Visible pricing section. Prices come from lib/offers.ts, never typed here. */
+  cost?: { eyebrow: string; title: string; intro: string; note: string };
 };
 
 export const INTEGRATIONS: IntegrationPage[] = [
@@ -25,15 +27,15 @@ export const INTEGRATIONS: IntegrationPage[] = [
     seo: {
       title: "Airtable Consultant for Small Businesses | Whispers Lab",
       description:
-        "Whispers Lab builds Airtable bases and automations for small businesses: CRMs, trackers, client databases. Used in many builds, no certification claimed.",
+        "Airtable consultant for small businesses. A $250 audit first, then fixed-price builds from $2,500. You own the base and the account.",
       keyword: "airtable consultant",
     },
     hero: {
       eyebrow: "Integration · Airtable",
-      title: "Airtable consultants for teams",
+      title: "Airtable consultant for teams",
       highlight: "done juggling spreadsheets.",
       answer:
-        "Whispers Lab designs and builds Airtable bases for small businesses: CRMs, project trackers, and client databases, with linked tables, views built for each role, and automations that post updates without anyone checking a spreadsheet. Airtable shows up in many of our builds. We don't claim a certification, just bases that work.",
+        "An Airtable consultant plans your base, builds it, sets up the automations, and teaches your team to run it. Whispers Lab does this for small businesses: CRMs, project trackers, and client databases, with linked tables, views built for each role, and automations that post updates without anyone checking a spreadsheet. You own the account. We don't claim a certification, just bases that work.",
       secondaryCta: { label: "See what an Airtable build includes", href: "#includes" },
     },
     simulator: [
@@ -233,9 +235,31 @@ export const INTEGRATIONS: IntegrationPage[] = [
         { label: "Data Entry Automation", href: "/services/data-entry-automation" },
       ],
     },
+    cost: {
+      eyebrow: "What it costs",
+      title: "How much does an Airtable consultant cost?",
+      intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. Airtable's own plan fees are separate and go on your account.",
+      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+    },
     faq: {
       title: "Questions owners ask about Airtable",
       items: [
+        {
+          q: "What does an Airtable consultant do?",
+          a: "An Airtable consultant plans how your data fits together, builds the base, sets up views and automations, and trains your team. A good one also writes down how everything works, so the base keeps running without them. Whispers Lab does all four, and the base lives in your own Airtable account.",
+        },
+        {
+          q: "How much does an Airtable consultant cost?",
+          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is $250 and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Airtable's own plan fees are separate and billed to your account.",
+        },
+        {
+          q: "How do I choose an Airtable consultant?",
+          a: "Ask four things. Can they show finished work with real results? Who owns the account and the base afterward? Is the price fixed or hourly? Who fixes it when something breaks? Our answers: a published case study (The CRM That Fills Itself In, about 6 hours a week saved), you own the account, prices are fixed, and Automation Care covers upkeep at $500 a month.",
+        },
+        {
+          q: "Can you fix a base we already have?",
+          a: "Yes. Many projects start with a base that grew messy. We review the structure, merge duplicate records, fix the links between tables, and then add automations. The Automation Audit shows whether a cleanup or a rebuild makes more sense.",
+        },
         {
           q: "Is Airtable free?",
           a: "Airtable has a free plan for individuals and very small teams. Paid plans (Team, Business, and Enterprise Scale) add more automation runs, higher record limits, and more admin controls. Whispers Lab recommends a plan during the Automation Audit based on your team size and how many automations you need.",
@@ -491,15 +515,15 @@ export const INTEGRATIONS: IntegrationPage[] = [
     seo: {
       title: "Zapier Consultant for Small Businesses | Whispers Lab",
       description:
-        "Whispers Lab builds Zapier workflows for small businesses: two-way syncs, branded quotes, and clean handoffs between the apps you already pay for.",
+        "Zapier consultant for small businesses. A $250 audit first, then fixed-price builds from $2,500. You own the Zaps. See a real case study.",
       keyword: "zapier consultant",
     },
     hero: {
       eyebrow: "Integration · Zapier",
-      title: "Zapier consultants for teams",
+      title: "Zapier consultant for teams",
       highlight: "done retyping the same record twice.",
       answer:
-        "Whispers Lab builds Zapier workflows, called Zaps, that keep your apps in sync: a new customer in one tool becomes a new customer everywhere else, without anyone copying a field by hand. We build multi-step Zaps, add safeguards so two systems never loop on each other, and hand over workflows your team owns.",
+        "A Zapier consultant builds and looks after the workflows, called Zaps, that keep your apps in sync. Whispers Lab does this for small businesses: a new customer in one tool becomes a new customer everywhere else, without anyone copying a field by hand. We build multi-step Zaps, add safeguards so two systems never loop on each other, and hand over workflows your team owns.",
       secondaryCta: { label: "See what a Zapier build includes", href: "#includes" },
     },
     simulator: [
@@ -659,9 +683,23 @@ export const INTEGRATIONS: IntegrationPage[] = [
         { label: "Software Integration Services", href: "/services/software-integration-services" },
       ],
     },
+    cost: {
+      eyebrow: "What it costs",
+      title: "How much does a Zapier consultant cost?",
+      intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. Zapier's own plan fees are separate and go on your account.",
+      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+    },
     faq: {
       title: "Questions owners ask about Zapier",
       items: [
+        {
+          q: "What does a Zapier consultant do?",
+          a: "A Zapier consultant finds the places where people copy information between apps, builds Zaps to do it automatically, tests them on a copy of your data, and hands over documentation. A good one also sets up alerts, so a failed Zap reaches a named person instead of failing quietly. Whispers Lab does all of this, and the Zaps live in your own Zapier account.",
+        },
+        {
+          q: "How do I choose a Zapier consultant?",
+          a: "Ask four things. Can they show finished work with real results? Who owns the Zapier account afterward? Is the price fixed or hourly? Who fixes a Zap when it breaks? Our answers: a published case study (The Zero Double-Entry Financial Pipeline, about 10 hours a week saved), you own the account, prices are fixed, and Automation Care covers upkeep at $500 a month.",
+        },
         {
           q: "What is Zapier used for?",
           a: "Zapier connects business apps so information moves between them without anyone copying it by hand. A workflow, called a Zap, starts with a trigger in one app and runs one or more actions in others, like creating a record, sending an email, or updating a spreadsheet. Most Zaps need no code to build.",
@@ -683,8 +721,8 @@ export const INTEGRATIONS: IntegrationPage[] = [
           a: "After a Whispers Lab build, you get documentation, a video walkthrough, and alerts sent to a named person when a Zap fails. Automation Care starts at $500 a month for ongoing monitoring and fixes; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
-          q: "How much does it cost to have Zapier workflows built?",
-          a: "Whispers Lab starts with a $250 Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the $250 is credited toward the build. Zapier's own subscription cost is separate and estimated during the Audit.",
+          q: "How much does a Zapier consultant cost?",
+          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is $250 and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Zapier's own subscription is separate and is estimated during the Audit.",
         },
       ],
     },

@@ -315,3 +315,27 @@
 4,Watch only,(no page),ai agents for small business,"watch only, do not target",commercial,house rule: avoid AI agents framing,90,14,10.78,I,WATCH,,WATCH,House rule
 4,Watch only,(no page),ai employees for small business,"watch only, do not target",commercial,house rule: avoid AI employees framing,10,n/a,0,,WATCH,,WATCH,House rule
 4,Watch only,(no page),automation agency near me,"watch only, do not target",transactional,"no Google Business Profile, skip local intent",50,1,6.23,T,WATCH,,WATCH,House rule
+5,Integration,/integrations/airtable,airtable consultants,secondary,transactional,Oct 2026 Semrush refresh,210,11,18.55,I,REWRITE,/integrations/airtable,SECONDARY,"Gap report: flow.digital #4, prosperspark #3, flowmondo #19"
+5,Integration,/integrations/airtable,airtable consulting,secondary,commercial,Oct 2026 Semrush refresh,110,15,15.71,I,REWRITE,/integrations/airtable,SECONDARY,"flow.digital #4, prosperspark #5"
+5,Integration,/integrations/airtable,airtable consulting services,secondary,commercial,Oct 2026 Semrush refresh,40,14,0,I,REWRITE,/integrations/airtable,LOW/NO VOLUME,
+5,Integration,/integrations/airtable,airtable experts,secondary,transactional,Oct 2026 Semrush refresh,140,27,28.60,I,REWRITE,/integrations/airtable,SECONDARY,"flow.digital #3"
+5,Integration,/integrations/airtable,airtable agency,secondary,commercial,Oct 2026 Semrush refresh,90,29,8.44,"C,I",REWRITE,/integrations/airtable,SECONDARY,"Competitors rank #36 to #49, weak SERP"
+5,Integration,/integrations/airtable,airtable expert for hire,secondary,commercial,Oct 2026 Semrush refresh,30,13,17.60,"C,I",REWRITE,/integrations/airtable,LOW/NO VOLUME,
+5,Integration,/integrations/zapier,zapier consulting,secondary,commercial,Oct 2026 Semrush refresh,210,28,10.56,I,REWRITE,/integrations/zapier,SECONDARY,"flow.digital #4, prosperspark #6, flowmondo #18"
+5,Integration,/integrations/zapier,zapier consultants,secondary,transactional,Oct 2026 Semrush refresh,170,23,10.56,I,REWRITE,/integrations/zapier,SECONDARY,"flow.digital #5, prosperspark #17"
+5,Integration,/integrations/zapier,zapier automation consultant,secondary,transactional,Oct 2026 Semrush refresh,110,20,0,I,REWRITE,/integrations/zapier,SECONDARY,
+5,Integration,/integrations/zapier,zapier specialist,secondary,transactional,Oct 2026 Semrush refresh,50,35,47.53,I,REWRITE,/integrations/zapier,LOW/NO VOLUME,
+5,Watch only,(no page),airtable partners,"watch only, do not target",transactional,people looking for the official directory,320,14,9.76,T,WATCH,,WATCH,"Do not claim partner status. ecosystem.airtable.com ranks #1. Revisit if Airtable accepts the application"
+5,Watch only,(no page),airtable partner program,"watch only, do not target",informational,people looking for the official program,260,18,6.02,I,WATCH,,WATCH,"Same as airtable partners"
+5,Watch only,(no page),airtable service partners,"watch only, do not target",transactional,people looking for the official directory,40,9,21.88,T,WATCH,,WATCH,"Same as airtable partners"
+5,Watch only,(no page),make.com vs n8n,"watch only, do not target",commercial,house rule: no X vs Y,1300,41,3.30,C,WATCH,,WATCH,"House rule. flowmondo ranks #23"
+5,Watch only,(no page),n8n vs make,"watch only, do not target",commercial,house rule: no X vs Y,1000,34,3.73,C,WATCH,,WATCH,"House rule"
+5,Core offers,(new) /automation-consulting,business automation consulting,primary candidate,commercial,DECISION NEEDED: terms currently mapped to home,480,13,21.23,I,PROPOSED NEW PAGE,/automation-consulting,PRIMARY,"Gap report: prosperspark #6 with Authority Score 8"
+5,Core offers,(new) /automation-consulting,ai automation consulting,secondary,commercial,DECISION NEEDED: currently mapped to home,480,14,16.75,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #4"
+5,Core offers,(new) /automation-consulting,ai automation consultant,secondary,transactional,DECISION NEEDED: currently mapped to home,590,24,16.87,C,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #4"
+5,Core offers,(new) /automation-consulting,process automation consulting,secondary,commercial,DECISION NEEDED: currently mapped to home,320,17,0,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #1"
+5,Core offers,(new) /automation-consulting,business process automation consulting,secondary,commercial,,590,6,0,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #1, KD 6"
+5,Core offers,(new) /automation-consulting,workflow automation consulting,secondary,commercial,,320,8,13.28,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"flow.digital #4"
+5,Core offers,(new) /automation-consulting,workflow automation for small business,primary candidate,commercial,Matches the audience exactly,720,26,9.51,I,PROPOSED NEW PAGE,/automation-consulting,PRIMARY,"flow.digital #7"
+5,Core offers,(new) /automation-consulting,business automation consultant,secondary,transactional,,320,19,12.69,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #8"
+5,Core offers,(new) /automation-consulting,automation consulting,secondary,commercial,,880,35,9.59,I,PROPOSED NEW PAGE,/automation-consulting,SECONDARY,"prosperspark #15"

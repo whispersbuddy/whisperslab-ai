@@ -15,16 +15,32 @@ import {
   fetchServices,
 } from "@/lib/api";
 
+// Strapi has no fields for `related` (cross-links) or an integration's `cost`
+// section, so a page served from Strapi would lose them. Where Strapi leaves
+// them empty, keep the local entry's value for the same slug.
 export async function resolveService(slug: string): Promise<ServicePage | undefined> {
-  return (await fetchServiceBySlug(slug)) ?? getService(slug);
+  const strapi = await fetchServiceBySlug(slug);
+  const local = getService(slug);
+  if (!strapi) return local;
+  const empty = strapi.related.industries.length === 0 && strapi.related.posts.length === 0;
+  return local && empty ? { ...strapi, related: local.related } : strapi;
 }
 
 export async function resolveIndustry(slug: string): Promise<IndustryPage | undefined> {
-  return (await fetchIndustryBySlug(slug)) ?? getIndustry(slug);
+  const strapi = await fetchIndustryBySlug(slug);
+  const local = getIndustry(slug);
+  if (!strapi) return local;
+  const empty = strapi.related.services.length === 0 && strapi.related.posts.length === 0;
+  return local && empty ? { ...strapi, related: local.related } : strapi;
 }
 
 export async function resolveIntegration(slug: string): Promise<IntegrationPage | undefined> {
-  return (await fetchIntegrationBySlug(slug)) ?? getIntegration(slug);
+  const strapi = await fetchIntegrationBySlug(slug);
+  const local = getIntegration(slug);
+  if (!strapi) return local;
+  if (!local) return strapi;
+  const empty = strapi.related.industries.length === 0 && strapi.related.posts.length === 0;
+  return { ...strapi, cost: strapi.cost ?? local.cost, related: empty ? local.related : strapi.related };
 }
 
 // Slugs to pre-render at build time: the union of what's in Strapi today and
