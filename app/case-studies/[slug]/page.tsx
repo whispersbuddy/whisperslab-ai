@@ -6,6 +6,9 @@ import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData
 import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
 import { getPostsForCaseStudy, getRelatedCaseStudies } from "@/lib/content";
 import RelatedLinks from "@/components/RelatedLinks";
+import CaseFlow from "@/components/CaseFlow";
+import CaseFlowDiagram from "@/components/CaseFlowDiagram";
+import { CASE_FLOWS } from "@/app/_content/caseFlows";
 
 export async function generateStaticParams() {
   const strapiStudies = await fetchCaseStudies();
@@ -192,6 +195,13 @@ export default async function CaseStudyDetailPage({
 
               <div className="case-detail-section">
                 <h2>How it works</h2>
+                {Array.isArray(cs.detail.howItWorks) && cs.detail.howItWorks.length >= 2 ? (
+                  CASE_FLOWS[slug]?.steps.length === cs.detail.howItWorks.length ? (
+                    <CaseFlowDiagram steps={cs.detail.howItWorks} flow={CASE_FLOWS[slug]} />
+                  ) : (
+                    <CaseFlow steps={cs.detail.howItWorks} />
+                  )
+                ) : null}
                 <ol className="case-detail-steps">
                   {cs.detail.howItWorks?.map((step: string, i: number) => (
                     <li key={i}>
