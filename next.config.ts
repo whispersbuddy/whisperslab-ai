@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: strapiPattern ? [strapiPattern] : [],
   },
+  async redirects() {
+    return [
+      // Search Console still lists this root-level path; the page lives under /case-studies.
+      {
+        source: "/appraisal-case-moves-itself-forward",
+        destination: "/case-studies/appraisal-case-moves-itself-forward",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

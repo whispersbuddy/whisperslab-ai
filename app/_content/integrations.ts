@@ -292,7 +292,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     },
     related: {
       industries: ["/industries/real-estate", "/industries/property-management", "/industries/accounting-bookkeeping"],
-      posts: ["accounting-workflow-automation-tasks-to-fix-first"],
+      posts: ["accounting-workflow-automation-tasks-to-fix-first", "crm-data-hygiene"],
     },
   },
   {
@@ -506,7 +506,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     },
     related: {
       industries: ["/industries/real-estate", "/industries/property-management", "/industries/accounting-bookkeeping"],
-      posts: ["real-estate-lead-follow-up-automation"],
+      posts: ["real-estate-lead-follow-up-automation", "crm-data-hygiene"],
     },
   },
   {

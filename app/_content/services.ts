@@ -702,7 +702,7 @@ export const SERVICES: ServicePage[] = [
     },
     related: {
       industries: ["/industries/law-firms", "/industries/real-estate", "/industries/accounting-bookkeeping"],
-      posts: [],
+      posts: ["automate-client-onboarding"],
     },
   },
   {
@@ -913,7 +913,7 @@ export const SERVICES: ServicePage[] = [
     },
     related: {
       industries: ["/industries/real-estate", "/industries/law-firms", "/industries/ecommerce-retail"],
-      posts: ["real-estate-lead-follow-up-automation"],
+      posts: ["real-estate-lead-follow-up-automation", "crm-data-hygiene"],
     },
   },
   {
@@ -1123,7 +1123,7 @@ export const SERVICES: ServicePage[] = [
     },
     related: {
       industries: ["/industries/ecommerce-retail", "/industries/accounting-bookkeeping", "/industries/property-management"],
-      posts: ["ecommerce-product-listing-automation-supplier-feeds"],
+      posts: ["ecommerce-product-listing-automation-supplier-feeds", "crm-data-hygiene"],
     },
   },
 ];

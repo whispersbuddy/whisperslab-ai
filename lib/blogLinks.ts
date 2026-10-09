@@ -16,6 +16,13 @@ const BLOG_SERVICE_LINKS: Record<string, string[]> = {
   "speed-to-lead": ["/services/lead-follow-up-automation", "/industries/real-estate"],
 };
 
+// Titles for posts that live only in the CMS, so service/integration pages can
+// link to them (blogData.ts has no entry to resolve a title from).
+export const CMS_ONLY_POST_TITLES: Record<string, string> = {
+  "crm-data-hygiene": "CRM Data Hygiene: How a CRM Can Fill Itself In",
+  "automate-client-onboarding": "How to Automate Client Onboarding (And What Should Stay Human)",
+};
+
 export function blogServiceLinks(slug: string): { href: string; title: string }[] {
   return (BLOG_SERVICE_LINKS[slug] ?? [])
     .filter((path) => isPathLive(path))
