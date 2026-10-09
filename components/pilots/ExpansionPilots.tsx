@@ -13,6 +13,7 @@ import {
   READINESS_QUESTIONS,
   ROI_CALCULATOR,
 } from "@/app/_content/resources";
+import { CMS_ONLY_POST_TITLES } from "@/lib/blogLinks";
 import { OFFERS } from "@/lib/offers";
 import { getRoute } from "@/lib/routes";
 import type { Crumb } from "@/lib/seo";
@@ -38,8 +39,8 @@ function resolvePathLinks(paths: string[]): { href: string; title: string }[] {
 function resolvePostLinks(slugs: string[]): { href: string; title: string }[] {
   return slugs
     .map((slug) => {
-      const post = getBlogPostBySlug(slug);
-      return post ? { href: `/blog/${slug}`, title: post.title } : null;
+      const title = getBlogPostBySlug(slug)?.title ?? CMS_ONLY_POST_TITLES[slug];
+      return title ? { href: `/blog/${slug}`, title } : null;
     })
     .filter((link): link is { href: string; title: string } => link !== null);
 }
@@ -389,6 +390,8 @@ const INTEGRATION_BLUEPRINTS: Record<string, { mark: string; sourceLabel: string
 export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage; crumbs: Crumb[]; fit: { good: string[]; caution: string[] } }) {
   const featured = page.proof.featured;
   const blueprint = INTEGRATION_BLUEPRINTS[page.slug] ?? INTEGRATION_BLUEPRINTS.airtable;
+  const relatedIndustries = resolvePathLinks(page.related.industries);
+  const relatedPosts = resolvePostLinks(page.related.posts);
   return (
     <main className={`pilot-page pilot-airtable integration-${page.slug}`}>
       <section className="air-hero">
@@ -449,6 +452,14 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
 
       <section className="air-proof"><div className="container air-proof-grid"><div><span className="pilot-label pilot-label-light">A REAL CONNECTED BUILD</span><strong>{featured.big}</strong><small>{featured.bigLabel}</small></div><div><h2>{featured.title}</h2><p>{featured.after}</p><div>{featured.chips.map((chip) => <span key={chip}>{chip}</span>)}</div><Link href={`/case-studies/${featured.slug}`}>Read the case study <ArrowRight size={15} /></Link></div></div></section>
 
+      {(relatedIndustries.length > 0 || relatedPosts.length > 0) && (
+        <section className="de-related">
+          <div className="container">
+            <RelatedLinks label="WHO ELSE USES THIS" links={relatedIndustries} />
+            <RelatedLinks label={relatedPosts.length > 1 ? "RELATED GUIDES" : "RELATED GUIDE"} links={relatedPosts} />
+          </div>
+        </section>
+      )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
       <section className="pilot-final pilot-final-air"><div className="container"><span className="pilot-label pilot-label-light">TOOL FIT STARTS WITH THE WORKFLOW</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><Link href="/book" className="pilot-text-link is-light">Talk through the use case</Link></div></div></section>
       <NewsletterSection />
