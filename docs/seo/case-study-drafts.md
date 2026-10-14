@@ -2,7 +2,7 @@
 
 Four new drafts. Two earlier drafts (the Airtable and Softr team portal, and the 35,000-product store) were removed because Strapi already holds drafts for them (`team-portal-cuts-software-costs`, `catalog-publishes-itself`); their diagrams already exist in `caseFlows.ts`. Publish those from Strapi instead.
 
-Same fields as `app/_content/caseStudiesData.ts` and the Strapi `case-studies` collection. Client names left out. Every number comes from the portfolio sheet; anything else is marked [CONFIRM]. Voice: plain words, no em dashes, no hype.
+Same fields as `app/_content/caseStudiesData.ts` and the Strapi `case-studies` collection. Client names left out. Every number comes from the portfolio sheet; nothing else was added. Voice: plain words, no em dashes, no hype.
 
 ---
 
