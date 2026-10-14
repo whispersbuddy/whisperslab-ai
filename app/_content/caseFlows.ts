@@ -238,4 +238,45 @@ export const CASE_FLOWS: Record<string, FlowDef> = {
       { path: ["n8n", "woo"] },
     ],
   },
+
+  "store-and-shipping-tool-stay-in-step": {
+    nodes: [
+      { id: "bc", tool: "BigCommerce", role: "Your online store", mono: "BC", x: 12, y: 52 },
+      { id: "n8n", tool: "n8n", role: "Moves the orders", x: 37, y: 52, href: "/integrations/n8n" },
+      { id: "ss", tool: "ShipStation", role: "Ships the orders", mono: "SS", x: 63, y: 52 },
+    ],
+    steps: [{ path: ["bc", "n8n"] }, { path: ["n8n", "ss"] }, { path: ["ss", "n8n", "bc"] }],
+  },
+
+  "law-practice-never-misses-a-deadline": {
+    nodes: [
+      { id: "case", tool: "New or changed case", role: "Staff update it", mono: "NC", x: 12, y: 52 },
+      { id: "zoho", tool: "Zoho CRM", role: "All case records", mono: "ZC", x: 37, y: 52 },
+      { id: "rules", tool: "Workflow rules", role: "Check the dates", mono: "WR", x: 63, y: 24 },
+      { id: "team", tool: "Your team", role: "Gets the reminder", mono: "TM", x: 88, y: 24 },
+      { id: "inv", tool: "Invoices", role: "Billing and receipts", mono: "IN", x: 63, y: 80 },
+    ],
+    steps: [{ path: ["case", "zoho"] }, { path: ["zoho", "rules", "team"] }, { path: ["inv", "zoho"] }],
+  },
+
+  "project-board-chases-its-own-deadlines": {
+    nodes: [
+      { id: "trello", tool: "Trello", role: "Project boards", mono: "TR", x: 12, y: 52 },
+      { id: "butler", tool: "Butler", role: "Watches the cards", mono: "BU", x: 37, y: 52 },
+      { id: "team", tool: "Your team", role: "Gets the alerts", mono: "TM", x: 63, y: 24 },
+      { id: "photo", tool: "Photographer", role: "Gets the job", mono: "PH", x: 63, y: 80 },
+    ],
+    steps: [{ path: ["trello", "butler"] }, { path: ["butler", "team", "butler", "photo"] }, { path: ["butler", "team"] }],
+  },
+
+  "instagram-comment-becomes-a-subscriber": {
+    nodes: [
+      { id: "ig", tool: "Instagram", role: "Posts and ads", mono: "IG", x: 12, y: 52 },
+      { id: "mc", tool: "ManyChat", role: "Sends the message", mono: "MC", x: 37, y: 24 },
+      { id: "ghl", tool: "GoHighLevel", role: "Funnel and forms", mono: "GH", x: 37, y: 80 },
+      { id: "form", tool: "Typeform", role: "Plan sign-up", mono: "TF", x: 63, y: 52 },
+      { id: "pay", tool: "Stripe", role: "Takes the payment", x: 88, y: 52 },
+    ],
+    steps: [{ path: ["ig", "mc"] }, { path: ["mc", "ghl"] }, { path: ["ghl", "form", "pay"] }],
+  },
 };
