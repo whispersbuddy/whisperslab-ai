@@ -589,6 +589,8 @@ export const INDUSTRIES: IndustryPage[] = [
       more: [
         { slug: "store-and-shipping-tool-stay-in-step", big: "0", title: "The Online Store and the Shipping Tool That Stay in Step", detail: "orders moved by hand · BigCommerce, ShipStation, n8n" },
         { slug: "catalog-publishes-itself", big: "35,000+", title: "The 35,000-Product Catalog That Publishes Itself", detail: "products published without typing · n8n, Supabase, OpenAI" },
+        { slug: "storefront-and-warehouse-agree", big: "2-way", title: "The Storefront and Warehouse That Agree", detail: "inventory, pricing and orders sync between Shopify and Neto" },
+        { slug: "inventory-cost-corrects-itself", big: "14,000", title: "The Inventory Cost That Corrects Itself", detail: "SKUs kept on a true rolling average cost · Make.com, ShipHero" },
         { slug: "self-cleaning-warehouse-system", big: "~3 hrs", title: "The Self-Cleaning Warehouse System", detail: "saved weekly · Make.com, Google Drive" },
       ],
     },
