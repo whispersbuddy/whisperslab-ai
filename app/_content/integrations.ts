@@ -700,6 +700,10 @@ export const INTEGRATIONS: IntegrationPage[] = [
       title: "Questions owners ask about Zapier",
       items: [
         {
+          q: "Is Whispers Lab an official Zapier partner?",
+          a: "Yes. Whispers Lab has completed Zapier's Solution Partner training and is a Zapier Silver Solution Partner. It does not change how we work: a $250 Automation Audit first, then fixed-price builds, with the Zaps in an account you own.",
+        },
+        {
           q: "What does a Zapier consultant do?",
           a: "A Zapier consultant finds the places where people copy information between apps, builds Zaps to do it automatically, tests them on a copy of your data, and hands over documentation. A good one also sets up alerts, so a failed Zap reaches a named person instead of failing quietly. Whispers Lab does all of this, and the Zaps live in your own Zapier account.",
         },

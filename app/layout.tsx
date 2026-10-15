@@ -6,7 +6,7 @@ import "./styles/pilots.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { CLUTCH_URL } from "@/lib/social";
+import { CLUTCH_URL, TRUSTPILOT_URL } from "@/lib/social";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -78,6 +78,7 @@ const organizationSchema = {
     "https://www.instagram.com/whispers__lab/",
     "https://www.linkedin.com/company/whispers-lab/",
     CLUTCH_URL,
+    TRUSTPILOT_URL,
   ],
 };
 

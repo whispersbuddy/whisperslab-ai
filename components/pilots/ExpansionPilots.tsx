@@ -402,6 +402,10 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
           <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
           <p>{page.hero.answer}</p>
           <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
+          {page.slug === "zapier" ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src="/assets/badges/zapier-silver-solution-partner-dark.svg" alt="Zapier Silver Solution Partner badge" width={300} height={115} style={{ display: "block", marginTop: 28, borderRadius: 12, maxWidth: "100%", height: "auto" }} />
+          ) : null}
         </div>
       </section>
 
