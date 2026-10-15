@@ -58,6 +58,26 @@ function PilotCrumbs({ crumbs, dark = false }: { crumbs: Crumb[]; dark?: boolean
   );
 }
 
+function MoreBuilds({ items }: { items: ServicePage["proof"]["more"] }) {
+  if (!items.length) return null;
+  return (
+    <section className="more-builds">
+      <div className="container">
+        <span className="pilot-label">MORE PUBLISHED BUILDS</span>
+        <div className="more-builds-list">
+          {items.map((item) => (
+            <Link key={item.slug} href={`/case-studies/${item.slug}`}>
+              <b>{item.big}</b>
+              <span>{item.title}</span>
+              <small>{item.detail}</small>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function PilotFaq({ title, items }: { title: string; items: ServicePage["faq"]["items"] }) {
   return (
     <section className="pilot-faq" id="faq">
@@ -363,6 +383,7 @@ export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Cr
       </section>
 
       {page.proof.mode === "closest" ? <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">HONEST PATTERN MATCH</span><h2>{page.proof.title}</h2><p>{page.proof.intro}</p></div><div className="law-proof-list">{proofRows.map((row) => <Link key={row.slug} href={`/case-studies/${row.slug}`}><span>{row.need}</span><b>{row.big}</b><small>{row.title} · {row.detail}</small></Link>)}</div></div></section> : <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">PUBLISHED RESULT</span><h2>{page.proof.title}</h2></div><Link className="law-direct-proof" href={`/case-studies/${page.proof.featured.slug}`}><div><strong>{page.proof.featured.big}</strong><small>{page.proof.featured.bigLabel}</small></div><div><h3>{page.proof.featured.title}</h3><p>{page.proof.featured.after}</p><span>Read the full case study <ArrowRight size={15} /></span></div></Link></div></section>}
+      {page.proof.mode === "direct" ? <MoreBuilds items={page.proof.more} /> : null}
 
       {(relatedServices.length > 0 || relatedPosts.length > 0) && (
         <section className="de-related">
@@ -455,6 +476,7 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
       ) : null}
 
       <section className="air-proof"><div className="container air-proof-grid"><div><span className="pilot-label pilot-label-light">A REAL CONNECTED BUILD</span><strong>{featured.big}</strong><small>{featured.bigLabel}</small></div><div><h2>{featured.title}</h2><p>{featured.after}</p><div>{featured.chips.map((chip) => <span key={chip}>{chip}</span>)}</div><Link href={`/case-studies/${featured.slug}`}>Read the case study <ArrowRight size={15} /></Link></div></div></section>
+      <MoreBuilds items={page.proof.more} />
 
       {(relatedIndustries.length > 0 || relatedPosts.length > 0) && (
         <section className="de-related">

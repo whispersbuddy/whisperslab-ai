@@ -31,7 +31,12 @@ export async function resolveIndustry(slug: string): Promise<IndustryPage | unde
   const local = getIndustry(slug);
   if (!strapi) return local;
   const empty = strapi.related.services.length === 0 && strapi.related.posts.length === 0;
-  return local && empty ? { ...strapi, related: local.related } : strapi;
+  const merged = local && empty ? { ...strapi, related: local.related } : strapi;
+  if (local?.proof.mode !== "direct") return merged;
+  // A local direct (in-industry) case study beats a CMS "closest builds" list,
+  // and local extra builds fill in a CMS page that has none.
+  if (merged.proof.mode === "closest") return { ...merged, proof: local.proof };
+  return merged.proof.more.length ? merged : { ...merged, proof: { ...merged.proof, more: local.proof.more } };
 }
 
 export async function resolveIntegration(slug: string): Promise<IntegrationPage | undefined> {
@@ -40,7 +45,8 @@ export async function resolveIntegration(slug: string): Promise<IntegrationPage 
   if (!strapi) return local;
   if (!local) return strapi;
   const empty = strapi.related.industries.length === 0 && strapi.related.posts.length === 0;
-  return { ...strapi, cost: strapi.cost ?? local.cost, related: empty ? local.related : strapi.related };
+  const proof = strapi.proof.more.length ? strapi.proof : { ...strapi.proof, more: local.proof.more };
+  return { ...strapi, cost: strapi.cost ?? local.cost, related: empty ? local.related : strapi.related, proof };
 }
 
 // Slugs to pre-render at build time: the union of what's in Strapi today and
