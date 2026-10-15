@@ -6,7 +6,7 @@ import { CALENDLY_URLS, CalendlyType, themedCalendlyUrl } from "@/lib/calendly";
 import { trackEvent } from "@/lib/analytics";
 
 // Internal links worth counting as intent: where visitors go to buy or book.
-const CTA_PATHS = new Set(["/audit", "/book", "/contact", "/core-build", "/pricing", "/automation-care", "/growth-partner"]);
+const CTA_PATHS = new Set(["/audit", "/book", "/contact", "/core-build", "/pricing", "/automation-care", "/growth-partner", "/services/automation-consulting"]);
 
 declare global {
   interface Window {

@@ -4,17 +4,17 @@ import HomeOfferPath from "@/components/HomeOfferPath";
 import LatestPosts from "@/components/LatestPosts";
 
 export const metadata: Metadata = {
-  title: "AI Automation Agency for Small Businesses | Whispers Lab",
+  title: "Business Automation Services for Small Businesses | Whispers Lab",
   description:
-    "We help small business owners delete busywork with custom AI and automation. Start with a $250 Automation Audit. Builds go live in 30 days.",
+    "Business automation services and AI automation consulting for small businesses. Start with a $250 Automation Audit, then go live in 30 days.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Whispers Lab",
     locale: "en_US",
-    title: "AI Automation Agency for Small Businesses | Whispers Lab",
+    title: "Business Automation Services for Small Businesses | Whispers Lab",
     description:
-      "We help small business owners delete busywork with custom AI and automation. Start with a $250 Automation Audit. Builds go live in 30 days.",
+      "Business automation services and AI automation consulting for small businesses. Start with a $250 Automation Audit, then go live in 30 days.",
     url: "/",
     images: [
       {
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency for Small Businesses | Whispers Lab",
+    title: "Business Automation Services for Small Businesses | Whispers Lab",
     description:
-      "We help small business owners delete busywork with custom AI and automation. Start with a $250 Automation Audit. Builds go live in 30 days.",
+      "Business automation services and AI automation consulting for small businesses. Start with a $250 Automation Audit, then go live in 30 days.",
     images: ["/og-image.png"],
   },
 };

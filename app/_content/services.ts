@@ -921,7 +921,7 @@ export const SERVICES: ServicePage[] = [
     seo: {
       title: "Software Integration Services | Whispers Lab",
       description:
-        "Whispers Lab connects the software you already pay for, so the same data does not get typed twice or drift out of sync.",
+        "Software and API integration services from Whispers Lab. We connect the tools you already pay for, so the same data does not get typed twice or drift out of sync.",
       keyword: "software integration services",
     },
     hero: {
@@ -1094,6 +1094,10 @@ export const SERVICES: ServicePage[] = [
         {
           q: "What are software integration services?",
           a: "Software integration services connect two or more apps so information moves between them automatically, instead of someone copying it by hand. A change in one system mirrors into the other, with checks in place so records don't duplicate and the two systems don't end up endlessly correcting each other.",
+        },
+        {
+          q: "What are API integration services?",
+          a: "API integration services connect two apps through the interface each one publishes, so data moves between them without anyone copying it. It is the same work as software integration, done at the technical level: reading from one system, cleaning the data, and writing it to the other. Whispers Lab builds it on Zapier, n8n or custom code, depending on what your tools allow.",
         },
         {
           q: "How much do software integration services cost for a small business?",

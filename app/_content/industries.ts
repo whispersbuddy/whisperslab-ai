@@ -607,6 +607,10 @@ export const INDUSTRIES: IndustryPage[] = [
       title: "Questions store owners ask first",
       items: [
         {
+          q: "Can my online store send orders to my shipping tool automatically?",
+          a: "Yes. For one online seller, Whispers Lab built n8n workflows that send each new BigCommerce order to ShipStation within moments and write shipped or cancelled status back to the store, so nobody moves orders by hand. Your setup depends on the platforms you use, and the $250 Automation Audit confirms what can be connected before anything is built.",
+        },
+        {
           q: "What can a small online store automate?",
           a: "A small store can automate cleaning and translating supplier listings, pushing products live, syncing inventory across sales channels, matching sales to payouts, and answering common order status questions. Pricing strategy and anything a customer needs a real answer to stay with your team.",
         },
