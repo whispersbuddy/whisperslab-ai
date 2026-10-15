@@ -89,6 +89,7 @@ export const ROUTES: SiteRoute[] = [
   { path: "/services/bookkeeping-automation", label: "Bookkeeping Automation", group: "services", icon: "calculator", blurb: "Invoices, reminders, and your books kept in sync", live: true, release: "R5", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/client-onboarding-automation", label: "Client Onboarding Automation", group: "services", icon: "userPlus", blurb: "New clients booked, set up, and welcomed on autopilot", live: true, release: "R6", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/lead-follow-up-automation", label: "Lead Follow-Up Automation", group: "services", icon: "messageReply", blurb: "Every lead answered fast and followed up", live: true, release: "R6", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/automation-consulting", label: "Automation Consulting", group: "services", icon: "briefcase", blurb: "Find what to automate first, then build it", live: true, release: "R8", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/software-integration-services", label: "Software Integration Services", group: "services", icon: "plug", blurb: "Your apps sharing one set of data", live: true, release: "R7", priority: 0.9, changeFrequency: "monthly" },
 
   // R3+: integrations

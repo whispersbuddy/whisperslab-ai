@@ -1126,6 +1126,218 @@ export const SERVICES: ServicePage[] = [
       posts: ["ecommerce-product-listing-automation-supplier-feeds", "crm-data-hygiene"],
     },
   },
+  {
+    slug: "automation-consulting",
+    seo: {
+      title: "AI Automation Consultant for Small Business | Whispers Lab",
+      description:
+        "An AI automation consultant for small businesses. Whispers Lab finds the work your team repeats, ranks it by hours saved, and builds the one fix worth doing first.",
+      keyword: "ai automation consultant",
+    },
+    hero: {
+      eyebrow: "Service · Automation consulting",
+      title: "An AI automation consultant who finds the busywork",
+      highlight: "and then builds the fix.",
+      answer:
+        "An AI automation consultant finds the work your business repeats by hand, works out which of it is worth automating first, and tells you what it will cost and save before anything is built. At Whispers Lab that starts with a $250 Automation Audit. You get a ranked plan in 7 days that you keep either way. If you want it built, we build it in under 30 days and credit the $250.",
+      secondaryCta: { label: "Estimate your hours", href: "#estimate" },
+    },
+    simulator: [
+      {
+        key: "audit",
+        tab: "Audit finds the work",
+        source: "Team interviews",
+        sourceIcon: "T",
+        doc: { title: "WEEKLY TASKS", rows: [["Task", "Copy leads into CRM"], ["Time", "6 hrs a week"]], lines: 2 },
+        steps: [
+          { t: "Day 1", text: "<b>Tasks listed</b> from the people who do them" },
+          { t: "Day 3", text: "<b>Hours counted</b> per task, not guessed" },
+          { t: "Day 5", text: "<b>Ranked</b> by hours saved against effort to build" },
+          { t: "Day 7", text: "<b>Plan handed over</b> with the first build named" },
+        ],
+        out: { k: "First build", v: "Copy leads into CRM", s: "Ranked 1 of 9 tasks" },
+      },
+      {
+        key: "build",
+        tab: "Build replaces it",
+        source: "Approved plan",
+        sourceIcon: "P",
+        doc: { title: "BUILD PLAN", rows: [["Workflow", "Lead intake to CRM"], ["Tools", "Your current tools"]], lines: 2 },
+        steps: [
+          { t: "Week 1", text: "<b>Built</b> on the tools you already pay for" },
+          { t: "Week 2", text: "<b>Tested</b> against a copy of your real data" },
+          { t: "Week 3", text: "<b>Checkpoint set</b> for anything the system is unsure about" },
+          { t: "Week 4", text: "<b>Live</b>, with alerts and a video walkthrough" },
+        ],
+        out: { k: "Workflow live", v: "Lead intake to CRM", s: "Under 30 days" },
+      },
+    ],
+    values: [
+      { big: "~15 hrs", what: "saved every week", from: "From one workflow picked first, the Financial Document Reader", href: "/case-studies/financial-document-reader", hrefLabel: "the Financial Document Reader" },
+      { big: "~6 hrs", what: "saved every week", from: "A CRM that fills itself in, built on n8n, Airtable and Gmail", href: "/case-studies/crm-that-fills-itself-in", hrefLabel: "the CRM That Fills Itself In" },
+      { big: "0", what: "records typed twice", from: "Two systems made to share one set of data", href: "/case-studies/zero-double-entry-financial-pipeline", hrefLabel: "the Zero Double-Entry Financial Pipeline" },
+    ],
+    beforeAfter: {
+      eyebrow: "Guessing versus knowing",
+      title: "What changes when someone counts the busywork first?",
+      intro: "Drag the handle. Same business, same week.",
+      before: {
+        time: "Monday, 9:00 AM",
+        pills: ["Everyone busy, nobody sure why", "3 tools bought, 1 actually used"],
+        table: {
+          title: "Where the week goes (guess)",
+          head: ["Task", "Who", "Hours"],
+          rows: [
+            { cells: ["Copy leads into CRM", "??", "??"], status: "bad" },
+            { cells: ["Chase invoices", "Ops", "??"] },
+            { cells: ["Weekly report", "??", "??"], status: "bad" },
+          ],
+          footer: { cells: ["Total", "Unknown", ""], status: "bad" },
+        },
+        aside: { kind: "note", text: "Which of these is worth fixing first?" },
+      },
+      after: {
+        time: "Monday, 9:00 AM",
+        pills: ["Every task counted", "One build named and priced"],
+        table: {
+          title: "Audit result: ranked",
+          head: ["Task", "Who", "Hours"],
+          rows: [
+            { cells: ["Copy leads into CRM", "Sales", "6 a week"], status: "ok" },
+            { cells: ["Chase invoices", "Ops", "3 a week"], status: "ok" },
+            { cells: ["Weekly report", "Owner", "2 a week"], status: "ok" },
+          ],
+        },
+        aside: { kind: "message", channel: "#ops", topic: "Audit result", text: "Build 1: leads into CRM. Biggest saving for the least work.", actions: ["View plan", "Book build"] },
+      },
+      table: [
+        { row: "What to automate", before: "Whatever feels annoying this week", after: "Ranked by hours saved against effort to build" },
+        { row: "Cost", before: "Found out after the project starts", after: "Fixed price named before you commit" },
+        { row: "Tools", before: "Another subscription to learn", after: "Built on the tools you already pay for" },
+        { row: "If you stop", before: "Nothing to show for it", after: "You keep the plan either way" },
+      ],
+    },
+    steps: {
+      eyebrow: "How it works",
+      title: "How does an automation consulting engagement work?",
+      items: [
+        { title: "Interview", body: "We talk to the people who do the work and list every task that repeats, with real hours beside each one.", tools: ["Team interviews", "Your current tools"] },
+        { title: "Rank", body: "Each task is scored by hours saved against effort to build, so the first build is the one that pays back fastest.", tools: ["Hours and cost sheet"] },
+        { title: "Plan", body: "You get a written plan with the build order, the tools involved and a fixed price. It is yours whether or not you hire us.", tools: ["Written plan"] },
+        { title: "Build", body: "If you go ahead, we build the first workflow in under 30 days and show your team how to check anything flagged.", tools: ["Zapier", "n8n", "Make", "Airtable"] },
+      ],
+      checkpointAfter: 3,
+      checkpointLabel: "You approve the plan before any build starts",
+      human: ["Choosing which workflow to build first", "Approving the price and scope", "Anything client-facing", "Anything the system flags as unsure", "Changing how your team works"],
+    },
+    bento: {
+      eyebrow: "What it covers",
+      title: "What does an automation consultant look at?",
+      intro: "Any task your team repeats on a schedule or in response to the same trigger.",
+      tiles: [
+        {
+          verb: "Count",
+          title: "Time audit by task",
+          body: "Every repeating task listed with the hours it costs, so the decision rests on numbers.",
+          preview: {
+            type: "table",
+            head: ["Task", "Owner", "Hours", "Rank"],
+            rows: [
+              { cells: ["Copy leads into CRM", "Sales", "6"], status: "1", ok: true },
+              { cells: ["Chase invoices", "Ops", "3"], status: "2", ok: true },
+              { cells: ["Weekly report", "Owner", "2"], status: "3", ok: false },
+            ],
+            note: "Example audit sheet",
+          },
+        },
+        { verb: "Rank", title: "Build order by payback", preview: { type: "txns", rows: [["Leads into CRM", "Build first"], ["Invoice reminders", "Build second"], ["Weekly report", "Later"]] } },
+        { verb: "Price", title: "Fixed price before you commit", preview: { type: "receipt", amount: "$250", label: "audit fee, credited toward the build" } },
+        { verb: "Document", title: "A plan you keep", preview: { type: "pdf", title: "AUTOMATION PLAN", pages: "Delivered in 7 days" } },
+        { verb: "Schedule", title: "Build in under 30 days", preview: { type: "calendar", highlight: 4, reminder: "Reminder: first workflow goes live this week" } },
+        { verb: "Review", title: "Tools you already pay for", preview: { type: "pdf", title: "TOOL REVIEW", pages: "Included in the plan" } },
+      ],
+    },
+    estimator: {
+      eyebrow: "Your numbers",
+      title: "What is repeated work costing you?",
+      intro: "Move the sliders to match one task your team repeats.",
+      unit: "tasks",
+      inputs: [
+        { id: "docs", label: "Times the task happens per day", min: 5, max: 150, step: 5, value: 20 },
+        { id: "min", label: "Minutes each time", min: 1, max: 20, step: 1, value: 5 },
+        { id: "days", label: "Working days per week", min: 1, max: 7, step: 1, value: 5 },
+        { id: "rate", label: "Hourly cost of that time", min: 15, max: 150, step: 5, value: 35, hint: "Wages plus overhead, or your own hourly value", format: "money" },
+        { id: "flag", label: "Share still needing a person to check", min: 0, max: 50, step: 5, value: 10, format: "percent" },
+        { id: "rev", label: "Minutes to check one of those", min: 1, max: 10, step: 1, value: 2 },
+      ],
+      worth: ["Worth it when one task eats several hours a week", "When you pay for tools nobody has time to set up", "When you are not sure which problem to fix first"],
+    },
+    proof: {
+      featured: {
+        slug: "financial-document-reader",
+        big: "~15 hrs",
+        bigLabel: "saved every week, with no manual data entry left",
+        title: "The Financial Document Reader",
+        before: "An old scanner pulled numbers from bank statements, and someone still checked its work by hand.",
+        after: "An AI reader pulls out every transaction in a fixed format, and each client's data stays walled off.",
+        chips: ["Financial services SaaS", "OpenAI", "Supabase"],
+        caption: "Illustration of the extracted transactions view",
+      },
+      more: [
+        { slug: "lead-sales-engine", big: "~15 hrs", title: "The Lead Sales Engine That Runs Itself", detail: "saved weekly · n8n, Twilio" },
+        { slug: "crm-that-fills-itself-in", big: "~6 hrs", title: "The CRM That Fills Itself In", detail: "saved weekly · n8n, Airtable, Gmail" },
+      ],
+    },
+    stack: {
+      title: "Built on the tools you already pay for",
+      intro: "We recommend what you already own first. If something new is needed, the plan says why.",
+      center: "Your business",
+      tools: ["Zapier", "n8n", "Make", "Airtable", "HubSpot", "Xero", "Google Workspace", "OpenAI"],
+      links: [
+        { label: "Zapier", href: "/integrations/zapier" },
+        { label: "n8n", href: "/integrations/n8n" },
+        { label: "Airtable", href: "/integrations/airtable" },
+        { label: "Software Integration Services", href: "/services/software-integration-services" },
+      ],
+    },
+    faq: {
+      title: "Questions owners ask first",
+      items: [
+        {
+          q: "What does an AI automation consultant do?",
+          a: "An AI automation consultant finds the work your business repeats by hand, measures how many hours it costs, and tells you which of it is worth automating first. Some consultants stop at advice. Whispers Lab also builds the workflow, so the plan and the build come from the same people.",
+        },
+        {
+          q: "How much does an AI automation consultant cost for a small business?",
+          a: "At Whispers Lab it starts with a $250 Automation Audit, delivered in 7 days. If you go ahead, one standard workflow starts from $2,500 at a fixed price and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+        },
+        {
+          q: "What do I get from the $250 Automation Audit?",
+          a: "A written plan that lists your repeating tasks with the hours each one costs, ranks them by payback, names the first build and gives a fixed price for it. The plan is yours whether or not you hire Whispers Lab to build anything.",
+        },
+        {
+          q: "Do I need to buy new software?",
+          a: "Usually not. The plan starts with the tools you already pay for, such as Zapier, n8n, Make, Airtable or your CRM. If something new is needed, the plan says what and why.",
+        },
+        {
+          q: "How long until something is working?",
+          a: "The audit takes 7 days. A standard workflow built in the Core Build goes live in under 30 days, including testing against a copy of your real data.",
+        },
+        {
+          q: "Is this only for tech companies?",
+          a: "No. Whispers Lab has built automations for coaching, real estate, finance, e-commerce and inspection businesses. The common thread is a small team repeating the same task by hand, not the industry.",
+        },
+      ],
+    },
+    cta: {
+      title: "Find out what is worth automating first.",
+      body: "In 7 days, the Automation Audit ranks your repeating work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+    },
+    related: {
+      industries: ["/industries/ecommerce-retail", "/industries/property-management", "/industries/accounting-bookkeeping"],
+      posts: ["crm-data-hygiene", "ecommerce-product-listing-automation-supplier-feeds"],
+    },
+  },
 ];
 
 export function getService(slug: string): ServicePage | undefined {
