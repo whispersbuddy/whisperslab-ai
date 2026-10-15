@@ -222,7 +222,10 @@ export const INTEGRATIONS: IntegrationPage[] = [
         chips: ["Education", "Airtable", "n8n"],
         caption: "Illustration of the linked contacts view",
       },
-      more: [],
+      more: [
+        { slug: "team-portal-cuts-software-costs", big: "25+", title: "The Team Portal That Stopped the Seat Bill From Growing", detail: "team members, no per-seat growth · Softr, Airtable, n8n" },
+        { slug: "lead-list-builds-itself", big: "Weekly", title: "The Lead List That Builds Itself Every Monday", detail: "list built automatically · n8n, Airtable, Lob" },
+      ],
     },
     stack: {
       title: "Built alongside the tools you already pay for",
@@ -458,7 +461,11 @@ export const INTEGRATIONS: IntegrationPage[] = [
         chips: ["Real estate", "n8n", "Twilio", "Stripe"],
         caption: "Illustration of the locked lead preview",
       },
-      more: [{ slug: "crm-that-fills-itself-in", big: "~6 hrs", title: "The CRM That Fills Itself In", detail: "saved weekly · n8n, Airtable, Gmail" }],
+      more: [
+        { slug: "crm-that-fills-itself-in", big: "~6 hrs", title: "The CRM That Fills Itself In", detail: "saved weekly · n8n, Airtable, Gmail" },
+        { slug: "store-and-shipping-tool-stay-in-step", big: "0", title: "The Online Store and the Shipping Tool That Stay in Step", detail: "orders moved by hand · BigCommerce, ShipStation, n8n" },
+        { slug: "catalog-publishes-itself", big: "35,000+", title: "The 35,000-Product Catalog That Publishes Itself", detail: "products published without typing · n8n, Supabase, OpenAI" },
+      ],
     },
     stack: {
       title: "Built on the tools you already pay for",
