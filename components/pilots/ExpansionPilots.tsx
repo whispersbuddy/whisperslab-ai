@@ -205,6 +205,18 @@ const SERVICE_VISUALS: Record<string, {
     footer: "Response clock started automatically",
     exception: "Tone stays with the salesperson",
   },
+  "automation-consulting": {
+    file: "Automation Audit · Example small business",
+    meta: "Team interviews · hours counted · tools reviewed",
+    stages: [
+      { title: "Interview", detail: "Repeating tasks listed with owners", state: "Day 1" },
+      { title: "Count", detail: "Hours logged per task, not guessed", state: "Day 3" },
+      { title: "Rank", detail: "Payback against effort to build", state: "Day 5" },
+      { title: "Decide", detail: "You pick the first build", state: "Your call", review: true },
+    ],
+    footer: "Written plan is yours either way",
+    exception: "First build needs your approval",
+  },
   "software-integration-services": {
     file: "Customer 1842 · CRM → Accounting",
     meta: "HubSpot update · QuickBooks sync · 3 linked apps",
@@ -219,9 +231,18 @@ const SERVICE_VISUALS: Record<string, {
   },
 };
 
+const SERVICE_COPY: Record<string, { jump: string; modelTitle: string; modelBody: string }> = {
+  "automation-consulting": {
+    jump: "Scope",
+    modelTitle: "Count first. Build second. You decide in between.",
+    modelBody: "Nothing gets built until the numbers say it is worth it and you have approved the plan. If you stop after the audit, the plan is still yours.",
+  },
+};
+
 export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crumb[] }) {
   const featured = page.proof.featured;
   const visual = SERVICE_VISUALS[page.slug] ?? SERVICE_VISUALS["data-entry-automation"];
+  const copy = SERVICE_COPY[page.slug] ?? { jump: "Documents", modelTitle: "Four stages. One visible exception queue.", modelBody: "The automation does not hide uncertainty. It moves clean work forward and stops exactly where a person is needed." };
   const relatedIndustries = resolvePathLinks(page.related.industries);
   const relatedPosts = resolvePostLinks(page.related.posts);
   return (
@@ -255,7 +276,7 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
       </section>
 
       <nav className="pilot-jump" aria-label="On this page">
-        <div className="container"><span>On this page</span><Link href="#outcomes">Outcome</Link><Link href="#workflow">Workflow</Link><Link href="#scope">Documents</Link><Link href="#proof">Proof</Link><Link href="#faq">FAQ</Link></div>
+        <div className="container"><span>On this page</span><Link href="#outcomes">Outcome</Link><Link href="#workflow">Workflow</Link><Link href="#scope">{copy.jump}</Link><Link href="#proof">Proof</Link><Link href="#faq">FAQ</Link></div>
       </nav>
 
       <section className="de-outcomes" id="outcomes">
@@ -269,7 +290,7 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
 
       <section className="de-workflow" id="workflow">
         <div className="container de-workflow-grid">
-          <div className="de-sticky-copy"><span className="pilot-label">THE OPERATING MODEL</span><h2>Four stages. One visible exception queue.</h2><p>The automation does not hide uncertainty. It moves clean work forward and stops exactly where a person is needed.</p></div>
+          <div className="de-sticky-copy"><span className="pilot-label">THE OPERATING MODEL</span><h2>{copy.modelTitle}</h2><p>{copy.modelBody}</p></div>
           <ol className="de-steps">
             {page.steps.items.map((step, index) => (
               <li key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p><small>{step.tools.join(" · ")}</small></div></li>

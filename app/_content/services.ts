@@ -1140,8 +1140,8 @@ export const SERVICES: ServicePage[] = [
     },
     hero: {
       eyebrow: "Service · Automation consulting",
-      title: "An AI automation consultant who finds the busywork",
-      highlight: "and then builds the fix.",
+      title: "AI automation consulting",
+      highlight: "that ends the busywork.",
       answer:
         "An AI automation consultant finds the work your business repeats by hand, works out which of it is worth automating first, and tells you what it will cost and save before anything is built. At Whispers Lab that starts with a $250 Automation Audit. You get a ranked plan in 7 days that you keep either way. If you want it built, we build it in under 30 days and credit the $250.",
       secondaryCta: { label: "Estimate your hours", href: "#estimate" },
@@ -1259,6 +1259,8 @@ export const SERVICES: ServicePage[] = [
         { verb: "Document", title: "A plan you keep", preview: { type: "pdf", title: "AUTOMATION PLAN", pages: "Delivered in 7 days" } },
         { verb: "Schedule", title: "Build in under 30 days", preview: { type: "calendar", highlight: 4, reminder: "Reminder: first workflow goes live this week" } },
         { verb: "Review", title: "Tools you already pay for", preview: { type: "pdf", title: "TOOL REVIEW", pages: "Included in the plan" } },
+        { verb: "Hand off", title: "Documented for your team", preview: { type: "txns", rows: [["Documentation", "Included"], ["Video walkthrough", "Included"], ["Error alerts", "Included"]] } },
+        { verb: "Maintain", title: "Optional upkeep after launch", preview: { type: "receipt", amount: "from $500", label: "a month, only if you want it kept running" } },
       ],
     },
     estimator: {
