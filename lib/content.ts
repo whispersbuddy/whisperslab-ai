@@ -112,11 +112,13 @@ function newestFirst(a: PostSummary, b: PostSummary): number {
   return new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime();
 }
 
-// If Strapi is unreachable, fall back to the local posts so /blog and every
-// page linking to it keep rendering instead of erroring.
+// Union of Strapi and local posts, Strapi winning on the same slug. Local-only
+// posts stay listed while Strapi is up, and if Strapi is unreachable the local
+// posts keep /blog and every page linking to it rendering instead of erroring.
 export const getAllPosts = cache(async (): Promise<PostSummary[]> => {
   const articles: StrapiArticle[] = await fetchArticles();
-  const source: StrapiArticle[] = articles.length > 0 ? articles : BLOG_POSTS;
+  const slugs = new Set(articles.map((a) => a.slug));
+  const source: StrapiArticle[] = [...articles, ...BLOG_POSTS.filter((p) => !slugs.has(p.slug))];
   return source
     .map((article) =>
       normalizePost(
