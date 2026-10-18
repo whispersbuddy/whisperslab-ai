@@ -108,7 +108,7 @@ export const ROUTES: SiteRoute[] = [
   { path: "/industries/accounting-bookkeeping", label: "Accounting & Bookkeeping", group: "industries", icon: "receipt", blurb: "Client documents in, clean books out", live: true, release: "R8", priority: 0.8, changeFrequency: "monthly" },
 
   // Use cases
-  { path: "/use-cases", label: "Use Cases", group: "resources", icon: "layers", blurb: "Automation ideas for every part of your business", live: true, release: "R9", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/use-cases", label: "Use Cases", group: "resources", icon: "layers", blurb: "Automation use cases and examples for every part of your business", live: true, release: "R9", priority: 0.8, changeFrequency: "monthly" },
   { path: "/use-cases/finance-accounting", label: "Finance and Accounting Automation", group: "usecases", icon: "calculator", blurb: "Invoices, statements and reminders handled before month end", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
   { path: "/use-cases/ecommerce-inventory", label: "E-commerce and Inventory Automation", group: "usecases", icon: "shoppingCart", blurb: "Catalogs, orders and stock kept in step across systems", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
   { path: "/use-cases/sales-leads", label: "Sales and Lead Automation", group: "usecases", icon: "trendingUp", blurb: "Every lead found, answered and followed up on time", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },

@@ -44,7 +44,7 @@ export default async function DepartmentRoute({ params }: { params: Promise<{ sl
             about: dept.seo.keyword,
             mainEntity: {
               "@type": "ItemList",
-              name: `${dept.name} automation ideas`,
+              name: `${dept.name} automation examples`,
               itemListElement: dept.ideas.map((idea, i) => ({ "@type": "ListItem", position: i + 1, name: idea.title, description: idea.problem })),
             },
           },

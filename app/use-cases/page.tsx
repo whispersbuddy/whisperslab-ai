@@ -7,9 +7,9 @@ import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_UR
 const PATH = "/use-cases";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Small Business Automation Ideas by Department | Whispers Lab",
+  title: "Small Business Automation Use Cases and Examples | Whispers Lab",
   description:
-    "Reusable automation ideas for small businesses, grouped by department: finance, e-commerce, sales, support, operations and CRM. See what runs on its own and what stays with a person.",
+    "Reusable automation use cases and examples for small businesses, grouped by department: finance, e-commerce, sales, support, operations and CRM. See what runs on its own and what stays with a person.",
   path: PATH,
 });
 
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "What are examples of workflow automation?",
-    a: "Common examples are reading invoices into your accounting tool, sending orders from your store to a shipping tool, logging emails to the right CRM record, reminding clients of upcoming dates and building a weekly report. Each department page on this site lists the ideas with how they run.",
+    a: "Common examples are reading invoices into your accounting tool, sending orders from your store to a shipping tool, logging emails to the right CRM record, reminding clients of upcoming dates and building a weekly report. Each department page on this site lists the examples with how they run.",
   },
   {
     q: "Where should a small business start with automation?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Do I need new software to automate my business?",
-    a: "Usually not. Most ideas run on the tools you already pay for, connected through platforms such as Zapier, n8n, Make or Airtable. The audit checks that before anything is built.",
+    a: "Usually not. Most of these examples run on the tools you already pay for, connected through platforms such as Zapier, n8n, Make or Airtable. The audit checks that before anything is built.",
   },
   {
     q: "How much does it cost to automate a workflow?",
@@ -50,7 +50,7 @@ export default function UseCasesPage() {
           {
             "@type": "CollectionPage",
             "@id": SITE_URL + PATH + "#page",
-            name: "Small business automation ideas by department",
+            name: "Small business automation use cases and examples by department",
             url: SITE_URL + PATH,
             hasPart: DEPARTMENTS.map((d) => ({ "@type": "WebPage", name: d.name, url: `${SITE_URL}${PATH}/${d.slug}` })),
           },

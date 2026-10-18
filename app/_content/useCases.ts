@@ -1,5 +1,5 @@
 // Content for /use-cases and /use-cases/[slug]. One department per page, each a
-// list of reusable automation ideas. House rules: plain words, no em dashes, no
+// list of reusable automation examples. House rules: plain words, no em dashes, no
 // hype, no "AI agents", and numbers only where a published case study states them.
 // Keyword targets live in docs/seo/use-case-keyword-research.md.
 
@@ -46,17 +46,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Invoices, statements and reminders handled before month end",
     icon: "calculator",
     seo: {
-      title: "Accounting Automation Ideas for Small Businesses | Whispers Lab",
+      title: "Accounting Automation Examples for Small Businesses | Whispers Lab",
       description:
-        "Practical accounting automation ideas for small businesses: invoice reading, bank statement entry, payment reminders and books that match without retyping.",
+        "Practical accounting automation examples for small businesses: invoice reading, bank statement entry, payment reminders and books that match without retyping.",
       keyword: "accounting automation",
     },
     hero: {
       eyebrow: "Use cases · Finance and accounting",
-      title: "Accounting automation ideas",
+      title: "Accounting automation examples",
       highlight: "that end the retyping.",
       answer:
-        "Accounting automation means the numbers that already exist in an invoice, a bank statement or a billing tool reach your books without someone typing them again. These are the reusable ideas we build for small businesses, with what each one handles on its own and where a person still decides.",
+        "Accounting automation means the numbers that already exist in an invoice, a bank statement or a billing tool reach your books without someone typing them again. These are the reusable examples we build for small businesses, with what each one handles on its own and where a person still decides.",
     },
     ideas: [
       {
@@ -146,17 +146,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Catalogs, orders and stock kept in step across systems",
     icon: "shoppingCart",
     seo: {
-      title: "Ecommerce Automation Ideas for Small Stores | Whispers Lab",
+      title: "Ecommerce Automation Examples for Small Stores | Whispers Lab",
       description:
-        "Ecommerce automation ideas for small stores: supplier feeds, order and shipping sync, inventory alerts and cost tracking, with real builds behind them.",
+        "Ecommerce automation examples for small stores: supplier feeds, order and shipping sync, inventory alerts and cost tracking, with real builds behind them.",
       keyword: "ecommerce automation",
     },
     hero: {
       eyebrow: "Use cases · E-commerce and inventory",
-      title: "Ecommerce automation ideas",
+      title: "Ecommerce automation examples",
       highlight: "your store can reuse.",
       answer:
-        "Ecommerce automation keeps products, orders and stock agreeing across your store, warehouse and shipping tools without someone copying data between them. These are the reusable ideas we have built for online sellers, with the real builds behind them and the checks that keep them safe.",
+        "Ecommerce automation keeps products, orders and stock agreeing across your store, warehouse and shipping tools without someone copying data between them. These are the reusable examples we have built for online sellers, with the real builds behind them and the checks that keep them safe.",
     },
     ideas: [
       {
@@ -247,17 +247,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Every lead found, answered and followed up on time",
     icon: "trendingUp",
     seo: {
-      title: "Lead Generation and Follow-Up Automation Ideas | Whispers Lab",
+      title: "Lead Generation and Follow-Up Automation Examples | Whispers Lab",
       description:
-        "Lead generation and follow-up automation ideas for small businesses: capture, routing, fast replies, nudges and outreach that never contacts anyone twice.",
+        "Lead generation and follow-up automation examples for small businesses: capture, routing, fast replies, nudges and outreach that never contacts anyone twice.",
       keyword: "automate lead generation",
     },
     hero: {
       eyebrow: "Use cases · Sales and leads",
-      title: "Lead and sales automation ideas",
+      title: "Lead and sales automation examples",
       highlight: "that follow up on time.",
       answer:
-        "Lead automation finds or captures leads, routes them to the right person and keeps follow-up on schedule, so no inquiry waits because someone was busy. These are the reusable sales ideas we build, with the points where a salesperson still takes over.",
+        "Lead automation finds or captures leads, routes them to the right person and keeps follow-up on schedule, so no inquiry waits because someone was busy. These are the reusable sales examples we build, with the points where a salesperson still takes over.",
     },
     ideas: [
       {
@@ -348,17 +348,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Fast answers and status updates without a bigger team",
     icon: "messageReply",
     seo: {
-      title: "Customer Service Automation Ideas for Small Teams | Whispers Lab",
+      title: "Customer Service Automation Examples for Small Teams | Whispers Lab",
       description:
-        "Customer service automation ideas for small teams: status updates, request triage, drafted answers and follow-ups, with a person on every judgment call.",
+        "Customer service automation examples for small teams: status updates, request triage, drafted answers and follow-ups, with a person on every judgment call.",
       keyword: "customer service automation",
     },
     hero: {
       eyebrow: "Use cases · Customer support",
-      title: "Customer service automation ideas",
+      title: "Customer service automation examples",
       highlight: "for small teams.",
       answer:
-        "Customer service automation answers the questions that repeat, routes the ones that do not, and keeps customers told about where things stand, so your team spends its time on the problems that need a person. These are the reusable ideas, with the limits stated.",
+        "Customer service automation answers the questions that repeat, routes the ones that do not, and keeps customers told about where things stand, so your team spends its time on the problems that need a person. These are the reusable examples, with the limits stated.",
     },
     ideas: [
       {
@@ -439,17 +439,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Onboarding, reports, deadlines and approvals that run themselves",
     icon: "workflow",
     seo: {
-      title: "Business Process Automation Ideas for Operations | Whispers Lab",
+      title: "Business Process Automation Examples for Operations | Whispers Lab",
       description:
-        "Operations automation ideas for small businesses: client onboarding, data entry, reports, deadline reminders and project follow-ups, backed by real builds.",
+        "Operations automation examples for small businesses: client onboarding, data entry, reports, deadline reminders and project follow-ups, backed by real builds.",
       keyword: "automate client onboarding",
     },
     hero: {
       eyebrow: "Use cases · Operations and delivery",
-      title: "Operations automation ideas",
+      title: "Operations automation examples",
       highlight: "for work that repeats.",
       answer:
-        "Operations automation handles the steps between a client saying yes and the work being delivered: onboarding, reminders, reports and approvals. These are the reusable ideas we have built, from client onboarding to deadline tracking, with the human checkpoints marked.",
+        "Operations automation handles the steps between a client saying yes and the work being delivered: onboarding, reminders, reports and approvals. These are the reusable examples we have built, from client onboarding to deadline tracking, with the human checkpoints marked.",
     },
     ideas: [
       {
@@ -542,17 +542,17 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Contacts logged, campaigns tracked, subscribers converted",
     icon: "table",
     seo: {
-      title: "CRM Workflow Automation Ideas for Small Teams | Whispers Lab",
+      title: "CRM Workflow Automation Examples for Small Teams | Whispers Lab",
       description:
-        "CRM workflow automation ideas for small teams: self-filling contact records, social lead conversion, review requests and campaign tracking.",
+        "CRM workflow automation examples for small teams: self-filling contact records, social lead conversion, review requests and campaign tracking.",
       keyword: "crm workflow automation",
     },
     hero: {
       eyebrow: "Use cases · CRM and marketing",
-      title: "CRM workflow automation ideas",
+      title: "CRM workflow automation examples",
       highlight: "that keep records true.",
       answer:
-        "CRM automation keeps contact records current without anyone logging calls and emails by hand, and marketing automation turns interest into the next step. These are the reusable ideas we build, with the points where your team stays in charge of the relationship.",
+        "CRM automation keeps contact records current without anyone logging calls and emails by hand, and marketing automation turns interest into the next step. These are the reusable examples we build, with the points where your team stays in charge of the relationship.",
     },
     ideas: [
       {

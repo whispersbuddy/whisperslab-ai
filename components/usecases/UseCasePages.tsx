@@ -56,8 +56,8 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
         <div className="container uc-hero-grid">
           <div className="uc-hero-copy">
             <Crumbs crumbs={crumbs} />
-            <span className="pilot-label pilot-label-light">USE CASES · {totalIdeas} IDEAS · {DEPARTMENTS.length} DEPARTMENTS</span>
-            <h1>Small business automation ideas <span>for every department.</span></h1>
+            <span className="pilot-label pilot-label-light">USE CASES · {totalIdeas} EXAMPLES · {DEPARTMENTS.length} DEPARTMENTS</span>
+            <h1>Small business automation examples <span>for every department.</span></h1>
             <p>Pick the department that loses the most hours. Each page lists reusable automations, what runs on its own, what stays with a person, and a real build where we have one.</p>
             <div className="pilot-actions">
               <Link href="/audit" className="btn btn-primary">Rank my busywork for $250 <ArrowRight size={15} /></Link>
@@ -70,7 +70,7 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
               <Link key={d.slug} href={`/use-cases/${d.slug}`} data-dept={d.slug}>
                 <span>{pad(i + 1)}</span>
                 <b>{d.name}</b>
-                <em>{d.ideas.length} ideas</em>
+                <em>{d.ideas.length} examples</em>
                 <ArrowRight size={16} />
               </Link>
             ))}
@@ -83,7 +83,7 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
           <div className="pilot-section-head">
             <span className="pilot-label">BY DEPARTMENT</span>
             <h2>Find the automation that fits the work.</h2>
-            <p>Each idea is a pattern we have built or can build on the tools you already pay for. Open a department to see how the idea runs, step by step.</p>
+            <p>Each example is a pattern we have built or can build on the tools you already pay for. Open a department to see how it runs, step by step.</p>
           </div>
           <div className="uc-dept-grid">
             {DEPARTMENTS.map((d) => (
@@ -94,7 +94,7 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
                 <ul>
                   {d.ideas.slice(0, 3).map((idea) => <li key={idea.title}><Check size={14} />{idea.title}</li>)}
                 </ul>
-                <b>{d.ideas.length} ideas <ArrowRight size={15} /></b>
+                <b>{d.ideas.length} examples <ArrowRight size={15} /></b>
               </Link>
             ))}
           </div>
@@ -120,7 +120,7 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
         <div className="container">
           <div className="pilot-section-head">
             <span className="pilot-label">BUILT, NOT IMAGINED</span>
-            <h2>Real systems behind the ideas.</h2>
+            <h2>Real systems behind the examples.</h2>
           </div>
           <div className="uc-proof-grid">
             {HUB_PROOF.map((p) => (
@@ -136,10 +136,10 @@ export function UseCasesHub({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] }
         </div>
       </section>
 
-      <PilotFaq title="Questions about automation ideas" items={faq} />
+      <PilotFaq title="Questions about automation examples" items={faq} />
       <section className="pilot-final pilot-final-service">
         <div className="container">
-          <span className="pilot-label pilot-label-light">NOT SURE WHICH IDEA IS FIRST?</span>
+          <span className="pilot-label pilot-label-light">NOT SURE WHICH EXAMPLE COMES FIRST?</span>
           <h2>Let the Audit rank your work.</h2>
           <p>In seven days you get a ranked plan with the first build named and priced. The plan is yours either way, and the $250 is credited if you build with us.</p>
           <Link href="/audit" className="btn btn-primary">See the $250 Automation Audit</Link>
@@ -168,11 +168,11 @@ export function DepartmentPage({ dept, crumbs }: { dept: Department; crumbs: Cru
             <p>{dept.hero.answer}</p>
             <div className="pilot-actions">
               <Link href="/audit" className="btn btn-primary">Start with the $250 Audit <ArrowRight size={15} /></Link>
-              <Link href="#ideas" className="pilot-text-link is-light">See the ideas <span>↓</span></Link>
+              <Link href="#ideas" className="pilot-text-link is-light">See the examples <span>↓</span></Link>
             </div>
           </div>
-          <nav className="uc-jump" aria-label="Ideas on this page">
-            <small>{dept.ideas.length} IDEAS ON THIS PAGE</small>
+          <nav className="uc-jump" aria-label="Examples on this page">
+            <small>{dept.ideas.length} EXAMPLES ON THIS PAGE</small>
             {dept.ideas.map((idea, i) => (
               <a key={idea.title} href={`#idea-${i + 1}`}><span>{pad(i + 1)}</span><b>{idea.title}</b><ArrowRight size={15} /></a>
             ))}
@@ -183,8 +183,8 @@ export function DepartmentPage({ dept, crumbs }: { dept: Department; crumbs: Cru
       <section className="uc-ideas" id="ideas">
         <div className="container">
           <div className="pilot-section-head">
-            <span className="pilot-label">REUSABLE IDEAS</span>
-            <h2>{dept.ideas.length} automations you can reuse in this department.</h2>
+            <span className="pilot-label">REUSABLE EXAMPLES</span>
+            <h2>{dept.ideas.length} automation examples you can reuse in this department.</h2>
           </div>
           <div className="uc-idea-grid">
             {dept.ideas.map((idea, i) => (
@@ -262,7 +262,7 @@ export function DepartmentPage({ dept, crumbs }: { dept: Department; crumbs: Cru
       <section className="pilot-final pilot-final-service">
         <div className="container">
           <span className="pilot-label pilot-label-light">READY TO PICK THE FIRST ONE?</span>
-          <h2>Find out which idea pays back fastest.</h2>
+          <h2>Find out which example pays back fastest.</h2>
           <p>In seven days the Automation Audit ranks your repeating work and hands you a plan you keep either way. Build it with us and the $250 is credited.</p>
           <Link href="/audit" className="btn btn-primary">See the $250 Automation Audit</Link>
         </div>
