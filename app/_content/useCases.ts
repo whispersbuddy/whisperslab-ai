@@ -46,14 +46,14 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Invoices, statements and reminders handled before month end",
     icon: "calculator",
     seo: {
-      title: "Accounting Automation Examples for Small Businesses | Whispers Lab",
+      title: "Finance and Accounting Automation Examples for Small Businesses | Whispers Lab",
       description:
-        "Practical accounting automation examples for small businesses: invoice reading, bank statement entry, payment reminders and books that match without retyping.",
-      keyword: "accounting automation",
+        "Finance and accounting automation examples for small businesses: invoice reading, bank statement entry, payment reminders and books that match without retyping.",
+      keyword: "accounting and finance automation",
     },
     hero: {
       eyebrow: "Use cases · Finance and accounting",
-      title: "Accounting automation examples",
+      title: "Finance and accounting automation examples",
       highlight: "that end the retyping.",
       answer:
         "Accounting automation means the numbers that already exist in an invoice, a bank statement or a billing tool reach your books without someone typing them again. These are the reusable examples we build for small businesses, with what each one handles on its own and where a person still decides.",
@@ -146,14 +146,14 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Catalogs, orders and stock kept in step across systems",
     icon: "shoppingCart",
     seo: {
-      title: "Ecommerce Automation Examples for Small Stores | Whispers Lab",
+      title: "Ecommerce Process and Inventory Automation Examples | Whispers Lab",
       description:
-        "Ecommerce automation examples for small stores: supplier feeds, order and shipping sync, inventory alerts and cost tracking, with real builds behind them.",
-      keyword: "ecommerce automation",
+        "Ecommerce process and inventory automation examples for small stores: supplier feeds, order and shipping sync, stock alerts and cost tracking, with real builds behind them.",
+      keyword: "ecommerce process automation",
     },
     hero: {
       eyebrow: "Use cases · E-commerce and inventory",
-      title: "Ecommerce automation examples",
+      title: "Ecommerce process and inventory automation examples",
       highlight: "your store can reuse.",
       answer:
         "Ecommerce automation keeps products, orders and stock agreeing across your store, warehouse and shipping tools without someone copying data between them. These are the reusable examples we have built for online sellers, with the real builds behind them and the checks that keep them safe.",
@@ -219,8 +219,8 @@ export const DEPARTMENTS: Department[] = [
     },
     faq: [
       {
-        q: "What is ecommerce automation?",
-        a: "Ecommerce automation is software that moves product, order and stock information between your store, warehouse and shipping tools without manual copying. Typical examples are publishing a supplier catalog, sending orders to a shipping tool and alerting you when stock runs low.",
+        q: "What is ecommerce process automation?",
+        a: "Ecommerce process automation is software that moves product, order and stock information between your store, warehouse and shipping tools without manual copying. Typical examples are publishing a supplier catalog, sending orders to a shipping tool and alerting you when stock runs low.",
       },
       {
         q: "How can a small online store start with automation?",
@@ -247,9 +247,9 @@ export const DEPARTMENTS: Department[] = [
     blurb: "Every lead found, answered and followed up on time",
     icon: "trendingUp",
     seo: {
-      title: "Lead Generation and Follow-Up Automation Examples | Whispers Lab",
+      title: "Lead Generation Automation Examples for Small Businesses | Whispers Lab",
       description:
-        "Lead generation and follow-up automation examples for small businesses: capture, routing, fast replies, nudges and outreach that never contacts anyone twice.",
+        "Lead generation automation examples for small businesses: capture, routing, fast replies, nudges and outreach that never contacts anyone twice.",
       keyword: "automate lead generation",
     },
     hero: {
@@ -441,15 +441,15 @@ export const DEPARTMENTS: Department[] = [
     seo: {
       title: "Business Process Automation Examples for Operations | Whispers Lab",
       description:
-        "Operations automation examples for small businesses: client onboarding, data entry, reports, deadline reminders and project follow-ups, backed by real builds.",
-      keyword: "automate client onboarding",
+        "Business process automation examples for small businesses: recurring reports, deadline reminders, project follow-ups, inspections and onboarding, backed by real builds.",
+      keyword: "business process automation",
     },
     hero: {
       eyebrow: "Use cases · Operations and delivery",
       title: "Operations automation examples",
       highlight: "for work that repeats.",
       answer:
-        "Operations automation handles the steps between a client saying yes and the work being delivered: onboarding, reminders, reports and approvals. These are the reusable examples we have built, from client onboarding to deadline tracking, with the human checkpoints marked.",
+        "Business process automation handles the steps between a client saying yes and the work being delivered: reports, reminders, approvals and follow-ups. These are the reusable examples we have built, from deadline tracking to inspection reports, with the human checkpoints marked.",
     },
     ideas: [
       {
@@ -485,12 +485,11 @@ export const DEPARTMENTS: Department[] = [
         proof: { slug: "law-practice-never-misses-a-deadline", label: "The Law Practice That Never Misses a Deadline" },
       },
       {
-        title: "Data entry replaced by reading",
-        problem: "Forms, emails and PDFs are retyped into another system.",
-        flow: ["A document or form arrives", "The fields are read and checked", "Unclear entries wait for a person to confirm"],
-        staysHuman: "Confirming anything the system is unsure about.",
-        tools: ["OpenAI", "Make", "Google Sheets"],
-        proof: { slug: "financial-document-reader", label: "The Financial Document Reader" },
+        title: "Recurring reports built on a schedule",
+        problem: "The owner asks for numbers and someone pulls them from several tools by hand.",
+        flow: ["A schedule runs, weekly or monthly", "Figures are collected from your tools into one report", "A person reviews it before it goes out"],
+        staysHuman: "Explaining what the numbers mean and what to do next.",
+        tools: ["Google Sheets", "Airtable", "Email"],
       },
       {
         title: "Cleanup of a large file backlog, once",
@@ -514,12 +513,12 @@ export const DEPARTMENTS: Department[] = [
     },
     faq: [
       {
-        q: "How do I automate client onboarding?",
-        a: "Let clients book themselves, then trigger a meeting link, reminders and intake forms automatically and update your CRM when they book. In one Whispers Lab build this saves about 5 hours a week. The first conversation and anything custom to the client stay with a person.",
+        q: "What is business process automation?",
+        a: "Business process automation uses software to run the repeated steps of a business process, such as sending reminders, building reports, routing approvals and updating records, so people do not do them by hand. Judgment steps stay with a person. Whispers Lab builds these on the tools you already use, starting with a $250 Automation Audit.",
       },
       {
-        q: "How do I automate data entry?",
-        a: "Replace retyping with reading: the system pulls the fields from a form, email or PDF, checks them and files them in the right place, and sends anything unclear to a person. Our Financial Document Reader removed manual data entry and saves about 15 hours a week.",
+        q: "How do I automate recurring reports?",
+        a: "Collect the figures from your tools on a schedule, build them into one report in a fixed format, and send it to a person for a quick review before it goes out. That removes the manual pulling and pasting while keeping a person on the explanation.",
       },
       {
         q: "What operations tasks are best to automate first?",

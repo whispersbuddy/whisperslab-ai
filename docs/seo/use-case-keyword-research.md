@@ -41,3 +41,16 @@ Demand exists at department level and at "how to automate X" level. It is mixed 
 5. Re-check Search Console after 4 to 6 weeks, then give the best-performing ideas their own pages.
 
 Caveats: volumes are monthly US estimates from the tool. KD is Semrush's difficulty estimate, not a ranking promise. Several head terms (email, sales, CRM) are dominated by software vendors.
+
+## Page assignments after the overlap check (2026-10-19)
+Checked against `keyword-map.csv`. Terms already owned by an existing page stay with that page.
+
+| Page | Primary keyword | Left alone because |
+|---|---|---|
+| /use-cases | small business automation, workflow automation examples | none |
+| /use-cases/finance-accounting | accounting and finance automation | accounting automation and bookkeeping automation belong to /services/bookkeeping-automation |
+| /use-cases/ecommerce-inventory | ecommerce process automation, inventory automation | ecommerce automation is primary on /industries/ecommerce-retail |
+| /use-cases/sales-leads | automate lead generation | automated lead follow up belongs to /services/lead-follow-up-automation |
+| /use-cases/customer-support | customer service automation | not mapped elsewhere |
+| /use-cases/operations | business process automation | client onboarding automation and data entry automation belong to their service pages |
+| /use-cases/crm-marketing | crm workflow automation | not mapped elsewhere |
