@@ -16,6 +16,7 @@ export type RouteGroup =
   | "resources"
   | "company"
   | "legal"
+  | "usecases"
   | "utility";
 
 export type IconName =
@@ -105,6 +106,15 @@ export const ROUTES: SiteRoute[] = [
   { path: "/industries/ecommerce-retail", label: "E-commerce & Retail", group: "industries", icon: "shoppingCart", blurb: "Catalogs, orders, and listings kept up to date", live: true, release: "R6", priority: 0.8, changeFrequency: "monthly" },
   { path: "/industries/property-management", label: "Property Management", group: "industries", icon: "building", blurb: "Tenants, maintenance, and rent handled faster", live: true, release: "R7", priority: 0.8, changeFrequency: "monthly" },
   { path: "/industries/accounting-bookkeeping", label: "Accounting & Bookkeeping", group: "industries", icon: "receipt", blurb: "Client documents in, clean books out", live: true, release: "R8", priority: 0.8, changeFrequency: "monthly" },
+
+  // Use cases
+  { path: "/use-cases", label: "Use Cases", group: "resources", icon: "layers", blurb: "Automation ideas for every part of your business", live: true, release: "R9", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/use-cases/finance-accounting", label: "Finance and Accounting Automation", group: "usecases", icon: "calculator", blurb: "Invoices, statements and reminders handled before month end", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/use-cases/ecommerce-inventory", label: "E-commerce and Inventory Automation", group: "usecases", icon: "shoppingCart", blurb: "Catalogs, orders and stock kept in step across systems", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/use-cases/sales-leads", label: "Sales and Lead Automation", group: "usecases", icon: "trendingUp", blurb: "Every lead found, answered and followed up on time", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/use-cases/customer-support", label: "Customer Support Automation", group: "usecases", icon: "messageReply", blurb: "Fast answers and status updates without a bigger team", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/use-cases/operations", label: "Operations Automation", group: "usecases", icon: "workflow", blurb: "Onboarding, reports, deadlines and approvals that run themselves", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/use-cases/crm-marketing", label: "CRM and Marketing Automation", group: "usecases", icon: "table", blurb: "Contacts logged, campaigns tracked, subscribers converted", live: true, release: "R9", priority: 0.7, changeFrequency: "monthly" },
 
   // Resources
   { path: "/resources/automation-roi-calculator", label: "ROI Calculator", group: "resources", icon: "gauge", blurb: "See what manual work costs you each month", live: true, release: "R4", priority: 0.7, changeFrequency: "monthly" },

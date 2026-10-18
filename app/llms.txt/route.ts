@@ -23,7 +23,8 @@ export function GET() {
   add("Services", liveRoutes("services"));
   add("Industries", liveRoutes("industries"));
   add("Integrations", liveRoutes("integrations"));
-  add("Free tools", liveRoutes("resources").filter((r) => r.path !== "/blog"));
+  add("Use cases", [...liveRoutes("resources").filter((r) => r.path === "/use-cases"), ...liveRoutes("usecases")]);
+  add("Free tools", liveRoutes("resources").filter((r) => r.path !== "/blog" && r.path !== "/use-cases"));
   const company = ["/about", "/pricing"].filter(isPathLive).map((p) => liveRoutes().find((r) => r.path === p)!);
   add("Company", company);
 

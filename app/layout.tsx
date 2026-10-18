@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import "./styles/sections.css";
 import "./styles/pilots.css";
+import "./styles/use-cases.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
