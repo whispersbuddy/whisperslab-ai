@@ -8,6 +8,9 @@ import { ROUTES, isLive } from "@/lib/routes";
 
 const SITE_URL = "https://www.whisperslab.com";
 
+// Rebuild hourly so new Strapi entries reach the sitemap without a redeploy.
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const commonDate = new Date("2026-08-05");
   const caseStudyDateMap = new Map<string, Date>();
@@ -22,6 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const strapiStudies = await fetchCaseStudies();
+    if (!strapiStudies.length) console.error("Sitemap: Strapi returned no case studies, listing local studies only.");
     if (Array.isArray(strapiStudies)) {
       strapiStudies.forEach((cs: { slug: string; updatedAt?: string }) => caseStudyDateMap.set(cs.slug, cs.updatedAt ? new Date(cs.updatedAt) : commonDate));
     }
@@ -32,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   BLOG_POSTS.forEach((post) => blogDateMap.set(post.slug, new Date(post.publishedAt)));
   try {
     const strapiArticles = await fetchArticles();
+    if (!strapiArticles.length) console.error("Sitemap: Strapi returned no articles, listing local posts only.");
     if (Array.isArray(strapiArticles)) {
       strapiArticles.forEach((article: { slug: string; updatedAt?: string }) => blogDateMap.set(article.slug, article.updatedAt ? new Date(article.updatedAt) : commonDate));
     }
