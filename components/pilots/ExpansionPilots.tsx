@@ -58,6 +58,26 @@ function PilotCrumbs({ crumbs, dark = false }: { crumbs: Crumb[]; dark?: boolean
   );
 }
 
+function MoreBuilds({ items }: { items: ServicePage["proof"]["more"] }) {
+  if (!items.length) return null;
+  return (
+    <section className="more-builds">
+      <div className="container">
+        <span className="pilot-label">MORE PUBLISHED BUILDS</span>
+        <div className="more-builds-list">
+          {items.map((item) => (
+            <Link key={item.slug} href={`/case-studies/${item.slug}`}>
+              <b>{item.big}</b>
+              <span>{item.title}</span>
+              <small>{item.detail}</small>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function PilotFaq({ title, items }: { title: string; items: ServicePage["faq"]["items"] }) {
   return (
     <section className="pilot-faq" id="faq">
@@ -185,6 +205,18 @@ const SERVICE_VISUALS: Record<string, {
     footer: "Response clock started automatically",
     exception: "Tone stays with the salesperson",
   },
+  "automation-consulting": {
+    file: "Automation Audit · Example small business",
+    meta: "Team interviews · hours counted · tools reviewed",
+    stages: [
+      { title: "Interview", detail: "Repeating tasks listed with owners", state: "Day 1" },
+      { title: "Count", detail: "Hours logged per task, not guessed", state: "Day 3" },
+      { title: "Rank", detail: "Payback against effort to build", state: "Day 5" },
+      { title: "Decide", detail: "You pick the first build", state: "Your call", review: true },
+    ],
+    footer: "Written plan is yours either way",
+    exception: "First build needs your approval",
+  },
   "software-integration-services": {
     file: "Customer 1842 · CRM → Accounting",
     meta: "HubSpot update · QuickBooks sync · 3 linked apps",
@@ -199,9 +231,18 @@ const SERVICE_VISUALS: Record<string, {
   },
 };
 
+const SERVICE_COPY: Record<string, { jump: string; modelTitle: string; modelBody: string }> = {
+  "automation-consulting": {
+    jump: "Scope",
+    modelTitle: "Count first. Build second. You decide in between.",
+    modelBody: "Nothing gets built until the numbers say it is worth it and you have approved the plan. If you stop after the audit, the plan is still yours.",
+  },
+};
+
 export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crumb[] }) {
   const featured = page.proof.featured;
   const visual = SERVICE_VISUALS[page.slug] ?? SERVICE_VISUALS["data-entry-automation"];
+  const copy = SERVICE_COPY[page.slug] ?? { jump: "Documents", modelTitle: "Four stages. One visible exception queue.", modelBody: "The automation does not hide uncertainty. It moves clean work forward and stops exactly where a person is needed." };
   const relatedIndustries = resolvePathLinks(page.related.industries);
   const relatedPosts = resolvePostLinks(page.related.posts);
   return (
@@ -235,7 +276,7 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
       </section>
 
       <nav className="pilot-jump" aria-label="On this page">
-        <div className="container"><span>On this page</span><Link href="#outcomes">Outcome</Link><Link href="#workflow">Workflow</Link><Link href="#scope">Documents</Link><Link href="#proof">Proof</Link><Link href="#faq">FAQ</Link></div>
+        <div className="container"><span>On this page</span><Link href="#outcomes">Outcome</Link><Link href="#workflow">Workflow</Link><Link href="#scope">{copy.jump}</Link><Link href="#proof">Proof</Link><Link href="#faq">FAQ</Link></div>
       </nav>
 
       <section className="de-outcomes" id="outcomes">
@@ -249,7 +290,7 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
 
       <section className="de-workflow" id="workflow">
         <div className="container de-workflow-grid">
-          <div className="de-sticky-copy"><span className="pilot-label">THE OPERATING MODEL</span><h2>Four stages. One visible exception queue.</h2><p>The automation does not hide uncertainty. It moves clean work forward and stops exactly where a person is needed.</p></div>
+          <div className="de-sticky-copy"><span className="pilot-label">THE OPERATING MODEL</span><h2>{copy.modelTitle}</h2><p>{copy.modelBody}</p></div>
           <ol className="de-steps">
             {page.steps.items.map((step, index) => (
               <li key={step.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p><small>{step.tools.join(" · ")}</small></div></li>
@@ -363,6 +404,7 @@ export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Cr
       </section>
 
       {page.proof.mode === "closest" ? <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">HONEST PATTERN MATCH</span><h2>{page.proof.title}</h2><p>{page.proof.intro}</p></div><div className="law-proof-list">{proofRows.map((row) => <Link key={row.slug} href={`/case-studies/${row.slug}`}><span>{row.need}</span><b>{row.big}</b><small>{row.title} · {row.detail}</small></Link>)}</div></div></section> : <section className="law-proof" id="proof"><div className="container"><div className="pilot-section-head"><span className="pilot-label">PUBLISHED RESULT</span><h2>{page.proof.title}</h2></div><Link className="law-direct-proof" href={`/case-studies/${page.proof.featured.slug}`}><div><strong>{page.proof.featured.big}</strong><small>{page.proof.featured.bigLabel}</small></div><div><h3>{page.proof.featured.title}</h3><p>{page.proof.featured.after}</p><span>Read the full case study <ArrowRight size={15} /></span></div></Link></div></section>}
+      {page.proof.mode === "direct" ? <MoreBuilds items={page.proof.more} /> : null}
 
       {(relatedServices.length > 0 || relatedPosts.length > 0) && (
         <section className="de-related">
@@ -402,6 +444,10 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
           <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
           <p>{page.hero.answer}</p>
           <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
+          {page.slug === "zapier" ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src="/assets/badges/zapier-silver-solution-partner-dark.svg" alt="Zapier Silver Solution Partner badge" width={300} height={115} style={{ display: "block", marginTop: 28, borderRadius: 12, maxWidth: "100%", height: "auto" }} />
+          ) : null}
         </div>
       </section>
 
@@ -451,6 +497,7 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
       ) : null}
 
       <section className="air-proof"><div className="container air-proof-grid"><div><span className="pilot-label pilot-label-light">A REAL CONNECTED BUILD</span><strong>{featured.big}</strong><small>{featured.bigLabel}</small></div><div><h2>{featured.title}</h2><p>{featured.after}</p><div>{featured.chips.map((chip) => <span key={chip}>{chip}</span>)}</div><Link href={`/case-studies/${featured.slug}`}>Read the case study <ArrowRight size={15} /></Link></div></div></section>
+      <MoreBuilds items={page.proof.more} />
 
       {(relatedIndustries.length > 0 || relatedPosts.length > 0) && (
         <section className="de-related">

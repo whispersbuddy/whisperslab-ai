@@ -207,14 +207,22 @@ export const INDUSTRIES: IndustryPage[] = [
       worth: ["Worth it once conflict checks span more than one system", "When \"any update?\" calls happen every week", "When signatures need more than one reminder to land"],
     },
     proof: {
-      mode: "closest",
-      eyebrow: "Proof · Closest builds",
-      title: "Our published case studies are not from law firms. These solved the same problems elsewhere.",
-      intro: "No law firm case study exists yet, so here is the closest real build for each shape of need.",
-      rows: [
-        { needLabel: "Your firm needs", need: "Consults booked with intake finished first", slug: "onboarding-pipeline-autopilot", title: "The Onboarding Pipeline That Runs on Autopilot", detail: "Coaching · clients book themselves and arrive with intake forms done", big: "~5 hrs", bigLabel: "saved weekly" },
-        { needLabel: "Your firm needs", need: "Client history out of one partner's inbox", slug: "crm-that-fills-itself-in", title: "The CRM That Fills Itself In", detail: "Education · emails and meetings log themselves to the right record", big: "~6 hrs", bigLabel: "saved weekly" },
-        { needLabel: "Your firm needs", need: "One client's data never visible to another", slug: "financial-document-reader", title: "The Financial Document Reader", detail: "Financial services · every account's data walled off", big: "~15 hrs", bigLabel: "saved weekly" },
+      mode: "direct",
+      eyebrow: "Proof · Legal practice",
+      title: "A legal practice build, not a guess",
+      featured: {
+        slug: "law-practice-never-misses-a-deadline",
+        big: "1 place",
+        bigLabel: "for every case, document and date, with the right person reminded automatically",
+        title: "The Law Practice That Never Misses a Deadline",
+        before: "Each case carried firms, attorneys, assistants, valuation dates, report reviews, invoices and milestones, and staff needed it organized and easy to use every day.",
+        after: "A structured Zoho CRM sends reminders, notifications and task updates based on due dates, document requirements, review stages and invoice activity.",
+        chips: ["Legal practice", "Zoho CRM"],
+        caption: "Illustration of the case record and reminders",
+      },
+      more: [
+        { slug: "onboarding-pipeline-autopilot", big: "~5 hrs", title: "The Onboarding Pipeline That Runs on Autopilot", detail: "saved weekly · coaching clients book themselves and arrive with intake done" },
+        { slug: "financial-document-reader", big: "~15 hrs", title: "The Financial Document Reader", detail: "saved weekly · every account's data walled off" },
       ],
     },
     stack: {
@@ -400,7 +408,7 @@ export const INDUSTRIES: IndustryPage[] = [
         chips: ["Real estate", "n8n", "Twilio"],
         caption: "Illustration of the lead routing view",
       },
-      more: [],
+      more: [{ slug: "lead-list-builds-itself", big: "Weekly", title: "The Lead List That Builds Itself Every Monday", detail: "list built automatically · n8n, Airtable, Lob" }],
     },
     stack: {
       title: "Built on the tools you already pay for",
@@ -578,7 +586,13 @@ export const INDUSTRIES: IndustryPage[] = [
         chips: ["E-commerce", "Python", "OpenAI"],
         caption: "Illustration of the synced product catalog",
       },
-      more: [{ slug: "self-cleaning-warehouse-system", big: "~3 hrs", title: "The Self-Cleaning Warehouse System", detail: "saved weekly · Make.com, Google Drive" }],
+      more: [
+        { slug: "store-and-shipping-tool-stay-in-step", big: "0", title: "The Online Store and the Shipping Tool That Stay in Step", detail: "orders moved by hand · BigCommerce, ShipStation, n8n" },
+        { slug: "catalog-publishes-itself", big: "35,000+", title: "The 35,000-Product Catalog That Publishes Itself", detail: "products published without typing · n8n, Supabase, OpenAI" },
+        { slug: "storefront-and-warehouse-agree", big: "2-way", title: "The Storefront and Warehouse That Agree", detail: "inventory, pricing and orders sync between Shopify and Neto" },
+        { slug: "inventory-cost-corrects-itself", big: "14,000", title: "The Inventory Cost That Corrects Itself", detail: "SKUs kept on a true rolling average cost · Make.com, ShipHero" },
+        { slug: "self-cleaning-warehouse-system", big: "~3 hrs", title: "The Self-Cleaning Warehouse System", detail: "saved weekly · Make.com, Google Drive" },
+      ],
     },
     stack: {
       title: "Built on the tools you already pay for",
@@ -594,6 +608,10 @@ export const INDUSTRIES: IndustryPage[] = [
     faq: {
       title: "Questions store owners ask first",
       items: [
+        {
+          q: "Can my online store send orders to my shipping tool automatically?",
+          a: "Yes. For one online seller, Whispers Lab built n8n workflows that send each new BigCommerce order to ShipStation within moments and write shipped or cancelled status back to the store, so nobody moves orders by hand. Your setup depends on the platforms you use, and the $250 Automation Audit confirms what can be connected before anything is built.",
+        },
         {
           q: "What can a small online store automate?",
           a: "A small store can automate cleaning and translating supplier listings, pushing products live, syncing inventory across sales channels, matching sales to payouts, and answering common order status questions. Pricing strategy and anything a customer needs a real answer to stay with your team.",

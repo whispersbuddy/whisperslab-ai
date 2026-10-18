@@ -1086,3 +1086,11 @@
   .care-included-grid { grid-template-columns: 1fr; }
   .care-included-grid article { min-height: 260px; }
 }
+
+.more-builds { padding: 8px 0 48px; }
+.more-builds-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 14px; }
+.more-builds-list a { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; border: 1px solid rgba(128,128,128,0.25); border-radius: 16px; text-decoration: none; color: inherit; transition: border-color .2s ease, transform .2s ease; }
+.more-builds-list a:hover { border-color: rgba(107,124,255,0.5); transform: translateY(-2px); }
+.more-builds-list b { font-size: 24px; line-height: 1.1; }
+.more-builds-list span { font-weight: 600; }
+.more-builds-list small { opacity: 0.7; line-height: 1.5; }
