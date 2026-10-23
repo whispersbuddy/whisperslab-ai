@@ -47,7 +47,33 @@ export function faqSchema(items: { q: string; a: string }[]) {
   };
 }
 
-export const PROVIDER = { "@type": "Organization", name: "Whispers Lab", url: SITE_URL };
+// Stable entity ids. Every schema node that names the company, the site or
+// the founder carries one of these, so search engines merge them into one
+// entity each instead of reading a new anonymous Organization on every page.
+// The full Organization and WebSite nodes are rendered once, in app/layout.tsx.
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const FOUNDER_ID = `${SITE_URL}/about#haris-ali`;
+
+export const PROVIDER = { "@type": "Organization", "@id": ORG_ID, name: "Whispers Lab", url: SITE_URL };
+
+/** The Organization as an article publisher (Google wants a logo there). */
+export const PUBLISHER = {
+  ...PROVIDER,
+  logo: { "@type": "ImageObject", url: `${SITE_URL}/assets/logo-trim.png` },
+};
+
+export const WEBSITE = { "@type": "WebSite", "@id": WEBSITE_ID, name: "Whispers Lab", url: SITE_URL };
+
+export const FOUNDER = {
+  "@type": "Person",
+  "@id": FOUNDER_ID,
+  name: "Haris Ali",
+  jobTitle: "Co-Founder",
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/assets/haris-ali.jpg`,
+  worksFor: { "@id": ORG_ID },
+};
 
 /** Wraps one or more schema nodes into a single @graph document. */
 export function graph(...nodes: object[]) {

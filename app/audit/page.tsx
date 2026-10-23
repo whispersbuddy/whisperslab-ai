@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AUDIT_HTML } from "@/app/_content/audit";
 import LegacyOfferBody, { OfferAssuranceBand } from "@/components/LegacyOfferBody";
+import { PROVIDER } from "@/lib/seo";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -42,11 +43,7 @@ const serviceSchema = {
   name: "The Automation Audit",
   description:
     "A $250, 7-day sprint that maps a small business's daily operations and delivers a prioritized automation roadmap: an Automation Readiness Scorecard, Visual Workflow Map, Automation Priority Matrix, and Execution Blueprint.",
-  provider: {
-    "@type": "Organization",
-    name: "Whispers Lab",
-    url: SITE_URL,
-  },
+  provider: PROVIDER,
   areaServed: {
     "@type": "Country",
     name: "United States",

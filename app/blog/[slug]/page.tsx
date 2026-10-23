@@ -10,6 +10,7 @@ import { fetchArticleBySlug, fetchCaseStudyBySlug } from "@/lib/api";
 import { getAllPosts, getRelatedPosts } from "@/lib/content";
 import RelatedLinks from "@/components/RelatedLinks";
 import { blogServiceLinks } from "@/lib/blogLinks";
+import { FOUNDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
 import ReactMarkdown from 'react-markdown';
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -204,19 +205,9 @@ export default async function BlogPostPage({
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     articleSection: category?.name,
-    author: {
-      "@type": "Person",
-      name: "Haris Ali",
-      jobTitle: "Co-Founder, Whispers Lab",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Whispers Lab",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/assets/logo-trim.png`,
-      },
-    },
+    author: FOUNDER,
+    publisher: PUBLISHER,
+    isPartOf: { "@id": WEBSITE_ID },
     mainEntityOfPage: postUrl,
   };
 

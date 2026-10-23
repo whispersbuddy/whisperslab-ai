@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Clock, FileCheck2, Hammer, KeyRound, ShieldCheck, Users } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import NewsletterSection from "@/components/NewsletterSection";
-import { breadcrumbSchema, buildMetadata, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata, FOUNDER, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
 
 const PATH = "/about";
 
@@ -74,13 +74,7 @@ export default function AboutPage() {
             name: "About Whispers Lab",
             about: PROVIDER,
           },
-          {
-            "@type": "Person",
-            name: "Haris Ali",
-            jobTitle: "Co-Founder",
-            worksFor: PROVIDER,
-            image: SITE_URL + "/assets/haris-ali.jpg",
-          },
+          FOUNDER,
           breadcrumbSchema(CRUMBS)
         )}
       />

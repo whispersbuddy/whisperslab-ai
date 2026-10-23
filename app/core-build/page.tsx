@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CORE_BUILD_HTML } from "@/app/_content/coreBuild";
 import LegacyOfferBody, { OfferAssuranceBand } from "@/components/LegacyOfferBody";
+import { PROVIDER } from "@/lib/seo";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -42,11 +43,7 @@ const serviceSchema = {
   name: "The Core Build",
   description:
     "A fixed-price build that designs, develops, tests, and deploys an agreed business automation workflow within 30 days, with documentation, training, acceptance testing, and post-launch stabilization.",
-  provider: {
-    "@type": "Organization",
-    name: "Whispers Lab",
-    url: SITE_URL,
-  },
+  provider: PROVIDER,
   areaServed: {
     "@type": "Country",
     name: "United States",

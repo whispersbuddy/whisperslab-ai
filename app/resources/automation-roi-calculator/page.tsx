@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import { RoiPilot } from "@/components/pilots/ExpansionPilots";
 import { ROI_CALCULATOR } from "@/app/_content/resources";
-import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL, WEBSITE } from "@/lib/seo";
 
 const PATH = "/resources/automation-roi-calculator";
 
@@ -32,7 +32,8 @@ export default function RoiCalculatorPage() {
             applicationCategory: "BusinessApplication",
             url: SITE_URL + PATH,
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-            isPartOf: { "@type": "Organization", name: "Whispers Lab", url: SITE_URL },
+            isPartOf: WEBSITE,
+            provider: PROVIDER,
           },
           faqSchema(faq.items),
           breadcrumbSchema(CRUMBS)
