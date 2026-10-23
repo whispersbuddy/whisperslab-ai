@@ -57,8 +57,11 @@ If `RESEND_API_KEY`/`CONTACT_NOTIFY_EMAIL` are missing, both routes return a 500
 ## Known content/business facts to preserve
 
 - Brand voice: direct, no-fluff, "boring AI that works," small-business-owner focused.
-- Three offer tiers: Automation Audit ($250, one-time, credited toward Core Build), Core Build (starts at $2,500, 30-day sprint), AI Growth Partner ($500/mo, /growth-partner page added in the site expansion).
-- Founder: Haris Ali, Co-Founder, Whispers Lab.
+- Four offers (owner confirmed 2026-10-24 that the live site prices are correct; `lib/offers.ts` is the source): Automation Audit ($250, one-time, credited toward Core Build), Core Build (from $2,500, 30-day sprint), Automation Care ($500/mo, /automation-care), AI Growth Partner (from $1,250/mo, /growth-partner).
+- Founder: Haris Ali, Co-Founder and Automation Consultant (`FOUNDER_TITLE` in `lib/seo.ts`), LinkedIn https://www.linkedin.com/in/haris-ali-956907169/. He writes and technically reviews the content himself.
+- Source context sentence (owner approved 2026-10-24): `SOURCE_CONTEXT` in `lib/seo.ts`. Reuse it word for word in schema, llms.txt and third-party profiles.
+- Entity schema: the full Organization and WebSite nodes render once in `app/layout.tsx`. Page schemas reference them through `PROVIDER`, `PUBLISHER`, `WEBSITE` and `FOUNDER` from `lib/seo.ts`; never inline a new anonymous Organization or Person.
+- Sitemap lastmod: bump a page's `updated` date in `lib/routes.ts` when its code content changes.
 - Footer tagline: "THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME."
 - Social links: LinkedIn and Instagram point to the real profiles. Clutch link (footer + Organization `sameAs`) uses the shared `CLUTCH_URL` in `lib/social.ts` (`clutch.co/profile/whispers-lab`); the footer icon is still an inline star mark pending a proper Clutch logo asset.
 - Analytics: GA4 (`G-DT0L4C5NMQ`) only loads on `whisperslab.com`/`www.whisperslab.com` (never localhost or preview hosts). Custom events via `lib/analytics.ts` `trackEvent`, fired from `components/ClientEffects.tsx`: `generate_lead` (contact form), `newsletter_signup`, `calendly_booking`, `cta_click` (links to /audit, /book, /contact, /core-build, /pricing, /automation-care, /growth-partner). Mark `generate_lead` and `calendly_booking` as key events in the GA4 UI.

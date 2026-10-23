@@ -8,7 +8,7 @@ import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { CLUTCH_URL, TRUSTPILOT_URL } from "@/lib/social";
-import { FOUNDER, graph, ORG_ID, WEBSITE } from "@/lib/seo";
+import { FOUNDER, graph, ORG_ID, SOURCE_CONTEXT, WEBSITE } from "@/lib/seo";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -51,8 +51,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo-trim.png`,
   slogan: "We delete busywork.",
-  description:
-    "AI automation agency helping small business owners, primarily in the United States, eliminate manual busywork with custom-built automation and AI systems. A US LLC with its build team based in Karachi, Pakistan, working with clients remotely.",
+  description: SOURCE_CONTEXT,
   foundingDate: "2025",
   numberOfEmployees: {
     "@type": "QuantitativeValue",
