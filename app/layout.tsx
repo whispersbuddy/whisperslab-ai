@@ -8,6 +8,7 @@ import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { CLUTCH_URL, TRUSTPILOT_URL } from "@/lib/social";
+import { FOUNDER, graph, ORG_ID, SOURCE_CONTEXT, WEBSITE } from "@/lib/seo";
 
 const SITE_URL = "https://www.whisperslab.com";
 
@@ -39,24 +40,39 @@ export const metadata: Metadata = {
   },
 };
 
+// The one full Organization and WebSite description for the whole site. Page
+// schemas point back to these through ORG_ID and WEBSITE_ID (lib/seo.ts).
 const organizationSchema = {
-  "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": ORG_ID,
   name: "Whispers Lab",
+  legalName: "Whispers Lab LLC",
+  alternateName: "WhispersLab",
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo-trim.png`,
-  description:
-    "AI automation agency helping small business owners, primarily in the United States, eliminate manual busywork with custom-built automation and AI systems. A US LLC with its build team based in Karachi, Pakistan, working with clients remotely.",
+  slogan: "We delete busywork.",
+  description: SOURCE_CONTEXT,
   foundingDate: "2025",
   numberOfEmployees: {
     "@type": "QuantitativeValue",
     minValue: 10,
     maxValue: 12,
   },
-  founder: {
-    "@type": "Person",
-    name: "Haris Ali",
-  },
+  founder: FOUNDER,
+  knowsAbout: [
+    "Small business automation",
+    "Business process automation",
+    "Workflow automation",
+    "Data entry automation",
+    "Bookkeeping automation",
+    "Client onboarding automation",
+    "Lead follow-up automation",
+    "Software integration",
+    "n8n",
+    "Zapier",
+    "Make (formerly Integromat)",
+    "Airtable",
+  ],
   areaServed: {
     "@type": "Country",
     name: "United States",
@@ -83,6 +99,13 @@ const organizationSchema = {
   ],
 };
 
+const siteSchema = graph(organizationSchema, {
+  ...WEBSITE,
+  alternateName: "WhispersLab",
+  inLanguage: "en-US",
+  publisher: { "@id": ORG_ID },
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -104,7 +127,7 @@ export default function RootLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
         <SiteHeader />
         {children}

@@ -465,6 +465,8 @@ export const INTEGRATIONS: IntegrationPage[] = [
         { slug: "crm-that-fills-itself-in", big: "~6 hrs", title: "The CRM That Fills Itself In", detail: "saved weekly · n8n, Airtable, Gmail" },
         { slug: "store-and-shipping-tool-stay-in-step", big: "0", title: "The Online Store and the Shipping Tool That Stay in Step", detail: "orders moved by hand · BigCommerce, ShipStation, n8n" },
         { slug: "catalog-publishes-itself", big: "35,000+", title: "The 35,000-Product Catalog That Publishes Itself", detail: "products published without typing · n8n, Supabase, OpenAI" },
+        { slug: "lead-list-builds-itself", big: "Weekly", title: "The Lead List That Builds Itself Every Monday", detail: "list built automatically · n8n, Airtable, Lob" },
+        { slug: "team-portal-cuts-software-costs", big: "25+", title: "The Team Portal That Stopped the Seat Bill From Growing", detail: "team members, no per-seat growth · Softr, Airtable, n8n" },
       ],
     },
     stack: {

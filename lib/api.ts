@@ -378,3 +378,25 @@ export async function fetchIndustryBySlug(slug: string): Promise<IndustryPage | 
   const raw = await fetchStrapiEntryBySlug("industries", INDUSTRIES_TAG, INDUSTRY_POPULATE, slug);
   return raw ? mapStrapiIndustry(raw) : null;
 }
+
+// Path -> last Strapi edit for service, integration and industry pages, for
+// the sitemap's lastmod. Same URLs and tags as the page fetchers, so the
+// requests come from the shared cache. Entries the mappers reject are skipped,
+// because those pages are served from the local content instead.
+export async function fetchPageUpdatedDates(): Promise<Map<string, Date>> {
+  const [services, integrations, industries] = await Promise.all([
+    fetchStrapiCollection("services", SERVICES_TAG, SERVICE_POPULATE),
+    fetchStrapiCollection("integrations", INTEGRATIONS_TAG, INTEGRATION_POPULATE),
+    fetchStrapiCollection("industries", INDUSTRIES_TAG, INDUSTRY_POPULATE),
+  ]);
+  const dates = new Map<string, Date>();
+  const add = (prefix: string, entries: StrapiRaw[], map: (raw: StrapiRaw) => unknown) => {
+    for (const raw of entries) {
+      if (raw?.updatedAt && map(raw)) dates.set(prefix + raw.slug, new Date(raw.updatedAt));
+    }
+  };
+  add("/services/", services, mapStrapiService);
+  add("/integrations/", integrations, mapStrapiIntegration);
+  add("/industries/", industries, mapStrapiIndustry);
+  return dates;
+}

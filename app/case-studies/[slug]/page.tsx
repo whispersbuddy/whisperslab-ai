@@ -9,6 +9,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import CaseFlow from "@/components/CaseFlow";
 import CaseFlowDiagram from "@/components/CaseFlowDiagram";
 import { CASE_FLOWS } from "@/app/_content/caseFlows";
+import { PROVIDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const strapiStudies = await fetchCaseStudies();
@@ -99,18 +100,9 @@ export default async function CaseStudyDetailPage({
     headline: cs.title,
     description: cs.goal,
     about: cs.industry,
-    author: {
-      "@type": "Organization",
-      name: "Whispers Lab",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Whispers Lab",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.whisperslab.com/assets/logo-trim.png",
-      },
-    },
+    author: PROVIDER,
+    publisher: PUBLISHER,
+    isPartOf: { "@id": WEBSITE_ID },
     mainEntityOfPage: `https://www.whisperslab.com/case-studies/${cs.slug}`,
   };
 

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import ReviewLinks from "@/components/ReviewLinks";
 
 type LegacyOfferBodyProps = {
   html: string;
@@ -43,7 +44,7 @@ export function OfferAssuranceBand({
   return (
     <section className="offer-assurance section">
       <div className="container">
-        <header><span className="eyebrow">{eyebrow}</span><h2>{title}</h2><p>{intro}</p></header>
+        <header><span className="eyebrow">{eyebrow}</span><h2>{title}</h2><p>{intro}</p><ReviewLinks tone="light" /></header>
         <div>{items.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.label}</h3><p>{item.body}</p></article>)}</div>
       </div>
     </section>

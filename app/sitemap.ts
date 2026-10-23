@@ -3,7 +3,7 @@ import path from 'path';
 import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/app/_content/caseStudiesData";
 import { BLOG_POSTS } from "@/app/_content/blogData";
-import { fetchCaseStudies, fetchArticles } from "@/lib/api";
+import { fetchCaseStudies, fetchArticles, fetchPageUpdatedDates } from "@/lib/api";
 import { ROUTES, isLive } from "@/lib/routes";
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -44,6 +44,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error fetching articles for sitemap:", err);
   }
 
+  // Service, integration and industry pages can be edited in Strapi, and the
+  // two hubs change whenever a post or case study is added, so each registry
+  // page takes the newest of its code date and those.
+  const pageDates = await fetchPageUpdatedDates();
+  const hubDates: Record<string, Date[]> = {
+    "/blog": Array.from(blogDateMap.values()),
+    "/case-studies": Array.from(caseStudyDateMap.values()),
+  };
+  const latest = (dates: (Date | undefined)[]) =>
+    dates.reduce<Date | undefined>((max, d) => (d && !isNaN(d.getTime()) && (!max || d > max) ? d : max), undefined);
+
   const routes: Array<{
     path: string;
     changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
@@ -55,7 +66,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       path: r.path,
       changeFrequency: r.changeFrequency,
       priority: r.priority,
-      lastModified: r.updated ? new Date(r.updated) : commonDate,
+      lastModified:
+        latest([r.updated ? new Date(r.updated) : undefined, pageDates.get(r.path), ...(hubDates[r.path] ?? [])]) ?? commonDate,
     })),
     ...Array.from(caseStudyDateMap.entries()).map(([slug, date]) => ({
       path: `/case-studies/${slug}`,
