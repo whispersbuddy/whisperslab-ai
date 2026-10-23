@@ -2003,15 +2003,12 @@ a.cf-name:hover { color: #6b7cff; }
 .sf-legal a:hover { color: #fff; }
 
 /* Links to the third-party review profiles (components/ReviewLinks.tsx). */
-.review-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; font-size: 13px; line-height: 1.4; }
-.review-links a { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: border-color .2s, background-color .2s; }
-.review-links svg { width: 13px; height: 13px; fill: currentColor; stroke-width: 0; }
+.review-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 18px; font-size: 13px; line-height: 1.4; }
+.review-links a { display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,23,42,0.12); text-decoration: none; transition: box-shadow .2s; }
+.review-links a:hover { box-shadow: 0 6px 18px rgba(15,23,42,0.22); }
+.review-links img { display: block; width: auto; }
 .review-links-dark { color: rgba(255,255,255,0.62); }
-.review-links-dark a { color: #fff; border: 1px solid rgba(255,255,255,0.22); }
-.review-links-dark a:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.06); }
 .review-links-light { color: #596275; }
-.review-links-light a { color: var(--brand-navy); background: #fff; border: 1px solid rgba(15,23,42,0.14); }
-.review-links-light a:hover { border-color: rgba(15,23,42,0.38); }
 .review-links-compact > span { flex-basis: 100%; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
 .pilot-final .review-links { justify-content: center; margin-top: 26px; }
 @media (max-width: 560px) { .pilot-final .review-links > span:first-child { flex-basis: 100%; } }
