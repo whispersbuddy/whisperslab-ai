@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BARE_PATHS } from "@/components/SiteHeader";
 import { isPathLive, liveRoutes, type SiteRoute } from "@/lib/routes";
-import { CLUTCH_URL } from "@/lib/social";
+import ReviewLinks from "@/components/ReviewLinks";
 
 const SOCIALS = [
   {
@@ -80,18 +80,8 @@ export default function SiteFooter() {
                   <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
                 </svg>
               </a>
-              {/* Inline star mark stands in until a proper Clutch logo asset exists */}
-              <a href={CLUTCH_URL} target="_blank" rel="noopener" aria-label="Clutch" className="social-icon">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M12 3.4 14.1 9h5.9l-4.78 3.47L17.3 18 12 14.5 6.7 18l1.98-5.53L3.9 9h5.9L12 3.4Z"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
             </div>
+            <ReviewLinks compact />
           </div>
           <div className="sf-cols">
             <Column title="Services" links={services} />

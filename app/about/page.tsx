@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Clock, FileCheck2, Hammer, KeyRound, ShieldCheck, Users } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import NewsletterSection from "@/components/NewsletterSection";
+import ReviewLinks from "@/components/ReviewLinks";
 import { getAllCaseStudies } from "@/lib/content";
 import { breadcrumbSchema, buildMetadata, FOUNDER, FOUNDER_TITLE, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
 
@@ -91,7 +92,7 @@ export default async function AboutPage() {
 
         <section className="about-new-location"><div className="container"><div><span className="pilot-label">ONE COMPANY · TWO OPERATING CONTEXTS</span><h2>A US company with a build team in Karachi.</h2><p>Whispers Lab LLC is registered in Sheridan, Wyoming. Our build team works from Karachi, Pakistan, and we work with small businesses across the United States remotely. Calls happen during US business hours, and every project gets a private Slack channel so you always know where things stand.</p></div><address><span>REGISTERED OFFICE</span><b>Whispers Lab LLC</b><p>30 N Gould St, Ste R<br />Sheridan, WY 82801, USA</p><a href="mailto:hello@whisperslab.com">hello@whisperslab.com</a></address></div></section>
 
-        <section className="pilot-final pilot-final-about"><div className="container"><span className="pilot-label pilot-label-light">SHOW US THE BUSYWORK</span><h2>Want to see what we would automate for you?</h2><p>Start with the $250 Automation Audit. In 7 days you get a clear plan. Build it with us and the $250 is credited.</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">See the Automation Audit</Link><Link href="/book" className="btn btn-ghost-light">Book a free discovery call</Link></div></div></section>
+        <section className="pilot-final pilot-final-about"><div className="container"><span className="pilot-label pilot-label-light">SHOW US THE BUSYWORK</span><h2>Want to see what we would automate for you?</h2><p>Start with the $250 Automation Audit. In 7 days you get a clear plan. Build it with us and the $250 is credited.</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">See the Automation Audit</Link><Link href="/book" className="btn btn-ghost-light">Book a free discovery call</Link></div><ReviewLinks /></div></section>
         <NewsletterSection />
       </main>
     </>
