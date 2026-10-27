@@ -100,7 +100,7 @@ export const ROUTES: SiteRoute[] = [
   { path: "/integrations", label: "All integrations", group: "core", live: true, release: "R3", updated: "2026-09-27", priority: 0.7, changeFrequency: "monthly" },
   { path: "/integrations/airtable", label: "Airtable", group: "integrations", icon: "table", blurb: "Airtable consultants for bases that run themselves", live: true, release: "R3", updated: "2026-10-15", priority: 0.8, changeFrequency: "monthly" },
   { path: "/integrations/n8n", label: "n8n", group: "integrations", icon: "workflow", blurb: "n8n workflows built and looked after for you", live: true, release: "R3", updated: "2026-10-24", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/integrations/zapier", label: "Zapier", group: "integrations", icon: "zap", blurb: "Zapier experts for multi-step workflows", live: true, release: "R7", updated: "2026-10-15", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/integrations/zapier", label: "Zapier", group: "integrations", icon: "zap", blurb: "Zapier experts for multi-step workflows", live: true, release: "R7", updated: "2026-10-27", priority: 0.7, changeFrequency: "monthly" },
 
   // R4+: industries
   { path: "/industries", label: "All industries", group: "core", live: true, release: "R4", updated: "2026-09-27", priority: 0.7, changeFrequency: "monthly" },
