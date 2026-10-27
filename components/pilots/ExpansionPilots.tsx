@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ZAPIER_PARTNER_URL } from "@/lib/social";
 import Link from "next/link";
 import { ArrowRight, Check, ExternalLink, LockKeyhole, ShieldCheck } from "lucide-react";
 import type { ServicePage } from "@/app/_content/services";
@@ -446,7 +447,7 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
           <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
           {page.slug === "zapier" ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src="/assets/badges/zapier-silver-solution-partner-dark.svg" alt="Zapier Silver Solution Partner badge" width={300} height={115} style={{ display: "block", marginTop: 28, borderRadius: 12, maxWidth: "100%", height: "auto" }} />
+            <a href={ZAPIER_PARTNER_URL} target="_blank" rel="noopener" aria-label="Whispers Lab in the Zapier partner directory" style={{ display: "inline-block", marginTop: 28 }}><img src="/assets/badges/zapier-silver-solution-partner-dark.svg" alt="Zapier Silver Solution Partner badge" width={300} height={115} style={{ display: "block", marginTop: 28, borderRadius: 12, maxWidth: "100%", height: "auto" }} /></a>
           ) : null}
         </div>
       </section>
