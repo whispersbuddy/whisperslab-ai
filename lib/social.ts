@@ -3,3 +3,5 @@
 export const CLUTCH_URL = "https://clutch.co/profile/whispers-lab";
 export const TRUSTPILOT_URL = "https://www.trustpilot.com/review/whisperslab.com";
 export const ZAPIER_PARTNER_URL = "https://zapier.com/partnerdirectory/partner/whispers-lab";
+export const GOODFIRMS_URL = "https://www.goodfirms.co/company/whispers-lab-llc";
+export const SORTLIST_URL = "https://www.sortlist.com/agency/whispers-lab-llc";

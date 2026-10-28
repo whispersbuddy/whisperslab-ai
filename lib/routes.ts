@@ -78,7 +78,7 @@ export const ROUTES: SiteRoute[] = [
   { path: "/book", label: "Book a Call", group: "utility", live: true, updated: "2026-09-27", priority: 0.6, changeFrequency: "monthly" },
 
   // R0: foundation
-  { path: "/about", label: "About", group: "company", icon: "info", live: true, release: "R0", updated: "2026-09-27", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/about", label: "About", group: "company", icon: "info", live: true, release: "R0", updated: "2026-10-28", priority: 0.6, changeFrequency: "monthly" },
   { path: "/privacy-policy", label: "Privacy Policy", group: "legal", live: true, release: "R0", updated: "2026-09-22", priority: 0.2, changeFrequency: "yearly" },
   { path: "/terms", label: "Terms", group: "legal", live: true, release: "R0", updated: "2026-09-22", priority: 0.2, changeFrequency: "yearly" },
 

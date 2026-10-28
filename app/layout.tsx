@@ -7,7 +7,7 @@ import "./styles/use-cases.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { CLUTCH_URL, TRUSTPILOT_URL, ZAPIER_PARTNER_URL } from "@/lib/social";
+import { CLUTCH_URL, GOODFIRMS_URL, SORTLIST_URL, TRUSTPILOT_URL, ZAPIER_PARTNER_URL } from "@/lib/social";
 import { FOUNDER, graph, ORG_ID, SOURCE_CONTEXT, WEBSITE } from "@/lib/seo";
 
 const SITE_URL = "https://www.whisperslab.com";
@@ -97,6 +97,8 @@ const organizationSchema = {
     CLUTCH_URL,
     TRUSTPILOT_URL,
     ZAPIER_PARTNER_URL,
+    GOODFIRMS_URL,
+    SORTLIST_URL,
   ],
 };
 
