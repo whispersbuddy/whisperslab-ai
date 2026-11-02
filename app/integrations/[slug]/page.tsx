@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageUpdated } from "@/lib/pageDates";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import { IntegrationPilot } from "@/components/pilots/ExpansionPilots";
@@ -67,5 +68,5 @@ export default async function IntegrationPageRoute({ params }: { params: Promise
     breadcrumbSchema(crumbs)
   );
 
-  return <><JsonLd data={structuredData} /><IntegrationPilot page={integration} crumbs={crumbs} fit={fit} /></>;
+  return <><JsonLd data={structuredData} /><IntegrationPilot page={integration} crumbs={crumbs} fit={fit}  updated={await pageUpdated(path)} /></>;
 }

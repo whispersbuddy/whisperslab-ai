@@ -711,6 +711,129 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedCaseStudySlugs: ["inspection-report-writes-itself"],
     relatedPosts: ["lease-renewal-automation-for-property-managers", "real-estate-lead-follow-up-automation"],
   },
+  {
+    slug: "black-friday-order-surge-small-online-stores",
+    angle: "industry",
+    category: "document-data",
+    industry: "ecommerce-retail",
+    title: "Black Friday Order Surge: What a Small Online Store Should Automate First",
+    excerpt:
+      "Black Friday rarely breaks a store because of traffic. It breaks the copy-and-paste steps behind the store. Here are the three hand-offs to fix before Nov 27, 2026, and what to leave alone.",
+    publishedAt: "2026-11-02",
+    readTime: "6 min read",
+    heroImage: "/assets/blog/black-friday-hero.svg",
+    heroImageAlt: "Three stylized panels joined by arrows, showing an order moving from one system to the next",
+    takeaways: [
+      "US shoppers spent $11.8 billion online on Black Friday 2025, up 9.1% on the year before, and $14.25 billion on Cyber Monday, up 7.1%, according to [Adobe's season recap](https://news.adobe.com/news/2026/01/adobe-holiday-shopping-season).",
+      "Volume exposes three manual hand-offs first: new orders copied into the shipping tool, stock counts kept in step between store and warehouse, and product costs that drift. Each is a step where a person copies a number from one screen to another.",
+      "One store we built for passes every new BigCommerce order to ShipStation within moments. Orders moved by hand: 0.",
+      "Another keeps products, stock, pricing and orders in agreement between Shopify and its warehouse system, with 100% of orders passed on automatically and 0 updates lost to rate limits.",
+      "Black Friday is Nov 27 and Cyber Monday is Nov 30 in 2026. A workflow needs testing in a safe copy before it touches live orders, so a change that is not tested by about Nov 20 should wait until after the season.",
+    ],
+    content: [
+      {
+        type: "p",
+        text: "A small online store does not usually fail on Black Friday because too many people showed up. It fails because the orders arrive faster than someone can copy them. An order sits in the store until a person moves it to the shipping tool. A stock count says 12 while the shelf says 0. A price changes in one system and not the other.",
+      },
+      {
+        type: "p",
+        text: "The scale of the weekend is real. Adobe reports that US shoppers spent [$11.8 billion online on Black Friday 2025, up 9.1% year over year, and $14.25 billion on Cyber Monday, up 7.1%](https://news.adobe.com/news/2026/01/adobe-holiday-shopping-season). You are not competing with that number. You are trying to make sure your own busiest three days do not depend on one person typing fast.",
+      },
+      {
+        type: "p",
+        text: "This post covers the three hand-offs that tend to break first, what a build for each looks like, what should stay manual, and a dated plan that fits the four weeks you have left.",
+      },
+      { type: "h2", text: "1. The order that waits for someone to copy it" },
+      {
+        type: "p",
+        text: "The simplest failure is also the most common. A customer pays, the order lands in the store, and a person transfers it to the shipping tool by hand. At 20 orders a day that is a chore. At 200 it is a queue, and every transfer is a chance for a delay or a typo in an address.",
+      },
+      {
+        type: "p",
+        text: "**What to automate:** the moment an order is paid, a workflow maps the customer details, products, quantities and shipping information into the shipping tool and creates the order there. When the status changes in the shipping tool, a second workflow updates the matching order in the store. For one client, [a set of n8n workflows now passes new BigCommerce orders to ShipStation within moments](/case-studies/store-and-shipping-tool-stay-in-step), and the number of orders moved by hand is zero.",
+      },
+      { type: "h2", text: "2. Stock that says yes when the shelf says no" },
+      {
+        type: "p",
+        text: "If you run a store and a separate warehouse or inventory system, the two will drift apart under load. A product sells on the store before the warehouse count updates, and you have oversold something you cannot ship. Every one of those gaps becomes a refund, an apology email, or a bad review, and they multiply when the catalog is large.",
+      },
+      {
+        type: "p",
+        text: "**What to automate:** products, stock levels, prices and orders flowing both ways between the store and the warehouse system, so what the customer sees is what is on the shelf. This is the one place we are careful about the tool. For [a Shopify and Neto store](/case-studies/storefront-and-warehouse-agree), the client first planned a no-code build. We advised against it: rate limits on both platforms, retries and webhook reliability would fail long before the business stopped growing. We built a dedicated service with a queue that waits and retries when either system slows down, instead of dropping work. Result: 100% of orders passed on automatically and no updates lost to rate limits or duplicate events.",
+      },
+      {
+        type: "p",
+        text: "The lesson is not that no-code is wrong. It is that a high-volume sync deserves an honest look at what happens when one side is slow. For a few dozen orders a day, a simple workflow is often enough.",
+      },
+      { type: "h2", text: "3. Costs and prices that drift while you are busy" },
+      {
+        type: "p",
+        text: "A sale weekend is also when you find out whether your margin numbers are true. If new stock arrives at a different price and your system overwrites the cost on everything already on the shelf, your reports will look fine and be wrong. [One client with roughly 14,000 SKUs](/case-studies/inventory-cost-corrects-itself) had exactly this problem. A costing layer now blends the price of new units with the units already on hand the moment stock is received, writes the corrected cost back, and keeps a readable ledger row for every receipt.",
+      },
+      {
+        type: "p",
+        text: "**What to automate:** any calculation you currently redo by hand after a shipment arrives. It is rule-based, it repeats, and it is where mistakes hide.",
+      },
+      { type: "h2", text: "What should stay manual this season" },
+      {
+        type: "p",
+        text: "Automation handles the copying. It should not make the judgment calls.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Refund and fraud decisions.** Flag suspicious orders automatically, but let a person decide.",
+          "**Pricing and discount changes.** Set them deliberately, then let the systems carry them.",
+          "**Customer complaints.** Route them quickly, answer them as a human.",
+          "**Anything untested.** A new workflow that has never run on a real order is a risk, not a shortcut, in the busiest week of your year.",
+        ],
+      },
+      { type: "h2", text: "A dated plan for the next four weeks" },
+      {
+        type: "list",
+        items: [
+          "**This week (by Nov 6):** list every place a person copies an order, a stock count or a price by hand. Count how many times it happened on last year's busiest day.",
+          "**By Nov 13:** pick the single hand-off that costs the most time or causes the most errors. Fix one, not three.",
+          "**Nov 14 to 20:** build it and test it in a safe copy of your setup, not on live orders.",
+          "**Nov 21:** freeze changes. If it is not tested by now, leave it until after Cyber Monday.",
+          "**Nov 27 and Nov 30:** run the weekend, watch the first hour of each day, and keep a person on call for exceptions.",
+        ],
+      },
+      { type: "h2", text: "Where to actually start" },
+      {
+        type: "p",
+        text: "Ask one question: which copy step did we do by hand the most last year? That is your first workflow. If you run a catalog from a supplier feed instead, [our guide to product listing automation](/blog/ecommerce-product-listing-automation-supplier-feeds) covers that side. For more on how this works in practice, see how we approach [e-commerce and retail](/industries/ecommerce-retail).",
+      },
+      {
+        type: "callout",
+        text: "Not sure which hand-off is costing your store the most? Our [$250 Automation Audit](/audit) maps every process on volume and cost and is delivered in 7 business days. If that is too late to build before the season, it will also tell you what to fix in January instead.",
+      },
+    ],
+    faq: [
+      {
+        question: "What should an online store automate before Black Friday?",
+        answer:
+          "Start with the hand-off that people repeat most and that needs the least judgment. For most small online stores that is copying new orders into the shipping tool, keeping stock counts in step between the store and the warehouse, and recalculating product costs when new stock arrives. Fix one of these well before the weekend instead of changing all three.",
+      },
+      {
+        question: "How much does it cost to automate order processing?",
+        answer:
+          "At Whispers Lab it starts with a $250 Automation Audit, which is credited toward the build if you go ahead. One standard workflow, such as passing orders from the store to the shipping tool, starts from $2,500 at a fixed price. A larger two-way sync between a store and a warehouse system is scoped after the Audit, because the volume and the systems involved change the work.",
+      },
+      {
+        question: "Will automation replace my warehouse or support staff?",
+        answer:
+          "No. It takes over the copying, such as moving an order from one system to another, so your team spends the busy weekend on exceptions, damaged goods and customers who need a person. Refund decisions, fraud checks and complaints stay with people.",
+      },
+      {
+        question: "Is it too late to automate before Black Friday 2026?",
+        answer:
+          "Black Friday is Nov 27 and Cyber Monday is Nov 30, 2026. A single, simple workflow can still be built and tested in a safe copy of your setup if you start this month, but anything not tested by about Nov 20 should wait until January. Rushing an untested workflow into the busiest week of the year is a bigger risk than waiting.",
+      },
+    ],
+    relatedCaseStudySlugs: ["store-and-shipping-tool-stay-in-step", "storefront-and-warehouse-agree", "inventory-cost-corrects-itself"],
+    relatedPosts: ["ecommerce-product-listing-automation-supplier-feeds"],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

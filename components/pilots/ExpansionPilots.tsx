@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthorByline from "@/components/AuthorByline";
 import { ZAPIER_PARTNER_URL } from "@/lib/social";
 import Link from "next/link";
 import { ArrowRight, Check, ExternalLink, LockKeyhole, ShieldCheck } from "lucide-react";
@@ -240,7 +241,7 @@ const SERVICE_COPY: Record<string, { jump: string; modelTitle: string; modelBody
   },
 };
 
-export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crumb[] }) {
+export function ServicePilot({ page, crumbs, updated }: { page: ServicePage; crumbs: Crumb[]; updated?: string }) {
   const featured = page.proof.featured;
   const visual = SERVICE_VISUALS[page.slug] ?? SERVICE_VISUALS["data-entry-automation"];
   const copy = SERVICE_COPY[page.slug] ?? { jump: "Documents", modelTitle: "Four stages. One visible exception queue.", modelBody: "The automation does not hide uncertainty. It moves clean work forward and stops exactly where a person is needed." };
@@ -259,6 +260,7 @@ export function ServicePilot({ page, crumbs }: { page: ServicePage; crumbs: Crum
               <Link href="/audit" className="btn btn-primary">Start with the $250 Audit <ArrowRight size={15} /></Link>
               <Link href="#workflow" className="pilot-text-link">See the workflow <span>↓</span></Link>
             </div>
+            <AuthorByline updated={updated} />
           </div>
 
           <div className="de-flow" aria-label={`Example ${page.slug.replace(/-/g, " ")} flow`}>
@@ -349,7 +351,7 @@ const INDUSTRY_EDITORIAL: Record<string, { image: string; alt: string; handles: 
   "accounting-bookkeeping": { image: "/assets/industries/accounting-editorial.png", alt: "Accounting team reviewing financial documents", handles: "Document collection, extraction, matching, reminders", humans: "Review, tax treatment, advice, final approval", dayTitle: "Clean records arrive before the review work begins.", cta: "Map your accounting workflow", final: "START WITH THE ADMIN AROUND THE NUMBERS" },
 };
 
-export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Crumb[] }) {
+export function IndustryPilot({ page, crumbs, updated }: { page: IndustryPage; crumbs: Crumb[]; updated?: string }) {
   const proofRows = page.proof.mode === "closest" ? page.proof.rows : [];
   // A Strapi-sourced industry carries its own editorial data (see
   // mapStrapiIndustry in lib/api.ts); the code-side lookup table is only a
@@ -373,7 +375,7 @@ export function IndustryPilot({ page, crumbs }: { page: IndustryPage; crumbs: Cr
             <span className="pilot-label pilot-label-light">{page.hero.eyebrow}</span>
             <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
             <p>{page.hero.answer}</p>
-            <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">{editorial.cta}</Link><Link href="#day" className="pilot-text-link is-light">See a day after automation ↓</Link></div>
+            <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">{editorial.cta}</Link><Link href="#day" className="pilot-text-link is-light">See a day after automation ↓</Link></div><AuthorByline updated={updated} />
           </div>
         </div>
       </section>
@@ -430,7 +432,7 @@ const INTEGRATION_BLUEPRINTS: Record<string, { mark: string; sourceLabel: string
   zapier: { mark: "zapier", sourceLabel: "TRIGGERS", sources: [["New form", "Lead or client intake"], ["New sale", "Payment or order event"], ["Row updated", "Spreadsheet or database"]], core: "Trigger to action", coreSub: "Fast, familiar, maintainable", outputLabel: "AUTOMATED ACTIONS", outputs: [["Lead arrives", "Create CRM record"], ["Sale closes", "Send receipt"], ["Booking made", "Schedule reminder"]] },
 };
 
-export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage; crumbs: Crumb[]; fit: { good: string[]; caution: string[] } }) {
+export function IntegrationPilot({ page, crumbs, fit, updated }: { page: IntegrationPage; crumbs: Crumb[]; updated?: string; fit: { good: string[]; caution: string[] } }) {
   const featured = page.proof.featured;
   const blueprint = INTEGRATION_BLUEPRINTS[page.slug] ?? INTEGRATION_BLUEPRINTS.airtable;
   const relatedIndustries = resolvePathLinks(page.related.industries);
@@ -445,6 +447,7 @@ export function IntegrationPilot({ page, crumbs, fit }: { page: IntegrationPage;
           <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
           <p>{page.hero.answer}</p>
           <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
+          <AuthorByline updated={updated} />
           {page.slug === "zapier" ? (
             // eslint-disable-next-line @next/next/no-img-element
             <a href={ZAPIER_PARTNER_URL} target="_blank" rel="noopener" aria-label="Whispers Lab in the Zapier partner directory" style={{ display: "inline-block", marginTop: 28 }}><img src="/assets/badges/zapier-silver-solution-partner-dark.svg" alt="Zapier Silver Solution Partner badge" width={300} height={115} style={{ display: "block", marginTop: 28, borderRadius: 12, maxWidth: "100%", height: "auto" }} /></a>

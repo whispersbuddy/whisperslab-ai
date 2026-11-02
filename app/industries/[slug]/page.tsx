@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageUpdated } from "@/lib/pageDates";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import { IndustryPilot } from "@/components/pilots/ExpansionPilots";
@@ -50,5 +51,5 @@ export default async function IndustryPageRoute({ params }: { params: Promise<{ 
     breadcrumbSchema(crumbs)
   );
 
-  return <><JsonLd data={structuredData} /><IndustryPilot page={industry} crumbs={crumbs} /></>;
+  return <><JsonLd data={structuredData} /><IndustryPilot page={industry} crumbs={crumbs}  updated={await pageUpdated(path)} /></>;
 }
