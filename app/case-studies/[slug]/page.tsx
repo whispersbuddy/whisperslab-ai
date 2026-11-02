@@ -9,7 +9,8 @@ import RelatedLinks from "@/components/RelatedLinks";
 import CaseFlow from "@/components/CaseFlow";
 import CaseFlowDiagram from "@/components/CaseFlowDiagram";
 import { CASE_FLOWS } from "@/app/_content/caseFlows";
-import { PROVIDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
+import AuthorByline from "@/components/AuthorByline";
+import { FOUNDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const strapiStudies = await fetchCaseStudies();
@@ -89,6 +90,10 @@ export default async function CaseStudyDetailPage({
     cs.detail = staticCs.detail;
   }
 
+  // Last edit in Strapi, when the case study lives there. Local-only studies have no date.
+  const updatedAt = (strapiCs as { updatedAt?: string } | null)?.updatedAt;
+  const updated = updatedAt ? updatedAt.slice(0, 10) : undefined;
+
   const [relatedGuides, moreCaseStudies] = await Promise.all([
     getPostsForCaseStudy(slug),
     getRelatedCaseStudies(slug),
@@ -100,7 +105,8 @@ export default async function CaseStudyDetailPage({
     headline: cs.title,
     description: cs.goal,
     about: cs.industry,
-    author: PROVIDER,
+    author: FOUNDER,
+    ...(updated ? { dateModified: updated } : {}),
     publisher: PUBLISHER,
     isPartOf: { "@id": WEBSITE_ID },
     mainEntityOfPage: `https://www.whisperslab.com/case-studies/${cs.slug}`,
@@ -134,6 +140,7 @@ export default async function CaseStudyDetailPage({
             <p className="case-goal">
               <strong>The goal:</strong> {cs.goal}
             </p>
+            <AuthorByline updated={updated} />
           </div>
         </section>
 

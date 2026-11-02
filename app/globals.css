@@ -2467,3 +2467,10 @@ a.cf-name:hover { color: #6b7cff; }
   .offer-assurance .container > div { grid-template-columns: 1fr; }
   .offer-assurance article { min-height: 0; }
 }
+
+/* Author byline on service, industry, integration and case study pages (components/AuthorByline.tsx). */
+.author-byline { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 13px; line-height: 1.45; color: rgba(255,255,255,0.7); }
+.author-byline img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.25); flex: none; }
+.author-byline a { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.35); }
+.author-byline a:hover { border-bottom-color: #fff; }
+.author-byline time { color: #fff; }
