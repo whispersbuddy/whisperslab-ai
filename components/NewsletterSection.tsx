@@ -7,7 +7,7 @@ export default function NewsletterSection() {
         <span className="eyebrow eyebrow-light">
           WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME
         </span>
-        <h2>Delete one hour of busywork this week.</h2>
+        <p className="join-heading">Delete one hour of busywork this week.</p>
         <p className="section-copy">
           Get our free &quot;Busywork Elimination Framework&quot; and join our
           Tuesday newsletter. Every week, we send you one manual task to
