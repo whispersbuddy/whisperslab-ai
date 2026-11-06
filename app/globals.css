@@ -1038,7 +1038,9 @@ a.cf-name:hover { color: #6b7cff; }
 /* JOIN THE LAB */
 .join-section { background: rgb(15,17,23); color: #fff; text-align: center; }
 .join-inner { display: flex; flex-direction: column; align-items: center; }
-.join-section h2 { color: #fff; max-width: 640px; }
+.join-section h2, .join-heading { color: #fff; max-width: 640px; }
+/* Same look as the page h2s, but not a heading: the block repeats on many pages (components/NewsletterSection.tsx). */
+.join-heading { font-family: 'Satoshi', sans-serif; font-weight: 900; font-size: 46px; line-height: 1.08; letter-spacing: -1.6px; }
 .join-section .section-copy { color: rgba(255,255,255,0.65); margin-left: auto; margin-right: auto; }
 .join-section .btn-dark { background: #fff; color: #111; margin-top: 32px; }
 
@@ -1262,6 +1264,7 @@ a.cf-name:hover { color: #6b7cff; }
   .toolkit { margin-top: 40px; }
   .toolkit-icons { width: min(320px, 78vw); }
   h2 { font-size: 32px; letter-spacing: -1px; }
+  .join-heading { font-size: 32px; letter-spacing: -1px; }
   .section { padding: 70px 0; }
 
   .stats-grid { grid-template-columns: repeat(2, 1fr); }

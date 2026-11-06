@@ -20,7 +20,7 @@ function Column({ title, links }: { title: string; links: { href: string; label:
   if (links.length === 0) return null;
   return (
     <div className="sf-col">
-      <h2 className="sf-title">{title}</h2>
+      <p className="sf-title">{title}</p>
       <ul>
         {links.map((l) => (
           <li key={l.href}>
