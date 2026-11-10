@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, Calculator, Check, FileSearch, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Check, FileSearch, ShieldCheck, Sparkles } from "lucide-react";
 
 export default function HomeOfferPath() {
   return (
     <section className="home-offer-path" id="services">
       <div className="container">
         <header className="home-offer-head">
-          <div><span className="eyebrow">HOW WE WORK</span><h2>Choose the next decision—not a confusing package.</h2></div>
-          <p>Start where your business is today. Diagnose the opportunity, build the right workflow, then add ongoing care only when there is something worth protecting.</p>
+          <div><span className="eyebrow">HOW WE WORK</span><h2>How does it work?</h2></div>
+          <p>Start where your business is today: diagnose the opportunity, build the right workflow, then add ongoing care only when there is something worth protecting.</p>
         </header>
 
         <div className="home-offer-journey">
@@ -41,11 +41,6 @@ export default function HomeOfferPath() {
               <Link href="/growth-partner"><span><b>AI Growth Partner</b><small>From $1,250/month</small></span><em>Maintain and expand</em><ArrowRight size={15} /></Link>
             </div>
           </article>
-        </div>
-
-        <div className="home-free-tools">
-          <div><span className="eyebrow">NOT READY TO INVEST YET?</span><h3>Measure the opportunity first.</h3><p>Use a free tool to understand the cost and readiness of your current manual work.</p></div>
-          <div><Link href="/resources/automation-roi-calculator"><Calculator size={18} /><span><b>Calculate your automation ROI</b><small>Estimate what busywork costs each month</small></span><ArrowRight size={16} /></Link><Link href="/resources/ai-readiness-assessment"><FileSearch size={18} /><span><b>Check AI readiness</b><small>A free three-minute assessment</small></span><ArrowRight size={16} /></Link></div>
         </div>
       </div>
     </section>

@@ -69,7 +69,7 @@ export type SiteRoute = {
 
 export const ROUTES: SiteRoute[] = [
   // Existing pages
-  { path: "/", label: "Home", group: "core", icon: "home", live: true, updated: "2026-10-15", priority: 1, changeFrequency: "weekly" },
+  { path: "/", label: "Home", group: "core", icon: "home", live: true, updated: "2026-11-10", priority: 1, changeFrequency: "weekly" },
   { path: "/audit", label: "Automation Audit", group: "pricing", icon: "clipboardCheck", price: "$250", blurb: "A 7-day map of what to automate first", live: true, updated: "2026-09-27", priority: 0.9, changeFrequency: "monthly" },
   { path: "/core-build", label: "Core Build", group: "pricing", icon: "hammer", price: "from $2,500", blurb: "Your highest-value workflow, live in 30 days", live: true, updated: "2026-09-27", priority: 0.9, changeFrequency: "monthly" },
   { path: "/case-studies", label: "Case Studies", group: "company", icon: "briefcase", live: true, updated: "2026-09-27", priority: 0.8, changeFrequency: "weekly" },
