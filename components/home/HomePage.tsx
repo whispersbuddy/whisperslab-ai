@@ -6,7 +6,8 @@
 // hairline rules, square corners, one accent colour (see app/styles/home.css).
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Fragment } from "react";
+import { ArrowRight, ClipboardCheck, KeyRound, ShieldCheck, Workflow } from "lucide-react";
 import HomeOfferPath from "@/components/HomeOfferPath";
 import LatestPosts from "@/components/LatestPosts";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -24,11 +25,10 @@ const START_HERE = [
   { label: "Automation examples by department", href: "/use-cases" },
 ];
 
-const FACTS = [
-  { big: "$250", label: "Automation Audit, credited toward a build" },
-  { big: "From $2,500", label: "Fixed-price Core Build" },
-  { big: "30 days", label: "From kickoff to a live workflow" },
-  { big: "$500/mo", label: "Automation Care, after launch" },
+const STEPS = [
+  { icon: ClipboardCheck, name: "Automation Audit", price: "$250", note: "One-time, credited toward a build", href: "/audit", path: "M0,96 C50,96 50,70 100,70" },
+  { icon: Workflow, name: "Core Build", price: "From $2,500", note: "Fixed price, built in 30 days", href: "/core-build", path: "M0,70 C50,70 50,44 100,44" },
+  { icon: ShieldCheck, name: "Automation Care", price: "$500/mo", note: "We maintain it after launch", href: "/automation-care", path: "M0,44 C50,44 50,26 100,26" },
 ];
 
 const SERVICES = [
@@ -74,46 +74,71 @@ export default function HomePage() {
       {/* HERO */}
       <section className="hm-hero" id="home">
         <div className="container">
-          <div className="hm-hero-grid">
-            <div className="hm-hero-copy">
-              <p className="hm-kicker">We delete busywork.</p>
-              <h1>Small business automation, built and maintained for you.</h1>
+          <div className="hm-hero-copy">
+            <p className="hm-kicker">We delete busywork.</p>
+            <h1>
+              Small business automation, <span className="hm-grad-text">built and maintained for you.</span>
+            </h1>
+            <div className="hm-hero-row">
               <p className="hm-lead">
                 Whispers Lab is a US automation agency that builds and maintains done-for-you automations for small
                 businesses on n8n, Zapier, Make and Airtable.
               </p>
-              <div className="hm-actions">
-                <Link href="/audit" className="hm-btn">Start with the $250 Audit <ArrowRight size={16} aria-hidden="true" /></Link>
-                <Link href="/services" className="hm-link-light">See the services <ArrowRight size={16} aria-hidden="true" /></Link>
+              <div className="hm-hero-cta">
+                <div className="hm-actions">
+                  <Link href="/audit" className="hm-btn">Start with the $250 Audit <ArrowRight size={16} aria-hidden="true" /></Link>
+                  <Link href="/services" className="hm-link-light">See the services <ArrowRight size={16} aria-hidden="true" /></Link>
+                </div>
+                <p className="hm-promise">Fixed prices. You own every account.</p>
+                <ReviewLinks tone="dark" compact />
               </div>
-              <p className="hm-promise">Fixed prices. You own every account.</p>
-              <ReviewLinks tone="dark" compact />
             </div>
-
-            <nav className="hm-index" aria-labelledby="hm-index-title">
-              <p className="hm-index-title" id="hm-index-title">Start here</p>
-              <ol>
-                {START_HERE.map((l, i) => (
-                  <li key={l.href}>
-                    <Link href={l.href}>
-                      <span className="hm-index-num">{pad(i)}</span>
-                      <span className="hm-index-label">{l.label}</span>
-                      <ArrowRight size={15} aria-hidden="true" />
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </nav>
           </div>
 
-          <dl className="hm-facts">
-            {FACTS.map((f) => (
-              <div key={f.big}>
-                <dt>{f.big}</dt>
-                <dd>{f.label}</dd>
-              </div>
+          <div className="hm-eq" role="group" aria-label="How an engagement fits together">
+            {STEPS.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Fragment key={s.href}>
+                  <Link href={s.href} className={`hm-step hm-step-${i + 1}`}>
+                    <span className="hm-cube"><Icon size={34} strokeWidth={1.5} aria-hidden="true" /></span>
+                    <span className="hm-step-name">{s.name}</span>
+                    <span className="hm-step-price">{s.price}</span>
+                    <span className="hm-step-note">{s.note}</span>
+                    <span className="hm-drop" aria-hidden="true" />
+                    <svg className="hm-seg" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d={s.path} vectorEffect="non-scaling-stroke" /></svg>
+                    <span className="hm-dot" aria-hidden="true" />
+                  </Link>
+                  <span className="hm-op" aria-hidden="true">{i < STEPS.length - 1 ? "+" : "="}</span>
+                </Fragment>
+              );
+            })}
+            <div className="hm-step hm-result">
+              <span className="hm-cube hm-cube-result"><KeyRound size={34} strokeWidth={1.5} aria-hidden="true" /></span>
+              <span className="hm-step-name">A workflow you own</span>
+              <span className="hm-step-price">30 days</span>
+              <span className="hm-step-note">From kickoff to live. Every account stays in your name.</span>
+            </div>
+          </div>
+        </div>
+        <div className="hm-grain" aria-hidden="true" />
+      </section>
+
+      {/* START HERE */}
+      <section className="hm-start hm-white" aria-labelledby="hm-start-title">
+        <div className="container hm-start-grid">
+          <p className="hm-start-title" id="hm-start-title">Start here</p>
+          <ol>
+            {START_HERE.map((l, i) => (
+              <li key={l.href}>
+                <Link href={l.href}>
+                  <span className="hm-index-num">{pad(i)}</span>
+                  <span className="hm-index-label">{l.label}</span>
+                  <ArrowRight size={15} aria-hidden="true" />
+                </Link>
+              </li>
             ))}
-          </dl>
+          </ol>
         </div>
       </section>
 
