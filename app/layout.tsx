@@ -121,7 +121,7 @@ export default function RootLayout({
         <meta name="geo.region" content="US" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap"
         />
         <link
           rel="stylesheet"
