@@ -260,6 +260,14 @@ export const INTEGRATIONS: IntegrationPage[] = [
           a: "Ask four things. Can they show finished work with real results? Who owns the account and the base afterward? Is the price fixed or hourly? Who fixes it when something breaks? Our answers: a published case study (The CRM That Fills Itself In, about 6 hours a week saved), you own the account, prices are fixed, and Automation Care covers upkeep at $500 a month.",
         },
         {
+          q: "Do I need an Airtable consultant, expert, freelancer, or agency?",
+          a: "The words overlap, so look at what you are buying. A freelancer builds the base you describe. An expert knows Airtable deeply. An agency adds process: a plan first, a base your team approves before automations go live, documentation, and upkeep. If you already know the tables you need, a freelancer can be enough. If your data is scattered across tools and you are not sure where to start, begin with the $250 Automation Audit.",
+        },
+        {
+          q: "When do I need an Airtable expert, and when can I do it myself?",
+          a: "You can build a simple list or tracker yourself. Bring in an expert when two or more people update the same data, when the same record has to be copied between tools, or when you want automations that alert people on rules. That is the point where a base starts to need linked tables, views for each role, and written documentation.",
+        },
+        {
           q: "Can you fix a base we already have?",
           a: "Yes. Many projects start with a base that grew messy. We review the structure, merge duplicate records, fix the links between tables, and then add automations. The Automation Audit shows whether a cleanup or a rebuild makes more sense.",
         },
@@ -480,9 +488,31 @@ export const INTEGRATIONS: IntegrationPage[] = [
         { label: "Data Entry Automation", href: "/services/data-entry-automation" },
       ],
     },
+    cost: {
+      eyebrow: "What it costs",
+      title: "How much does an n8n consultant cost?",
+      intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. n8n's own plan or server costs are separate and go on your account.",
+      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+    },
     faq: {
       title: "Questions owners ask about n8n",
       items: [
+        {
+          q: "What does an n8n consultant do?",
+          a: "An n8n consultant finds the handoffs in your business where a person copies, checks, or forwards information, builds n8n workflows to do it, tests them on a copy of your data, and hands over documentation. A good one also sets up error alerts, so a failed run reaches a named person instead of failing quietly. Whispers Lab does all of this, and the workflows live in an n8n account you own.",
+        },
+        {
+          q: "How do I choose an n8n consultant?",
+          a: "Ask four things. Can they show finished n8n work with real results? Who owns the n8n account and the workflow files afterward? Is the price fixed or hourly? Who fixes a workflow when it breaks? Our answers: published case studies (The CRM That Fills Itself In, about 6 hours a week saved, and The Lead Sales Engine That Runs Itself), you own the account, prices are fixed, and Automation Care covers upkeep at $500 a month.",
+        },
+        {
+          q: "Where can I hire an n8n developer?",
+          a: "There are three common places. n8n publishes its own directory of experts, freelance marketplaces list independent builders, and agencies like Whispers Lab build and then maintain the workflows. The directory and marketplaces fit when you can scope the work yourself and manage the person. An agency fits when you want a fixed price, a tested hand-off, and someone responsible after launch.",
+        },
+        {
+          q: "Do I need an n8n consultant, specialist, freelancer, or agency?",
+          a: "The words overlap, so look at what you are buying. A freelancer builds what you describe. A specialist knows the tool deeply. An agency adds process: a plan first, tested builds, documentation, and upkeep. If you already know what to build and can review it, a freelancer can be enough. If you are not sure which workflows are worth building, start with the $250 Automation Audit.",
+        },
         {
           q: "What is n8n used for?",
           a: "n8n is a workflow automation platform used to connect business apps and run multi-step processes without manual work, things like logging emails to a CRM, routing new leads, generating documents, or sending alerts. Workflows can branch on conditions, run custom code, and call AI models where a step needs it.",
@@ -712,6 +742,14 @@ export const INTEGRATIONS: IntegrationPage[] = [
         {
           q: "How do I choose a Zapier consultant?",
           a: "Ask four things. Can they show finished work with real results? Who owns the Zapier account afterward? Is the price fixed or hourly? Who fixes a Zap when it breaks? Our answers: a published case study (The Zero Double-Entry Financial Pipeline, about 10 hours a week saved), you own the account, prices are fixed, and Automation Care covers upkeep at $500 a month.",
+        },
+        {
+          q: "Do I need a Zapier consultant, expert, freelancer, or agency?",
+          a: "The words overlap, so look at what you are buying. A freelancer builds the Zaps you describe. An expert knows Zapier deeply. An agency adds process: a plan first, Zaps tested on a copy of your data, documentation, and upkeep. If you already know which apps to connect, a freelancer can be enough. If you are not sure which handoffs are worth automating, begin with the $250 Automation Audit.",
+        },
+        {
+          q: "When do I need a Zapier expert, and when can I set it up myself?",
+          a: "A single trigger and one action is easy to set up yourself, and Zapier's free plan covers it. Bring in an expert when a Zap has several steps, when two systems update each other and could loop, or when a failed Zap would cost you money or a client. That is where testing on a copy of your data and error alerts start to matter.",
         },
         {
           q: "What is Zapier used for?",
