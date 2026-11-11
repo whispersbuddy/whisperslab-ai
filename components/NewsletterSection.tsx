@@ -16,9 +16,8 @@ export default function NewsletterSection({ variant = "default" }: { variant?: "
       <section className="hm-section hm-paper hm-news-section" id="framework">
         <div className="container">
           <div className="hm-news">
-            <div className="hm-news-bg" aria-hidden="true" />
             <div className="hm-news-copy">
-              <p className="hm-eyebrow hm-eyebrow-light">Every Tuesday · Free</p>
+              <p className="hm-eyebrow">Every Tuesday · Free</p>
               <h2>Delete one hour of busywork this week.</h2>
               <p>
                 Join the Tuesday newsletter and get our free &quot;Busywork Elimination Framework&quot;. One manual task
