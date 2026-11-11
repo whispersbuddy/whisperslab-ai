@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { ReadinessPilot } from "@/components/pilots/ExpansionPilots";
+import { ReadinessPage } from "@/components/resources/ResourcePages";
 import { READINESS_FAQ, READINESS_SEO } from "@/app/_content/resources";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL, WEBSITE } from "@/lib/seo";
 
@@ -38,7 +38,7 @@ export default function ReadinessAssessmentPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <ReadinessPilot crumbs={CRUMBS} />
+      <ReadinessPage crumbs={CRUMBS} />
     </>
   );
 }

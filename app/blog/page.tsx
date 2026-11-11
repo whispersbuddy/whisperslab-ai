@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import NewsletterSection from "@/components/NewsletterSection";
-import BlogCard from "@/components/BlogCard";
+import BlogIndex from "@/components/blog/BlogIndex";
 import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -63,26 +62,7 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <main>
-        <section className="contact-banner">
-          <div className="container">
-            <span className="eyebrow eyebrow-light">THE LAB REPORT · BLOG</span>
-            <h1>Automation, minus the hype.</h1>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="blog-grid">
-              {posts.map((post) => (
-                <BlogCard post={post} key={post.slug} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <NewsletterSection />
-      </main>
+      <BlogIndex posts={posts} />
     </>
   );
 }

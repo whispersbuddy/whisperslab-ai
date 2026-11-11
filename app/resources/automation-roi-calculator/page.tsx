@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { RoiPilot } from "@/components/pilots/ExpansionPilots";
+import { RoiCalculatorView } from "@/components/resources/ResourcePages";
 import { ROI_CALCULATOR } from "@/app/_content/resources";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL, WEBSITE } from "@/lib/seo";
 
@@ -39,7 +39,7 @@ export default function RoiCalculatorPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <RoiPilot crumbs={CRUMBS} />
+      <RoiCalculatorView crumbs={CRUMBS} />
     </>
   );
 }

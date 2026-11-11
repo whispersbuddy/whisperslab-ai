@@ -8,7 +8,8 @@ import { getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { getBlogPostBySlug, BLOG_POSTS } from "@/app/_content/blogData";
 import { fetchArticleBySlug, fetchCaseStudyBySlug } from "@/lib/api";
 import { getAllPosts, getRelatedPosts } from "@/lib/content";
-import RelatedLinks from "@/components/RelatedLinks";
+import { ArrowRight } from "lucide-react";
+import { PostCard } from "@/components/blog/BlogIndex";
 import { blogServiceLinks } from "@/lib/blogLinks";
 import { FOUNDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
 import ReactMarkdown from 'react-markdown';
@@ -253,18 +254,25 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <main>
+      <main className="hm hm-post">
         <article>
-          <section className="blog-detail-banner">
+          <header className="hm-section hm-dark hm-phero hm-post-hero">
+            <div className="hm-dark-bg" aria-hidden="true" />
             <div className="container">
-              <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/blog">Blog</Link>
-                <span> / </span>
+              <nav className="hm-crumbs" aria-label="Breadcrumb">
+                <span>
+                  <Link href="/">Home</Link>
+                  <i aria-hidden="true">/</i>
+                </span>
+                <span>
+                  <Link href="/blog">Blog</Link>
+                </span>
               </nav>
-              {category && <span className="blog-category-badge">{category.name}</span>}
+              {category && <p className="hm-eyebrow hm-eyebrow-light">{category.name}</p>}
               <h1>{post.title}</h1>
-              <p className="blog-detail-meta">
-                By Haris Ali ·{" "}
+              <p className="hm-post-meta">
+                <span>By Haris Ali</span>
+                <i aria-hidden="true">/</i>
                 <time dateTime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
                     month: "long",
@@ -272,30 +280,35 @@ export default async function BlogPostPage({
                     year: "numeric",
                   })}
                 </time>
-                {" · "}
-                {post.readTime}
+                {post.readTime && (
+                  <>
+                    <i aria-hidden="true">/</i>
+                    <span>{post.readTime}</span>
+                  </>
+                )}
               </p>
             </div>
-            <div className="container">
-              <div className="blog-detail-hero">
-                <img src={post.heroImage} alt={post.heroImageAlt} />
-              </div>
-              {post.heroImageCredit && (
-                <span className="blog-image-credit">
-                  <a href={post.heroImageCredit.url} target="_blank" rel="noopener">
-                    {post.heroImageCredit.text}
-                  </a>
-                </span>
-              )}
-            </div>
-          </section>
+          </header>
 
-          <section className="section">
+          <section className="hm-section hm-white hm-post-section">
             <div className="container">
-              <div className="blog-detail-body">
+              {post.heroImage && (
+                <figure className="hm-post-figure">
+                  <img src={post.heroImage} alt={post.heroImageAlt} />
+                  {post.heroImageCredit && (
+                    <figcaption>
+                      <a href={post.heroImageCredit.url} target="_blank" rel="noopener">
+                        {post.heroImageCredit.text}
+                      </a>
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+
+              <div className="hm-post-body">
                 {post.takeaways && post.takeaways.length > 0 && (
-                  <div className="blog-takeaways">
-                    <span className="blog-takeaways-label">KEY TAKEAWAYS</span>
+                  <div className="hm-takeaways">
+                    <p className="hm-eyebrow">Key takeaways</p>
                     <ul>
                       {(typeof post.takeaways === 'string' ? post.takeaways.split('\n').filter(Boolean) : post.takeaways).map((t: any, i: number) => (
                         <li key={i}>{renderInline(t)}</li>
@@ -304,90 +317,129 @@ export default async function BlogPostPage({
                   </div>
                 )}
 
-                {typeof post.content === 'string' ? (
-                  <ReactMarkdown
-                    components={{
-                      blockquote(props) {
-                        return <div className="blog-detail-callout">{props.children}</div>;
+                <div className="hm-prose">
+                  {typeof post.content === 'string' ? (
+                    <ReactMarkdown
+                      components={{
+                        blockquote(props) {
+                          return <div className="hm-callout">{props.children}</div>;
+                        }
+                      }}
+                    >
+                      {post.content}
+                    </ReactMarkdown>
+                  ) : (
+                    post.content?.map((block: any, i: number) => {
+                      if (block.type === "h2") {
+                        return <h2 key={i}>{block.text}</h2>;
                       }
-                    }}
-                  >
-                    {post.content}
-                  </ReactMarkdown>
-                ) : (
-                  post.content?.map((block: any, i: number) => {
-                    if (block.type === "h2") {
-                      return <h2 key={i}>{block.text}</h2>;
-                    }
-                    if (block.type === "p") {
-                      return <p key={i}>{renderInline(block.text)}</p>;
-                    }
-                    if (block.type === "list") {
-                      return (
-                        <ul key={i}>
-                          {block.items.map((item: any, j: number) => (
-                            <li key={j}>{renderInline(item)}</li>
-                          ))}
-                        </ul>
-                      );
-                    }
-                    if (block.type === "callout") {
-                      return (
-                        <div className="blog-detail-callout" key={i}>
-                          {renderInline(block.text)}
-                        </div>
-                      );
-                    }
-                    return null;
-                  })
-                )}
+                      if (block.type === "p") {
+                        return <p key={i}>{renderInline(block.text)}</p>;
+                      }
+                      if (block.type === "list") {
+                        return (
+                          <ul key={i}>
+                            {block.items.map((item: any, j: number) => (
+                              <li key={j}>{renderInline(item)}</li>
+                            ))}
+                          </ul>
+                        );
+                      }
+                      if (block.type === "callout") {
+                        return (
+                          <div className="hm-callout" key={i}>
+                            {renderInline(block.text)}
+                          </div>
+                        );
+                      }
+                      return null;
+                    })
+                  )}
+                </div>
 
                 {relatedCaseStudies.length > 0 && (
-                  <div className="blog-related-case">
-                    <span className="blog-takeaways-label">
-                      {relatedCaseStudies.length > 1 ? "RELATED CASE STUDIES" : "RELATED CASE STUDY"}
-                    </span>
+                  <aside className="hm-rel">
+                    <p className="hm-eyebrow">
+                      {relatedCaseStudies.length > 1 ? "Related case studies" : "Related case study"}
+                    </p>
                     <ul>
                       {relatedCaseStudies.map((cs: any) => (
                         <li key={cs.slug}>
-                          <Link href={`/case-studies/${cs.slug}`}>{cs.title} →</Link>
+                          <Link href={`/case-studies/${cs.slug}`}>
+                            <span>{cs.title}</span>
+                            <ArrowRight size={16} aria-hidden="true" />
+                          </Link>
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </aside>
                 )}
 
-                <RelatedLinks label="HOW WE HELP WITH THIS" links={blogServiceLinks(post.slug)} />
-
-                <RelatedLinks
-                  label="KEEP READING"
-                  links={relatedPosts.map((p) => ({ href: `/blog/${p.slug}`, title: p.title }))}
-                />
+                {blogServiceLinks(post.slug).length > 0 && (
+                  <aside className="hm-rel">
+                    <p className="hm-eyebrow">How we help with this</p>
+                    <ul>
+                      {blogServiceLinks(post.slug).map((link) => (
+                        <li key={link.href}>
+                          <Link href={link.href}>
+                            <span>{link.title}</span>
+                            <ArrowRight size={16} aria-hidden="true" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </aside>
+                )}
 
                 {post.faq && post.faq.length > 0 && (
-                  <div className="blog-faq">
+                  <div className="hm-post-faq">
                     <h2>Frequently asked questions</h2>
-                    {post.faq.map((item: any, i: number) => (
-                      <div className="blog-faq-item" key={i}>
-                        <h3>{item.question}</h3>
-                        <p>{renderInline(item.answer)}</p>
-                      </div>
-                    ))}
+                    <div className="hm-faq">
+                      {post.faq.map((item: any, i: number) => (
+                        <details key={i}>
+                          <summary>
+                            {item.question}
+                            <span className="hm-faq-icon" aria-hidden="true" />
+                          </summary>
+                          <p>{renderInline(item.answer)}</p>
+                        </details>
+                      ))}
+                    </div>
                   </div>
                 )}
 
-                <div className="blog-detail-cta">
+                <div className="hm-post-cta">
                   <p>Think this might apply to your business?</p>
-                  <a href="/pricing#audit" className="btn btn-primary">
-                    Get the $250 Automation Audit
-                  </a>
+                  <span>Tell us what eats your week. The discovery call is free.</span>
+                  <Link href="/book" className="hm-btn hm-btn-light">
+                    <span>Book a free discovery call</span>
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
                 </div>
               </div>
             </div>
           </section>
+
+          {relatedPosts.length > 0 && (
+            <section className="hm-section hm-paper">
+              <div className="container">
+                <header className="hm-head">
+                  <p className="hm-eyebrow">Keep reading</p>
+                  <h2>More from the Lab Report.</h2>
+                </header>
+                <ul className="hm-pgrid">
+                  {relatedPosts.map((p) => (
+                    <li key={p.slug}>
+                      <PostCard post={p} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
         </article>
 
-        <NewsletterSection />
+        <NewsletterSection variant="home" />
       </main>
     </>
   );
