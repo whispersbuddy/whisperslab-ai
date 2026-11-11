@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageUpdated } from "@/lib/pageDates";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
-import { ServicePilot } from "@/components/pilots/ExpansionPilots";
+import ServiceTemplate from "@/components/service/ServiceTemplate";
 import { getRoute, isPathLive } from "@/lib/routes";
 import { allServiceSlugs, resolveService } from "@/lib/pageContent";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
@@ -56,5 +56,5 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
     breadcrumbSchema(crumbs)
   );
 
-  return <><JsonLd data={structuredData} /><ServicePilot page={service} crumbs={crumbs}  updated={await pageUpdated(path)} /></>;
+  return <><JsonLd data={structuredData} /><ServiceTemplate page={service} crumbs={crumbs} updated={await pageUpdated(path)} /></>;
 }

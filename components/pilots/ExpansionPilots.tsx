@@ -29,7 +29,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 // Cross-links a service/industry page's `related` slugs and paths to labelled
 // links, dropping anything that doesn't resolve (e.g. a Strapi-only related
 // slug not present in the local route/blog data).
-function resolvePathLinks(paths: string[]): { href: string; title: string }[] {
+export function resolvePathLinks(paths: string[]): { href: string; title: string }[] {
   return paths
     .map((path) => {
       const label = getRoute(path)?.label;
@@ -38,7 +38,7 @@ function resolvePathLinks(paths: string[]): { href: string; title: string }[] {
     .filter((link): link is { href: string; title: string } => link !== null);
 }
 
-function resolvePostLinks(slugs: string[]): { href: string; title: string }[] {
+export function resolvePostLinks(slugs: string[]): { href: string; title: string }[] {
   return slugs
     .map((slug) => {
       const title = getBlogPostBySlug(slug)?.title ?? CMS_ONLY_POST_TITLES[slug];
@@ -152,7 +152,7 @@ export function ReadinessPilot({ crumbs }: { crumbs: Crumb[] }) {
   </main>;
 }
 
-const SERVICE_VISUALS: Record<string, {
+export const SERVICE_VISUALS: Record<string, {
   file: string;
   meta: string;
   stages: { title: string; detail: string; state: string; review?: boolean }[];
@@ -233,7 +233,7 @@ const SERVICE_VISUALS: Record<string, {
   },
 };
 
-const SERVICE_COPY: Record<string, { jump: string; modelTitle: string; modelBody: string }> = {
+export const SERVICE_COPY: Record<string, { jump: string; modelTitle: string; modelBody: string }> = {
   "automation-consulting": {
     jump: "Scope",
     modelTitle: "Count first. Build second. You decide in between.",
