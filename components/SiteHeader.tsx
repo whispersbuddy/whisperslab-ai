@@ -10,7 +10,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, CalendarCheck, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarCheck, ChevronDown, Menu, X } from "lucide-react";
 import SiteIcon from "@/components/SiteIcon";
 import { isPathLive, liveRoutes, type SiteRoute } from "@/lib/routes";
 
@@ -149,42 +149,54 @@ export default function SiteHeader() {
             <div className="sh-dd sh-dd-mega" onMouseEnter={() => hoverOpen("services")} onMouseLeave={hoverClose}>
               {trigger("services", "Services", ["/services", "/integrations"])}
               <div id="sh-panel-services" className="sh-panel sh-mega" hidden={open !== "services"}>
-                {services.length > 0 ? (
-                  <div className="sh-col sh-col-services">
-                    <span className="sh-col-title">What we automate</span>
-                    <div className="sh-col-items">
-                      {services.map((r) => (
-                        <MenuLink key={r.path} route={r} onNavigate={closeAll} />
+                <div className="sh-mega-intro">
+                  <span className="sh-mega-eyebrow">Services</span>
+                  <p className="sh-mega-head">What we automate for you.</p>
+                  <p className="sh-mega-copy">Fixed scope, fixed price. You own every account we build in.</p>
+                  {servicesHubLive ? (
+                    <Link href="/services" className="sh-mega-btn" onClick={closeAll}>
+                      All services <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  ) : null}
+                </div>
+                <ol className="sh-mega-list">
+                  {services.map((r, i) => (
+                    <li key={r.path}>
+                      <Link href={r.path} className="sh-row" onClick={closeAll}>
+                        <span className="sh-row-num">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="sh-row-text">
+                          <span className="sh-row-label">{r.label}</span>
+                          {r.blurb ? <span className="sh-row-blurb">{r.blurb}</span> : null}
+                        </span>
+                        <ArrowUpRight size={18} className="sh-row-arrow" aria-hidden="true" />
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+                <div className="sh-mega-foot">
+                  {integrations.length > 0 ? (
+                    <div className="sh-chips">
+                      <span className="sh-chips-label">Built on</span>
+                      {integrations.map((r) => (
+                        <Link key={r.path} href={r.path} className="sh-chip" onClick={closeAll}>
+                          <SiteIcon name={r.icon} />
+                          {r.label}
+                        </Link>
                       ))}
+                      {integrationsHubLive ? (
+                        <Link href="/integrations" className="sh-chip-all" onClick={closeAll}>
+                          All integrations <ArrowRight size={13} aria-hidden="true" />
+                        </Link>
+                      ) : null}
                     </div>
-                    {servicesHubLive ? (
-                      <Link href="/services" className="sh-all" onClick={closeAll}>
-                        All services <ArrowRight size={14} aria-hidden="true" />
-                      </Link>
-                    ) : null}
-                  </div>
-                ) : null}
-                {integrations.length > 0 ? (
-                  <div className="sh-col">
-                    <span className="sh-col-title">Built on</span>
-                    {integrations.map((r) => (
-                      <MenuLink key={r.path} route={r} onNavigate={closeAll} showBlurb={false} />
-                    ))}
-                    {integrationsHubLive ? (
-                      <Link href="/integrations" className="sh-all" onClick={closeAll}>
-                        All integrations <ArrowRight size={14} aria-hidden="true" />
-                      </Link>
-                    ) : null}
-                  </div>
-                ) : null}
-                <Link href="/audit" className="sh-feature" onClick={closeAll}>
-                  <span className="sh-feature-kicker">Not sure where to start?</span>
-                  <span className="sh-feature-title">Start with the $250 Automation Audit</span>
-                  <span className="sh-feature-copy">In 7 days you get a plan showing exactly what to automate first. The $250 is credited if you build with us.</span>
-                  <span className="sh-feature-cta">
-                    See how the Audit works <ArrowRight size={14} aria-hidden="true" />
-                  </span>
-                </Link>
+                  ) : null}
+                  <Link href="/audit" className="sh-audit" onClick={closeAll}>
+                    <span>
+                      <strong>Not sure where to start?</strong> The $250 Automation Audit gives you a plan in 7 days, credited if you build with us.
+                    </span>
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
             </div>
           ) : null}

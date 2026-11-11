@@ -3,6 +3,7 @@
 // Site-wide footer, rendered once from app/layout.tsx. Columns are built from
 // lib/routes.ts so only live pages are linked.
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { BARE_PATHS } from "@/components/SiteHeader";
 import { isPathLive, liveRoutes, type SiteRoute } from "@/lib/routes";
@@ -24,7 +25,10 @@ function Column({ title, links }: { title: string; links: { href: string; label:
       <ul>
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href}>{l.label}</Link>
+            <Link href={l.href}>
+              <span>{l.label}</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
           </li>
         ))}
       </ul>
@@ -82,7 +86,7 @@ export default function SiteFooter() {
                 </svg>
               </a>
             </div>
-            <ReviewLinks compact />
+            <ReviewLinks cards />
           </div>
           <div className="sf-cols">
             <Column title="Services" links={services} />

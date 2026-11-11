@@ -16,7 +16,25 @@ const PLATFORMS = [
   { name: "Clutch", href: CLUTCH_URL, logo: "/assets/brands/clutch-logo.svg", width: 60, height: 17 },
 ];
 
-export default function ReviewLinks({ tone = "dark", compact = false }: { tone?: "dark" | "light"; compact?: boolean }) {
+export default function ReviewLinks({ tone = "dark", compact = false, cards = false }: { tone?: "dark" | "light"; compact?: boolean; cards?: boolean }) {
+  if (cards) {
+    return (
+      <div className="review-cards">
+        <span className="review-cards-label">Client reviews</span>
+        {PLATFORMS.map((p) => (
+          <a key={p.name} href={p.href} target="_blank" rel="noopener" aria-label={`Whispers Lab reviews on ${p.name}`} className="review-card">
+            <span className="review-card-logo">
+              <Image src={p.logo} alt={p.name} width={p.width} height={p.height} unoptimized />
+            </span>
+            <span className="review-card-text">Read our reviews</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="review-card-arrow">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        ))}
+      </div>
+    );
+  }
   return (
     <div className={`review-links review-links-${tone}${compact ? " review-links-compact" : ""}`}>
       <span>{compact ? "Client reviews" : "Read what clients say on"}</span>
