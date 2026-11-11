@@ -19,15 +19,12 @@ import PlatformTabs, { type Platform } from "@/components/home/PlatformTabs";
 import ReviewLinks from "@/components/ReviewLinks";
 import { FOUNDER_TITLE } from "@/lib/seo";
 
-const START_HERE = [
-  { label: "Automation consulting for small businesses", href: "/services/automation-consulting" },
-  { label: "n8n consultants", href: "/integrations/n8n" },
-  { label: "Zapier consultants", href: "/integrations/zapier" },
-  { label: "Airtable consultants", href: "/integrations/airtable" },
-  { label: "Data entry automation", href: "/services/data-entry-automation" },
-  { label: "Client onboarding automation", href: "/services/client-onboarding-automation" },
-  { label: "What automation costs", href: "/pricing" },
-  { label: "Automation examples by department", href: "/use-cases" },
+const FAQS = [
+  { q: "Do I need to be technical?", a: "No. You describe the work that eats your time. We design, build, test and maintain the automation, and we train your team on it.", href: "", link: "" },
+  { q: "Do I keep my accounts and data?", a: "Yes. Everything runs in accounts you own, so you can leave with it at any time.", href: "", link: "" },
+  { q: "What does it cost?", a: "Every project has a fixed scope and a fixed quote agreed before we start. Packages and prices are on one page.", href: "/pricing", link: "See pricing." },
+  { q: "How long until it works?", a: "The Automation Audit is delivered in 7 business days. A Core Build goes from kickoff to live in 30 days.", href: "", link: "" },
+  { q: "Do I have to buy the Audit first?", a: "No. If you already know which process you want automated, book a free call and we can go straight to a build.", href: "", link: "" },
 ];
 
 const FACTS = [
@@ -194,17 +191,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. PLATFORMS (dark, tabbed) */}
-      <section className="hm-section hm-dark">
-        <div className="hm-dark-bg" aria-hidden="true" />
+      {/* 6. RESULTS (grain band) */}
+      <section className="hm-section hm-band">
+        <div className="hm-band-bg" aria-hidden="true" />
         <div className="container">
-          <header className="hm-head hm-head-center">
-            <p className="hm-eyebrow hm-eyebrow-light">Platforms</p>
-            <h2>Which tools do we build on?</h2>
-            <p>We recommend one after we hear your workflow based on your workflow, not a fixed preference. You own the account either way.</p>
+          <header className="hm-head hm-head-center hm-head-light">
+            <p className="hm-eyebrow hm-eyebrow-light">Results</p>
+            <h2>What results have clients seen?</h2>
+            <p>Real systems built for real businesses. Every number comes from a published case study.</p>
           </header>
-          <PlatformTabs platforms={PLATFORMS} />
-          <p className="hm-foot">We also connect HubSpot, Slack, Gmail, OpenAI and Claude where a workflow needs them.</p>
+          <div className="hm-grid hm-grid-3">
+            {RESULTS.map((r) => (
+              <Link href={r.href} className="hm-card hm-chamfer hm-result" key={r.href}>
+                <span className="hm-tag">{r.tag}</span>
+                <strong className="hm-num">{r.num}</strong>
+                <span className="hm-unit">{r.unit}</span>
+                <h3>{r.title}</h3>
+                <p>{r.body}</p>
+                <span className="hm-more">Read the case study <ArrowRight size={15} aria-hidden="true" /></span>
+              </Link>
+            ))}
+          </div>
+          <div className="hm-center-row">
+            <Link href="/case-studies" className="hm-btn hm-btn-ghost"><span>See all case studies</span><Arrow /></Link>
+          </div>
         </div>
       </section>
 
@@ -242,30 +252,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. RESULTS (grain band) */}
-      <section className="hm-section hm-band">
-        <div className="hm-band-bg" aria-hidden="true" />
+      {/* 4. PLATFORMS (dark, tabbed) */}
+      <section className="hm-section hm-dark">
+        <div className="hm-dark-bg" aria-hidden="true" />
         <div className="container">
-          <header className="hm-head hm-head-center hm-head-light">
-            <p className="hm-eyebrow hm-eyebrow-light">Results</p>
-            <h2>What results have clients seen?</h2>
-            <p>Real systems built for real businesses. Every number comes from a published case study.</p>
+          <header className="hm-head hm-head-center">
+            <p className="hm-eyebrow hm-eyebrow-light">Platforms</p>
+            <h2>Which tools do we build on?</h2>
+            <p>We recommend one after we hear your workflow based on your workflow, not a fixed preference. You own the account either way.</p>
           </header>
-          <div className="hm-grid hm-grid-3">
-            {RESULTS.map((r) => (
-              <Link href={r.href} className="hm-card hm-chamfer hm-result" key={r.href}>
-                <span className="hm-tag">{r.tag}</span>
-                <strong className="hm-num">{r.num}</strong>
-                <span className="hm-unit">{r.unit}</span>
-                <h3>{r.title}</h3>
-                <p>{r.body}</p>
-                <span className="hm-more">Read the case study <ArrowRight size={15} aria-hidden="true" /></span>
-              </Link>
-            ))}
-          </div>
-          <div className="hm-center-row">
-            <Link href="/case-studies" className="hm-btn hm-btn-ghost"><span>See all case studies</span><Arrow /></Link>
-          </div>
+          <PlatformTabs platforms={PLATFORMS} />
+          <p className="hm-foot">We also connect HubSpot, Slack, Gmail, OpenAI and Claude where a workflow needs them.</p>
         </div>
       </section>
 
@@ -285,6 +282,41 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* 9. FOUNDER NOTE */}
+      <section className="hm-section hm-paper">
+        <div className="container hm-note">
+          <Image src="/assets/haris-ali.jpg" alt="Haris Ali" width={440} height={550} className="hm-portrait hm-chamfer" />
+          <div>
+            <p className="hm-eyebrow">A note from the lab</p>
+            <p className="hm-quote">
+              We saw capable small business owners drowning in data entry, reporting, and scheduling. Automation is not
+              about replacing your team. It is about removing the robotic work people were never meant to do.
+            </p>
+            <p className="hm-by"><b>Haris Ali</b>{FOUNDER_TITLE}, Whispers Lab</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="hm-section hm-white hm-faq-section">
+        <div className="container hm-split">
+          <header className="hm-head">
+            <p className="hm-eyebrow">Questions</p>
+            <h2>What do owners ask before they start?</h2>
+            <p>Short answers. For anything else, the discovery call is free.</p>
+            <Link href="/book" className="hm-btn hm-btn-outline"><span>Book a free discovery call</span><Arrow /></Link>
+          </header>
+          <div className="hm-faq">
+            {FAQS.map((f, i) => (
+              <details key={f.q} open={i === 0}>
+                <summary>{f.q}<span className="hm-faq-icon" aria-hidden="true" /></summary>
+                <p>{f.a}{f.href ? <> <Link href={f.href}>{f.link}</Link></> : null}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -315,39 +347,6 @@ export default function HomePage() {
               <Link href="/resources/ai-readiness-assessment" className="hm-btn hm-btn-ghost"><span>Check AI readiness</span><Arrow /></Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 9. FOUNDER NOTE */}
-      <section className="hm-section hm-white">
-        <div className="container hm-note">
-          <Image src="/assets/haris-ali.jpg" alt="Haris Ali" width={440} height={550} className="hm-portrait hm-chamfer" />
-          <div>
-            <p className="hm-eyebrow">A note from the lab</p>
-            <p className="hm-quote">
-              We saw capable small business owners drowning in data entry, reporting, and scheduling. Automation is not
-              about replacing your team. It is about removing the robotic work people were never meant to do.
-            </p>
-            <p className="hm-by"><b>Haris Ali</b>{FOUNDER_TITLE}, Whispers Lab</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. START HERE */}
-      <section className="hm-start hm-paper" aria-labelledby="hm-start-title">
-        <div className="container hm-start-grid">
-          <p className="hm-eyebrow" id="hm-start-title">Start here</p>
-          <ol>
-            {START_HERE.map((l, i) => (
-              <li key={l.href}>
-                <Link href={l.href}>
-                  <span className="hm-index-num">{pad(i)}</span>
-                  <span className="hm-index-label">{l.label}</span>
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 

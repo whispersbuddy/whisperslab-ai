@@ -251,3 +251,16 @@ a:hover > .hm-more svg, .hm-more:hover svg { transform: translateX(4px); }
   .hm *, .hm *::before { transition: none !important; }
   a.hm-card:hover { transform: none; }
 }
+
+/* FAQ */
+.hm .hm-faq { display: flex; flex-direction: column; border-top: 1px solid var(--hm-line); }
+.hm .hm-faq details { border-bottom: 1px solid var(--hm-line); }
+.hm .hm-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; cursor: pointer; list-style: none; font-family: var(--hm-serif); font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--hm-ink); }
+.hm .hm-faq summary::-webkit-details-marker { display: none; }
+.hm .hm-faq-icon { position: relative; flex: none; width: 28px; height: 28px; border: 1px solid var(--hm-line); border-radius: 50%; }
+.hm .hm-faq-icon::before, .hm .hm-faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 1.6px; background: var(--hm-ink); transform: translate(-50%, -50%); transition: transform 0.2s ease; }
+.hm .hm-faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.hm .hm-faq details[open] .hm-faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.hm .hm-faq details p { margin: 0; padding: 0 48px 26px 0; font-size: 17px; line-height: 1.7; color: var(--hm-muted); }
+.hm .hm-faq details p a { color: var(--hm-accent); font-weight: 600; }
+@media (max-width: 640px) { .hm .hm-faq summary { font-size: 19px; } .hm .hm-faq details p { padding-right: 0; } }
