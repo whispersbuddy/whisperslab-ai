@@ -36,8 +36,9 @@ function CommercialCrumbs({ crumbs }: { crumbs: Crumb[] }) {
 }
 
 const STAGES = [
-  { number: "01", cue: "I need clarity", title: "Diagnose", detail: "A 7-day decision sprint", href: "/audit" },
-  { number: "02", cue: "I know the problem", title: "Build", detail: "One agreed workflow in under 30 days", href: "/core-build" },
+  { number: "01", cue: "I want to talk first", title: "Discovery call", detail: "Free, no obligation", href: "/book" },
+  { number: "02", cue: "I need clarity", title: "Diagnose", detail: "A 7-day decision sprint", href: "/audit" },
+  { number: "03", cue: "I know the problem", title: "Build", detail: "One agreed workflow in under 30 days", href: "/core-build" },
 ];
 
 const OFFER_ACTION = {
@@ -68,7 +69,7 @@ export function PricingPilot({ crumbs, faq }: { crumbs: Crumb[]; faq: FaqItem[] 
                 </Link>
               ))}
               <div className="price-path-operate">
-                <span>03</span>
+                <span>04</span>
                 <div className="price-path-operate-main"><small>I already use automation</small><b>Operate</b><em>Choose protection or continuous expansion</em></div>
                 <div className="price-path-choices">
                   <Link href="/automation-care"><b>Care</b><small>Maintain what exists</small><ArrowRight size={15} /></Link>

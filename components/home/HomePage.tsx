@@ -11,7 +11,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight, Calculator, Check, ClipboardCheck, Compass, FileText, Mail, Plug, ShieldCheck, UserPlus, Workflow,
+  ArrowRight, Calculator, Check, ClipboardCheck, Compass, FileText, Mail, Plug, Phone, UserPlus, Workflow,
 } from "lucide-react";
 import LatestPosts from "@/components/LatestPosts";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -31,10 +31,10 @@ const START_HERE = [
 ];
 
 const FACTS = [
-  { big: "$250", label: "Automation Audit", note: "Credited toward a build" },
-  { big: "From $2,500", label: "Core Build", note: "Fixed price" },
+  { big: "Free", label: "Discovery call", note: "Where every project starts" },
+  { big: "7 days", label: "Automation Audit", note: "Plan delivered" },
   { big: "30 days", label: "Kickoff to live", note: "One workflow, tested" },
-  { big: "$500/mo", label: "Automation Care", note: "After launch" },
+  { big: "Fixed", label: "Scope and price", note: "Agreed before we start" },
 ];
 
 const TOOLS = [
@@ -63,11 +63,22 @@ const PLATFORMS: Platform[] = [
 
 const STEPS = [
   {
+    icon: Phone,
+    stage: "Talk",
+    title: "Free discovery call",
+    price: "Free",
+    meta: "Start here",
+    body: "Tell us where the busywork is. We tell you which step fits, or whether it is too early to spend anything.",
+    points: ["Your workflows and tools reviewed", "A straight answer on what is worth automating", "No pressure to buy"],
+    cta: "Book a discovery call",
+    href: "/book",
+  },
+  {
     icon: ClipboardCheck,
-    stage: "Diagnose",
+    stage: "Plan",
     title: "7-Day Automation Audit",
-    price: "$250",
-    meta: "Delivered in 7 business days",
+    price: "7 days",
+    meta: "Plan delivered",
     body: "Know which 2 to 3 workflows to automate first, what they cost today, and what building them involves.",
     points: ["Up to three mapped workflows", "Cost and time baseline", "Prioritized build plan"],
     cta: "See the Automation Audit",
@@ -77,23 +88,12 @@ const STEPS = [
     icon: Workflow,
     stage: "Build",
     title: "30-Day Core Build",
-    price: "From $2,500",
+    price: "30 days",
     meta: "Fixed scope",
-    body: "We build, test, and launch your highest-value workflow with acceptance testing and a clear definition of done.",
-    points: ["One standard workflow from $2,500", "Documentation and team training", "30-day launch stabilization"],
+    body: "We build, test, and launch your highest-value workflow with acceptance testing and a clear definition of done. Ongoing care is optional after launch.",
+    points: ["One agreed workflow, fixed quote", "Documentation and team training", "30-day launch stabilization"],
     cta: "Explore the Core Build",
     href: "/core-build",
-  },
-  {
-    icon: ShieldCheck,
-    stage: "Operate",
-    title: "Keep it running",
-    price: "$500/month",
-    meta: "Automation Care",
-    body: "Already rely on automation? Pick the support that matches what the business needs next.",
-    points: ["Automation Care, $500/month, maintains what exists", "AI Growth Partner, from $1,250/month, maintains and expands"],
-    cta: "See Automation Care",
-    href: "/automation-care",
   },
 ];
 
@@ -139,10 +139,10 @@ export default function HomePage() {
             businesses on n8n, Zapier, Make and Airtable.
           </p>
           <div className="hm-actions hm-actions-center">
-            <Link href="/audit" className="hm-btn"><span>Start with the $250 Audit</span><Arrow /></Link>
+            <Link href="/book" className="hm-btn"><span>Book a free discovery call</span><Arrow /></Link>
             <Link href="/services" className="hm-btn hm-btn-ghost"><span>See the services</span><Arrow /></Link>
           </div>
-          <p className="hm-promise">Fixed prices. You own every account.</p>
+          <p className="hm-promise">Fixed scope. You own every account.</p>
         </div>
         <div className="hm-grain" aria-hidden="true" />
         <div className="container hm-facts-wrap">
@@ -176,7 +176,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow">Services</p>
             <h2>What does Whispers Lab automate?</h2>
-            <p>Six service areas, all built the same way: a plan first, a fixed price, and a workflow you own.</p>
+            <p>Six service areas, all built the same way: a plan first, a fixed scope, and a workflow you own.</p>
           </header>
           <div className="hm-grid hm-grid-3">
             {SERVICES.map((s) => {
@@ -201,7 +201,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow hm-eyebrow-light">Platforms</p>
             <h2>Which tools do we build on?</h2>
-            <p>We recommend one during the Audit based on your workflow, not a fixed preference. You own the account either way.</p>
+            <p>We recommend one after we hear your workflow based on your workflow, not a fixed preference. You own the account either way.</p>
           </header>
           <PlatformTabs platforms={PLATFORMS} />
           <p className="hm-foot">We also connect HubSpot, Slack, Gmail, OpenAI and Claude where a workflow needs them.</p>
@@ -214,7 +214,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow">How we work</p>
             <h2>How does it work?</h2>
-            <p>Start where your business is today: diagnose the opportunity, build the right workflow, then add ongoing care only when there is something worth protecting.</p>
+            <p>Start with a conversation, get a plan, then build the right workflow. Ongoing care is there when you want it.</p>
           </header>
           <ol className="hm-steps">
             {STEPS.map((s, i) => {
@@ -236,6 +236,9 @@ export default function HomePage() {
               );
             })}
           </ol>
+          <div className="hm-center-row">
+            <Link href="/pricing" className="hm-btn hm-btn-outline"><span>See packages and pricing</span><Arrow /></Link>
+          </div>
         </div>
       </section>
 
@@ -354,10 +357,10 @@ export default function HomePage() {
         <div className="container hm-final-inner">
           <p className="hm-eyebrow">Next step</p>
           <h2>How do you start?</h2>
-          <p>Book a free discovery call, or go straight to the $250 Automation Audit. It is credited toward a build, and you keep the plan either way.</p>
+          <p>Book a free discovery call. We will tell you what to automate first and what it would take. Packages and prices are on one page.</p>
           <div className="hm-actions hm-actions-center">
             <Link href="/book" className="hm-btn"><span>Book a free discovery call</span><Arrow /></Link>
-            <Link href="/audit" className="hm-btn hm-btn-outline"><span>See the Automation Audit</span><Arrow /></Link>
+            <Link href="/pricing" className="hm-btn hm-btn-outline"><span>See pricing</span><Arrow /></Link>
           </div>
         </div>
       </section>
