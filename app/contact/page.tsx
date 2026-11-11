@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { CONTACT_HTML } from "@/app/_content/contact";
+import ContactView from "@/components/contact/ContactPage";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
+
+const CRUMBS = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+];
 
 export const metadata: Metadata = {
   title: "Contact | Whispers Lab",
@@ -33,5 +40,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <div dangerouslySetInnerHTML={{ __html: CONTACT_HTML }} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
+      <ContactView crumbs={CRUMBS} />
+    </>
+  );
 }

@@ -1,0 +1,60 @@
+/* ===== CONTACT + BOOK ===== builds on home.css and pricing.css */
+.hm-cphero { padding-bottom: 90px; }
+.hm-cphero h1 { font-size: clamp(38px, 5.4vw, 76px); }
+.hm-cbody { padding-top: 90px; }
+.hm-cgrid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 80px; align-items: start; }
+
+.hm-csteps { margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--hm-ink); }
+.hm-csteps li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 26px 0; border-bottom: 1px solid var(--hm-line); }
+.hm-csteps li > span { font-family: var(--hm-serif); font-size: 15px; font-weight: 700; padding-top: 3px; color: var(--hm-accent); }
+.hm-csteps h3 { font-family: var(--hm-serif); font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--hm-ink); }
+.hm-csteps p { margin-top: 8px; font-size: 16px; line-height: 1.65; color: var(--hm-muted); }
+
+.hm-cdetails { margin: 36px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.hm-cdetails li { display: flex; align-items: flex-start; gap: 14px; }
+.hm-cdetails svg { flex: none; margin-top: 3px; color: var(--hm-accent); }
+.hm-cdetails span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hm-cdetails small { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--hm-soft); }
+.hm-cdetails b { font-size: 16px; font-weight: 600; color: var(--hm-ink); overflow-wrap: anywhere; }
+
+.hm-cbook { margin-top: 40px; padding: 28px; border: 1px solid var(--hm-line); border-radius: 14px; background: var(--hm-paper); }
+.hm-cbook b { font-family: var(--hm-serif); font-size: 20px; color: var(--hm-ink); }
+.hm-cbook p { margin: 8px 0 18px; font-size: 16px; color: var(--hm-muted); }
+
+.hm-cform { padding: 40px; border: 1px solid var(--hm-line); border-radius: 18px; background: #fff; box-shadow: 0 30px 70px -40px rgba(16, 26, 43, 0.25); }
+.hm-cform h2 { font-family: var(--hm-serif); font-size: 30px; font-weight: 700; letter-spacing: -0.9px; color: var(--hm-ink); }
+.hm-cform > p { margin-top: 6px; color: var(--hm-muted); }
+.hm-form { margin-top: 28px; display: flex; flex-direction: column; gap: 20px; }
+.hm-field { display: flex; flex-direction: column; gap: 8px; }
+.hm-field span { font-size: 14px; font-weight: 600; color: var(--hm-ink); }
+.hm-field input, .hm-field select, .hm-field textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--hm-line); border-radius: 10px; font: inherit; font-size: 16px; color: var(--hm-ink); background: #fff; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.hm-field textarea { resize: vertical; min-height: 110px; }
+.hm-field input:focus, .hm-field select:focus, .hm-field textarea:focus { outline: 0; border-color: var(--hm-accent); box-shadow: 0 0 0 3px rgba(91, 79, 240, 0.18); }
+.hm-form-submit { align-self: flex-start; cursor: pointer; border: 0; }
+.hm-form-submit:disabled { opacity: 0.7; cursor: default; }
+.hm-form-note { font-size: 13px; color: var(--hm-soft); }
+
+/* Book a call (bare page, no site header) */
+.book-page { min-height: 100vh; }
+.hm-bhero { padding: 40px 0 120px; }
+.hm-bhero-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 64px; }
+.hm-bhero-top img { height: 28px; width: auto; display: block; }
+.hm-bhero-top a:last-child { font-size: 15px; color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+.hm-bhero-top a:last-child:hover { color: #fff; }
+.hm-bgrid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+.hm-bgrid h1 { font-size: clamp(36px, 4.6vw, 62px); line-height: 1.04; letter-spacing: -2.2px; color: #fff; margin-top: 22px; text-wrap: balance; }
+.hm-bgrid .hm-lead { margin-top: 22px; }
+.hm-blist { margin: 36px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.hm-blist li { display: flex; gap: 14px; padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, 0.82); }
+.hm-blist svg { flex: none; margin-top: 3px; color: #9fb8ff; }
+.hm-bembed { border-radius: 18px; background: #fff; overflow: hidden; box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6); }
+.hm-bembed .booking-embed { margin-top: 0; height: 720px; }
+
+@media (max-width: 980px) {
+  .hm-cgrid, .hm-bgrid { grid-template-columns: 1fr; gap: 56px; }
+}
+@media (max-width: 640px) {
+  .hm-cform { padding: 26px 20px; }
+  .hm-bhero-top { margin-bottom: 40px; }
+  .hm-bembed .booking-embed { height: 780px; }
+}
