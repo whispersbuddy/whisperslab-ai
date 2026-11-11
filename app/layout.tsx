@@ -10,6 +10,7 @@ import "./styles/pricing.css";
 import "./styles/services.css";
 import "./styles/contact.css";
 import "./styles/about-cases.css";
+import "./styles/industries.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";

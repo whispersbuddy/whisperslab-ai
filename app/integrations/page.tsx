@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { IntegrationsHubPilot } from "@/components/pilots/ExpansionHubs";
+import IntegrationsHub from "@/components/integration/IntegrationsHub";
 import type { FaqItem } from "@/components/sections/Faq";
 import { liveRoutes } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
@@ -22,7 +22,7 @@ const CRUMBS = [
 const FAQS: FaqItem[] = [
   {
     q: "Do I need to already have one of these tools?",
-    a: "No. Most clients don't know which platform fits until the Automation Audit maps their workflows. We recommend the tool, not the other way around.",
+    a: "No. Most clients don't know which platform fits until we map their workflows. We recommend the tool, not the other way around.",
   },
   {
     q: "What if the tool we use isn't listed here?",
@@ -42,7 +42,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "What does it cost to build on one of these tools?",
-    a: "The Automation Audit is a flat $250 and maps which tool and workflows are worth building. Builds are quoted as a fixed price starting from $2,500, with the $250 credited toward it. Any subscription cost for the tool itself is separate and estimated during the Audit.",
+    a: "Builds are quoted as a fixed price before we start. See the pricing page for the packages. Any subscription cost for the tool itself is separate, and we estimate it before the build begins.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function IntegrationsHubPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <IntegrationsHubPilot routes={integrations} crumbs={CRUMBS} faq={FAQS} />
+      <IntegrationsHub routes={integrations} crumbs={CRUMBS} faq={FAQS} />
     </>
   );
 }

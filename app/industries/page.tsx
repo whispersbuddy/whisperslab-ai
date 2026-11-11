@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { IndustriesHubPilot } from "@/components/pilots/ExpansionHubs";
+import IndustriesHub from "@/components/industry/IndustriesHub";
 import type { FaqItem } from "@/components/sections/Faq";
 import { liveRoutes } from "@/lib/routes";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, requireLive, SITE_URL } from "@/lib/seo";
@@ -30,7 +30,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "Do industry-specific rules and compliance get considered?",
-    a: "Yes. Every build starts with the Automation Audit, where we map your specific compliance needs, such as attorney-client privilege or financial recordkeeping, before anything is built.",
+    a: "Yes. Every project starts by mapping your specific compliance needs, such as attorney-client privilege or financial recordkeeping, before anything is built.",
   },
   {
     q: "Will automation replace my staff?",
@@ -38,11 +38,11 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How much does industry-specific automation cost?",
-    a: "The Automation Audit is a flat $250. Builds start from $2,500, quoted as a fixed price before we start, regardless of industry.",
+    a: "Every build is quoted as a fixed price before we start, regardless of industry. See the pricing page for the packages and what each one includes.",
   },
   {
     q: "How long does it take?",
-    a: "Most Core Build projects go live in under 30 days, including testing in a safe copy of your setup before it touches real data.",
+    a: "Most builds go live in under 30 days, including testing in a safe copy of your setup before it touches real data.",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function IndustriesHubPage() {
           breadcrumbSchema(CRUMBS)
         )}
       />
-      <IndustriesHubPilot routes={industries} crumbs={CRUMBS} faq={FAQS} />
+      <IndustriesHub routes={industries} crumbs={CRUMBS} faq={FAQS} />
     </>
   );
 }

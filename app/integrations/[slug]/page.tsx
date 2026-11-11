@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageUpdated } from "@/lib/pageDates";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
-import { IntegrationPilot } from "@/components/pilots/ExpansionPilots";
+import IntegrationTemplate from "@/components/integration/IntegrationTemplate";
 import { getRoute, isPathLive } from "@/lib/routes";
 import { allIntegrationSlugs, resolveIntegration } from "@/lib/pageContent";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
@@ -68,5 +68,5 @@ export default async function IntegrationPageRoute({ params }: { params: Promise
     breadcrumbSchema(crumbs)
   );
 
-  return <><JsonLd data={structuredData} /><IntegrationPilot page={integration} crumbs={crumbs} fit={fit}  updated={await pageUpdated(path)} /></>;
+  return <><JsonLd data={structuredData} /><IntegrationTemplate page={integration} crumbs={crumbs} fit={fit}  updated={await pageUpdated(path)} /></>;
 }

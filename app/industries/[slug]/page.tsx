@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageUpdated } from "@/lib/pageDates";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
-import { IndustryPilot } from "@/components/pilots/ExpansionPilots";
+import IndustryTemplate from "@/components/industry/IndustryTemplate";
 import { getRoute, isPathLive } from "@/lib/routes";
 import { allIndustrySlugs, resolveIndustry } from "@/lib/pageContent";
 import { breadcrumbSchema, buildMetadata, faqSchema, graph, PROVIDER, requireLive, SITE_URL } from "@/lib/seo";
@@ -51,5 +51,5 @@ export default async function IndustryPageRoute({ params }: { params: Promise<{ 
     breadcrumbSchema(crumbs)
   );
 
-  return <><JsonLd data={structuredData} /><IndustryPilot page={industry} crumbs={crumbs}  updated={await pageUpdated(path)} /></>;
+  return <><JsonLd data={structuredData} /><IndustryTemplate page={industry} crumbs={crumbs}  updated={await pageUpdated(path)} /></>;
 }
