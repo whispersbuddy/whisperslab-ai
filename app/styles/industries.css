@@ -26,12 +26,12 @@
 .hm-ihuman b { color: var(--hm-ink); }
 
 /* Trust layers */
-.hm-trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 56px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
-.hm-trust > div { padding: 30px 28px 8px; border-left: 1px solid rgba(255, 255, 255, 0.14); }
-.hm-trust > div:first-child { padding-left: 0; border-left: 0; }
-.hm-trust span { font-size: 13px; font-weight: 700; color: #9fb8ff; }
-.hm-trust h3 { margin-top: 12px; font-family: var(--hm-serif); font-size: 20px; font-weight: 700; letter-spacing: -0.4px; color: #fff; }
-.hm-trust p { margin-top: 10px; font-size: 15.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.72); }
+.hm-layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 56px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.hm-layers > div { padding: 30px 28px 8px; border-left: 1px solid rgba(255, 255, 255, 0.14); }
+.hm-layers > div:first-child { padding-left: 0; border-left: 0; }
+.hm-layers span { font-size: 13px; font-weight: 700; color: #9fb8ff; }
+.hm-layers h3 { margin-top: 12px; font-family: var(--hm-serif); font-size: 20px; font-weight: 700; letter-spacing: -0.4px; color: #fff; }
+.hm-layers p { margin-top: 10px; font-size: 15.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.72); }
 .hm-ilink { display: inline-flex; align-items: center; gap: 4px; color: #9fb8ff; }
 
 /* Closest / more proof rows */
@@ -45,7 +45,7 @@
 .hm-closest-body b { font-family: var(--hm-serif); font-size: 19px; font-weight: 700; }
 .hm-closest-body small { font-size: 15px; line-height: 1.5; color: var(--hm-muted); }
 .hm-closest a > svg { color: var(--hm-accent); }
-.hm-direct { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 56px; align-items: center; padding: 40px 0; border-top: 1px solid var(--hm-ink); border-bottom: 1px solid var(--hm-line); text-decoration: none; color: var(--hm-ink); }
+.hm-direct { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 56px; align-items: center; padding: 40px 0; border-top: 1px solid var(--hm-ink); border-bottom: 1px solid var(--hm-line); text-decoration: none; color: var(--hm-ink); }
 .hm-direct strong { display: block; font-family: var(--hm-serif); font-size: clamp(56px, 8vw, 110px); font-weight: 500; line-height: 0.95; letter-spacing: -4px; background: var(--hm-grad); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
 .hm-direct small { display: block; margin-top: 12px; font-size: 17px; color: var(--hm-muted); }
 .hm-direct h3 { font-family: var(--hm-serif); font-size: clamp(24px, 2.8vw, 34px); font-weight: 700; letter-spacing: -1px; }
@@ -104,7 +104,7 @@
 @media (max-width: 640px) {
   .hm-ifig-split { grid-template-columns: 1fr; }
   .hm-ifig-split > div + div { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.14); }
-  .hm-trust > div { padding-left: 0; border-left: 0; }
+  .hm-layers > div { padding-left: 0; border-left: 0; }
   .hm-fit article { padding: 24px 22px; }
   .hm-igrid { grid-template-columns: 1fr; }
 }

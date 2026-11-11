@@ -142,7 +142,7 @@ export default function IndustryTemplate({ page, crumbs, updated }: { page: Indu
               </p>
             ) : null}
           </header>
-          <div className="hm-trust">
+          <div className="hm-layers">
             {page.trust.layers.map((l, i) => (
               <div key={l.label}>
                 <span>{String(i + 1).padStart(2, "0")}</span>
