@@ -364,8 +364,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LatestPosts />
-      <NewsletterSection />
+      <LatestPosts variant="home" />
+      <NewsletterSection variant="home" />
     </main>
   );
 }
