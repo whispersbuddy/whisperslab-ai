@@ -4,7 +4,7 @@
 // only numbers that come from a published case study or lib/offers.ts.
 //
 // Design: Faculty's calm editorial pacing (big type, one idea per screen,
-// grain-gradient bands, chamfered corners) on Quantiphi's section rhythm (an
+// grain-gradient bands) on Quantiphi's section rhythm (an
 // eyebrow plus a plain headline, alternating light and dark bands, a tabbed
 // showcase, soft stat cards, a closing call to action). Brand colours and
 // fonts are Whispers Lab's own. Styles: app/styles/home.css, all under .hm.
