@@ -29,15 +29,15 @@ const FAQS = [
   },
   {
     q: "Where should a small business start with automation?",
-    a: "Start with the task that repeats most, follows the same steps and costs the most hours a week. Counting those hours first is the fastest way to pick. The $250 Whispers Lab Automation Audit does that ranking for you and names the first build.",
+    a: "Start with the task that repeats most, follows the same steps and costs the most hours a week. Counting those hours first is the fastest way to pick. A free discovery call with Whispers Lab does that ranking with you and names the first build.",
   },
   {
     q: "Do I need new software to automate my business?",
-    a: "Usually not. Most of these examples run on the tools you already pay for, connected through platforms such as Zapier, n8n, Make or Airtable. The audit checks that before anything is built.",
+    a: "Usually not. Most of these examples run on the tools you already pay for, connected through platforms such as Zapier, n8n, Make or Airtable. We check that before anything is built.",
   },
   {
     q: "How much does it cost to automate a workflow?",
-    a: "At Whispers Lab the Automation Audit is $250 and is credited toward a build. One standard workflow starts from $2,500 at a fixed price and goes live in under 30 days. Optional upkeep starts from $500 a month.",
+    a: "At Whispers Lab one standard workflow is built at a fixed price and goes live in under 30 days, and optional upkeep is a flat monthly plan. See the pricing page for the packages.",
   },
 ];
 
