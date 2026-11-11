@@ -70,8 +70,6 @@ export type SiteRoute = {
 export const ROUTES: SiteRoute[] = [
   // Existing pages
   { path: "/", label: "Home", group: "core", icon: "home", live: true, updated: "2026-11-10", priority: 1, changeFrequency: "weekly" },
-  { path: "/audit", label: "Automation Audit", group: "pricing", icon: "clipboardCheck", price: "$250", blurb: "A 7-day map of what to automate first", live: true, updated: "2026-09-27", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/core-build", label: "Core Build", group: "pricing", icon: "hammer", price: "from $2,500", blurb: "Your highest-value workflow, live in 30 days", live: true, updated: "2026-09-27", priority: 0.9, changeFrequency: "monthly" },
   { path: "/case-studies", label: "Case Studies", group: "company", icon: "briefcase", live: true, updated: "2026-09-27", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog", label: "Blog", group: "resources", icon: "bookOpen", blurb: "Plain-English guides to automating your business", live: true, updated: "2026-09-22", priority: 0.8, changeFrequency: "weekly" },
   { path: "/contact", label: "Contact", group: "company", icon: "mail", live: true, updated: "2026-09-22", priority: 0.7, changeFrequency: "monthly" },
@@ -83,9 +81,7 @@ export const ROUTES: SiteRoute[] = [
   { path: "/terms", label: "Terms", group: "legal", live: true, release: "R0", updated: "2026-09-22", priority: 0.2, changeFrequency: "yearly" },
 
   // R1: pricing
-  { path: "/pricing", label: "Compare all plans", group: "pricing", icon: "layers", blurb: "Audit, Build, Care, and Growth side by side", live: true, release: "R1", updated: "2026-09-27", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/automation-care", label: "Automation Care", group: "pricing", icon: "shield", price: "$500/mo", blurb: "Monitoring and maintenance for existing workflows", live: true, release: "R1", updated: "2026-09-27", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/growth-partner", label: "AI Growth Partner", group: "pricing", icon: "trendingUp", price: "from $1,250/mo", blurb: "Maintenance plus one new workflow each month", live: true, release: "R1", updated: "2026-09-27", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/pricing", label: "Pricing", group: "pricing", icon: "layers", blurb: "Every package and price on one page", live: true, release: "R1", updated: "2026-09-27", priority: 0.8, changeFrequency: "monthly" },
 
   // R2+: services
   { path: "/services", label: "All services", group: "core", live: true, release: "R2", updated: "2026-09-27", priority: 0.8, changeFrequency: "monthly" },

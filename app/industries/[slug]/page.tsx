@@ -45,7 +45,7 @@ export default async function IndustryPageRoute({ params }: { params: Promise<{ 
       provider: PROVIDER,
       areaServed: { "@type": "Country", name: "United States" },
       audience: { "@type": "BusinessAudience", audienceType: route?.label },
-      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/audit" },
+      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/pricing" },
     },
     faqSchema(industry.faq.items),
     breadcrumbSchema(crumbs)

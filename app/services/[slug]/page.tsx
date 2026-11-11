@@ -50,7 +50,7 @@ export default async function ServicePageRoute({ params }: { params: Promise<{ s
         name: `${route?.label} workflows`,
         itemListElement: service.bento.tiles.map((tile) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: tile.title } })),
       },
-      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/audit" },
+      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/pricing" },
     },
     faqSchema(service.faq.items),
     breadcrumbSchema(crumbs)

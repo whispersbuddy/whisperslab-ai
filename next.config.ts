@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // The four offer pages were merged into one pricing page.
+      { source: "/audit", destination: "/pricing#audit", permanent: true },
+      { source: "/core-build", destination: "/pricing#core-build", permanent: true },
+      { source: "/automation-care", destination: "/pricing#care", permanent: true },
+      { source: "/growth-partner", destination: "/pricing#growth", permanent: true },
       // Search Console still lists this root-level path; the page lives under /case-studies.
       {
         source: "/appraisal-case-moves-itself-forward",

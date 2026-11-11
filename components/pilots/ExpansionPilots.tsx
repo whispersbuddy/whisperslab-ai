@@ -147,7 +147,7 @@ export function ReadinessPilot({ crumbs }: { crumbs: Crumb[] }) {
 
     <section className="ready-next"><div className="container"><div><span className="pilot-label">WHAT THIS TOOL DOES NOT DO</span><h2>One task is not the whole operating system.</h2></div><div><p>The assessment tells you whether one workflow has a good automation shape. It does not compare competing workflows, estimate tool costs, or map failure handling.</p><p>That is the job of the Automation Audit: ranking the opportunities together before anything is built.</p></div></div></section>
     <PilotFaq title={READINESS_FAQ.title} items={READINESS_FAQ.items} />
-    <section className="pilot-final pilot-final-ready"><div className="container"><span className="pilot-label pilot-label-light">FROM SCORE TO BUILD PLAN</span><h2>{READINESS_CTA.title}</h2><p>{READINESS_CTA.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">See the $250 Automation Audit</Link><Link href="/book" className="btn btn-ghost-light">Book a free discovery call</Link></div></div></section>
+    <section className="pilot-final pilot-final-ready"><div className="container"><span className="pilot-label pilot-label-light">FROM SCORE TO BUILD PLAN</span><h2>{READINESS_CTA.title}</h2><p>{READINESS_CTA.body}</p><div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">See the $250 Automation Audit</Link><Link href="/book" className="btn btn-ghost-light">Book a free discovery call</Link></div></div></section>
     <NewsletterSection />
   </main>;
 }
@@ -257,7 +257,7 @@ export function ServicePilot({ page, crumbs, updated }: { page: ServicePage; cru
             <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
             <p>{page.hero.answer}</p>
             <div className="pilot-actions">
-              <Link href="/audit" className="btn btn-primary">Start with the $250 Audit <ArrowRight size={15} /></Link>
+              <Link href="/pricing#audit" className="btn btn-primary">Start with the $250 Audit <ArrowRight size={15} /></Link>
               <Link href="#workflow" className="pilot-text-link">See the workflow <span>↓</span></Link>
             </div>
             <AuthorByline updated={updated} />
@@ -335,7 +335,7 @@ export function ServicePilot({ page, crumbs, updated }: { page: ServicePage; cru
         </section>
       )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
-      <section className="pilot-final pilot-final-service"><div className="container"><span className="pilot-label pilot-label-light">A CLEAR FIRST STEP</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Book the $250 Audit</Link><Link href="/book" className="pilot-text-link is-light">Book a free discovery call</Link></div></div></section>
+      <section className="pilot-final pilot-final-service"><div className="container"><span className="pilot-label pilot-label-light">A CLEAR FIRST STEP</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">Book the $250 Audit</Link><Link href="/book" className="pilot-text-link is-light">Book a free discovery call</Link></div></div></section>
       <NewsletterSection />
     </main>
   );
@@ -375,7 +375,7 @@ export function IndustryPilot({ page, crumbs, updated }: { page: IndustryPage; c
             <span className="pilot-label pilot-label-light">{page.hero.eyebrow}</span>
             <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
             <p>{page.hero.answer}</p>
-            <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">{editorial.cta}</Link><Link href="#day" className="pilot-text-link is-light">See a day after automation ↓</Link></div><AuthorByline updated={updated} />
+            <div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">{editorial.cta}</Link><Link href="#day" className="pilot-text-link is-light">See a day after automation ↓</Link></div><AuthorByline updated={updated} />
           </div>
         </div>
       </section>
@@ -418,7 +418,7 @@ export function IndustryPilot({ page, crumbs, updated }: { page: IndustryPage; c
         </section>
       )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
-      <section className="pilot-final pilot-final-law"><div className="container"><span className="pilot-label">{editorial.final}</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-dark">See the $250 Automation Audit</Link></div></div></section>
+      <section className="pilot-final pilot-final-law"><div className="container"><span className="pilot-label">{editorial.final}</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-dark">See the $250 Automation Audit</Link></div></div></section>
       <NewsletterSection />
     </main>
   );
@@ -446,7 +446,7 @@ export function IntegrationPilot({ page, crumbs, fit, updated }: { page: Integra
           <span className="pilot-label pilot-label-light">{page.hero.eyebrow}</span>
           <h1>{page.hero.title} <span>{page.hero.highlight}</span></h1>
           <p>{page.hero.answer}</p>
-          <div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
+          <div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">Map the workflow first</Link><a href={page.tool.url} target="_blank" rel="noopener" className="pilot-text-link is-light">Visit {page.tool.name} <ExternalLink size={14} /></a></div>
           <AuthorByline updated={updated} />
           {page.slug === "zapier" ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -512,7 +512,7 @@ export function IntegrationPilot({ page, crumbs, fit, updated }: { page: Integra
         </section>
       )}
       <PilotFaq title={page.faq.title} items={page.faq.items} />
-      <section className="pilot-final pilot-final-air"><div className="container"><span className="pilot-label pilot-label-light">TOOL FIT STARTS WITH THE WORKFLOW</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">Map the workflow first</Link><Link href="/book" className="pilot-text-link is-light">Talk through the use case</Link></div></div></section>
+      <section className="pilot-final pilot-final-air"><div className="container"><span className="pilot-label pilot-label-light">TOOL FIT STARTS WITH THE WORKFLOW</span><h2>{page.cta.title}</h2><p>{page.cta.body}</p><div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">Map the workflow first</Link><Link href="/book" className="pilot-text-link is-light">Talk through the use case</Link></div></div></section>
       <NewsletterSection />
     </main>
   );
@@ -536,7 +536,7 @@ export function RoiPilot({ crumbs }: { crumbs: Crumb[] }) {
       <section className="roi-benchmarks"><div className="container"><div className="pilot-section-head"><span className="pilot-label">PUBLISHED WHISPERS LAB RESULTS</span><h2>{benchmarks.title}</h2><p>{benchmarks.intro}</p></div><div className="roi-benchmark-list">{benchmarks.rows.map((row, index) => <Link key={row.slug} href={`/case-studies/${row.slug}`}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{row.title}</h3><p>{row.detail}</p></div><strong>{row.big}</strong><ArrowRight size={17} /></Link>)}</div></div></section>
 
       <PilotFaq title={faq.title} items={faq.items} />
-      <section className="pilot-final pilot-final-roi"><div className="container"><span className="pilot-label pilot-label-light">TURN THE ESTIMATE INTO A SCOPE</span><h2>{cta.title}</h2><p>{cta.body}</p><div className="pilot-actions"><Link href="/audit" className="btn btn-primary">See the $250 Automation Audit</Link><Link href="/resources/ai-readiness-assessment" className="pilot-text-link is-light">Check readiness first</Link></div></div></section>
+      <section className="pilot-final pilot-final-roi"><div className="container"><span className="pilot-label pilot-label-light">TURN THE ESTIMATE INTO A SCOPE</span><h2>{cta.title}</h2><p>{cta.body}</p><div className="pilot-actions"><Link href="/pricing#audit" className="btn btn-primary">See the $250 Automation Audit</Link><Link href="/resources/ai-readiness-assessment" className="pilot-text-link is-light">Check readiness first</Link></div></div></section>
       <NewsletterSection />
     </main>
   );

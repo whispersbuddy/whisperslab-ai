@@ -2,7 +2,7 @@
 export default function CtaBand({
   title,
   body,
-  primary = { href: "/audit", label: "Book Your Audit ($250)" },
+  primary = { href: "/pricing#audit", label: "Book Your Audit ($250)" },
   secondary = { href: "/book", label: "Book a free discovery call" },
 }: {
   title: string;

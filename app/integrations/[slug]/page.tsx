@@ -62,7 +62,7 @@ export default async function IntegrationPageRoute({ params }: { params: Promise
       areaServed: { "@type": "Country", name: "United States" },
       audience: { "@type": "BusinessAudience", audienceType: "Small businesses" },
       mentions: { "@type": "SoftwareApplication", name: integration.tool.name, applicationCategory: "BusinessApplication", url: integration.tool.url, ...(integration.tool.sameAs ? { sameAs: integration.tool.sameAs } : {}) },
-      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/audit" },
+      offers: { "@type": "Offer", name: "Automation Audit", price: 250, priceCurrency: "USD", url: SITE_URL + "/pricing" },
     },
     faqSchema(integration.faq.items),
     breadcrumbSchema(crumbs)

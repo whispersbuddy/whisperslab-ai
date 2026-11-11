@@ -48,7 +48,6 @@ export default function SiteHeader() {
   const services = liveRoutes("services");
   const integrations = liveRoutes("integrations");
   const industries = liveRoutes("industries");
-  const pricing = liveRoutes("pricing");
   const resources = liveRoutes("resources");
   const servicesHubLive = isPathLive("/services");
   const integrationsHubLive = isPathLive("/integrations");
@@ -190,9 +189,9 @@ export default function SiteHeader() {
                       ) : null}
                     </div>
                   ) : null}
-                  <Link href="/audit" className="sh-audit" onClick={closeAll}>
+                  <Link href="/book" className="sh-audit" onClick={closeAll}>
                     <span>
-                      <strong>Not sure where to start?</strong> The $250 Automation Audit gives you a plan in 7 days, credited if you build with us.
+                      <strong>Not sure where to start?</strong> Book a free discovery call and we will tell you what is worth automating first.
                     </span>
                     <ArrowRight size={16} aria-hidden="true" />
                   </Link>
@@ -217,14 +216,9 @@ export default function SiteHeader() {
             </div>
           ) : null}
 
-          <div className="sh-dd" onMouseEnter={() => hoverOpen("pricing")} onMouseLeave={hoverClose}>
-            {trigger("pricing", "Pricing", pricing.map((r) => r.path))}
-            <div id="sh-panel-pricing" className="sh-panel sh-list" hidden={open !== "pricing"}>
-              {pricing.map((r) => (
-                <MenuLink key={r.path} route={r} onNavigate={closeAll} />
-              ))}
-            </div>
-          </div>
+          <Link href="/pricing" className={isActive(pathname, "/pricing") ? "nav-active" : undefined}>
+            Pricing
+          </Link>
 
           <Link href="/case-studies" className={isActive(pathname, "/case-studies") ? "nav-active" : undefined}>
             Case Studies
@@ -300,14 +294,9 @@ export default function SiteHeader() {
               ))}
             </details>
           ) : null}
-          <details className="sh-acc">
-            <summary>
-              Pricing <ChevronDown size={16} aria-hidden="true" />
-            </summary>
-            {pricing.map((r) => (
-              <MenuLink key={r.path} route={r} onNavigate={closeAll} showBlurb={false} />
-            ))}
-          </details>
+          <Link href="/pricing" className="sh-mobile-link" onClick={closeAll}>
+            Pricing
+          </Link>
           <Link href="/case-studies" className="sh-mobile-link" onClick={closeAll}>
             Case Studies
           </Link>

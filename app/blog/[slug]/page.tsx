@@ -378,7 +378,7 @@ export default async function BlogPostPage({
 
                 <div className="blog-detail-cta">
                   <p>Think this might apply to your business?</p>
-                  <a href="/audit" className="btn btn-primary">
+                  <a href="/pricing#audit" className="btn btn-primary">
                     Get the $250 Automation Audit
                   </a>
                 </div>

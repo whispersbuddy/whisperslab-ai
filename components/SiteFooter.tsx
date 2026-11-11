@@ -49,9 +49,9 @@ export default function SiteFooter() {
   const integrations = toLinks(liveRoutes("integrations"));
   if (integrations.length && isPathLive("/integrations")) integrations.push({ href: "/integrations", label: "All integrations" });
 
-  const offers = toLinks(liveRoutes("pricing"));
   const company = [
     ...(isPathLive("/about") ? [{ href: "/about", label: "About" }] : []),
+    { href: "/pricing", label: "Pricing" },
     { href: "/case-studies", label: "Case Studies" },
     { href: "/contact", label: "Contact" },
     { href: "/book", label: "Book a Call" },
@@ -92,7 +92,6 @@ export default function SiteFooter() {
             <Column title="Services" links={services} />
             <Column title="Industries" links={industries} />
             <Column title="Integrations" links={integrations} />
-            <Column title="Pricing" links={offers} />
             <Column title="Company" links={company} />
             <Column title="Resources" links={resources} />
           </div>

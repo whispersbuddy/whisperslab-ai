@@ -123,7 +123,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "If two or more of these sound familiar, our [$250 Automation Audit](/audit) maps exactly this: a 7-day sprint that identifies what's eating your team's time and hands you a prioritized plan for fixing it, whether or not you build it with us.",
+        text: "If two or more of these sound familiar, our [$250 Automation Audit](/pricing#audit) maps exactly this: a 7-day sprint that identifies what's eating your team's time and hands you a prioritized plan for fixing it, whether or not you build it with us.",
       },
     ],
     relatedCaseStudySlugs: ["zero-double-entry-financial-pipeline"],
@@ -257,7 +257,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure which of these is actually costing your firm the most? Our [$250 Automation Audit](/audit) maps every process on volume and cost so you fix what's actually bleeding hours, not just what feels most annoying.",
+        text: "Not sure which of these is actually costing your firm the most? Our [$250 Automation Audit](/pricing#audit) maps every process on volume and cost so you fix what's actually bleeding hours, not just what feels most annoying.",
       },
     ],
     relatedCaseStudySlugs: ["financial-document-reader", "zero-double-entry-financial-pipeline"],
@@ -373,7 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure whether lead response time is actually your biggest leak? Our [$250 Automation Audit](/audit) scores every process on volume and cost rather than instinct, so you fix what's actually costing the most, not just what's loudest.",
+        text: "Not sure whether lead response time is actually your biggest leak? Our [$250 Automation Audit](/pricing#audit) scores every process on volume and cost rather than instinct, so you fix what's actually costing the most, not just what's loudest.",
       },
     ],
     relatedCaseStudySlugs: ["lead-sales-engine"],
@@ -476,7 +476,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure whether catalog upkeep is really your biggest time sink? Our [$250 Automation Audit](/audit) scores every process on volume and cost so you fix the process actually bleeding hours, not just the loudest one.",
+        text: "Not sure whether catalog upkeep is really your biggest time sink? Our [$250 Automation Audit](/pricing#audit) scores every process on volume and cost so you fix the process actually bleeding hours, not just the loudest one.",
       },
     ],
     relatedCaseStudySlugs: ["ai-catalog-content-engine"],
@@ -536,7 +536,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "2. Look for three prices, not one" },
       { type: "p", text: "A single large number for \"your automation project\" hides the decision you actually need to make. A healthier structure splits it so you can stop at any point." },
       { type: "list", items: [
-        "**Scoping:** a short paid step that ends in a written plan. At Whispers Lab this is the [$250 Automation Audit](/audit), delivered in 7 days and credited toward a build.",
+        "**Scoping:** a short paid step that ends in a written plan. At Whispers Lab this is the [$250 Automation Audit](/pricing#audit), delivered in 7 days and credited toward a build.",
         "**The first build:** a fixed price for one workflow. Ours starts from $2,500 and goes live in under 30 days.",
         "**Upkeep:** an optional monthly fee for monitoring and small changes. Ours starts from $500 a month.",
       ] },
@@ -557,7 +557,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Write down the three tasks your team repeats most. Next to each, put how often it happens and how long it takes. Take that list to two or three agencies and see which one asks the better follow-up questions. That conversation will tell you more than any pitch deck." },
-      { type: "callout", text: "Want to see how a scoping step works before you commit to anything? Our [$250 Automation Audit](/audit) ranks your repeating work and gives you a written plan to keep, and the fee is credited if you build with us. You can also read how our [automation consulting](/services/automation-consulting) works first." },
+      { type: "callout", text: "Want to see how a scoping step works before you commit to anything? Our [$250 Automation Audit](/pricing#audit) ranks your repeating work and gives you a written plan to keep, and the fee is credited if you build with us. You can also read how our [automation consulting](/services/automation-consulting) works first." },
     ],
     faq: [
       {
@@ -623,7 +623,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "We have not published a lease renewal build. The closest real example is our [Onboarding Pipeline That Runs on Autopilot](/case-studies/onboarding-pipeline-autopilot), a coaching business where clients book themselves and get reminders automatically, saving about 5 hours a week. The mechanism is the same: a date-based trigger, a message and a record that updates itself. The industry is different." },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Pick one trigger, such as 90 days before lease end, and one message. Run it on the next renewal cycle and watch what the replies look like before you add a second reminder. For more on the pattern, see our guide to [real estate lead follow-up automation](/blog/real-estate-lead-follow-up-automation)." },
-      { type: "callout", text: "Not sure which of your property tasks is costing the most hours? Our [$250 Automation Audit](/audit) counts them and gives you a ranked plan, so you start with the one that pays back fastest." },
+      { type: "callout", text: "Not sure which of your property tasks is costing the most hours? Our [$250 Automation Audit](/pricing#audit) counts them and gives you a ranked plan, so you start with the one that pays back fastest." },
     ],
     faq: [
       {
@@ -688,7 +688,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "We have not published a maintenance desk build. The nearest real example is our [Inspection Report That Writes Itself](/case-studies/inspection-report-writes-itself), where photos and notes from a field inspection become a finished report and save about 4 hours per report. It shows the same pattern, structured input from the field turned into a record without retyping. The work is inspections, not maintenance requests." },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Begin with step one and the routing rule. Get every request into one place with one owner for a month, then add urgency tags. If your problem is mostly missed dates rather than missed requests, read our guide to [lease renewal automation](/blog/lease-renewal-automation-for-property-managers)." },
-      { type: "callout", text: "Want to know which part of your property operations costs the most hours? Our [$250 Automation Audit](/audit) lists your repeating tasks, ranks them, and gives you a plan you keep either way." },
+      { type: "callout", text: "Want to know which part of your property operations costs the most hours? Our [$250 Automation Audit](/pricing#audit) lists your repeating tasks, ranks them, and gives you a plan you keep either way." },
     ],
     faq: [
       {
@@ -806,7 +806,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure which hand-off is costing your store the most? Our [$250 Automation Audit](/audit) maps every process on volume and cost and is delivered in 7 business days. If that is too late to build before the season, it will also tell you what to fix in January instead.",
+        text: "Not sure which hand-off is costing your store the most? Our [$250 Automation Audit](/pricing#audit) maps every process on volume and cost and is delivered in 7 business days. If that is too late to build before the season, it will also tell you what to fix in January instead.",
       },
     ],
     faq: [

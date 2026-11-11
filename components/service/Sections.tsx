@@ -32,7 +32,7 @@ export function ServiceHero({ hero, crumbs, children }: { hero: ServicePage["her
           </h1>
           <p className="sv-answer">{hero.answer}</p>
           <div className="sv-actions">
-            <a href="/audit" className="btn btn-primary">
+            <a href="/pricing#audit" className="btn btn-primary">
               Start with the $250 Audit
             </a>
             <a href={hero.secondaryCta.href} className="btn btn-ghost">
@@ -433,7 +433,7 @@ export function CtaAudit({ cta }: { cta: ServicePage["cta"] }) {
           <h2>{cta.title}</h2>
           <p className="sv-intro">{cta.body}</p>
           <div className="sv-actions">
-            <a href="/audit" className="btn btn-primary">
+            <a href="/pricing#audit" className="btn btn-primary">
               Book Your Audit ($250)
             </a>
             <a href="/book" className="btn btn-ghost">

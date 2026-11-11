@@ -25,7 +25,7 @@ export const OFFERS: Offer[] = [
     includes: ["Up to 3 mapped workflows", "Cost and time baseline", "Prioritized execution blueprint", "Delivered in 7 business days"],
     bestFor: "Owners who know admin is eating their week but aren't sure what to fix first.",
     timeline: "7 days",
-    href: "/audit",
+    href: "/pricing#audit",
     cta: "See the Automation Audit",
   },
   {
@@ -37,7 +37,7 @@ export const OFFERS: Offer[] = [
     includes: ["One standard workflow from $2,500", "Acceptance testing and alerts", "Live in under 30 days", "Docs, training, and 30-day stabilization"],
     bestFor: "Businesses ready to remove their biggest time-wasters now.",
     timeline: "Under 30 days",
-    href: "/core-build",
+    href: "/pricing#core-build",
     cta: "See the Core Build",
   },
   {
@@ -50,7 +50,7 @@ export const OFFERS: Offer[] = [
     includes: ["Monitoring for agreed workflows", "Failure fixes and connection checks", "One small optimization monthly", "Monthly health report"],
     bestFor: "Teams that need reliable maintenance without ongoing new development.",
     timeline: "Monthly",
-    href: "/automation-care",
+    href: "/pricing#care",
     cta: "See Automation Care",
   },
   {
@@ -63,7 +63,7 @@ export const OFFERS: Offer[] = [
     includes: ["Everything in Automation Care", "One standard workflow monthly", "Priority technical support", "Quarterly ROI and capacity review"],
     bestFor: "Teams that already run automations and want them kept healthy and growing.",
     timeline: "Monthly",
-    href: "/growth-partner",
+    href: "/pricing#growth",
     cta: "See the Growth Partner plan",
   },
 ];

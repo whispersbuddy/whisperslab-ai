@@ -79,7 +79,7 @@ const STEPS = [
     body: "Know which 2 to 3 workflows to automate first, what they cost today, and what building them involves.",
     points: ["Up to three mapped workflows", "Cost and time baseline", "Prioritized build plan"],
     cta: "See the Automation Audit",
-    href: "/audit",
+    href: "/pricing#audit",
   },
   {
     icon: Workflow,
@@ -90,7 +90,7 @@ const STEPS = [
     body: "We build, test, and launch your highest-value workflow with acceptance testing and a clear definition of done. Ongoing care is optional after launch.",
     points: ["One agreed workflow, fixed quote", "Documentation and team training", "30-day launch stabilization"],
     cta: "Explore the Core Build",
-    href: "/core-build",
+    href: "/pricing#core-build",
   },
 ];
 

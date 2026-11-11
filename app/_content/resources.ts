@@ -143,14 +143,14 @@ export const READINESS_BANDS: QuizBand[] = [
     max: 12,
     verdict: "Ready to start",
     body: "This task has the shape of ones we automate most often: repeatable, already in software, and with someone able to check the result. The $250 Automation Audit is the fastest way to turn this into a real plan.",
-    cta: { label: "See the $250 Automation Audit", href: "/audit" },
+    cta: { label: "See the $250 Automation Audit", href: "/pricing#audit" },
   },
   {
     min: 5,
     max: 8,
     verdict: "Close, with a few things to sort out first",
     body: "Parts of this task are ready to automate, and parts need a bit of work first, like moving off paper or settling on one set of steps. The Automation Audit will tell you honestly what to fix before a build, and what can start now.",
-    cta: { label: "See the $250 Automation Audit", href: "/audit" },
+    cta: { label: "See the $250 Automation Audit", href: "/pricing#audit" },
   },
   {
     min: 0,
