@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import NewsletterSection from "@/components/NewsletterSection";
+import CaseStudyDetail from "@/components/case/CaseStudyDetail";
 import { CASE_STUDIES, getCaseStudyBySlug } from "@/app/_content/caseStudiesData";
 import { fetchCaseStudies, fetchCaseStudyBySlug } from "@/lib/api";
 import { getPostsForCaseStudy, getRelatedCaseStudies } from "@/lib/content";
-import RelatedLinks from "@/components/RelatedLinks";
-import CaseFlow from "@/components/CaseFlow";
-import CaseFlowDiagram from "@/components/CaseFlowDiagram";
-import { CASE_FLOWS } from "@/app/_content/caseFlows";
-import AuthorByline from "@/components/AuthorByline";
 import { FOUNDER, PUBLISHER, WEBSITE_ID } from "@/lib/seo";
 
 export async function generateStaticParams() {
@@ -118,160 +112,13 @@ export default async function CaseStudyDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <main>
-        <section className="case-detail-banner">
-          <div className="container">
-            <Link href="/case-studies" className="case-detail-back">
-              ← All case studies
-            </Link>
-            <div className="case-tags">
-              <span className="case-industry">{cs.industry}</span>
-              <span
-                className={
-                  cs.buildType === "ai"
-                    ? "case-build case-build-ai"
-                    : "case-build case-build-auto"
-                }
-              >
-                {cs.buildType === "ai" ? "AI-POWERED" : "AUTOMATED"}
-              </span>
-            </div>
-            <h1>{cs.title}</h1>
-            <p className="case-goal">
-              <strong>The goal:</strong> {cs.goal}
-            </p>
-            <AuthorByline updated={updated} />
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="case-detail-body">
-              <p className="case-detail-snapshot">WHO THIS WAS FOR</p>
-              <p style={{ color: "#475569", fontSize: "15.5px", lineHeight: 1.7 }}>
-                {cs.detail.clientSnapshot}
-              </p>
-              <div className="case-detail-tools">
-                {cs.detail.tools?.map((tool: string) => (
-                  <span className="case-detail-tool" key={tool}>
-                    {tool}
-                  </span>
-                ))}
-              </div>
-
-              {cs.detail.media && Array.isArray(cs.detail.media) && cs.detail.media.length > 0 && (
-                <div className="case-detail-section case-detail-media" style={{ marginTop: '2.5rem' }}>
-                  {cs.detail.media.map((item: any, i: number) => {
-                    const isUrl = typeof item === 'string';
-                    const url = isUrl ? item : item.url;
-                    const isVideo = url.match(/\.(mp4|webm|ogg)$/i) || (!isUrl && item.type === 'video');
-                    
-                    if (isVideo) {
-                      return (
-                        <video key={i} src={url} controls style={{ width: '100%', marginBottom: '1.5rem', borderRadius: '8px' }} />
-                      );
-                    }
-                    return (
-                      <img key={i} src={url} alt={!isUrl && item.alt ? item.alt : ''} style={{ width: '100%', marginBottom: '1.5rem', borderRadius: '8px' }} />
-                    );
-                  })}
-                </div>
-              )}
-
-              <div className="case-detail-section">
-                <h2>The situation</h2>
-                {cs.detail.situation?.map((p: string, i: number) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-
-              <div className="case-detail-section">
-                <h2>What we built</h2>
-                {cs.detail.whatWeBuilt?.map((p: string, i: number) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-
-              <div className="case-detail-section">
-                <h2>How it works</h2>
-                {Array.isArray(cs.detail.howItWorks) && cs.detail.howItWorks.length >= 2 ? (
-                  CASE_FLOWS[slug]?.steps.length === cs.detail.howItWorks.length ? (
-                    <CaseFlowDiagram steps={cs.detail.howItWorks} flow={CASE_FLOWS[slug]} />
-                  ) : (
-                    <CaseFlow steps={cs.detail.howItWorks} />
-                  )
-                ) : null}
-                <ol className="case-detail-steps">
-                  {cs.detail.howItWorks?.map((step: string, i: number) => (
-                    <li key={i}>
-                      <span className="case-detail-step-index">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="case-detail-section">
-                <h2>The challenges we solved</h2>
-                <ul className="case-detail-challenges">
-                  {cs.detail.challenges?.map((c: string, i: number) => (
-                    <li key={i}>
-                      <span className="promise-check">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M6 12.5l4 4 8-9"
-                            stroke="#fff"
-                            strokeWidth="2.4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="case-detail-section">
-                <h2>The result</h2>
-                {cs.detail.result?.map((p: string, i: number) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-
-              <div className="case-detail-numbers case-numbers">
-                {cs.metrics?.map((m: any) => (
-                  <div className="case-metric" key={m.label}>
-                    <span className="case-metric-num">{m.num}</span>
-                    <span className="case-metric-label">{m.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              <RelatedLinks
-                label={relatedGuides.length > 1 ? "RELATED GUIDES" : "RELATED GUIDE"}
-                links={relatedGuides.map((p) => ({ href: `/blog/${p.slug}`, title: p.title }))}
-              />
-              <RelatedLinks
-                label="MORE CASE STUDIES"
-                links={moreCaseStudies.map((s) => ({ href: `/case-studies/${s.slug}`, title: s.title }))}
-              />
-
-              <div className="case-detail-cta">
-                <p>Want a system like this built for your business?</p>
-                <a href="/book" className="btn btn-primary">
-                  Book Free Discovery Call
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <NewsletterSection />
-      </main>
+      <CaseStudyDetail
+        cs={cs}
+        slug={slug}
+        updated={updated}
+        guides={relatedGuides.map((p) => ({ href: `/blog/${p.slug}`, title: p.title }))}
+        more={moreCaseStudies.map((c) => ({ href: `/case-studies/${c.slug}`, title: c.title }))}
+      />
     </>
   );
 }
