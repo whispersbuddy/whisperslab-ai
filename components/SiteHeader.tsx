@@ -41,6 +41,7 @@ export default function SiteHeader() {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState<MenuKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
 
@@ -88,6 +89,15 @@ export default function SiteHeader() {
     };
   }, [open]);
 
+  // The bar is transparent over the page hero and turns into a blurred dark
+  // bar once the page scrolls, so links stay readable over light sections.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Lock page scroll while the mobile sheet is open.
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -128,7 +138,7 @@ export default function SiteHeader() {
   const isHome = pathname === "/";
 
   return (
-    <header className={"nav-wrap site-header" + (isHome ? "" : " nav-solid") + (mobileOpen ? " is-open" : "")}>
+    <header className={"nav-wrap site-header" + (isHome ? "" : " nav-solid") + (mobileOpen ? " is-open" : "") + (scrolled ? " is-scrolled" : "")}>
       <div className="container nav">
         <Link href="/" className="logo" aria-label="Whispers Lab home">
           <img src="/assets/logo-trim.png" alt="Whispers Lab" width={348} height={45} />
@@ -136,15 +146,17 @@ export default function SiteHeader() {
 
         <nav className="nav-links sh-nav" aria-label="Main" ref={navRef}>
           {hasServicesMenu ? (
-            <div className="sh-dd" onMouseEnter={() => hoverOpen("services")} onMouseLeave={hoverClose}>
+            <div className="sh-dd sh-dd-mega" onMouseEnter={() => hoverOpen("services")} onMouseLeave={hoverClose}>
               {trigger("services", "Services", ["/services", "/integrations"])}
               <div id="sh-panel-services" className="sh-panel sh-mega" hidden={open !== "services"}>
                 {services.length > 0 ? (
-                  <div className="sh-col">
+                  <div className="sh-col sh-col-services">
                     <span className="sh-col-title">What we automate</span>
-                    {services.map((r) => (
-                      <MenuLink key={r.path} route={r} onNavigate={closeAll} />
-                    ))}
+                    <div className="sh-col-items">
+                      {services.map((r) => (
+                        <MenuLink key={r.path} route={r} onNavigate={closeAll} />
+                      ))}
+                    </div>
                     {servicesHubLive ? (
                       <Link href="/services" className="sh-all" onClick={closeAll}>
                         All services <ArrowRight size={14} aria-hidden="true" />

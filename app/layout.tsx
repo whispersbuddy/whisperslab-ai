@@ -5,6 +5,7 @@ import "./styles/sections.css";
 import "./styles/pilots.css";
 import "./styles/use-cases.css";
 import "./styles/home.css";
+import "./styles/chrome.css";
 import ClientEffects from "@/components/ClientEffects";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";

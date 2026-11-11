@@ -63,7 +63,8 @@ export default function SiteFooter() {
             <Link href="/" className="logo" aria-label="Whispers Lab home">
               <img src="/assets/logo-trim.png" alt="Whispers Lab" width={348} height={45} />
             </Link>
-            <p className="sf-tag">We delete busywork. Custom AI and automation for small business owners.</p>
+            <p className="sf-headline">We delete busywork.</p>
+            <p className="sf-tag">Custom AI and automation for small business owners.</p>
             <p className="footer-mandate">THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME.</p>
             <div className="footer-social">
               {SOCIALS.map((s) => (
@@ -105,6 +106,7 @@ export default function SiteFooter() {
           ) : null}
         </div>
       </div>
+      <div className="sf-wordmark" aria-hidden="true">Whispers Lab</div>
     </footer>
   );
 }
