@@ -2,8 +2,8 @@
 // join-section markup exactly. The form keeps the .newsletter-form hooks that
 // components/ClientEffects.tsx wires to /api/newsletter.
 //
-// variant="home" is the redesigned homepage version: a dark panel with the
-// pitch on the left and what arrives each Tuesday plus the form on the right.
+// variant="home" is the redesigned homepage version: a newspaper-style
+// masthead, the contents of an issue as three columns, and one inline sign-up row.
 const ISSUE = [
   { n: "01", t: "One manual task to delete", d: "A real task small teams do by hand every week." },
   { n: "02", t: "The exact tool to replace it", d: "Named, with how to set it up." },
@@ -14,44 +14,40 @@ export default function NewsletterSection({ variant = "default" }: { variant?: "
   if (variant === "home") {
     return (
       <section className="hm-section hm-paper hm-news-section" id="framework">
-        <div className="container">
-          <div className="hm-news">
-            <div className="hm-news-copy">
-              <p className="hm-eyebrow">Every Tuesday · Free</p>
-              <h2>Delete one hour of busywork this week.</h2>
-              <p>
-                Join the Tuesday newsletter and get our free &quot;Busywork Elimination Framework&quot;. One manual task
-                to eliminate and the exact AI tool to replace it, every week.
-              </p>
-            </div>
-            <div className="hm-news-card">
-              <ol className="hm-news-issue">
-                {ISSUE.map((i) => (
-                  <li key={i.n}>
-                    <span>{i.n}</span>
-                    <div>
-                      <b>{i.t}</b>
-                      <small>{i.d}</small>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              <form className="newsletter-form">
-                <input
-                  type="email"
-                  name="email"
-                  className="newsletter-input"
-                  placeholder="Enter your email"
-                  aria-label="Email address"
-                  required
-                />
-                <button type="submit" className="newsletter-btn">
-                  Send me the framework
-                </button>
-              </form>
-              <span className="newsletter-note">No spam. Zero tech jargon. Just hours bought back.</span>
-            </div>
+        <div className="container hm-news">
+          <div className="hm-news-mast">
+            <span>The Lab Report</span>
+            <span>Every Tuesday</span>
+            <span>Free</span>
           </div>
+          <h2>Delete one hour of busywork this week.</h2>
+          <p className="hm-news-lead">
+            Join the Tuesday newsletter and get our free &quot;Busywork Elimination Framework&quot;. Here is what is in
+            every issue.
+          </p>
+          <ol className="hm-news-cols">
+            {ISSUE.map((i) => (
+              <li key={i.n}>
+                <span className="hm-news-n">{i.n}</span>
+                <b>{i.t}</b>
+                <small>{i.d}</small>
+              </li>
+            ))}
+          </ol>
+          <form className="newsletter-form">
+            <input
+              type="email"
+              name="email"
+              className="newsletter-input"
+              placeholder="Enter your email"
+              aria-label="Email address"
+              required
+            />
+            <button type="submit" className="newsletter-btn">
+              Send me the framework
+            </button>
+          </form>
+          <span className="newsletter-note">No spam. Zero tech jargon. Just hours bought back.</span>
         </div>
       </section>
     );
