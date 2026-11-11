@@ -53,7 +53,7 @@
 
 /* ---------- Eyebrow, headings ---------- */
 .hm-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--hm-accent); }
-.hm-eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--hm-grad); transform: rotate(45deg); }
+.hm-eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--hm-grad); }
 .hm-eyebrow-light { color: rgba(255, 255, 255, 0.8); }
 .hm-grad-text { background: var(--hm-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hm-head { max-width: 760px; }
