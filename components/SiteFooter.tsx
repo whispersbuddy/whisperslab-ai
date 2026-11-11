@@ -26,8 +26,7 @@ function Column({ title, links }: { title: string; links: { href: string; label:
         {links.map((l) => (
           <li key={l.href}>
             <Link href={l.href}>
-              <span>{l.label}</span>
-              <ArrowUpRight size={15} aria-hidden="true" />
+              {l.label}
             </Link>
           </li>
         ))}
@@ -62,13 +61,33 @@ export default function SiteFooter() {
   return (
     <footer className="footer site-footer">
       <div className="container">
-        <div className="sf-top">
+        <div className="sf-cta">
+          <div>
+            <p className="sf-headline">We delete busywork.</p>
+            <p className="sf-tag">Custom AI and automation for small business owners.</p>
+          </div>
+          <div className="sf-cta-actions">
+            <Link href="/book" className="sf-cta-btn">
+              <span>Book a free discovery call</span>
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+            <a href="mailto:hello@whisperslab.com" className="sf-cta-mail">hello@whisperslab.com</a>
+          </div>
+        </div>
+
+        <div className="sf-cols">
+          <Column title="Services" links={services} />
+          <Column title="Industries" links={industries} />
+          <Column title="Integrations" links={integrations} />
+          <Column title="Company" links={company} />
+          <Column title="Resources" links={resources} />
+        </div>
+
+        <div className="sf-brandrow">
           <div className="sf-brand">
             <Link href="/" className="logo" aria-label="Whispers Lab home">
               <img src="/assets/logo-trim.png" alt="Whispers Lab" width={348} height={45} />
             </Link>
-            <p className="sf-headline">We delete busywork.</p>
-            <p className="sf-tag">Custom AI and automation for small business owners.</p>
             <p className="footer-mandate">THE LAB REPORT: WEEKLY AI SHORTCUTS TO BUY BACK YOUR TIME.</p>
             <div className="footer-social">
               {SOCIALS.map((s) => (
@@ -86,15 +105,8 @@ export default function SiteFooter() {
                 </svg>
               </a>
             </div>
-            <ReviewLinks cards />
           </div>
-          <div className="sf-cols">
-            <Column title="Services" links={services} />
-            <Column title="Industries" links={industries} />
-            <Column title="Integrations" links={integrations} />
-            <Column title="Company" links={company} />
-            <Column title="Resources" links={resources} />
-          </div>
+          <ReviewLinks cards />
         </div>
         <div className="sf-bottom">
           <span>© {new Date().getFullYear()} Whispers Lab LLC. Sheridan, WY, USA · Team in Karachi, Pakistan.</span>
