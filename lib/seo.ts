@@ -62,7 +62,7 @@ export const FOUNDER_TITLE = "Co-Founder and Automation Consultant";
 // One sentence that says what Whispers Lab is and how it earns (the source
 // context). Reused in the Organization schema and llms.txt; profiles copy it.
 export const SOURCE_CONTEXT =
-  "Whispers Lab is a US automation agency (Whispers Lab LLC, build team in Karachi) that builds and maintains done-for-you automations for small businesses on n8n, Zapier, Make and Airtable, sold as a $250 Automation Audit, a Core Build from $2,500, Automation Care at $500 a month and AI Growth Partner from $1,250 a month.";
+  "Whispers Lab is a US automation agency (Whispers Lab LLC, build team in Karachi) that builds and maintains done-for-you automations for small businesses on n8n, Zapier, Make and Airtable, sold as an Automation Audit, a Core Build from $2,500, Automation Care at $500 a month and AI Growth Partner from $1,250 a month.";
 
 export const PROVIDER = { "@type": "Organization", "@id": ORG_ID, name: "Whispers Lab", url: SITE_URL };
 

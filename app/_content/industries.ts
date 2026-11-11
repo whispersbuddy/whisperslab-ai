@@ -253,11 +253,11 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "Does law firm automation work with Clio or MyCase?",
-          a: "It depends on the tool and the subscription plan. Most modern practice management, email, e-signature, and billing tools offer some way to connect other software, but the options vary. Whispers Lab confirms which connections are possible for a firm's specific tools during the $250 Automation Audit, before anything is built.",
+          a: "It depends on the tool and the subscription plan. Most modern practice management, email, e-signature, and billing tools offer some way to connect other software, but the options vary. Whispers Lab confirms which connections are possible for a firm's specific tools during the Automation Audit, before anything is built.",
         },
         {
           q: "How much does automation cost for a small law firm?",
-          a: "With Whispers Lab, it starts with a $250 Automation Audit that maps intake, conflicts, onboarding, and billing workflows and ranks them by time saved. If the firm goes ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for maintenance; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "With Whispers Lab, it starts with an Automation Audit that maps intake, conflicts, onboarding, and billing workflows and ranks them by time saved. If the firm goes ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for maintenance; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace paralegals or legal assistants?",
@@ -267,7 +267,7 @@ export const INDUSTRIES: IndustryPage[] = [
     },
     cta: {
       title: "Find the admin your firm can stop doing by hand.",
-      body: "In 7 days, the Automation Audit maps intake, conflicts, onboarding, and billing, and hands you a plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps intake, conflicts, onboarding, and billing, and hands you a plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       services: ["/services/lead-follow-up-automation", "/services/client-onboarding-automation", "/services/data-entry-automation", "/services/bookkeeping-automation"],
@@ -438,11 +438,11 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "Does it work with Zillow and Follow Up Boss?",
-          a: "Usually, yes. Real estate automation connects to the portals, CRM, and e-signature tools you already use where possible. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Usually, yes. Real estate automation connects to the portals, CRM, and e-signature tools you already use where possible. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "How much does real estate automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads and paperwork move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps how leads and paperwork move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the audit fee credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace my transaction coordinator or assistant?",
@@ -452,7 +452,7 @@ export const INDUSTRIES: IndustryPage[] = [
     },
     cta: {
       title: "Find out how many leads are going cold.",
-      body: "In 7 days, the Automation Audit maps how leads and paperwork move through your business and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps how leads and paperwork move through your business and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       services: ["/services/lead-follow-up-automation", "/services/client-onboarding-automation", "/services/software-integration-services"],
@@ -610,7 +610,7 @@ export const INDUSTRIES: IndustryPage[] = [
       items: [
         {
           q: "Can my online store send orders to my shipping tool automatically?",
-          a: "Yes. For one online seller, Whispers Lab built n8n workflows that send each new BigCommerce order to ShipStation within moments and write shipped or cancelled status back to the store, so nobody moves orders by hand. Your setup depends on the platforms you use, and the $250 Automation Audit confirms what can be connected before anything is built.",
+          a: "Yes. For one online seller, Whispers Lab built n8n workflows that send each new BigCommerce order to ShipStation within moments and write shipped or cancelled status back to the store, so nobody moves orders by hand. Your setup depends on the platforms you use, and the Automation Audit confirms what can be connected before anything is built.",
         },
         {
           q: "What can a small online store automate?",
@@ -618,7 +618,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does ecommerce automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which catalog and order tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps which catalog and order tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the audit fee credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automated listings sound generic?",
@@ -626,7 +626,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "Does it work with Shopify and WooCommerce?",
-          a: "Usually, yes. Ecommerce automation connects to the storefront, supplier feeds, and accounting tools you already use where possible. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Usually, yes. Ecommerce automation connects to the storefront, supplier feeds, and accounting tools you already use where possible. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "What stops a bad price from going live by accident?",
@@ -640,7 +640,7 @@ export const INDUSTRIES: IndustryPage[] = [
     },
     cta: {
       title: "Find out what's costing your catalog the most time.",
-      body: "In 7 days, the Automation Audit maps your catalog and order work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your catalog and order work and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       services: ["/services/software-integration-services", "/services/data-entry-automation", "/services/bookkeeping-automation"],
@@ -806,11 +806,11 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "Does it work with AppFolio or Buildium?",
-          a: "Usually, yes. Property management automation connects to the property management software, vendor tools, and accounting you already use where possible. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Usually, yes. Property management automation connects to the property management software, vendor tools, and accounting you already use where possible. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "How much does property management automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how requests, rent, and screening move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps how requests, rent, and screening move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the audit fee credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace my property manager or assistant?",
@@ -820,7 +820,7 @@ export const INDUSTRIES: IndustryPage[] = [
     },
     cta: {
       title: "Find the admin eating your week.",
-      body: "In 7 days, the Automation Audit maps how requests, rent, and screening move through your business and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps how requests, rent, and screening move through your business and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       services: ["/services/data-entry-automation", "/services/client-onboarding-automation", "/services/bookkeeping-automation"],
@@ -971,7 +971,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "How much does accounting firm automation cost?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which client and bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the $250 credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps which client and bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, with the audit fee credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automation replace bookkeepers or staff accountants?",
@@ -983,7 +983,7 @@ export const INDUSTRIES: IndustryPage[] = [
         },
         {
           q: "Does it work with Xero and QuickBooks?",
-          a: "Usually, yes. Accounting firm automation is typically built around Xero or QuickBooks, reading documents into them and matching payments against your bank feed. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Usually, yes. Accounting firm automation is typically built around Xero or QuickBooks, reading documents into them and matching payments against your bank feed. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "How accurate is automated document reading?",
@@ -993,7 +993,7 @@ export const INDUSTRIES: IndustryPage[] = [
     },
     cta: {
       title: "Find out what's slowing your firm down.",
-      body: "In 7 days, the Automation Audit maps your document and client work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your document and client work and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       services: ["/services/bookkeeping-automation", "/services/data-entry-automation", "/services/client-onboarding-automation"],

@@ -58,7 +58,7 @@ export const ROI_CALCULATOR = {
       },
       {
         q: "Does this include the cost of building the automation?",
-        a: "No. This calculator only estimates the time and money a manual task costs you now. The $250 Automation Audit gives you an actual build price, and most Core Build projects start from $2,500, so you can compare that against what the calculator shows.",
+        a: "No. This calculator only estimates the time and money a manual task costs you now. The Automation Audit gives you an actual build price, and most Core Build projects start from $2,500, so you can compare that against what the calculator shows.",
       },
       {
         q: "What if my task doesn't fit neatly into these sliders?",
@@ -70,7 +70,7 @@ export const ROI_CALCULATOR = {
       },
       {
         q: "How do I turn this into an actual plan?",
-        a: "Start with the $250 Automation Audit. In 7 days you get a ranked plan of what to automate first, using your real numbers instead of slider estimates. Build it with us and the $250 is credited.",
+        a: "Start with the Automation Audit. In 7 days you get a ranked plan of what to automate first, using your real numbers instead of slider estimates. Build it with us and the audit fee is credited.",
       },
       {
         q: "Do you save what I enter into the calculator?",
@@ -80,7 +80,7 @@ export const ROI_CALCULATOR = {
   },
   cta: {
     title: "Turn this estimate into a real plan.",
-    body: "In 7 days, the Automation Audit measures your actual volumes and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+    body: "In 7 days, the Automation Audit measures your actual volumes and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
   },
 };
 
@@ -142,15 +142,15 @@ export const READINESS_BANDS: QuizBand[] = [
     min: 9,
     max: 12,
     verdict: "Ready to start",
-    body: "This task has the shape of ones we automate most often: repeatable, already in software, and with someone able to check the result. The $250 Automation Audit is the fastest way to turn this into a real plan.",
-    cta: { label: "See the $250 Automation Audit", href: "/pricing#audit" },
+    body: "This task has the shape of ones we automate most often: repeatable, already in software, and with someone able to check the result. The Automation Audit is the fastest way to turn this into a real plan.",
+    cta: { label: "See the Automation Audit", href: "/pricing#audit" },
   },
   {
     min: 5,
     max: 8,
     verdict: "Close, with a few things to sort out first",
     body: "Parts of this task are ready to automate, and parts need a bit of work first, like moving off paper or settling on one set of steps. The Automation Audit will tell you honestly what to fix before a build, and what can start now.",
-    cta: { label: "See the $250 Automation Audit", href: "/pricing#audit" },
+    cta: { label: "See the Automation Audit", href: "/pricing#audit" },
   },
   {
     min: 0,
@@ -177,7 +177,7 @@ export const READINESS_FAQ = {
     },
     {
       q: "What if different tasks get different scores?",
-      a: "That's expected, and useful. Most businesses have a mix of highly automatable tasks and ones that need work first. The $250 Automation Audit ranks all of them together, not just the one you scored here.",
+      a: "That's expected, and useful. Most businesses have a mix of highly automatable tasks and ones that need work first. The Automation Audit ranks all of them together, not just the one you scored here.",
     },
     {
       q: "I scored low. Does that mean automation won't work for my business?",
@@ -185,7 +185,7 @@ export const READINESS_FAQ = {
     },
     {
       q: "How is this different from the Automation Audit?",
-      a: "This assessment is a free, 3-minute self-check on one task. The $250 Automation Audit is a 7-day deep dive across your whole business, done by us, that ends in a ranked, priced build plan.",
+      a: "This assessment is a free, 3-minute self-check on one task. The Automation Audit is a 7-day deep dive across your whole business, done by us, that ends in a ranked, priced build plan.",
     },
     {
       q: "Is this assessment specific to any industry?",
@@ -200,5 +200,5 @@ export const READINESS_FAQ = {
 
 export const READINESS_CTA = {
   title: "Ready for the real plan?",
-  body: "In 7 days, the Automation Audit maps your actual workflows and hands you a ranked, priced build plan you keep either way. Build it with us and the $250 is credited.",
+  body: "In 7 days, the Automation Audit maps your actual workflows and hands you a ranked, priced build plan you keep either way. Build it with us and the audit fee is credited.",
 };

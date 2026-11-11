@@ -256,7 +256,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does data entry automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that measures which documents take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that measures which documents take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "How long does it take to set up?",
@@ -268,7 +268,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Will it work with the software we already use?",
-          a: "Usually, yes. Data can go into accounting tools like Xero and QuickBooks, into Airtable or Google Sheets, into a CRM like HubSpot, or into your own database. Documents can come from email, shared folders, or forms. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Usually, yes. Data can go into accounting tools like Xero and QuickBooks, into Airtable or Google Sheets, into a CRM like HubSpot, or into your own database. Documents can come from email, shared folders, or forms. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "Does data entry automation replace admin staff?",
@@ -278,7 +278,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out which documents are costing you the most.",
-      body: "In 7 days, the Automation Audit maps your document work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your document work and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/accounting-bookkeeping", "/industries/law-firms", "/industries/property-management"],
@@ -466,7 +466,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does bookkeeping automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps which bookkeeping tasks take your team the most time. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will bookkeeping automation replace my bookkeeper or accountant?",
@@ -474,7 +474,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Does it work with QuickBooks and Xero?",
-          a: "Yes. Bookkeeping automation at Whispers Lab is usually built around Xero or QuickBooks, syncing invoices and customers from your other tools and matching payments against your bank feed. The $250 Automation Audit confirms the exact connections before anything is built.",
+          a: "Yes. Bookkeeping automation at Whispers Lab is usually built around Xero or QuickBooks, syncing invoices and customers from your other tools and matching payments against your bank feed. The Automation Audit confirms the exact connections before anything is built.",
         },
         {
           q: "How accurate is automated reconciliation?",
@@ -488,7 +488,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out what's costing your books the most time.",
-      body: "In 7 days, the Automation Audit maps your bookkeeping work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your bookkeeping work and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/accounting-bookkeeping", "/industries/real-estate", "/industries/property-management"],
@@ -676,7 +676,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does client onboarding automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps your current onboarding steps and where they break down. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps your current onboarding steps and where they break down. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will automated onboarding feel impersonal to new clients?",
@@ -684,7 +684,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Does it work with our existing CRM?",
-          a: "Usually, yes. The Onboarding Pipeline That Runs on Autopilot was built entirely on the client's existing CRM, with no new software added. Whispers Lab connects to the CRM, calendar, and video tools you already use where possible, and confirms the exact connections during the $250 Automation Audit.",
+          a: "Usually, yes. The Onboarding Pipeline That Runs on Autopilot was built entirely on the client's existing CRM, with no new software added. Whispers Lab connects to the CRM, calendar, and video tools you already use where possible, and confirms the exact connections during the Automation Audit.",
         },
         {
           q: "What if a client needs something outside the normal process?",
@@ -698,7 +698,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out what's slowing your onboarding down.",
-      body: "In 7 days, the Automation Audit maps your onboarding steps and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your onboarding steps and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/law-firms", "/industries/real-estate", "/industries/accounting-bookkeeping"],
@@ -891,7 +891,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does lead follow-up automation cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps how leads move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps how leads move through your business today. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "Will leads know they're talking to automation?",
@@ -899,7 +899,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Does it work with our CRM?",
-          a: "Usually, yes. Lead follow-up automation connects to CRMs like HubSpot or Airtable, along with your phone and email tools. The $250 Automation Audit confirms the exact connections and routing rules before anything is built.",
+          a: "Usually, yes. Lead follow-up automation connects to CRMs like HubSpot or Airtable, along with your phone and email tools. The Automation Audit confirms the exact connections and routing rules before anything is built.",
         },
         {
           q: "How long does it take to set up?",
@@ -909,7 +909,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out how many leads are going cold.",
-      body: "In 7 days, the Automation Audit maps how your leads move today and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps how your leads move today and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/real-estate", "/industries/law-firms", "/industries/ecommerce-retail"],
@@ -1101,7 +1101,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much do software integration services cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit that maps which of your systems should be talking and aren't. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit that maps which of your systems should be talking and aren't. If you go ahead, one standard workflow starts from $2,500 at a fixed price, and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
           q: "What if the standard connector between our tools has a bug?",
@@ -1113,7 +1113,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Does it work with the specific software we use?",
-          a: "Usually, yes. If a tool has an API, it can typically be connected, either directly or through a platform like Zapier or n8n. The $250 Automation Audit confirms the exact connections and checks the standard integration for known issues before anything is built.",
+          a: "Usually, yes. If a tool has an API, it can typically be connected, either directly or through a platform like Zapier or n8n. The Automation Audit confirms the exact connections and checks the standard integration for known issues before anything is built.",
         },
         {
           q: "How long does it take to set up?",
@@ -1123,7 +1123,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out which of your systems should be talking.",
-      body: "In 7 days, the Automation Audit maps where your data lives twice and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps where your data lives twice and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/ecommerce-retail", "/industries/accounting-bookkeeping", "/industries/property-management"],
@@ -1143,7 +1143,7 @@ export const SERVICES: ServicePage[] = [
       title: "AI automation consulting",
       highlight: "that ends the busywork.",
       answer:
-        "An AI automation consultant finds the work your business repeats by hand, works out which of it is worth automating first, and tells you what it will cost and save before anything is built. At Whispers Lab that starts with a $250 Automation Audit. You get a ranked plan in 7 days that you keep either way. If you want it built, we build it in under 30 days and credit the $250.",
+        "An AI automation consultant finds the work your business repeats by hand, works out which of it is worth automating first, and tells you what it will cost and save before anything is built. At Whispers Lab that starts with an Automation Audit. You get a ranked plan in 7 days that you keep either way. If you want it built, we build it in under 30 days and credit the audit fee.",
       secondaryCta: { label: "Estimate your hours", href: "#estimate" },
     },
     simulator: [
@@ -1255,7 +1255,7 @@ export const SERVICES: ServicePage[] = [
           },
         },
         { verb: "Rank", title: "Build order by payback", preview: { type: "txns", rows: [["Leads into CRM", "Build first"], ["Invoice reminders", "Build second"], ["Weekly report", "Later"]] } },
-        { verb: "Price", title: "Fixed price before you commit", preview: { type: "receipt", amount: "$250", label: "audit fee, credited toward the build" } },
+        { verb: "Price", title: "Fixed price before you commit", preview: { type: "receipt", amount: "Flat fee", label: "audit fee, credited toward the build" } },
         { verb: "Document", title: "A plan you keep", preview: { type: "pdf", title: "AUTOMATION PLAN", pages: "Delivered in 7 days" } },
         { verb: "Schedule", title: "Build in under 30 days", preview: { type: "calendar", highlight: 4, reminder: "Reminder: first workflow goes live this week" } },
         { verb: "Review", title: "Tools you already pay for", preview: { type: "pdf", title: "TOOL REVIEW", pages: "Included in the plan" } },
@@ -1315,10 +1315,10 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "How much does an AI automation consultant cost for a small business?",
-          a: "At Whispers Lab it starts with a $250 Automation Audit, delivered in 7 days. If you go ahead, one standard workflow starts from $2,500 at a fixed price and the $250 is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
+          a: "At Whispers Lab it starts with an Automation Audit, delivered in 7 days. If you go ahead, one standard workflow starts from $2,500 at a fixed price and the audit fee is credited toward it. Automation Care starts at $500 a month for existing workflows; AI Growth Partner starts at $1,250 a month when you also want one standard new workflow each month.",
         },
         {
-          q: "What do I get from the $250 Automation Audit?",
+          q: "What do I get from the Automation Audit?",
           a: "A written plan that lists your repeating tasks with the hours each one costs, ranks them by payback, names the first build and gives a fixed price for it. The plan is yours whether or not you hire Whispers Lab to build anything.",
         },
         {
@@ -1337,7 +1337,7 @@ export const SERVICES: ServicePage[] = [
     },
     cta: {
       title: "Find out what is worth automating first.",
-      body: "In 7 days, the Automation Audit ranks your repeating work and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit ranks your repeating work and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/ecommerce-retail", "/industries/property-management", "/industries/accounting-bookkeeping"],

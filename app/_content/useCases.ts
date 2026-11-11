@@ -123,7 +123,7 @@ export const DEPARTMENTS: Department[] = [
       },
       {
         q: "How much does accounting automation cost for a small business?",
-        a: "At Whispers Lab it starts with a $250 Automation Audit that ranks your repeating accounting tasks and prices the first build. One standard workflow then starts from $2,500 at a fixed price, with the $250 credited if you build with us. Monthly upkeep starts from $500 a month and is optional.",
+        a: "At Whispers Lab it starts with an Automation Audit that ranks your repeating accounting tasks and prices the first build. One standard workflow then starts from $2,500 at a fixed price, with the audit fee credited if you build with us. Monthly upkeep starts from $500 a month and is optional.",
       },
       {
         q: "Will accounting automation replace my bookkeeper?",
@@ -224,7 +224,7 @@ export const DEPARTMENTS: Department[] = [
       },
       {
         q: "How can a small online store start with automation?",
-        a: "Start with the task where data is typed twice, usually orders into a shipping tool or a supplier feed into the store. At Whispers Lab a $250 Automation Audit ranks these tasks by hours saved and prices the first build, and one workflow starts from $2,500.",
+        a: "Start with the task where data is typed twice, usually orders into a shipping tool or a supplier feed into the store. At Whispers Lab an Automation Audit ranks these tasks by hours saved and prices the first build, and one workflow starts from $2,500.",
       },
       {
         q: "Can automation connect my store to my warehouse or shipping tool?",
@@ -333,7 +333,7 @@ export const DEPARTMENTS: Department[] = [
       },
       {
         q: "How much does a lead automation build cost?",
-        a: "A $250 Automation Audit comes first and is credited toward a build. One standard workflow starts from $2,500 at a fixed price and goes live in under 30 days.",
+        a: "An Automation Audit comes first and is credited toward a build. One standard workflow starts from $2,500 at a fixed price and goes live in under 30 days.",
       },
     ],
     related: {
@@ -514,7 +514,7 @@ export const DEPARTMENTS: Department[] = [
     faq: [
       {
         q: "What is business process automation?",
-        a: "Business process automation uses software to run the repeated steps of a business process, such as sending reminders, building reports, routing approvals and updating records, so people do not do them by hand. Judgment steps stay with a person. Whispers Lab builds these on the tools you already use, starting with a $250 Automation Audit.",
+        a: "Business process automation uses software to run the repeated steps of a business process, such as sending reminders, building reports, routing approvals and updating records, so people do not do them by hand. Judgment steps stay with a person. Whispers Lab builds these on the tools you already use, starting with an Automation Audit.",
       },
       {
         q: "How do I automate recurring reports?",

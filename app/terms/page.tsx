@@ -58,7 +58,7 @@ export default function TermsPage() {
 
               <h2>Our services</h2>
               <p>
-                Prices on this site, such as the $250 Automation Audit and builds starting from $2,500, can change. Any
+                Prices on this site, such as the Automation Audit and builds starting from $2,500, can change. Any
                 project we do for you is covered by a separate written agreement, which takes priority over these
                 terms.
               </p>

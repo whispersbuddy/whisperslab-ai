@@ -123,7 +123,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "If two or more of these sound familiar, our [$250 Automation Audit](/pricing#audit) maps exactly this: a 7-day sprint that identifies what's eating your team's time and hands you a prioritized plan for fixing it, whether or not you build it with us.",
+        text: "If two or more of these sound familiar, our [Automation Audit](/pricing#audit) maps exactly this: a 7-day sprint that identifies what's eating your team's time and hands you a prioritized plan for fixing it, whether or not you build it with us.",
       },
     ],
     relatedCaseStudySlugs: ["zero-double-entry-financial-pipeline"],
@@ -257,7 +257,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure which of these is actually costing your firm the most? Our [$250 Automation Audit](/pricing#audit) maps every process on volume and cost so you fix what's actually bleeding hours, not just what feels most annoying.",
+        text: "Not sure which of these is actually costing your firm the most? Our [Automation Audit](/pricing#audit) maps every process on volume and cost so you fix what's actually bleeding hours, not just what feels most annoying.",
       },
     ],
     relatedCaseStudySlugs: ["financial-document-reader", "zero-double-entry-financial-pipeline"],
@@ -373,7 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure whether lead response time is actually your biggest leak? Our [$250 Automation Audit](/pricing#audit) scores every process on volume and cost rather than instinct, so you fix what's actually costing the most, not just what's loudest.",
+        text: "Not sure whether lead response time is actually your biggest leak? Our [Automation Audit](/pricing#audit) scores every process on volume and cost rather than instinct, so you fix what's actually costing the most, not just what's loudest.",
       },
     ],
     relatedCaseStudySlugs: ["lead-sales-engine"],
@@ -476,7 +476,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure whether catalog upkeep is really your biggest time sink? Our [$250 Automation Audit](/pricing#audit) scores every process on volume and cost so you fix the process actually bleeding hours, not just the loudest one.",
+        text: "Not sure whether catalog upkeep is really your biggest time sink? Our [Automation Audit](/pricing#audit) scores every process on volume and cost so you fix the process actually bleeding hours, not just the loudest one.",
       },
     ],
     relatedCaseStudySlugs: ["ai-catalog-content-engine"],
@@ -522,7 +522,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Abstract illustration of a ranked list of bars in the Whispers Lab blue-to-purple gradient.",
     takeaways: [
       "Ask any agency how it will decide what to build first. If the answer comes before anyone has looked at your process, they are selling, not scoping.",
-      "A fair engagement has three separate prices you can see: a paid scoping step, a fixed price for the first build, and an optional monthly fee for upkeep. Whispers Lab uses $250, from $2,500 and from $500 a month.",
+      "A fair engagement has three separate prices you can see: a paid scoping step, a fixed price for the first build, and an optional monthly fee for upkeep. Whispers Lab uses a fixed audit fee, from $2,500 and from $500 a month.",
       "Ask for case studies with a number and a tool list. \"Improved efficiency\" cannot be checked, \"about 15 hours saved a week\" can.",
       "Insist on a plan you keep if you do not hire the agency to build. A scoping step that only works as a sales funnel is a warning sign.",
       "Pick the agency that tells you what stays manual. Anyone promising to automate everything has not looked at your business closely enough.",
@@ -536,7 +536,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "2. Look for three prices, not one" },
       { type: "p", text: "A single large number for \"your automation project\" hides the decision you actually need to make. A healthier structure splits it so you can stop at any point." },
       { type: "list", items: [
-        "**Scoping:** a short paid step that ends in a written plan. At Whispers Lab this is the [$250 Automation Audit](/pricing#audit), delivered in 7 days and credited toward a build.",
+        "**Scoping:** a short paid step that ends in a written plan. At Whispers Lab this is the [Automation Audit](/pricing#audit), delivered in 7 days and credited toward a build.",
         "**The first build:** a fixed price for one workflow. Ours starts from $2,500 and goes live in under 30 days.",
         "**Upkeep:** an optional monthly fee for monitoring and small changes. Ours starts from $500 a month.",
       ] },
@@ -557,7 +557,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Write down the three tasks your team repeats most. Next to each, put how often it happens and how long it takes. Take that list to two or three agencies and see which one asks the better follow-up questions. That conversation will tell you more than any pitch deck." },
-      { type: "callout", text: "Want to see how a scoping step works before you commit to anything? Our [$250 Automation Audit](/pricing#audit) ranks your repeating work and gives you a written plan to keep, and the fee is credited if you build with us. You can also read how our [automation consulting](/services/automation-consulting) works first." },
+      { type: "callout", text: "Want to see how a scoping step works before you commit to anything? Our [Automation Audit](/pricing#audit) ranks your repeating work and gives you a written plan to keep, and the fee is credited if you build with us. You can also read how our [automation consulting](/services/automation-consulting) works first." },
     ],
     faq: [
       {
@@ -566,7 +566,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         question: "How much does an AI automation agency cost for a small business?",
-        answer: "It depends on the agency and the workflow, so ask for prices in separate steps. Whispers Lab charges $250 for a 7-day Automation Audit that is credited toward a build, a fixed price from $2,500 for one workflow that goes live in under 30 days, and upkeep from $500 a month. Treat any quote that arrives before someone has looked at your process with caution.",
+        answer: "It depends on the agency and the workflow, so ask for prices in separate steps. Whispers Lab charges a flat fee for a 7-day Automation Audit that is credited toward a build, a fixed price from $2,500 for one workflow that goes live in under 30 days, and upkeep from $500 a month. Treat any quote that arrives before someone has looked at your process with caution.",
       },
       {
         question: "Will an automation agency replace my staff?",
@@ -623,7 +623,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "We have not published a lease renewal build. The closest real example is our [Onboarding Pipeline That Runs on Autopilot](/case-studies/onboarding-pipeline-autopilot), a coaching business where clients book themselves and get reminders automatically, saving about 5 hours a week. The mechanism is the same: a date-based trigger, a message and a record that updates itself. The industry is different." },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Pick one trigger, such as 90 days before lease end, and one message. Run it on the next renewal cycle and watch what the replies look like before you add a second reminder. For more on the pattern, see our guide to [real estate lead follow-up automation](/blog/real-estate-lead-follow-up-automation)." },
-      { type: "callout", text: "Not sure which of your property tasks is costing the most hours? Our [$250 Automation Audit](/pricing#audit) counts them and gives you a ranked plan, so you start with the one that pays back fastest." },
+      { type: "callout", text: "Not sure which of your property tasks is costing the most hours? Our [Automation Audit](/pricing#audit) counts them and gives you a ranked plan, so you start with the one that pays back fastest." },
     ],
     faq: [
       {
@@ -632,7 +632,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         question: "How much does it cost to automate lease renewals?",
-        answer: "A single workflow like this is one standard build. At Whispers Lab that means a $250 Automation Audit to confirm the setup, then one workflow from $2,500 at a fixed price, with the $250 credited if you build with us. The final scope depends on which property management tool holds your lease dates.",
+        answer: "A single workflow like this is one standard build. At Whispers Lab that means an Automation Audit to confirm the setup, then one workflow from $2,500 at a fixed price, with the audit fee credited if you build with us. The final scope depends on which property management tool holds your lease dates.",
       },
       {
         question: "Does automation replace the property manager's judgment on renewals?",
@@ -688,7 +688,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "We have not published a maintenance desk build. The nearest real example is our [Inspection Report That Writes Itself](/case-studies/inspection-report-writes-itself), where photos and notes from a field inspection become a finished report and save about 4 hours per report. It shows the same pattern, structured input from the field turned into a record without retyping. The work is inspections, not maintenance requests." },
       { type: "h2", text: "Where to actually start" },
       { type: "p", text: "Begin with step one and the routing rule. Get every request into one place with one owner for a month, then add urgency tags. If your problem is mostly missed dates rather than missed requests, read our guide to [lease renewal automation](/blog/lease-renewal-automation-for-property-managers)." },
-      { type: "callout", text: "Want to know which part of your property operations costs the most hours? Our [$250 Automation Audit](/pricing#audit) lists your repeating tasks, ranks them, and gives you a plan you keep either way." },
+      { type: "callout", text: "Want to know which part of your property operations costs the most hours? Our [Automation Audit](/pricing#audit) lists your repeating tasks, ranks them, and gives you a plan you keep either way." },
     ],
     faq: [
       {
@@ -697,7 +697,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         question: "How much does maintenance request automation cost?",
-        answer: "It is typically one workflow, which at Whispers Lab means a $250 Automation Audit first, then a fixed price from $2,500 for the build, with the $250 credited. The audit confirms which tools you use for requests and how many routes you need before a price is set.",
+        answer: "It is typically one workflow, which at Whispers Lab means an Automation Audit first, then a fixed price from $2,500 for the build, with the audit fee credited. The audit confirms which tools you use for requests and how many routes you need before a price is set.",
       },
       {
         question: "Can automation decide what counts as an emergency?",
@@ -806,7 +806,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "callout",
-        text: "Not sure which hand-off is costing your store the most? Our [$250 Automation Audit](/pricing#audit) maps every process on volume and cost and is delivered in 7 business days. If that is too late to build before the season, it will also tell you what to fix in January instead.",
+        text: "Not sure which hand-off is costing your store the most? Our [Automation Audit](/pricing#audit) maps every process on volume and cost and is delivered in 7 business days. If that is too late to build before the season, it will also tell you what to fix in January instead.",
       },
     ],
     faq: [
@@ -818,7 +818,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         question: "How much does it cost to automate order processing?",
         answer:
-          "At Whispers Lab it starts with a $250 Automation Audit, which is credited toward the build if you go ahead. One standard workflow, such as passing orders from the store to the shipping tool, starts from $2,500 at a fixed price. A larger two-way sync between a store and a warehouse system is scoped after the Audit, because the volume and the systems involved change the work.",
+          "At Whispers Lab it starts with an Automation Audit, which is credited toward the build if you go ahead. One standard workflow, such as passing orders from the store to the shipping tool, starts from $2,500 at a fixed price. A larger two-way sync between a store and a warehouse system is scoped after the Audit, because the volume and the systems involved change the work.",
       },
       {
         question: "Will automation replace my warehouse or support staff?",

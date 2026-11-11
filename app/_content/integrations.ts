@@ -27,7 +27,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     seo: {
       title: "Airtable Consultant for Small Businesses | Whispers Lab",
       description:
-        "Airtable consultant for small businesses. A $250 audit first, then fixed-price builds from $2,500. You own the base and the account.",
+        "Airtable consultant for small businesses. An audit first, then fixed-price builds from $2,500. You own the base and the account.",
       keyword: "airtable consultant",
     },
     hero: {
@@ -242,7 +242,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
       eyebrow: "What it costs",
       title: "How much does an Airtable consultant cost?",
       intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. Airtable's own plan fees are separate and go on your account.",
-      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+      note: "Not sure which one you need? Start with the audit. It is credited toward a build.",
     },
     faq: {
       title: "Questions owners ask about Airtable",
@@ -253,7 +253,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "How much does an Airtable consultant cost?",
-          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is $250 and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Airtable's own plan fees are separate and billed to your account.",
+          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is a flat fee and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Airtable's own plan fees are separate and billed to your account.",
         },
         {
           q: "How do I choose an Airtable consultant?",
@@ -261,7 +261,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Do I need an Airtable consultant, expert, freelancer, or agency?",
-          a: "The words overlap, so look at what you are buying. A freelancer builds the base you describe. An expert knows Airtable deeply. An agency adds process: a plan first, a base your team approves before automations go live, documentation, and upkeep. If you already know the tables you need, a freelancer can be enough. If your data is scattered across tools and you are not sure where to start, begin with the $250 Automation Audit.",
+          a: "The words overlap, so look at what you are buying. A freelancer builds the base you describe. An expert knows Airtable deeply. An agency adds process: a plan first, a base your team approves before automations go live, documentation, and upkeep. If you already know the tables you need, a freelancer can be enough. If your data is scattered across tools and you are not sure where to start, begin with the Automation Audit.",
         },
         {
           q: "When do I need an Airtable expert, and when can I do it myself?",
@@ -289,7 +289,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Can Airtable connect to the tools we already use?",
-          a: "Usually, yes. Airtable connects directly to many apps, and anything else can usually be linked through n8n or Zapier. We map the exact connections you need during the $250 Automation Audit before anything is built.",
+          a: "Usually, yes. Airtable connects directly to many apps, and anything else can usually be linked through n8n or Zapier. We map the exact connections you need during the Automation Audit before anything is built.",
         },
         {
           q: "What do we own after the build?",
@@ -299,7 +299,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     },
     cta: {
       title: "Find out if Airtable is the right home for your data.",
-      body: "In 7 days, the Automation Audit maps where your data actually lives and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps where your data actually lives and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/real-estate", "/industries/property-management", "/industries/accounting-bookkeeping"],
@@ -492,7 +492,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
       eyebrow: "What it costs",
       title: "How much does an n8n consultant cost?",
       intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. n8n's own plan or server costs are separate and go on your account.",
-      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+      note: "Not sure which one you need? Start with the audit. It is credited toward a build.",
     },
     faq: {
       title: "Questions owners ask about n8n",
@@ -511,7 +511,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Do I need an n8n consultant, specialist, freelancer, or agency?",
-          a: "The words overlap, so look at what you are buying. A freelancer builds what you describe. A specialist knows the tool deeply. An agency adds process: a plan first, tested builds, documentation, and upkeep. If you already know what to build and can review it, a freelancer can be enough. If you are not sure which workflows are worth building, start with the $250 Automation Audit.",
+          a: "The words overlap, so look at what you are buying. A freelancer builds what you describe. A specialist knows the tool deeply. An agency adds process: a plan first, tested builds, documentation, and upkeep. If you already know what to build and can review it, a freelancer can be enough. If you are not sure which workflows are worth building, start with the Automation Audit.",
         },
         {
           q: "What is n8n used for?",
@@ -535,13 +535,13 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "How much does it cost to have n8n workflows built?",
-          a: "Whispers Lab starts with a $250 Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the $250 is credited toward the build. n8n's own subscription or server costs are separate and estimated during the Audit.",
+          a: "Whispers Lab starts with an Automation Audit that maps which workflows are worth building. Builds are quoted as a fixed price with no hourly billing, and the audit fee is credited toward the build. n8n's own subscription or server costs are separate and estimated during the Audit.",
         },
       ],
     },
     cta: {
       title: "Find out which of your workflows belong in n8n.",
-      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/real-estate", "/industries/property-management", "/industries/accounting-bookkeeping"],
@@ -554,7 +554,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
     seo: {
       title: "Zapier Consultant for Small Businesses | Whispers Lab",
       description:
-        "Zapier consultant for small businesses. A $250 audit first, then fixed-price builds from $2,500. You own the Zaps. See a real case study.",
+        "Zapier consultant for small businesses. An audit first, then fixed-price builds from $2,500. You own the Zaps. See a real case study.",
       keyword: "zapier consultant",
     },
     hero: {
@@ -726,14 +726,14 @@ export const INTEGRATIONS: IntegrationPage[] = [
       eyebrow: "What it costs",
       title: "How much does a Zapier consultant cost?",
       intro: "We don't bill by the hour or the day. Every step has a fixed price, so you know the number before any work starts. Zapier's own plan fees are separate and go on your account.",
-      note: "Not sure which one you need? Start with the $250 audit. It is credited toward a build.",
+      note: "Not sure which one you need? Start with the audit. It is credited toward a build.",
     },
     faq: {
       title: "Questions owners ask about Zapier",
       items: [
         {
           q: "Is Whispers Lab an official Zapier partner?",
-          a: "Yes. Whispers Lab has completed Zapier's Solution Partner training and is a Zapier Silver Solution Partner. It does not change how we work: a $250 Automation Audit first, then fixed-price builds, with the Zaps in an account you own.",
+          a: "Yes. Whispers Lab has completed Zapier's Solution Partner training and is a Zapier Silver Solution Partner. It does not change how we work: an Automation Audit first, then fixed-price builds, with the Zaps in an account you own.",
         },
         {
           q: "What does a Zapier consultant do?",
@@ -745,7 +745,7 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "Do I need a Zapier consultant, expert, freelancer, or agency?",
-          a: "The words overlap, so look at what you are buying. A freelancer builds the Zaps you describe. An expert knows Zapier deeply. An agency adds process: a plan first, Zaps tested on a copy of your data, documentation, and upkeep. If you already know which apps to connect, a freelancer can be enough. If you are not sure which handoffs are worth automating, begin with the $250 Automation Audit.",
+          a: "The words overlap, so look at what you are buying. A freelancer builds the Zaps you describe. An expert knows Zapier deeply. An agency adds process: a plan first, Zaps tested on a copy of your data, documentation, and upkeep. If you already know which apps to connect, a freelancer can be enough. If you are not sure which handoffs are worth automating, begin with the Automation Audit.",
         },
         {
           q: "When do I need a Zapier expert, and when can I set it up myself?",
@@ -773,13 +773,13 @@ export const INTEGRATIONS: IntegrationPage[] = [
         },
         {
           q: "How much does a Zapier consultant cost?",
-          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is $250 and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Zapier's own subscription is separate and is estimated during the Audit.",
+          a: "Whispers Lab does not bill by the hour or the day. The Automation Audit is a flat fee and is credited toward a build. A Core Build starts at $2,500 for one standard workflow at a fixed price, live in under 30 days. Automation Care is $500 a month for monitoring and maintenance. Zapier's own subscription is separate and is estimated during the Audit.",
         },
       ],
     },
     cta: {
       title: "Find out which of your apps should be talking to each other.",
-      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the $250 is credited.",
+      body: "In 7 days, the Automation Audit maps your processes and hands you a build plan you keep either way. Build it with us and the audit fee is credited.",
     },
     related: {
       industries: ["/industries/accounting-bookkeeping", "/industries/real-estate", "/industries/ecommerce-retail"],
