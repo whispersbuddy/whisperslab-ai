@@ -41,8 +41,9 @@ export default function AboutPage({ crumbs, founderTitle, caseCount }: { crumbs:
               We build the systems that make work feel <span className="hm-grad-text">quieter.</span>
             </h1>
             <p className="hm-lead">
-              Whispers Lab is a US automation agency that builds and maintains done-for-you automations for small
-              businesses on n8n, Zapier, Make and Airtable, so the robotic work disappears while people keep the judgment.
+              Whispers Lab is an automation company for small businesses. Slow replies to new leads, follow-ups that
+              never happen and hours of manual back-office work cost owners customers and time. We build the systems
+              that handle it, then maintain them.
             </p>
             <div className="hm-actions">
               <Link href="/book" className="hm-btn">
@@ -81,7 +82,7 @@ export default function AboutPage({ crumbs, founderTitle, caseCount }: { crumbs:
               one screen to another all day.
             </p>
             <p>
-              So in 2025 we started Whispers Lab with one goal: take that robotic work away. Not by replacing the team,
+              So in 2025 we started Whispers Lab with one goal: take that repetitive work away. Not by replacing the team,
               but by building quiet systems that do the busywork behind the scenes.
             </p>
           </div>

@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Do I need new software to automate my business?",
-    a: "Usually not. Most of these examples run on the tools you already pay for, connected through platforms such as Zapier, n8n, Make or Airtable. We check that before anything is built.",
+    a: "Usually not. We work with the tools you already pay for, like your CRM, email and spreadsheets. If you need something new, we tell you what and why before building.",
   },
   {
     q: "How much does it cost to automate a workflow?",

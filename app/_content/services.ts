@@ -1097,7 +1097,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "What are API integration services?",
-          a: "API integration services connect two apps through the interface each one publishes, so data moves between them without anyone copying it. It is the same work as software integration, done at the technical level: reading from one system, cleaning the data, and writing it to the other. Whispers Lab builds it on Zapier, n8n or custom code, depending on what your tools allow.",
+          a: "API integration services connect two apps through the interface each one publishes, so data moves between them without anyone copying it. It is the same work as software integration, done at the technical level: reading from one system, cleaning the data, and writing it to the other. We connect the two systems directly. The plan says how before anything is built.",
         },
         {
           q: "How much do software integration services cost for a small business?",
@@ -1323,7 +1323,7 @@ export const SERVICES: ServicePage[] = [
         },
         {
           q: "Do I need to buy new software?",
-          a: "Usually not. The plan starts with the tools you already pay for, such as Zapier, n8n, Make, Airtable or your CRM. If something new is needed, the plan says what and why.",
+          a: "Usually not. We work with the tools you already pay for, like your CRM, email and spreadsheets. If you need something new, we tell you what and why before building.",
         },
         {
           q: "How long until something is working?",

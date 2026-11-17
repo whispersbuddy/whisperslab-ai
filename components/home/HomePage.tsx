@@ -132,8 +132,9 @@ export default function HomePage() {
             Small business automation, <span className="hm-grad-text">built and maintained for you.</span>
           </h1>
           <p className="hm-lead">
-            Whispers Lab is a US automation agency that builds and maintains done-for-you automations for small
-            businesses on n8n, Zapier, Make and Airtable.
+            Whispers Lab builds and maintains automations for small business owners. We take over the work that costs
+            you customers and time, from replying to new leads in minutes and following up, to the paperwork and
+            reporting behind it. Fixed price, and you own every account.
           </p>
           <div className="hm-actions hm-actions-center">
             <Link href="/book" className="hm-btn"><span>Book a free discovery call</span><Arrow /></Link>
@@ -292,8 +293,8 @@ export default function HomePage() {
           <div>
             <p className="hm-eyebrow">A note from the lab</p>
             <p className="hm-quote">
-              We saw capable small business owners drowning in data entry, reporting, and scheduling. Automation is not
-              about replacing your team. It is about removing the robotic work people were never meant to do.
+              We saw capable small business owners losing leads to slow replies and losing hours to manual work.
+              Automation is not about replacing your team. It is about taking the repetitive tasks off their desks.
             </p>
             <p className="hm-by"><b>Haris Ali</b>{FOUNDER_TITLE}, Whispers Lab</p>
           </div>

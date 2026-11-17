@@ -526,7 +526,7 @@ export const DEPARTMENTS: Department[] = [
       },
       {
         q: "Can I automate with tools I already have?",
-        a: "Usually. Many of our builds run on Zapier, n8n, Make, Airtable or the CRM you already pay for. The Automation Audit checks that before a build is priced.",
+        a: "Usually. Most builds run on the tools you already pay for, like your CRM, email and spreadsheets. The Automation Audit checks that before a build is priced.",
       },
     ],
     related: {
