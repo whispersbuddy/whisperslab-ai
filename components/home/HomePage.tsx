@@ -20,11 +20,11 @@ import ReviewLinks from "@/components/ReviewLinks";
 import { FOUNDER_TITLE } from "@/lib/seo";
 
 const FAQS = [
-  { q: "Do I need to be technical?", a: "No. You describe the work that eats your time. We design, build, test and maintain the automation, and we train your team on it.", href: "", link: "" },
+  { q: "Do I need to be technical?", a: "No. You tell us which work eats your time. We design, build, test and maintain the automation, and train your team to use it.", href: "", link: "" },
   { q: "Do I keep my accounts and data?", a: "Yes. Everything runs in accounts you own, so you can leave with it at any time.", href: "", link: "" },
-  { q: "What does it cost?", a: "Every project has a fixed scope and a fixed quote agreed before we start. Packages and prices are on one page.", href: "/pricing", link: "See pricing." },
+  { q: "What does it cost?", a: "Every project has a fixed scope and a fixed quote, agreed before we start. Packages and prices are on one page.", href: "/pricing", link: "See pricing." },
   { q: "How long until it works?", a: "The Automation Audit is delivered in 7 business days. A Core Build goes from kickoff to live in 30 days.", href: "", link: "" },
-  { q: "Do I have to buy the Audit first?", a: "No. If you already know which process you want automated, book a free call and we can go straight to a build.", href: "", link: "" },
+  { q: "Do I have to buy the Audit first?", a: "No. If you already know which process to automate, book a free call and we can go straight to a build.", href: "", link: "" },
 ];
 
 const FACTS = [
@@ -46,16 +46,16 @@ const TOOLS = [
 const SERVICES = [
   { icon: Compass, name: "Automation Consulting", blurb: "Find what to automate first, then build it.", href: "/services/automation-consulting" },
   { icon: FileText, name: "Data Entry Automation", blurb: "Invoices, statements, and forms read and filed for you.", href: "/services/data-entry-automation" },
-  { icon: UserPlus, name: "Client Onboarding Automation", blurb: "New clients booked, set up, and welcomed on autopilot.", href: "/services/client-onboarding-automation" },
-  { icon: Mail, name: "Lead Follow-Up Automation", blurb: "Every lead answered fast and followed up.", href: "/services/lead-follow-up-automation" },
+  { icon: UserPlus, name: "Client Onboarding Automation", blurb: "New clients booked, set up and welcomed without manual steps.", href: "/services/client-onboarding-automation" },
+  { icon: Mail, name: "Lead Follow-Up Automation", blurb: "Every new lead gets a fast reply and a follow-up.", href: "/services/lead-follow-up-automation" },
   { icon: Calculator, name: "Bookkeeping Automation", blurb: "Invoices, reminders, and your books kept in sync.", href: "/services/bookkeeping-automation" },
-  { icon: Plug, name: "Software Integration Services", blurb: "Your apps sharing one set of data.", href: "/services/software-integration-services" },
+  { icon: Plug, name: "Software Integration Services", blurb: "Your apps share the same data.", href: "/services/software-integration-services" },
 ];
 
 const PLATFORMS: Platform[] = [
   { name: "n8n", logo: "/assets/n8n.png", w: 764, h: 402, blurb: "Multi-step workflows with branching, built and looked after for you.", href: "/integrations/n8n" },
-  { name: "Zapier", logo: "/assets/zapier_icon_146029.webp", w: 512, h: 512, blurb: "App-to-app workflows with the widest range of ready-made connections.", href: "/integrations/zapier" },
-  { name: "Airtable", logo: "/assets/airtable.png", w: 286, h: 239, blurb: "Bases your team trusts, with automations that post updates for you.", href: "/integrations/airtable" },
+  { name: "Zapier", logo: "/assets/zapier_icon_146029.webp", w: 512, h: 512, blurb: "Connects one app to another, with a large library of ready-made connections.", href: "/integrations/zapier" },
+  { name: "Airtable", logo: "/assets/airtable.png", w: 286, h: 239, blurb: "Shared databases your team can trust, with automations that post updates for you.", href: "/integrations/airtable" },
 ];
 
 const STEPS = [
@@ -87,7 +87,7 @@ const STEPS = [
     title: "30-Day Core Build",
     price: "30 days",
     meta: "Fixed scope",
-    body: "We build, test, and launch your highest-value workflow with acceptance testing and a clear definition of done. Ongoing care is optional after launch.",
+    body: "We build, test and launch your highest-value workflow, with acceptance testing and a clear definition of done. Ongoing care is optional after launch.",
     points: ["One agreed workflow, fixed quote", "Documentation and team training", "30-day launch stabilization"],
     cta: "Explore the Core Build",
     href: "/pricing#core-build",
@@ -132,9 +132,8 @@ export default function HomePage() {
             Small business automation, <span className="hm-grad-text">built and maintained for you.</span>
           </h1>
           <p className="hm-lead">
-            Whispers Lab builds and maintains automations for small business owners. We take over the work that costs
-            you customers and time, from replying to new leads in minutes and following up, to the paperwork and
-            reporting behind it. Fixed price, and you own every account.
+            Whispers Lab builds and maintains automations for small business owners. New leads get a reply in minutes,
+            follow-ups go out on time, and the paperwork and reporting get done without anyone typing.
           </p>
           <div className="hm-actions hm-actions-center">
             <Link href="/book" className="hm-btn"><span>Book a free discovery call</span><Arrow /></Link>
@@ -158,7 +157,7 @@ export default function HomePage() {
       {/* 2. TRUST STRIP */}
       <section className="hm-trust">
         <div className="container hm-trust-inner">
-          <p className="hm-trust-label">Built on the tools your team already uses</p>
+          <p className="hm-trust-label">Works with the tools you already use</p>
           <ul className="hm-logos">
             {TOOLS.map((t) => (
               <li key={t.name}><Image src={t.src} alt={t.name} width={120} height={32} /></li>
@@ -174,7 +173,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow">Services</p>
             <h2>What does Whispers Lab automate?</h2>
-            <p>Six service areas, all built the same way: a plan first, a fixed scope, and a workflow you own.</p>
+            <p>Six services. Each starts with a plan and a fixed scope, and you own the workflow at the end.</p>
           </header>
           <div className="hm-grid hm-grid-3">
             {SERVICES.map((s) => {
@@ -199,7 +198,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center hm-head-light">
             <p className="hm-eyebrow hm-eyebrow-light">Results</p>
             <h2>What results have clients seen?</h2>
-            <p>Real systems built for real businesses. Every number comes from a published case study.</p>
+            <p>Every number here comes from a published case study.</p>
           </header>
           <div className="hm-grid hm-grid-3">
             {RESULTS.map((r) => (
@@ -260,7 +259,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow hm-eyebrow-light">Platforms</p>
             <h2>Which tools do we build on?</h2>
-            <p>We recommend one after we hear your workflow based on your workflow, not a fixed preference. You own the account either way.</p>
+            <p>We pick the tool after we hear about your workflow. You own the account either way.</p>
           </header>
           <PlatformTabs platforms={PLATFORMS} />
           <p className="hm-foot">We also connect HubSpot, Slack, Gmail, OpenAI and Claude where a workflow needs them.</p>
@@ -293,8 +292,8 @@ export default function HomePage() {
           <div>
             <p className="hm-eyebrow">A note from the lab</p>
             <p className="hm-quote">
-              We saw capable small business owners losing leads to slow replies and losing hours to manual work.
-              Automation is not about replacing your team. It is about taking the repetitive tasks off their desks.
+              We kept meeting capable owners who lost leads to slow replies and lost hours to manual work.
+              Automation takes the repetitive tasks off your team's desks. They keep the work that needs a person.
             </p>
             <p className="hm-by"><b>Haris Ali</b>{FOUNDER_TITLE}, Whispers Lab</p>
           </div>
@@ -327,7 +326,7 @@ export default function HomePage() {
           <header className="hm-head hm-head-center">
             <p className="hm-eyebrow">The cost of manual work</p>
             <h2>What does manual work cost you?</h2>
-            <p>The problem is rarely effort. It is disconnected tools and handoffs that quietly drain your team every day.</p>
+            <p>Disconnected tools and messy handoffs drain your team every day.</p>
           </header>
           <div className="hm-grid hm-grid-3">
             {COSTS.map((c, i) => (
